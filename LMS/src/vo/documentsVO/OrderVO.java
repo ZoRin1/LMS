@@ -2,7 +2,6 @@ package vo.documentsVO;
 
 import java.util.ArrayList;
 
-import businesslogic.state.OrderState;
 
 public class OrderVO  extends DocumentVO{
 	private String code;//订单编号
@@ -26,7 +25,7 @@ public class OrderVO  extends DocumentVO{
 	private double[] sizeList;//货物大小
 	//private double packageCost;//包装费
 	private double sumCost;//总费用
-	private OrderState state;//快递种类
+	private String state;//快递种类
 	
 	public OrderVO(String code, String doName, String name, String date,String senderName,
 			String senderAddress, String senderOrg, String sPhoneNumber,
@@ -34,7 +33,7 @@ public class OrderVO  extends DocumentVO{
 			String receiverOrg, String rPhoneNumber, String rMobileNumber,
 			int number, double weight, double shape,
 			ArrayList<String> cargoNameList, double[] sizeList,
-			double packageCost, double sumCost, OrderState state) {
+			double packageCost, double sumCost, String state) {
 		super();
 		this.code = code;
 		this.doName = doName;
@@ -238,11 +237,11 @@ public class OrderVO  extends DocumentVO{
 		this.sumCost = sumCost;
 	}
 
-	public OrderState getState() {
+	public String getState() {
 		return state;
 	}
 
-	public void setState(OrderState state) {
+	public void setState(String state) {
 		this.state = state;
 	}
 }
