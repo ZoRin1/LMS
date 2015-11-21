@@ -34,6 +34,8 @@ public class deleteDataSerImpl extends UnicastRemoteObject implements deleteData
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			connection.close();
 			return true;
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

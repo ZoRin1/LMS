@@ -100,6 +100,7 @@ public class getBufferedCodeDataSerImpl extends UnicastRemoteObject implements g
 			while (resultSet.next()) {
 				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
 			}
+			connection.close();
 			return arrayList;
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

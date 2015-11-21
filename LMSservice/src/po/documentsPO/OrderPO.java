@@ -3,7 +3,6 @@ package po.documentsPO;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import state.OrderState;
 
 public class OrderPO extends DocumentPO implements Serializable {
 	private String code;//¶©µ¥±àºÅ

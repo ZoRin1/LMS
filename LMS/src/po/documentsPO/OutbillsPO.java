@@ -2,7 +2,6 @@ package po.documentsPO;
 
 import java.io.Serializable;
 
-import businesslogic.state.ModeofTrans;
 
 public class OutbillsPO extends DocumentPO implements Serializable {
 	private String code;//³ö¿âµ¥±àºÅ
