@@ -68,13 +68,13 @@ public class getBufferedInfoDataSerImpl extends UnicastRemoteObject implements g
 					sizeList[i]=Double.parseDouble(s2[i]);
 				}
 				if (resultSet.getString(21).equals("QUICK")) {
-					return new OrderPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9), resultSet.getString(10), resultSet.getString(11), resultSet.getString(12), resultSet.getString(13), resultSet.getString(14), resultSet.getInt(15), resultSet.getDouble(16), resultSet.getDouble(17), arrayList, sizeList, resultSet.getDouble(20), OrderState.QUICK);
+					return new OrderPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9), resultSet.getString(10), resultSet.getString(11), resultSet.getString(12), resultSet.getString(13), resultSet.getString(14), resultSet.getInt(15), resultSet.getDouble(16), resultSet.getDouble(17), arrayList, sizeList, resultSet.getDouble(20),resultSet.getString(21));
 				}
 				else if (resultSet.getString(21).equals("SIMPLE")) {
-					return new OrderPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9), resultSet.getString(10), resultSet.getString(11), resultSet.getString(12), resultSet.getString(13), resultSet.getString(14), resultSet.getInt(15), resultSet.getDouble(16), resultSet.getDouble(17), arrayList, sizeList, resultSet.getDouble(20), OrderState.SIMPLE);
+					return new OrderPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9), resultSet.getString(10), resultSet.getString(11), resultSet.getString(12), resultSet.getString(13), resultSet.getString(14), resultSet.getInt(15), resultSet.getDouble(16), resultSet.getDouble(17), arrayList, sizeList, resultSet.getDouble(20), resultSet.getString(21));
 				}
 				else {
-					return new OrderPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9), resultSet.getString(10), resultSet.getString(11), resultSet.getString(12), resultSet.getString(13), resultSet.getString(14), resultSet.getInt(15), resultSet.getDouble(16), resultSet.getDouble(17), arrayList, sizeList, resultSet.getDouble(20), OrderState.CHEAP);
+					return new OrderPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9), resultSet.getString(10), resultSet.getString(11), resultSet.getString(12), resultSet.getString(13), resultSet.getString(14), resultSet.getInt(15), resultSet.getDouble(16), resultSet.getDouble(17), arrayList, sizeList, resultSet.getDouble(20), resultSet.getString(21));
 				}
 			case "ÅÉ¼þµ¥":
 				break;
