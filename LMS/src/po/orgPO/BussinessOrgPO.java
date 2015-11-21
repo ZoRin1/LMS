@@ -1,4 +1,5 @@
 package po.orgPO;
+//随便改一下//
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -34,10 +35,10 @@ public class BussinessOrgPO implements Serializable {
 		this.driver = driver;
 		
 		for(AccountInfoPO po:assisant){
-			po.setState(2+"-"+Mcity+"-"+city+"-营业厅"+"-"+codeNumberOfMiddle+"-"+codeNumber);
+			po.setState(2+"-"+Mcity+"-"+city+"-营业厅"+"-"+Mcity+"-"+city);
 		}
 		for(AccountInfoPO po:courier){
-			po.setState(1+"-"+Mcity+"-"+city+"-营业厅"+"-"+codeNumberOfMiddle+"-"+codeNumber);
+			po.setState(1+"-"+Mcity+"-"+city+"-营业厅"+"-"+Mcity+"-"+city);
 		}
 	}
 	
@@ -95,7 +96,7 @@ public class BussinessOrgPO implements Serializable {
 	
 	public void addCourier(AccountInfoPO po){
 		this.courier.add(po);	
-		po.setState(2+"-"+Mcity+"-"+city+"-营业厅"+"-"+codeNumberOfMiddle+"-"+codeNumber);
+		po.setState(2+"-"+Mcity+"-"+city+"-营业厅"+"-"+Mcity+"-"+city);
 	}
 	
 	public void removeCourier(AccountInfoPO po){
@@ -106,7 +107,7 @@ public class BussinessOrgPO implements Serializable {
 	
 	public void addAssisant(AccountInfoPO po){
 		this.assisant.add(po);	
-		po.setState(3+"-"+Mcity+"-"+city+"-营业厅"+"-"+codeNumberOfMiddle+"-"+codeNumber);
+		po.setState(3+"-"+Mcity+"-"+city+"-营业厅"+"-"+Mcity+"-"+city);
 	}
 	
 	public void removeAssisant(AccountInfoPO po){
