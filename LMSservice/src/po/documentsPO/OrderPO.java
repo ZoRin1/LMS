@@ -23,7 +23,7 @@ public class OrderPO extends DocumentPO implements Serializable {
 	private int number;//货物数量
 	private double weight;//货物重量
 	private double shape;//货物体积
-	private ArrayList<String> cargoNameList;//货物名
+	private String cargoNameList;//货物名
 	private double[] sizeList;//货物大小
 
 	private double sumCost;//总费用
@@ -34,7 +34,7 @@ public class OrderPO extends DocumentPO implements Serializable {
 			String sMobileNumber, String receiverName, String receiverAddress,
 			String receiverOrg, String rPhoneNumber, String rMobileNumber,
 			int number, double weight, double shape,
-			ArrayList<String> cargoNameList, double[] sizeList,
+			String cargoNameList, double[] sizeList,
 			 double sumCost, String state) {
 		super();
 		this.code = code;
@@ -165,10 +165,10 @@ public class OrderPO extends DocumentPO implements Serializable {
 	public void setShape(double shape) {
 		this.shape = shape;
 	}
-	public ArrayList<String> getCargoNameList() {
+	public String getCargoNameList() {
 		return cargoNameList;
 	}
-	public void setCargoNameList(ArrayList<String> cargoNameList) {
+	public void setCargoNameList(String cargoNameList) {
 		this.cargoNameList = cargoNameList;
 	}
 	public double[] getSizeList() {

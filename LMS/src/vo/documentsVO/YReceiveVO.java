@@ -1,7 +1,6 @@
 package vo.documentsVO;
 
 
-import businesslogic.state.CargoState;
 
 public class YReceiveVO  extends DocumentVO{
 	private String date;//接收日期
@@ -11,10 +10,10 @@ public class YReceiveVO  extends DocumentVO{
 	private String account;//创建人账号
 	private String departure;//出发地
 	private String arrival;//本营业厅
-	private CargoState state;//货物状态
+	private String state;//货物状态
 	
 	public YReceiveVO(String date, String code, String doName,String code1,String account,
-			String departure, String arrival, CargoState state) {
+			String departure, String arrival, String state) {
 		super();
 		this.date = date;
 		this.code = code;
@@ -84,11 +83,11 @@ public class YReceiveVO  extends DocumentVO{
 	}
 
 
-	public CargoState getState() {
+	public String getState() {
 		return state;
 	}
 
-	public void setState(CargoState state) {
+	public void setState(String state) {
 		this.state = state;
 	}
 }

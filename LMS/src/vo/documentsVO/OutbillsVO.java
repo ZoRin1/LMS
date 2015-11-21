@@ -1,7 +1,6 @@
 package vo.documentsVO;
 
 
-import businesslogic.state.ModeofTrans;
 
 public class OutbillsVO  extends DocumentVO{
 	private String code;//出库单编号
@@ -10,11 +9,11 @@ public class OutbillsVO  extends DocumentVO{
 	private String date;//出库日期
 	private String account;//创建人账号
 	private String arrival;//目的地
-	private ModeofTrans Mode;//装运形式
+	private String Mode;//装运形式
 	private String transCode;//汽运编号
 	
 	public OutbillsVO(String code, String doName, String packCode, String date,String account,
-			String arrival, ModeofTrans mode, String transCode) {
+			String arrival, String mode, String transCode) {
 		super();
 		this.code = code;
 		this.doName = doName;
@@ -66,10 +65,10 @@ public class OutbillsVO  extends DocumentVO{
 	public void setArrival(String arrival) {
 		this.arrival = arrival;
 	}
-	public ModeofTrans getMode() {
+	public String getMode() {
 		return Mode;
 	}
-	public void setMode(ModeofTrans mode) {
+	public void setMode(String mode) {
 		Mode = mode;
 	}
 	public String getTransCode() {

@@ -21,7 +21,7 @@ public class OrderVO  extends DocumentVO{
 	private int number;//货物数量
 	private double weight;//货物重量
 	private double shape;//货物体积
-	private ArrayList<String> cargoNameList;//货物名
+	private String cargoNameList;//货物名
 	private double[] sizeList;//货物大小
 	//private double packageCost;//包装费
 	private double sumCost;//总费用
@@ -32,7 +32,7 @@ public class OrderVO  extends DocumentVO{
 			String sMobileNumber, String receiverName, String receiverAddress,
 			String receiverOrg, String rPhoneNumber, String rMobileNumber,
 			int number, double weight, double shape,
-			ArrayList<String> cargoNameList, double[] sizeList,
+			String cargoNameList, double[] sizeList,
 			double packageCost, double sumCost, String state) {
 		super();
 		this.code = code;
@@ -205,11 +205,11 @@ public class OrderVO  extends DocumentVO{
 		this.shape = shape;
 	}
 
-	public ArrayList<String> getCargoNameList() {
+	public String getCargoNameList() {
 		return cargoNameList;
 	}
 
-	public void setCargoNameList(ArrayList<String> cargoNameList) {
+	public void setCargoNameList(String cargoNameList) {
 		this.cargoNameList = cargoNameList;
 	}
 

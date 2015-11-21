@@ -2,7 +2,6 @@ package po.documentsPO;
 
 import java.io.Serializable;
 
-import state.CargoState;
 
 public class YReceivePO extends DocumentPO implements Serializable {
 	private String date;//接收日期
@@ -12,10 +11,10 @@ public class YReceivePO extends DocumentPO implements Serializable {
 	private String account;//创建人账号
 	private String departure;//出发地
 	private String arrival;//本营业厅
-	private CargoState state;//货物状态
+	private String state;//货物状态
 	public YReceivePO(String date, String code, String doName,String code1,String
 			name,
-			String departure, CargoState state) {
+			String departure,String state) {
 		super();
 		this.date = date;
 		this.code = code;
@@ -75,10 +74,10 @@ public class YReceivePO extends DocumentPO implements Serializable {
 	public void setDeparture(String departure) {
 		this.departure = departure;
 	}
-	public CargoState getState() {
+	public String getState() {
 		return state;
 	}
-	public void setState(CargoState state) {
+	public void setState(String state) {
 		this.state = state;
 	}
 	
