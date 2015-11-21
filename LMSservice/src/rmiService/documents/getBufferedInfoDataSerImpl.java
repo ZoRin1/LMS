@@ -2,6 +2,11 @@ package rmiService.documents;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import po.documentsPO.DocumentPO;
 import dataservice.documentsdataservice.getBufferedInfoDataSer;
@@ -25,7 +30,44 @@ public class getBufferedInfoDataSerImpl extends UnicastRemoteObject implements g
 	@Override
 	public DocumentPO getBufferedInfo(String code, String doName) {
 		// TODO 自动生成的方法存根
-		sql="select";
+		sql="select * from b"+doName+" where code="+code;
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			resultSet.next();
+			switch (doName) {
+			case "出库单":
+				break;
+			case "付款单":
+				break;
+			case "寄件单":
+				break;
+			case "派件单":
+				break;
+			case "入库单":
+				break;
+			case "收件单":
+				break;
+			case "收款单":
+				break;
+			case "营业厅接收单":
+				break;
+			case "营业厅装车单":
+				break;
+			case "中转中心接收单":
+				break;
+			case "中转中心转运单":
+				break;
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
