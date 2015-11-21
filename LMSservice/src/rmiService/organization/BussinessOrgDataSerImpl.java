@@ -25,141 +25,142 @@ public class BussinessOrgDataSerImpl extends UnicastRemoteObject implements Buss
 	}
 
 	@Override
-	public String[] getBussinessmanList() {
-		// TODO 自动生成的方法存根
+	public String[] getBussinessmanList(String ID) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean addBussinessman(long ID) {
-		// TODO 自动生成的方法存根
+	public boolean addBussinessman(String ID, long bID) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean removeBussinessman(long ID) {
-		// TODO 自动生成的方法存根
+	public boolean removeBussinessman(String ID, long bID) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public String[] getCourierList() {
-		// TODO 自动生成的方法存根
+	public String[] getCourierList(String ID, long bID) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean addCourier(long ID) {
-		// TODO 自动生成的方法存根
+	public boolean addCourier(String ID, long bID) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean removeCourier(long ID) {
-		// TODO 自动生成的方法存根
+	public boolean removeCourier(String ID, long bID) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public String[] getVehicleList() {
-		// TODO 自动生成的方法存根
+	public String[] getVehicleList(String ID) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public VehiclePO getVehicleInfo(String codeVehicle) {
-		// TODO 自动生成的方法存根
+	public VehiclePO getVehicleInfo(String ID, String codeVehicle) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean addVehicle(VehiclePO po) {
-		// TODO 自动生成的方法存根
+	public boolean addVehicle(String ID, VehiclePO po) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean removeVehicle(String codeVehicle) {
-		// TODO 自动生成的方法存根
+	public boolean removeVehicle(String ID, String codeVehicle) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean changeVehicle(VehiclePO po) {
-		// TODO 自动生成的方法存根
+	public boolean changeVehicle(String ID, VehiclePO po) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public String[] getDriverList() {
-		// TODO 自动生成的方法存根
+	public String[] getDriverList(String ID) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public DriverPO getDriverInfo(String codeDriver) {
-		// TODO 自动生成的方法存根
+	public DriverPO getDriverInfo(String ID, String codeDriver) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean addDriver(DriverPO po) {
-		// TODO 自动生成的方法存根
+	public boolean addDriver(String ID, DriverPO po) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean removeDriver(String codeDriver) {
-		// TODO 自动生成的方法存根
+	public boolean removeDriver(String ID, String codeDriver) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean changeDriver(DriverPO po) {
-		// TODO 自动生成的方法存根
+	public boolean changeDriver(String ID, DriverPO po) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean addBussinessHall(BussinessOrgPO po) {
-		// TODO 自动生成的方法存根
+	public boolean addBussinessHall(String ID, BussinessOrgPO po) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean removeBussinessHall(String codeNumber) {
-		// TODO 自动生成的方法存根
+	public boolean removeBussinessHall(String ID, String codeNumber) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public String getCodeNumber() {
-		// TODO 自动生成的方法存根
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean changeCodeNumberOfMiddle(String codeNumberOfMiddle) {
-		// TODO 自动生成的方法存根
+	public boolean changeCodeNumberOfMiddle(String ID, String codeNumberOfMiddle) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public String getInfo() {
-		// TODO 自动生成的方法存根
+	public String getInfo(String ID) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean changeCity(String city) {
-		// TODO 自动生成的方法存根
+	public boolean changeCity(String ID, String city) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean changeCodeNumber(String codeNumber) {
-		// TODO 自动生成的方法存根
+	public boolean changeCodeNumber(String ID, String codeNumber) {
+		// TODO Auto-generated method stub
 		return false;
 	}
+
 
 }
