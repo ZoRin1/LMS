@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 import po.documentsPO.DocumentPO;
 import po.documentsPO.OutbillsPO;
+import state.ModeofTrans;
 import dataservice.documentsdataservice.getBufferedInfoDataSer;
 
 public class getBufferedInfoDataSerImpl extends UnicastRemoteObject implements getBufferedInfoDataSer{
@@ -40,7 +41,7 @@ public class getBufferedInfoDataSerImpl extends UnicastRemoteObject implements g
 			resultSet.next();
 			switch (doName) {
 			case "出库单":
-			//	return new OutbillsPO(resultSet.getString(1), resultSet.getString(2), packCode, date, account, arrival, mode, transCode);
+			//	return new OutbillsPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),, resultSet.getString(8));
 				break;
 			case "付款单":
 				break;
