@@ -2,6 +2,11 @@ package rmiService.finance;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import po.financePO.AccountPO;
@@ -28,15 +33,24 @@ public class GetAccountDataSerImpl extends UnicastRemoteObject implements GetAcc
 	public ArrayList<AccountPO> getAccount() throws RemoteException {
 		// TODO 自动生成的方法存根
 		System.out.println("Get Account Start");
-		AccountPO p1 = new AccountPO("李洋", 250.3);
-		AccountPO p2 = new AccountPO("李洋", 250.3);
-		AccountPO p3 = new AccountPO("李洋", 250.3);
-		AccountPO p4 = new AccountPO("李洋", 250.3);
-		ArrayList<AccountPO> po = new ArrayList();
-		po.add(p1);
-		po.add(p2);
-		po.add(p3);
-		po.add(p4);
+		sql="SELECT * from 账户表";
+		ArrayList<AccountPO> po = new ArrayList<AccountPO>();
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			while(resultSet.next()){
+				AccountPO acc = new AccountPO(resultSet.getString(1),resultSet.getDouble(2));
+				po.add(acc);
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return po;
 	}
 
