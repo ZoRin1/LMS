@@ -25,7 +25,7 @@ public class OrderPO extends DocumentPO implements Serializable {
 	private double shape;//货物体积
 	private ArrayList<String> cargoNameList;//货物名
 	private double[] sizeList;//货物大小
-	//private double packageCost;//包装费
+
 	private double sumCost;//总费用
 	private OrderState state;//快递种类
 	
@@ -35,7 +35,7 @@ public class OrderPO extends DocumentPO implements Serializable {
 			String receiverOrg, String rPhoneNumber, String rMobileNumber,
 			int number, double weight, double shape,
 			ArrayList<String> cargoNameList, double[] sizeList,
-			double packageCost, double sumCost, OrderState state) {
+			 double sumCost, OrderState state) {
 		super();
 		this.code = code;
 		this.doName = doName;
@@ -56,7 +56,6 @@ public class OrderPO extends DocumentPO implements Serializable {
 		this.shape = shape;
 		this.cargoNameList = cargoNameList;
 		this.sizeList = sizeList;
-		//this.packageCost = packageCost;
 		this.sumCost = sumCost;
 		this.state = state;
 	}
@@ -178,12 +177,6 @@ public class OrderPO extends DocumentPO implements Serializable {
 	public void setSizeList(double[] sizeList) {
 		this.sizeList = sizeList;
 	}
-//	public double getPackageCost() {
-//		return packageCost;
-//	}
-//	public void setPackageCost(double packageCost) {
-//		this.packageCost = packageCost;
-//	}
 	public double getSumCost() {
 		return sumCost;
 	}
