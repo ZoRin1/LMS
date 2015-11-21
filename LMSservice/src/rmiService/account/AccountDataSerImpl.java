@@ -57,11 +57,13 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 	@Override
 	public boolean insert(long ID, AccountInfoPO po) {
 		// TODO 自动生成的方法存根
-		sql="insert into 帐号表(ID,password,name,state,phone,sID,date) values ("+po.getID()+","+po.getPassword()+","+po.getName()+","+po.getState()+","+po.getPhone()+","+po.getsID()+","+po.getDate()+")";//确定帐号的信息		
+		sql="insert into 帐号表(ID,password,name,state,phone,sID,date) values ("+po.getID()+","+po.getPassword()+","+po.getName()+","+po.getState()+","+po.getPhone()+","+po.getsID()+","+po.getDate()+"')";//确定帐号的信息		
 			try {
 				Class.forName(DRIVER);
 				Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
 				PreparedStatement preparedStatement=connection.prepareStatement(sql);	
+				preparedStatement.executeUpdate();
+				connection.close();
 				return true;
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -82,6 +84,8 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			connection.close();
 			return true;
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -101,6 +105,8 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			connection.close();
 			return true;
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -122,9 +128,13 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			ResultSet resultSet=preparedStatement.executeQuery();
 			if (resultSet.next()) {
-				return new AccountInfoPO(resultSet.getString(3), Long.parseLong(resultSet.getString(1)), resultSet.getString(2),resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7));
+				
+				AccountInfoPO accountInfoPO=new AccountInfoPO(resultSet.getString(3), Long.parseLong(resultSet.getString(1)), resultSet.getString(2),resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7));
+				connection.close();
+				return accountInfoPO;
 			}
 			else {
+				connection.close();
 				return null;
 			}
 		} catch (ClassNotFoundException e) {
@@ -168,9 +178,11 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 				for (int i = 0; i < x.length; i++) {
 					x[i]=arrayList.get(i);
 				}
+				connection.close();
 				return x;
 			}
 			else {
+				connection.close();
 				return null;
 			}
 		} catch (ClassNotFoundException e) {

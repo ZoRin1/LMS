@@ -26,6 +26,28 @@ public class getCodeDataSerImpl extends UnicastRemoteObject implements getCodeDa
 	public ArrayList<String> getCode(String doName, String startTime,
 			String endTime) {
 		// TODO 自动生成的方法存根
+		switch (doName) {
+		case "出库单":
+			sql="";
+		case "付款单":
+		case "寄件单":
+		case "派件单":
+			break;
+		case "入库单":
+			break;
+		case "收件单":
+			break;
+		case "收款单":
+			break;
+		case "营业厅接收单":
+			break;
+		case "营业厅装车单":
+			break;
+		case "中转中心接收单":
+			break;
+		case "中转中心转运单":
+			break;
+		}
 		return null;
 	}
 
