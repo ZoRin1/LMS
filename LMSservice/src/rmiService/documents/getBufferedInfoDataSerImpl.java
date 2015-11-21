@@ -57,25 +57,19 @@ public class getBufferedInfoDataSerImpl extends UnicastRemoteObject implements g
 			case "付款单":
 				return new PaymentPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDouble(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8),resultSet.getString(9));
 			case "寄件单":
-//				ArrayList<String> arrayList=new ArrayList<String>();
-//				String s[]=resultSet.getString(18).split(",");
-//				for (int i = 0; i < s.length; i++) {
-//					arrayList.add(s[i]);
-//				}
-//				double sizeList[]=new double[3];
-//				String s2[]=resultSet.getString(19).split(",");
-//				for (int i = 0; i < sizeList.length; i++) {
-//					sizeList[i]=Double.parseDouble(s2[i]);
-//				}
-//				if (resultSet.getString(21).equals("QUICK")) {
-//					return new OrderPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9), resultSet.getString(10), resultSet.getString(11), resultSet.getString(12), resultSet.getString(13), resultSet.getString(14), resultSet.getInt(15), resultSet.getDouble(16), resultSet.getDouble(17), arrayList, sizeList, resultSet.getDouble(20),resultSet.getString(21));
-//				}
-//				else if (resultSet.getString(21).equals("SIMPLE")) {
-//					return new OrderPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9), resultSet.getString(10), resultSet.getString(11), resultSet.getString(12), resultSet.getString(13), resultSet.getString(14), resultSet.getInt(15), resultSet.getDouble(16), resultSet.getDouble(17), arrayList, sizeList, resultSet.getDouble(20), resultSet.getString(21));
-//				}
-//				else {
-//					return new OrderPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9), resultSet.getString(10), resultSet.getString(11), resultSet.getString(12), resultSet.getString(13), resultSet.getString(14), resultSet.getInt(15), resultSet.getDouble(16), resultSet.getDouble(17), arrayList, sizeList, resultSet.getDouble(20), resultSet.getString(21));
-//				}
+				ArrayList<String> arrayList=new ArrayList<String>();
+				String s[]=resultSet.getString(18).split(",");
+				for (int i = 0; i < s.length; i++) {
+					arrayList.add(s[i]);
+				}
+				double sizeList[]=new double[3];
+				String s2[]=resultSet.getString(19).split(",");
+				for (int i = 0; i < sizeList.length; i++) {
+					sizeList[i]=Double.parseDouble(s2[i]);
+				}
+				OrderPO orderPO=new OrderPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9), resultSet.getString(10), resultSet.getString(11), resultSet.getString(12), resultSet.getString(13), resultSet.getString(14), resultSet.getInt(15), resultSet.getDouble(16), resultSet.getDouble(17), arrayList, sizeList, resultSet.getDouble(20),resultSet.getString(21));
+				connection.close();
+				return orderPO;
 			case "派件单":
 				break;
 			case "入库单":
