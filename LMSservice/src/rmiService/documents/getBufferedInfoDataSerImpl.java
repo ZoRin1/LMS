@@ -55,7 +55,9 @@ public class getBufferedInfoDataSerImpl extends UnicastRemoteObject implements g
 //					return new OutbillsPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),ModeofTrans.TRUCK, resultSet.getString(8));
 //				}
 			case "付款单":
-				return new PaymentPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDouble(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8),resultSet.getString(9));
+				PaymentPO paymentPO=new PaymentPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDouble(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8),resultSet.getString(9));
+				connection.close();
+				return paymentPO;
 			case "寄件单":
 				ArrayList<String> arrayList=new ArrayList<String>();
 				String s[]=resultSet.getString(18).split(",");
