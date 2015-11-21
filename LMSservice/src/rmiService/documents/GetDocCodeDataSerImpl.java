@@ -24,7 +24,7 @@ public class GetDocCodeDataSerImpl extends UnicastRemoteObject implements GetDoc
 	}
 
 	@Override
-	public String getDocCode() {
+	public String getDocCode(String doName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
