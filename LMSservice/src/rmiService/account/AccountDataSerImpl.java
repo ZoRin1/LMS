@@ -122,9 +122,12 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			ResultSet resultSet=preparedStatement.executeQuery();
 			if (resultSet.next()) {
-				return new AccountInfoPO(resultSet.getString(3), Long.parseLong(resultSet.getString(1)), resultSet.getString(2),resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7));
+				AccountInfoPO accountInfoPO=new AccountInfoPO(resultSet.getString(3), Long.parseLong(resultSet.getString(1)), resultSet.getString(2),resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7));
+				connection.close();
+				return  accountInfoPO;
 			}
 			else {
+				connection.close();
 				return null;
 			}
 		} catch (ClassNotFoundException e) {
@@ -168,9 +171,11 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 				for (int i = 0; i < x.length; i++) {
 					x[i]=arrayList.get(i);
 				}
+				connection.close();
 				return x;
 			}
 			else {
+				connection.close();
 				return null;
 			}
 		} catch (ClassNotFoundException e) {
