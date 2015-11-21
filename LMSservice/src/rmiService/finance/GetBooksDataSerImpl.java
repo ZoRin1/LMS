@@ -2,6 +2,11 @@ package rmiService.finance;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import po.financePO.BooksPO;
 import dataservice.financedataservice.GetBooksDataSer;
@@ -25,6 +30,21 @@ public class GetBooksDataSerImpl extends UnicastRemoteObject implements GetBooks
 	@Override
 	public BooksPO Books(String year)  throws RemoteException{
 		// TODO 自动生成的方法存根
+		sql="SELECT *  from 帐本表 where year"+year;
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			BooksPO po;
+			//有待改进
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 	

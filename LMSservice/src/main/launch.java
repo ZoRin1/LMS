@@ -15,7 +15,7 @@ import dataservice.financedataservice.financeFactory;
 import dataservice.organizationdataservice.organizationFactory;
 import dataservice.storagedataservice.storageFactory;
 import dataservice.transportationdataservice.TransportationFactory;
-//AAA
+
 public class launch {
 	public static void main(String[] args){
 		try{
