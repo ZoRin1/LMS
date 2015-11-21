@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 import po.documentsPO.DocumentPO;
 import po.documentsPO.OutbillsPO;
+import po.documentsPO.PaymentPO;
 import state.ModeofTrans;
 import dataservice.documentsdataservice.getBufferedInfoDataSer;
 
@@ -41,9 +42,17 @@ public class getBufferedInfoDataSerImpl extends UnicastRemoteObject implements g
 			resultSet.next();
 			switch (doName) {
 			case "出库单":
-			//	return new OutbillsPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),, resultSet.getString(8));
-				break;
+				if (resultSet.getString(7).equals("PLANE")) {
+					return new OutbillsPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),ModeofTrans.PLANE, resultSet.getString(8));
+				}
+				else if (resultSet.getString(7).equals("TRAIN")) {
+					return new OutbillsPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),ModeofTrans.TRAIN, resultSet.getString(8));
+				}
+				else{
+					return new OutbillsPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),ModeofTrans.TRUCK, resultSet.getString(8));
+				}
 			case "付款单":
+				//return new PaymentPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), account, fund, name2, account2, type, remark)
 				break;
 			case "寄件单":
 				break;
