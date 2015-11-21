@@ -35,6 +35,7 @@ public class Check_inventoryDataSerImpl extends UnicastRemoteObject implements C
 	public ArrayList<InBillsPO> getInBill(String start, String end)
 			throws RemoteException {
 		// TODO 自动生成的方法存根
+		
 		return null;
 	}
 
