@@ -3,6 +3,7 @@ package rmiService.documents;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
+import dataservice.documentsdataservice.GetDocCodeDataSer;
 import dataservice.documentsdataservice.NotApproved;
 import dataservice.documentsdataservice.addDocummentInfoDataSer;
 import dataservice.documentsdataservice.deleteDataSer;
@@ -73,6 +74,12 @@ public class documentsFactoryImpl extends UnicastRemoteObject implements documen
 	@Override
 	public NotApproved createNotApproved() throws RemoteException {
 		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public GetDocCodeDataSer createGetDocCodeDataSer() throws RemoteException {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

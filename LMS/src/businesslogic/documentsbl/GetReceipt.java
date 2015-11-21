@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import po.documentsPO.ReceiptPO;
 import businesslogicservice.modelservice.financeInfo.GetReceiptSer;
-
+//xiugai
 public class GetReceipt implements GetReceiptSer{
-
+	//sellingÎªÓªÒµÌü±àºÅ
 	@Override
 	public ArrayList<ReceiptPO> getReceipts(String selling, String date) {
 		// TODO Auto-generated method stub
@@ -23,7 +23,7 @@ public class GetReceipt implements GetReceiptSer{
 	}
 
 	@Override
-	public ArrayList<ReceiptPO> getAllReceipts(String selling) {
+	public ArrayList<ReceiptPO> getAllReceipts(String end) {
 		// TODO Auto-generated method stub
 //		ArrayList<ReceiptPO> list=new ArrayList();
 //		ArrayList<String> list1=new ArrayList();

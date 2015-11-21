@@ -20,5 +20,6 @@ public interface documentsFactory extends Remote{
 	
 	public NotApproved createNotApproved() throws RemoteException;
 	
-	
+	public GetDocCodeDataSer createGetDocCodeDataSer() throws RemoteException;
 }
+
