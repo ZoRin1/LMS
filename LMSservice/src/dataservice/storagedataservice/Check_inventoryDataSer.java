@@ -16,7 +16,7 @@ public interface Check_inventoryDataSer extends Remote{
 	 * @author YangGuan
 	 *
 	 */
-	public ArrayList<InBillsPO> getInBill(int start , int end) throws RemoteException;
+	public ArrayList<InBillsPO> getInBill(String start , String end) throws RemoteException;
 	
 	
 	/**

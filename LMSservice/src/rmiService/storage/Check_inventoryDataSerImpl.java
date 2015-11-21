@@ -23,14 +23,17 @@ public class Check_inventoryDataSerImpl extends UnicastRemoteObject implements C
 		// TODO 自动生成的构造函数存根
 	}
 
+
 	@Override
-	public ArrayList<InBillsPO> getInBill(int start, int end)  throws RemoteException{
+	public ArrayList<InBillsPO> getBill(String division)  throws RemoteException{
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
+
 	@Override
-	public ArrayList<InBillsPO> getBill(String division)  throws RemoteException{
+	public ArrayList<InBillsPO> getInBill(String start, String end)
+			throws RemoteException {
 		// TODO 自动生成的方法存根
 		return null;
 	}
