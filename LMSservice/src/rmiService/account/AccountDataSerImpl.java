@@ -39,9 +39,12 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			ResultSet resultSet=preparedStatement.executeQuery();
 			if (resultSet.next()) {
-				return resultSet.getString(4);
+				String string=resultSet.getString(4);
+				connection.close();
+				return string;
 			}
 			else {
+				connection.close();
 				return null;
 			}
 		} catch (ClassNotFoundException e) {
@@ -62,6 +65,8 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 				Class.forName(DRIVER);
 				Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
 				PreparedStatement preparedStatement=connection.prepareStatement(sql);	
+				preparedStatement.executeUpdate();
+				connection.close();
 				return true;
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -82,6 +87,8 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			connection.close();
 			return true;
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -101,6 +108,8 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			connection.close();
 			return true;
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
