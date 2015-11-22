@@ -175,6 +175,7 @@ public class bhclerkui extends JFrame{
 			}
 		});
 }
+}
 class bhclerkJpanel extends JPanel{
 	private ImageIcon backgroundIcon=new ImageIcon("picture/±³¾°.png");
 	public void paintComponent(Graphics g)  
@@ -199,5 +200,4 @@ class bhclerkOperationJpanel extends JPanel{
 	    super.paintComponent(g);    
 	    g.drawImage(frameIcon.getImage(),-7,-12,null);
      }
-}
 }
