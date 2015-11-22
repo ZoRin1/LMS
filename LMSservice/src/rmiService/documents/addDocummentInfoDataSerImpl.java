@@ -2,6 +2,10 @@ package rmiService.documents;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import po.documentsPO.DocumentPO;
@@ -51,7 +55,7 @@ public class addDocummentInfoDataSerImpl extends UnicastRemoteObject implements 
 			double sizeList[]=orderPO.getSizeList();
 			String string="";
 			for (int i = 0; i < sizeList.length; i++) {
-				string=string+Double.toString(sizeList[i]);
+				string=string+Double.toString(sizeList[i])+",";
 			}
 			sql="insert into b寄件单(code,doName,account,date,SenderName,SenderAddress,SenderOrg,SPhoneNumber,SMobileNumber,ReceiverName,ReceiverAddress,ReceiverOrg,RPhoneNumber,RMobileNumber,number,weight,shape,cargoNameList,sizeList,sumCost,state,examined) values ("+orderPO.getCode()+","+orderPO.getDoName()+","+orderPO.getAccount()+","+orderPO.getDate()+","+orderPO.getSenderName()+","+orderPO.getSenderAddress()+","+orderPO.getSenderOrg()+","+orderPO.getSPhoneNumber()+","+orderPO.getSMobileNumber()+","+orderPO.getReceiverName()+","+orderPO.getReceiverAddress()+","+orderPO.getReceiverOrg()+","+orderPO.getRPhoneNumber()+","+orderPO.getRMobileNumber()+","+orderPO.getNumber()+","+orderPO.getWeight()+","+orderPO.getShape()+","+orderPO.getCargoNameList()+","+string+","+orderPO.getSumCost()+","+orderPO.getState()+",0)";
 			break;
@@ -72,18 +76,50 @@ public class addDocummentInfoDataSerImpl extends UnicastRemoteObject implements 
 			ArrayList<String>tcodeArrayList=receiptPO.getTCode();
 			String tcode="";
 			for (int i = 0; i < tcodeArrayList.size(); i++) {
-				tcode=tcode+tcodeArrayList.get(i);
+				tcode=tcode+tcodeArrayList.get(i)+",";
 			}
-			sql="insert into b收款单(code,doName,date,account,OrgCode,name,fund,Tcode,examined) values ("+receiptPO.getCode()+","+receiptPO.getDoName()+","+receiptPO.getDate()+","+receiptPO.getAccount()+","+""+","+receiptPO.getName2()+","+receiptPO.getFund()+","+tcode+",0)";
+			sql="insert into b收款单(code,doName,date,account,OrgCode,name,fund,Tcode,examined) values ("+receiptPO.getCode()+","+receiptPO.getDoName()+","+receiptPO.getDate()+","+receiptPO.getAccount()+","+receiptPO.getOrgCode()+","+receiptPO.getName2()+","+receiptPO.getFund()+","+tcode+",0)";
 			break;
 		case "营业厅接收单":
 			YReceivePO yReceivePO=(YReceivePO)po;
+			sql="insert into b营业厅接收单(code,code2,doName,account,date,departure,state,examined) values ("+yReceivePO.getCode()+","+yReceivePO.getCode1()+","+yReceivePO.getDoName()+","+yReceivePO.getAccount()+","+yReceivePO.getDate()+","+yReceivePO.getDeparture()+","+yReceivePO.getState()+",0)";
+			break;
 		case "营业厅装车单":
 			LoadingPO loadingPO=(LoadingPO)po;
+			ArrayList<String> codelist=loadingPO.getCodeList();
+			String code="";
+			for (int i = 0; i < codelist.size(); i++) {
+				code=code+codelist.get(i)+",";
+			}
+			sql="insert into b营业厅装车单(code,doName,account,date,departure,arrival,supervisor,supercargo,codeList,charge,examined) values ("+loadingPO.getCode()+","+loadingPO.getDoName()+","+loadingPO.getAccount()+","+loadingPO.getDate()+","+loadingPO.getDeparture()+","+loadingPO.getArrival()+","+loadingPO.getSupervisor()+","+loadingPO.getSupercargo()+","+code+","+loadingPO.getCharge()+",0)";
+			break;
 		case "中转中心接收单":
 			ZReceivePO zReceivePO=(ZReceivePO)po;
+			sql="insert into b中转中心接收单(code,doName,date,account,zCode,departure,arrival,examined) values ("+zReceivePO.getCode()+","+zReceivePO.getDoName()+","+zReceivePO.getDate()+","+zReceivePO.getAccount()+","+zReceivePO.getzCode()+","+zReceivePO.getDeparture()+","+zReceivePO.getArrival()+",0)";
+			break;
 		case "中转中心转运单":
 			ZLoadingPO zLoadingPO=(ZLoadingPO)po;
+			ArrayList<String>coList=zLoadingPO.getCodeList();
+			String co="";
+			for (int i = 0; i < coList.size(); i++) {
+				co=co+coList.get(i)+",";
+			}
+			sql="insert into b中转中心转运单(code,doName,date,account,transcode,departure,arrival,name,codeList,carriage,examined) values ("+zLoadingPO.getCode()+","+zLoadingPO.getDoName()+","+zLoadingPO.getDate()+","+zLoadingPO.getAccount()+","+zLoadingPO.getTranscode()+","+zLoadingPO.getDeparture()+","+zLoadingPO.getArrival()+","+zLoadingPO.getName2()+","+co+","+zLoadingPO.getCarriage()+",0)";
+			break;
+		}
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			connection.close();
+			return true;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return false;
 	}

@@ -74,10 +74,10 @@ public class deleteDataSerImpl extends UnicastRemoteObject implements deleteData
 				sql="insert into 营业厅接收单(code,code2,doName,account,date,departure,state) values ("+resultSet.getString(1)+","+resultSet.getString(2)+","+resultSet.getString(3)+","+resultSet.getString(4)+","+resultSet.getString(5)+","+resultSet.getString(6)+","+resultSet.getString(7)+")";
 				break;
 			case "营业厅装车单":
-				sql="insert into 营业厅装车单(code,doName,account,date,departure,arrival,supervisor,supercargo,codeList) values ("+resultSet.getString(1)+","+resultSet.getString(2)+","+resultSet.getString(3)+","+resultSet.getString(4)+","+resultSet.getString(5)+","+resultSet.getString(6)+","+resultSet.getString(7)+","+resultSet.getString(8)+","+resultSet.getString(9)+")";
+				sql="insert into 营业厅装车单(code,doName,account,date,departure,arrival,supervisor,supercargo,codeList,charge) values ("+resultSet.getString(1)+","+resultSet.getString(2)+","+resultSet.getString(3)+","+resultSet.getString(4)+","+resultSet.getString(5)+","+resultSet.getString(6)+","+resultSet.getString(7)+","+resultSet.getString(8)+","+resultSet.getString(9)+","+resultSet.getDouble(10)+")";
 				break;
 			case "中转中心接收单":
-				sql="insert into 中转中心接收单(code,doName,date,account,zCode,departure) values ("+resultSet.getString(1)+","+resultSet.getString(2)+","+resultSet.getString(3)+","+resultSet.getString(4)+","+resultSet.getString(5)+","+resultSet.getString(6)+")";
+				sql="insert into 中转中心接收单(code,doName,date,account,zCode,departure,arrival) values ("+resultSet.getString(1)+","+resultSet.getString(2)+","+resultSet.getString(3)+","+resultSet.getString(4)+","+resultSet.getString(5)+","+resultSet.getString(6)+","+resultSet.getString(7)+")";
 				break;
 			case "中转中心转运单":
 				sql="insert into 中转中心转运单(code,doName,date,account,transcode,departure,arrival,name,codeList,carriage) values ("+resultSet.getString(1)+","+resultSet.getString(2)+","+resultSet.getString(3)+","+resultSet.getString(4)+","+resultSet.getString(5)+","+resultSet.getString(6)+","+resultSet.getString(7)+","+resultSet.getString(8)+","+resultSet.getString(9)+","+resultSet.getDouble(10)+")";
