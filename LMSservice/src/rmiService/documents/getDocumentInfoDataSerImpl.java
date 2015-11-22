@@ -102,9 +102,14 @@ public class getDocumentInfoDataSerImpl extends UnicastRemoteObject implements g
 				connection.close();
 				return loadingPO;
 			case "中转中心接收单":
-//			ZReceivePO zReceivePO=new ZReceivePO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7));
-//			connection.close();
-//			return zReceivePO;
+				ArrayList<String> coList=new ArrayList<String>();
+				String coLists[]=resultSet.getString(6).split(",");
+				for (int i = 0; i < coLists.length; i++) {
+					coList.add(coLists[i]);
+				}
+			ZReceivePO zReceivePO=new ZReceivePO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5),coList, resultSet.getString(7), resultSet.getString(8));
+			connection.close();
+			return zReceivePO;
 			case "中转中心转运单":
 				ArrayList<String> zcodeList=new ArrayList<String>();
 				String zcodeLists[]=resultSet.getString(9).split(",");

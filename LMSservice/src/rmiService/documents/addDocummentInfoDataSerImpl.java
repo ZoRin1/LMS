@@ -94,9 +94,14 @@ public class addDocummentInfoDataSerImpl extends UnicastRemoteObject implements 
 			sql="insert into b营业厅装车单(code,doName,account,date,departure,arrival,supervisor,supercargo,codeList,charge,examined) values ("+loadingPO.getCode()+","+loadingPO.getDoName()+","+loadingPO.getAccount()+","+loadingPO.getDate()+","+loadingPO.getDeparture()+","+loadingPO.getArrival()+","+loadingPO.getSupervisor()+","+loadingPO.getSupercargo()+","+code+","+loadingPO.getCharge()+",0)";
 			break;
 		case "中转中心接收单":
-//			ZReceivePO zReceivePO=(ZReceivePO)po;
-//			sql="insert into b中转中心接收单(code,doName,date,account,zCode,departure,arrival,examined) values ("+zReceivePO.getCode()+","+zReceivePO.getDoName()+","+zReceivePO.getDate()+","+zReceivePO.getAccount()+","+zReceivePO.getzCode()+","+zReceivePO.getDeparture()+","+zReceivePO.getArrival()+",0)";
-//			break;
+			ZReceivePO zReceivePO=(ZReceivePO)po;
+			ArrayList<String> list=zReceivePO.getCodeList();
+			String l="";
+			for (int i = 0; i < list.size(); i++) {
+				l=l+list.get(i)+",";
+			}
+			sql="insert into b中转中心接收单(code,doName,date,account,zCode,codeList,departure,arrival,examined) values ("+zReceivePO.getCode()+","+zReceivePO.getDoName()+","+zReceivePO.getDate()+","+zReceivePO.getAccount()+","+zReceivePO.getzCode()+","+l+","+zReceivePO.getDeparture()+","+zReceivePO.getArrival()+",0)";
+			break;
 		case "中转中心转运单":
 			ZLoadingPO zLoadingPO=(ZLoadingPO)po;
 			ArrayList<String>coList=zLoadingPO.getCodeList();
