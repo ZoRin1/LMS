@@ -8,5 +8,5 @@ public interface GetCountDataSer {
 	 * @author YangGuan
 	 *
 	 */
-	public int getCount();
+	public int getCount(String city);
 }

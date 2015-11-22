@@ -10,7 +10,7 @@ public interface UsedSpaceDataSer extends Remote{
 	 * @author YangGuan
 	 *
 	 */
-	public int[] getUsedSpace() throws RemoteException;
+	public int[] getUsedSpace(String city) throws RemoteException;
 	
 	/**
 	 * 得到库存各分区总空间大小
@@ -18,5 +18,5 @@ public interface UsedSpaceDataSer extends Remote{
 	 * @author YangGuan
 	 *
 	 */
-	public int[] getAllSpace() throws RemoteException;
+	public int[] getAllSpace(String city) throws RemoteException;
 }

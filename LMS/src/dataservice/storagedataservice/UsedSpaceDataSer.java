@@ -7,7 +7,7 @@ public interface UsedSpaceDataSer {
 	 * @author YangGuan
 	 *
 	 */
-	public int[] getUsedSpace();
+	public int[] getUsedSpace(String city);
 	
 	/**
 	 * 得到库存各分区总空间大小
@@ -15,5 +15,5 @@ public interface UsedSpaceDataSer {
 	 * @author YangGuan
 	 *
 	 */
-	public int[] getAllSpace();
+	public int[] getAllSpace(String city);
 }

@@ -2,6 +2,11 @@ package rmiService.storage;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import dataservice.storagedataservice.UsedSpaceDataSer;
 
@@ -22,13 +27,39 @@ public class UsedSpaceDataSerImpl extends UnicastRemoteObject implements UsedSpa
 	}
 
 	@Override
-	public int[] getUsedSpace()  throws RemoteException{
+	public int[] getUsedSpace(String city)  throws RemoteException{
 		// TODO 自动生成的方法存根
-		return null;
+		int space[] = new int[3];
+		sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+"where isFull=0 and AreaNum=1";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			resultSet.last();
+			space[0] = resultSet.getRow();
+			sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+"where isFull=0 and AreaNum=2";
+			preparedStatement=connection.prepareStatement(sql);
+			resultSet=preparedStatement.executeQuery();
+			resultSet.last();
+			space[1] = resultSet.getRow();
+			sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+"where isFull=0 and AreaNum=3";
+			preparedStatement=connection.prepareStatement(sql);
+			resultSet=preparedStatement.executeQuery();
+			resultSet.last();
+			space[2] = resultSet.getRow();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return space;
 	}
 
 	@Override
-	public int[] getAllSpace()  throws RemoteException{
+	public int[] getAllSpace(String city)  throws RemoteException{
 		// TODO 自动生成的方法存根
 		return null;
 	}

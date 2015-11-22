@@ -11,5 +11,5 @@ public interface GetCountDataSer extends Remote{
 	 * @author YangGuan
 	 *
 	 */
-	public int getCount() throws RemoteException;
+	public int getCount(String city) throws RemoteException;
 }

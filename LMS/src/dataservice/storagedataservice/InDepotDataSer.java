@@ -5,7 +5,7 @@ import po.storagePO.DepotPO;
 public interface InDepotDataSer {
 	
 	
-	public void inDepot(DepotPO depo);
+	public void inDepot(DepotPO depo,String city);
 	
 	
 }

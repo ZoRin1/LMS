@@ -2,6 +2,10 @@ package rmiService.storage;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import po.storagePO.DepotPO;
 import dataservice.storagedataservice.InDepotDataSer;
@@ -23,9 +27,27 @@ public class InDepotDataSerImpl extends UnicastRemoteObject implements InDepotDa
 	}
 
 	@Override
-	public void inDepot(DepotPO depo)  throws RemoteException{
+	public void inDepot(DepotPO depo,String city)  throws RemoteException{
 		// TODO 自动生成的方法存根
-		
+		int qu =depo.getQu();
+		int pai = depo.getPai();
+		int jia = depo.getJia();
+		int wei = depo.getWei();
+		String sql = "UPDATE"+city+"中转中心仓库"+"set AreaNum="+qu+","+"RowNum="+pai+","+"ShelvesNum="+jia+","+"SositionNum="+wei+"where isFull=1";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			preparedStatement.close();
+			connection.close();
+		} catch (ClassNotFoundException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 	}
 
 }

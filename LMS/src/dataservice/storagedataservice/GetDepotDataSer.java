@@ -4,6 +4,6 @@ import po.storagePO.DepotPO;
 
 public interface GetDepotDataSer {
 	
-	public DepotPO getDepot();
+	public DepotPO getDepot(String city);
 	
 }
