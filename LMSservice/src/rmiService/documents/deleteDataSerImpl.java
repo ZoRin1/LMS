@@ -8,17 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import po.documentsPO.GetOrderPO;
-import po.documentsPO.InBillsPO;
-import po.documentsPO.LoadingPO;
-import po.documentsPO.OrderPO;
-import po.documentsPO.OutbillsPO;
-import po.documentsPO.PaymentPO;
-import po.documentsPO.ReceiptPO;
-import po.documentsPO.YDispatchPO;
-import po.documentsPO.YReceivePO;
-import po.documentsPO.ZLoadingPO;
-import po.documentsPO.ZReceivePO;
 import dataservice.documentsdataservice.deleteDataSer;
 
 public class deleteDataSerImpl extends UnicastRemoteObject implements deleteDataSer{

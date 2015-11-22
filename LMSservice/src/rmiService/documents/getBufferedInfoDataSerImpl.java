@@ -10,6 +10,8 @@ import java.sql.SQLException;
 
 
 
+import java.util.ArrayList;
+
 import po.documentsPO.DocumentPO;
 import po.documentsPO.GetOrderPO;
 import po.documentsPO.InBillsPO;
@@ -69,15 +71,28 @@ public class getBufferedInfoDataSerImpl extends UnicastRemoteObject implements g
 				connection.close();
 				return orderPO;
 			case "派件单":
-		//		YDispatchPO yDispatchPO=new YDispatchPO(resultSet.getString(5), code, doName, account, name2);
+				YDispatchPO yDispatchPO=new YDispatchPO(resultSet.getString(5), resultSet.getString(1), resultSet.getString(3), resultSet.getString(2), resultSet.getString(4), resultSet.getString(6));
+				connection.close();
+				return yDispatchPO;
 			case "入库单":
-		//		InBillsPO inBillsPO=;
+			InBillsPO inBillsPO=new InBillsPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getInt(7),  resultSet.getInt(8),  resultSet.getInt(9),  resultSet.getInt(10));
+			connection.close();
+			return inBillsPO;
 			case "收件单":
-		//		GetOrderPO getOrderPO=;
+				GetOrderPO getOrderPO=new GetOrderPO(resultSet.getString(1), resultSet.getString(3), resultSet.getString(2), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6));
+				connection.close();
+				return getOrderPO;
 			case "收款单":
-		//		ReceiptPO receiptPO=;
+				ArrayList<String> tCode=new ArrayList<String>();
+				String s[]=resultSet.getString(8).split(",");
+				for (int i = 0; i < s.length; i++) {
+					tCode.add(s[i]);
+				}
+				ReceiptPO receiptPO=new ReceiptPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getDouble(7), resultSet.getString(6), tCode);
+				connection.close();
+				return receiptPO;
 			case "营业厅接收单":
-		//		YReceivePO yReceivePO=;
+		//		YReceivePO yReceivePO=new YReceivePO(resultSet.getString(5), resultSet.getString(1), resultSet.getString(3), resultSet.getString(2), name, departure, state);
 			case "营业厅装车单":
 		//		LoadingPO loadingPO=;
 			case "中转中心接收单":
