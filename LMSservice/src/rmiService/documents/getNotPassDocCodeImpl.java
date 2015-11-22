@@ -2,6 +2,11 @@ package rmiService.documents;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dataservice.documentsdataservice.getNotPassDocCode;
@@ -25,6 +30,85 @@ public class getNotPassDocCodeImpl extends UnicastRemoteObject implements getNot
 	@Override
 	public ArrayList<String> getNotPassDocCode(String account) {
 		// TODO 自动生成的方法存根
+		ArrayList<String> arrayList=new ArrayList<String>();
+		sql="select code,doName from b出库单 where examined='1' and account ='"+account+"'";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
+			}
+			sql="select code,doName from b付款单 where examined='1' and account ='"+account+"'";
+			 preparedStatement=connection.prepareStatement(sql);
+			 resultSet=preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
+			}
+			sql="select code,doName from b寄件单 where examined='1' and account ='"+account+"'";
+			 preparedStatement=connection.prepareStatement(sql);
+			 resultSet=preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
+			}
+			sql="select code,doName from b派件单 where examined='1' and account ='"+account+"'";
+			 preparedStatement=connection.prepareStatement(sql);
+			 resultSet=preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
+			}
+			sql="select code,doName from b入库单 where examined='1' and account ='"+account+"'";
+			 preparedStatement=connection.prepareStatement(sql);
+			 resultSet=preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
+			}
+			sql="select code,doName from b收件单 where examined='1' and account ='"+account+"'";
+			 preparedStatement=connection.prepareStatement(sql);
+			 resultSet=preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
+			}
+			sql="select code,doName from b收款单 where examined='1' and account ='"+account+"'";
+			 preparedStatement=connection.prepareStatement(sql);
+			 resultSet=preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
+			}
+			sql="select code,doName from b营业厅接收单 where examined='1' and account ='"+account+"'";
+			 preparedStatement=connection.prepareStatement(sql);
+			 resultSet=preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
+			}
+			sql="select code,doName from b营业厅装车单 where examined='1' and account ='"+account+"'";
+			 preparedStatement=connection.prepareStatement(sql);
+			 resultSet=preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
+			}
+			sql="select code,doName from b中转中心接收单 where examined='1' and account ='"+account+"'";
+			 preparedStatement=connection.prepareStatement(sql);
+			 resultSet=preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
+			}
+			sql="select code,doName from b中转中心转运单 where examined='1' and account ='"+account+"'";
+			 preparedStatement=connection.prepareStatement(sql);
+			 resultSet=preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
+			}
+			connection.close();
+			return arrayList;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 

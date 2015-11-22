@@ -32,7 +32,7 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 	@Override
 	public String campare(long ID, String password) {
 		// TODO 自动生成的方法存根
-		sql="SELECT state  from 帐号表 where ID="+ID+" and password="+password;//确定帐号的信息
+		sql="SELECT state  from 帐号表 where ID='"+ID+"' and password='"+password+"'";//确定帐号的信息
 		try {
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
@@ -81,7 +81,7 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 	@Override
 	public boolean update(long ID, AccountInfoPO po) {
 		// TODO 自动生成的方法存根
-		sql="update 帐号表 set password="+po.getPassword()+",name="+po.getName()+",state="+po.getState()+",phone="+po.getPhone()+",sID="+po.getsID()+",date="+po.getDate()+" where ID="+ID;//确定帐号的信息
+		sql="update 帐号表 set password="+po.getPassword()+",name="+po.getName()+",state="+po.getState()+",phone="+po.getPhone()+",sID="+po.getsID()+",date="+po.getDate()+" where ID='"+ID+"'";//确定帐号的信息
 
 		try {
 			Class.forName(DRIVER);
@@ -103,7 +103,7 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 	@Override
 	public boolean delete(long ID) {
 		// TODO 自动生成的方法存根
-		sql="delete from 帐号表 where ID="+ID;//确定帐号的信息
+		sql="delete from 帐号表 where ID='"+ID+"'";//确定帐号的信息
 		try {
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
@@ -124,7 +124,7 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 	@Override
 	public AccountInfoPO find(long ID) {
 		// TODO 自动生成的方法存根
-		sql="SELECT * from 帐号表 where ID="+ID;//确定帐号的信息
+		sql="SELECT * from 帐号表 where ID='"+ID+"'";//确定帐号的信息
 		try {
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);

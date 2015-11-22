@@ -2,6 +2,11 @@ package rmiService.documents;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dataservice.documentsdataservice.getWuliuInfoDataSer;
@@ -25,6 +30,28 @@ public class getWuliuInfoDataSerImpl extends UnicastRemoteObject implements getW
 	@Override
 	public ArrayList<String> getWuliuInfo(String code) {
 		// TODO Auto-generated method stub
+		ArrayList<String> arrayList=new ArrayList<String>();
+		sql="select * from 物流信息 where code ='"+code+"'";
+		try {
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			resultSet.next();
+			arrayList.add(resultSet.getString(2));
+			arrayList.add(resultSet.getString(3));
+			arrayList.add(resultSet.getString(4));
+			arrayList.add(resultSet.getString(5));
+			arrayList.add(resultSet.getString(6));
+			arrayList.add(resultSet.getString(7));
+			arrayList.add(resultSet.getString(9));
+			arrayList.add(resultSet.getString(9));
+			arrayList.add(resultSet.getString(10));
+			connection.close();
+			return arrayList;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 

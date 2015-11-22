@@ -31,7 +31,7 @@ public class getBufferedCodeDataSerImpl extends UnicastRemoteObject implements g
 	public ArrayList<String> getCode() {
 		// TODO 自动生成的方法存根
 		ArrayList<String> arrayList=new ArrayList<String>();
-		sql="select code,doname from b出库单 where examined=0";
+		sql="select code,doName from b出库单 where examined='0'";
 		try {
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
@@ -40,61 +40,61 @@ public class getBufferedCodeDataSerImpl extends UnicastRemoteObject implements g
 			while (resultSet.next()) {
 				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
 			}
-			sql="select code,doname from b付款单 where examined=0";
+			sql="select code,doName from b付款单 where examined='0'";
 			 preparedStatement=connection.prepareStatement(sql);
 			 resultSet=preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
 			}
-			sql="select code,doname from b寄件单 where examined=0";
+			sql="select code,doName from b寄件单 where examined='0'";
 			 preparedStatement=connection.prepareStatement(sql);
 			 resultSet=preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
 			}
-			sql="select code,doname from b派件单 where examined=0";
+			sql="select code,doName from b派件单 where examined='0'";
 			 preparedStatement=connection.prepareStatement(sql);
 			 resultSet=preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
 			}
-			sql="select code,doname from b入库单 where examined=0";
+			sql="select code,doName from b入库单 where examined='0'";
 			 preparedStatement=connection.prepareStatement(sql);
 			 resultSet=preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
 			}
-			sql="select code,doname from b收件单 where examined=0";
+			sql="select code,doName from b收件单 where examined='0'";
 			 preparedStatement=connection.prepareStatement(sql);
 			 resultSet=preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
 			}
-			sql="select code,doname from b收款单 where examined=0";
+			sql="select code,doName from b收款单 where examined='0'";
 			 preparedStatement=connection.prepareStatement(sql);
 			 resultSet=preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
 			}
-			sql="select code,doname from b营业厅接收单 where examined=0";
+			sql="select code,doName from b营业厅接收单 where examined='0'";
 			 preparedStatement=connection.prepareStatement(sql);
 			 resultSet=preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
 			}
-			sql="select code,doname from b营业厅装车单 where examined=0";
+			sql="select code,doName from b营业厅装车单 where examined='0'";
 			 preparedStatement=connection.prepareStatement(sql);
 			 resultSet=preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
 			}
-			sql="select code,doname from b中转中心接收单 where examined=0";
+			sql="select code,doName from b中转中心接收单 where examined='0'";
 			 preparedStatement=connection.prepareStatement(sql);
 			 resultSet=preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
 			}
-			sql="select code,doname from b中转中心转运单 where examined=0";
+			sql="select code,doName from b中转中心转运单 where examined='0'";
 			 preparedStatement=connection.prepareStatement(sql);
 			 resultSet=preparedStatement.executeQuery();
 			while (resultSet.next()) {

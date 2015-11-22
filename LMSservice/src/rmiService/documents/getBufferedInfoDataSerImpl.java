@@ -45,7 +45,7 @@ public class getBufferedInfoDataSerImpl extends UnicastRemoteObject implements g
 	@Override
 	public DocumentPO getBufferedInfo(String code, String doName) {
 		// TODO 自动生成的方法存根
-		sql="select * from b"+doName+" where code="+code;
+		sql="select * from b"+doName+" where code='"+code+"'";
 		try {
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);

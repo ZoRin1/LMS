@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dataservice.documentsdataservice.getCodeDataSer;
@@ -31,6 +32,44 @@ public class getCodeDataSerImpl extends UnicastRemoteObject implements getCodeDa
 			String endTime) {
 		// TODO 自动生成的方法存根
 		//此处仅针对收款单，付款单
+		ArrayList<String> arrayList=new ArrayList<String>();
+		if (startTime.equals(null)) {
+			switch (doName) {
+			case "收款单":
+				sql="select code,doName from 收款单 where InDepotDate < '"+endTime+"'";
+				break;
+			case "付款单":
+				sql="select code,doName from 付款单 where InDepotDate < '"+endTime+"'";
+				break;
+			}		
+		}
+		else {
+			switch (doName) {
+			case "收款单":
+				sql="select code,doName from 收款单 where InDepotDate between '"+startTime+"' and '"+endTime+"'";
+				break;
+			case "付款单":
+				sql="select code,doName from 付款单 where InDepotDate between '"+startTime+"' and '"+endTime+"'";
+				break;
+			}		
+		}		
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
+			}
+			connection.close();
+			return arrayList;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -39,11 +78,30 @@ public class getCodeDataSerImpl extends UnicastRemoteObject implements getCodeDa
 			String startTime, String endTime) {
 		// TODO Auto-generated method stub
 		//此处仅针对入库单
-//		sql="select code,date from 入库单";
-//		Class.forName(DRIVER);
-//		Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
-//		PreparedStatement preparedStatement=connection.prepareStatement(sql);
-//		ResultSet resultSet=preparedStatement.executeQuery();
+		ArrayList<String> arrayList=new ArrayList<String>();
+		if (startTime.equals(null)) {
+			sql="select code,doName from 入库单 where InDepotDate < '"+endTime+"' and account='"+account+"'";
+		}
+		else {
+			sql="select code,doName from 入库单 where InDepotDate between '"+startTime+"' and '"+endTime+"' and account='"+account+"'";
+		}		
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
+			}
+			connection.close();
+			return arrayList;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
