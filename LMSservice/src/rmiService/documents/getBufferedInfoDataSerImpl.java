@@ -105,9 +105,9 @@ public class getBufferedInfoDataSerImpl extends UnicastRemoteObject implements g
 				connection.close();
 				return loadingPO;
 			case "中转中心接收单":
-			ZReceivePO zReceivePO=new ZReceivePO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7));
-			connection.close();
-			return zReceivePO;
+//			ZReceivePO zReceivePO=new ZReceivePO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7));
+//			connection.close();
+//			return zReceivePO;
 			case "中转中心转运单":
 				ArrayList<String> zcodeList=new ArrayList<String>();
 				String zcodeLists[]=resultSet.getString(9).split(",");

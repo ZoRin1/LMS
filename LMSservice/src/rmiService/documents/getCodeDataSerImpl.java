@@ -2,6 +2,10 @@ package rmiService.documents;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import dataservice.documentsdataservice.getCodeDataSer;
@@ -35,6 +39,11 @@ public class getCodeDataSerImpl extends UnicastRemoteObject implements getCodeDa
 			String startTime, String endTime) {
 		// TODO Auto-generated method stub
 		//此处仅针对入库单
+//		sql="select code,date from 入库单";
+//		Class.forName(DRIVER);
+//		Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+//		PreparedStatement preparedStatement=connection.prepareStatement(sql);
+//		ResultSet resultSet=preparedStatement.executeQuery();
 		return null;
 	}
 

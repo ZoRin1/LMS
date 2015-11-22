@@ -2,6 +2,10 @@ package rmiService.documents;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import dataservice.documentsdataservice.NotApproved;
 
@@ -24,7 +28,17 @@ public class NotApprovedImpl extends UnicastRemoteObject implements NotApproved{
 	@Override
 	public boolean NotApproved(String code, String doName) {
 		// TODO 自动生成的方法存根
-		return false;
+		sql="update b"+doName+" set examined=1 where code ="+code;
+		try {
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
 	}
 
 }
