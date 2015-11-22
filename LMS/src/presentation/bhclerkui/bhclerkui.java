@@ -119,7 +119,7 @@ public class bhclerkui extends JFrame{
 				bhclerkui.driverinformationbButton.setEnabled(false);
 				bhclerkui.loaddocumentbButton.setEnabled(false);
 				new LoadingJpanel(bhclerkui,bhclerkJpanel);
-				
+				bhclerkJpanel.repaint();
 			}
 		});
 		acceptdocumentbButton.addActionListener(new ActionListener(){
