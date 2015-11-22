@@ -14,11 +14,15 @@ public interface documentsFactory extends Remote{
 	
 	public getCodeDataSer createGetCodeDataSer() throws RemoteException;
 	
+	public GetDocCodeDataSer createGetDocCodeDataSer() throws RemoteException;
+	
 	public getDocumentInfoDataSer createGetDocumentInfoDataSer() throws RemoteException;
 	
-	public getNotPassDocCode createGetNotPassDocCode()throws RemoteException;
+	public getNotPassDocCode createGetNotPassDocCode() throws RemoteException;
 	
 	public NotApproved createNotApproved() throws RemoteException;
+	
+	public getWuliuInfoDataSer createGetWuliuDataSerInfo() throws RemoteException;
 	
 	
 }

@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import presentation.bhclerkui.bhclerkui.bhclerkJpanel;
+
 public class LoadingJpanel extends JPanel{
 	private JLabel code;
 	private JLabel doName;
