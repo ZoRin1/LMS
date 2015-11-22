@@ -44,9 +44,11 @@ public class GetDocCodeDataSerImpl extends UnicastRemoteObject implements GetDoc
 				while (code.length()!=10) {
 					code="0"+code;
 				}
+				connection.close();
 				return code;
 			}
 			else {
+				connection.close();
 				return "0000000001";
 			}
 			
