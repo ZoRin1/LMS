@@ -1,6 +1,7 @@
 package po.documentsPO;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class ZReceivePO extends DocumentPO implements Serializable {
 	private String code;//ÖÐ×ªµ¥±àºÅ
@@ -21,7 +22,6 @@ public class ZReceivePO extends DocumentPO implements Serializable {
 		this.departure = departure;
 		this.arrival=arrival;
 	}
-	
 	public String getArrival() {
 		return arrival;
 	}
