@@ -34,7 +34,7 @@ public class CoverDataSerImpl extends UnicastRemoteObject implements CoverDataSe
 			AccountPO p = po.get(i);
 			String name = p.getName();
 			double sums = p.getSums();
-			String sql = "INSERT into 账户表(name,sums) values(name,sums)";
+			String sql = "INSERT into 账户表(name,sums) values("+name+","+sums+")";
 			try {
 				Class.forName(DRIVER);
 				Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
