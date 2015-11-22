@@ -60,7 +60,7 @@ public class deleteDataSerImpl extends UnicastRemoteObject implements deleteData
 				sql="insert into 收款单(code,doName,date,account,OrgCode,name,fund,Tcode) values ("+resultSet.getString(1)+","+resultSet.getString(2)+","+resultSet.getString(3)+","+resultSet.getString(4)+","+resultSet.getString(5)+","+resultSet.getString(6)+","+resultSet.getDouble(7)+","+resultSet.getString(8)+")";
 				break;
 			case "营业厅接收单":
-				sql="insert into 营业厅接收单(code,code2,doName,account,date,departure,state) values ("+resultSet.getString(1)+","+resultSet.getString(2)+","+resultSet.getString(3)+","+resultSet.getString(4)+","+resultSet.getString(5)+","+resultSet.getString(6)+","+resultSet.getString(7)+")";
+				sql="insert into 营业厅接收单(code,code2,doName,account,date,departure,arrival,state) values ("+resultSet.getString(1)+","+resultSet.getString(2)+","+resultSet.getString(3)+","+resultSet.getString(4)+","+resultSet.getString(5)+","+resultSet.getString(6)+","+resultSet.getString(7)+","+resultSet.getString(8)+")";
 				break;
 			case "营业厅装车单":
 				sql="insert into 营业厅装车单(code,doName,account,date,departure,arrival,supervisor,supercargo,codeList,charge) values ("+resultSet.getString(1)+","+resultSet.getString(2)+","+resultSet.getString(3)+","+resultSet.getString(4)+","+resultSet.getString(5)+","+resultSet.getString(6)+","+resultSet.getString(7)+","+resultSet.getString(8)+","+resultSet.getString(9)+","+resultSet.getDouble(10)+")";

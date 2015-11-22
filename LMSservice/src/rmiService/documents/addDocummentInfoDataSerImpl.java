@@ -82,7 +82,7 @@ public class addDocummentInfoDataSerImpl extends UnicastRemoteObject implements 
 			break;
 		case "营业厅接收单":
 			YReceivePO yReceivePO=(YReceivePO)po;
-			sql="insert into b营业厅接收单(code,code2,doName,account,date,departure,state,examined) values ("+yReceivePO.getCode()+","+yReceivePO.getCode1()+","+yReceivePO.getDoName()+","+yReceivePO.getAccount()+","+yReceivePO.getDate()+","+yReceivePO.getDeparture()+","+yReceivePO.getState()+",0)";
+			sql="insert into b营业厅接收单(code,code2,doName,account,date,departure,arrival,state,examined) values ("+yReceivePO.getCode()+","+yReceivePO.getCode1()+","+yReceivePO.getDoName()+","+yReceivePO.getAccount()+","+yReceivePO.getDate()+","+yReceivePO.getDeparture()+","+yReceivePO.getArrival()+","+yReceivePO.getState()+",0)";
 			break;
 		case "营业厅装车单":
 			LoadingPO loadingPO=(LoadingPO)po;

@@ -92,13 +92,31 @@ public class getBufferedInfoDataSerImpl extends UnicastRemoteObject implements g
 				connection.close();
 				return receiptPO;
 			case "营业厅接收单":
-		//		YReceivePO yReceivePO=new YReceivePO(resultSet.getString(5), resultSet.getString(1), resultSet.getString(3), resultSet.getString(2), name, departure, state);
+			YReceivePO yReceivePO=new YReceivePO(resultSet.getString(5), resultSet.getString(1), resultSet.getString(3), resultSet.getString(2), resultSet.getString(4), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8));
+			connection.close();
+			return yReceivePO;
 			case "营业厅装车单":
-		//		LoadingPO loadingPO=;
+				ArrayList<String> codeList=new ArrayList<String>();
+				String codeLists[]=resultSet.getString(9).split(",");
+				for (int i = 0; i < codeLists.length; i++) {
+					codeList.add(codeLists[i]);
+				}
+				LoadingPO loadingPO=new LoadingPO(resultSet.getString(4), resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8), codeList, resultSet.getDouble(10));
+				connection.close();
+				return loadingPO;
 			case "中转中心接收单":
-		//		ZReceivePO zReceivePO=;
+			ZReceivePO zReceivePO=new ZReceivePO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7));
+			connection.close();
+			return zReceivePO;
 			case "中转中心转运单":
-		//		ZLoadingPO zLoadingPO=;
+				ArrayList<String> zcodeList=new ArrayList<String>();
+				String zcodeLists[]=resultSet.getString(9).split(",");
+				for (int i = 0; i < zcodeLists.length; i++) {
+					zcodeList.add(zcodeLists[i]);
+				}
+				ZLoadingPO zLoadingPO=new ZLoadingPO(resultSet.getString(3), resultSet.getString(1), resultSet.getString(2), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8), zcodeList, resultSet.getDouble(10));
+				connection.close();
+				return zLoadingPO;
 			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
