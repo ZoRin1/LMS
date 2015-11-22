@@ -16,24 +16,25 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import businesslogic.financebl.AccountManageModel.addAccountBL;
 import presentation.mainui.mainui;
 import presentation.senderui.senderui;
 
 public class adminui extends JFrame{
 			private String[] args;
-			private JTextField accountField;
-			private JButton searchButton;
+			JTextField accountField;
+			JButton searchButton;
 			private JLabel accountJLabel;
-			private JButton addaccountButton;
+			JButton addaccountButton;
 			private adminJpanel adminJpanel;
-			private adminOperationJpanel operationJpanel;
-			private JButton outjButton;
+			adminOperationJpanel operationJpanel;
+			JButton outjButton;
 			public adminui(String s,String[] args) {
 				// TODO Auto-generated constructor stub
 				super(s);
 				this.args=args;
 				init();
-				registListener(this);
+				registListener(this,adminJpanel);
 			}
 			private void init() {
 				// TODO Auto-generated method stub
@@ -44,7 +45,7 @@ public class adminui extends JFrame{
 				accountField.setOpaque(false);
 				accountField.setFont(new Font("Ó×Ô²",Font.BOLD,24));
 				accountField.setForeground(Color.white);
-				accountJLabel=new JLabel("ÕÊºÅ");
+				accountJLabel=new JLabel("ÇëÊäÈëÕÊºÅ");
 				searchButton=new JButton(searchIcon);
 				addaccountButton=new JButton(addaccountIcon);
 				addaccountButton.setBounds(30, 430, 200, 48);
@@ -52,14 +53,14 @@ public class adminui extends JFrame{
 				outjButton=new JButton(outIcon);
 				adminJpanel=new adminJpanel();
 				operationJpanel=new adminOperationJpanel(adminJpanel);
-				accountJLabel.setBounds(30, 150, 80, 30);
+				accountJLabel.setBounds(30, 150, 200, 30);
 				accountField.setBounds(30, 200, 200, 30);
 				searchButton.setBounds(180, 250, 48, 48);
 				searchButton.setContentAreaFilled(false);
 
 				outjButton.setBounds(30, 620, 48,48);
 				outjButton.setContentAreaFilled(false);
-				accountJLabel.setFont(new Font("Ó×Ô²",Font.BOLD, 30));
+				accountJLabel.setFont(new Font("Ó×Ô²",Font.BOLD, 20));
 				accountJLabel.setForeground(Color.white);
 				
 				adminJpanel.add(outjButton);
@@ -84,16 +85,33 @@ public class adminui extends JFrame{
 				this.setResizable(false);
 				this.setVisible(true);
 			}
-			private void registListener(final adminui adminui){
+			private void registListener(final adminui aui,final adminJpanel apl){
 				outjButton.addActionListener(new ActionListener() {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// TODO Auto-generated method stub
 					new mainui().main(args);
-					adminui.dispose();
+					aui.dispose();
 					}
 				});
+				
+				addaccountButton.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						apl.remove(aui.operationJpanel);
+						aui.searchButton.setEnabled(false);
+						aui.addaccountButton.setEnabled(false);
+						aui.accountField.setEditable(false);
+						aui.outjButton.setEnabled(false);
+						new AddAccount(aui, apl);
+						aui.repaint();
+					}
+				}
+					
+				);
 			}
 }
 class adminJpanel extends JPanel{
@@ -106,12 +124,30 @@ class adminJpanel extends JPanel{
    }
 class adminOperationJpanel extends JPanel{
 	private ImageIcon frameIcon =new ImageIcon("picture/²Ù×÷Ãæ°å.png");
+	private JLabel welcome1;
+	private JLabel welcome2;
 	public adminOperationJpanel(adminJpanel adminJpanel) {
 		// TODO Auto-generated constructor stub
 		init();
 		adminJpanel.add(this);
 	}
 	private void init(){
+		
+		this.setLayout(null);
+
+		Font font=new Font("Ó×Ô²",Font.BOLD,60);
+		
+		welcome1 = new JLabel("»¶Ó­Ê¹ÓÃ");
+		welcome1.setFont(font);
+		welcome1.setForeground(Color.WHITE);
+		welcome1.setBounds(220, 200, 300, 100);
+		this.add(welcome1);
+		
+		welcome2 = new JLabel("NJUÎïÁ÷¹ÜÀíÏµÍ³");
+		welcome2.setFont(font);
+		welcome2.setForeground(Color.WHITE);
+		welcome2.setBounds(110, 300, 700, 100);
+		this.add(welcome2);
 		this.setBounds(260, 30, 730,650);
 		this.setOpaque(false);
 	}
