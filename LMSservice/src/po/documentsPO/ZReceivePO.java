@@ -9,9 +9,10 @@ public class ZReceivePO extends DocumentPO implements Serializable {
 	private String date;
 	private String account;//创建人账号
 	private String zCode;//中转中心汽运编号
+	private ArrayList<String> codeList;//订单条形码号列表
 	private String departure;
 	private String arrival;
-	public ZReceivePO(String code, String doName, String date,String account, String zCode,
+	public ZReceivePO(String code, String doName, String date,String account, String zCode,ArrayList<String>codeList,
 			String departure,String arrival) {
 		super();
 		this.code = code;
@@ -19,8 +20,15 @@ public class ZReceivePO extends DocumentPO implements Serializable {
 		this.date = date;
 		this.account = account;
 		this.zCode = zCode;
+		this.codeList=codeList;
 		this.departure = departure;
 		this.arrival=arrival;
+	}
+	public ArrayList<String> getCodeList() {
+		return codeList;
+	}
+	public void setCodeList(ArrayList<String> codeList) {
+		this.codeList = codeList;
 	}
 	public String getArrival() {
 		return arrival;
