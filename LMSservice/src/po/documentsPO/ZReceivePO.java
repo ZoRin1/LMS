@@ -2,8 +2,6 @@ package po.documentsPO;
 
 import java.io.Serializable;
 
-import state.CargoState;
-
 public class ZReceivePO extends DocumentPO implements Serializable {
 	private String code;//中转单编号
 	private String doName;//单据名
