@@ -2,6 +2,10 @@ package rmiService.finance;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import po.financePO.AccountPO;
@@ -26,6 +30,27 @@ public class CoverDataSerImpl extends UnicastRemoteObject implements CoverDataSe
 	@Override
 	public void coverAccount(ArrayList<AccountPO> po)  throws RemoteException {
 		// TODO 自动生成的方法存根
+		for(int i = 0 ; i < po.size();i++){
+			AccountPO p = po.get(i);
+			String name = p.getName();
+			double sums = p.getSums();
+			String sql = "INSERT into 账户表(name,sums) values(name,sums)";
+			try {
+				Class.forName(DRIVER);
+				Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+				PreparedStatement preparedStatement=connection.prepareStatement(sql);
+				preparedStatement.executeUpdate();
+				preparedStatement.close();
+				connection.close();
+			} catch (ClassNotFoundException e) {
+				// TODO 自动生成的 catch 块
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO 自动生成的 catch 块
+				e.printStackTrace();
+			}
+			
+		}
 		System.out.println("已经传输过来了");
 		ArrayList<AccountPO> pp = po;
 		for(AccountPO account:pp){
