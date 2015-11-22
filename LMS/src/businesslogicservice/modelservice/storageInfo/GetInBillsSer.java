@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import po.documentsPO.InBillsPO;
 
 public interface GetInBillsSer {
-	public ArrayList<InBillsPO> getInBill(int start , int end);
-	
-	public ArrayList<InBillsPO> getBill(String division);
+	//startTime可以为null，time格式为年-月-日-时-分
+	public ArrayList<InBillsPO> getInBill(String account,String start ,String end);
 }
