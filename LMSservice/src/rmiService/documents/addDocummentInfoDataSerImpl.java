@@ -39,10 +39,21 @@ public class addDocummentInfoDataSerImpl extends UnicastRemoteObject implements 
 		switch (po.getDoName()) {
 		case "出库单":
 			OutbillsPO outbillsPO=(OutbillsPO)po;
+			sql="insert into b出库单(code,doName,packCode,date,account,arrival,Mode,transCode,examined) values ("+outbillsPO.getCode()+","+outbillsPO.getDoName()+","+outbillsPO.getPackCode()+","+outbillsPO.getDate()+","+outbillsPO.getAccount()+","+outbillsPO.getArrival()+","+outbillsPO.getMode()+","+outbillsPO.getTransCode()+",0)";
+			break;
 		case "付款单":
 			PaymentPO paymentPO=(PaymentPO)po;
+			sql="insert into b付款单(code,doName,date,account,fund,name,account2,type,remark,examined) values ("+paymentPO.getCode()+","+paymentPO.getDoName()+","+paymentPO.getDate()+","+paymentPO.getAccount()+","+paymentPO.getFund()+","+paymentPO.getName2()+","+paymentPO.getAccount2()+","+paymentPO.getType()+","+paymentPO.getRemark()+",0)";
+			break;
 		case "寄件单":
 			OrderPO orderPO=(OrderPO)po;
+			double sizeList[]=orderPO.getSizeList();
+			String string="";
+			for (int i = 0; i < sizeList.length; i++) {
+				string=string+Double.toString(sizeList[i]);
+			}
+			sql="insert into b寄件单(code,doName,account,date,SenderName,SenderAddress,SenderOrg,SPhoneNumber,SMobileNumber,ReceiverName,ReceiverAddress,ReceiverOrg,RPhoneNumber,RMobileNumber,number,weight,shape,cargoNameList,sizeList,sumCost,state,examined) values ("+orderPO.getCode()+","+orderPO.getDoName()+","+orderPO.getAccount()+","+orderPO.getDate()+","+orderPO.getSenderName()+","+orderPO.getSenderAddress()+","+orderPO.getSenderOrg()+","+orderPO.getSPhoneNumber()+","+orderPO.getSMobileNumber()+","+orderPO.getReceiverName()+","+orderPO.getReceiverAddress()+","+orderPO.getReceiverOrg()+","+orderPO.getRPhoneNumber()+","+orderPO.getRMobileNumber()+","+orderPO.getNumber()+","+orderPO.getWeight()+","+orderPO.getShape()+","+orderPO.getCargoNameList()+","+string+","+orderPO.getSumCost()+","+orderPO.getState()+",0)";
+			break;
 		case "派件单":
 			YDispatchPO yDispatchPO=(YDispatchPO)po;
 		case "入库单":
