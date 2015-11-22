@@ -2,6 +2,11 @@ package rmiService.documents;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import po.documentsPO.DocumentPO;
 import dataservice.documentsdataservice.GetDocCodeDataSer;
@@ -26,7 +31,33 @@ public class GetDocCodeDataSerImpl extends UnicastRemoteObject implements GetDoc
 	@Override
 	public String getDocCode(String doName) {
 		// TODO Auto-generated method stub
-		return null;
+		sql="select code from "+doName;
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			if (resultSet.last()) {		
+				int codenum=Integer.parseInt(resultSet.getString(1));
+				codenum=codenum+1;
+				String code=Integer.toString(codenum);
+				while (code.length()!=10) {
+					code="0"+code;
+				}
+				return code;
+			}
+			else {
+				return "0000000001";
+			}
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;	
 	}
 
 }
