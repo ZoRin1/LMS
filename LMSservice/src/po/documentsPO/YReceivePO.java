@@ -13,8 +13,8 @@ public class YReceivePO extends DocumentPO implements Serializable {
 	private String arrival;//本营业厅
 	private String state;//货物状态
 	public YReceivePO(String date, String code, String doName,String code1,String
-			name,
-			String departure,String state) {
+			account,
+			String departure,String arrival,String state) {
 		super();
 		this.date = date;
 		this.code = code;
