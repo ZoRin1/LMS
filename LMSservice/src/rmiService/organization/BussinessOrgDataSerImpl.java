@@ -25,109 +25,109 @@ public class BussinessOrgDataSerImpl extends UnicastRemoteObject implements Buss
 	}
 
 	@Override
-	public String[] getBussinessmanList() {
+	public String[] getBussinessmanList(String ID) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
-	public boolean addBussinessman(long ID) {
+	public boolean addBussinessman(String ID, long bID) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public boolean removeBussinessman(long ID) {
+	public boolean removeBussinessman(String ID, long bID) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public String[] getCourierList() {
+	public String[] getCourierList(String ID, long bID) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
-	public boolean addCourier(long ID) {
+	public boolean addCourier(String ID, long bID) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public boolean removeCourier(long ID) {
+	public boolean removeCourier(String ID, long bID) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public String[] getVehicleList() {
+	public String[] getVehicleList(String ID) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
-	public VehiclePO getVehicleInfo(String codeVehicle) {
+	public VehiclePO getVehicleInfo(String ID, String codeVehicle) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
-	public boolean addVehicle(VehiclePO po) {
+	public boolean addVehicle(String ID, VehiclePO po) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public boolean removeVehicle(String codeVehicle) {
+	public boolean removeVehicle(String ID, String codeVehicle) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public boolean changeVehicle(VehiclePO po) {
+	public boolean changeVehicle(String ID, VehiclePO po) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public String[] getDriverList() {
+	public String[] getDriverList(String ID) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
-	public DriverPO getDriverInfo(String codeDriver) {
+	public DriverPO getDriverInfo(String ID, String codeDriver) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
-	public boolean addDriver(DriverPO po) {
+	public boolean addDriver(String ID, DriverPO po) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public boolean removeDriver(String codeDriver) {
+	public boolean removeDriver(String ID, String codeDriver) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public boolean changeDriver(DriverPO po) {
+	public boolean changeDriver(String ID, DriverPO po) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public boolean addBussinessHall(BussinessOrgPO po) {
+	public boolean addBussinessHall(String ID, BussinessOrgPO po) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public boolean removeBussinessHall(String codeNumber) {
+	public boolean removeBussinessHall(String ID, String codeNumber) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
@@ -139,27 +139,28 @@ public class BussinessOrgDataSerImpl extends UnicastRemoteObject implements Buss
 	}
 
 	@Override
-	public boolean changeCodeNumberOfMiddle(String codeNumberOfMiddle) {
+	public boolean changeCodeNumberOfMiddle(String ID, String codeNumberOfMiddle) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public String getInfo() {
+	public String getInfo(String ID) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
-	public boolean changeCity(String city) {
+	public boolean changeCity(String ID, String city) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public boolean changeCodeNumber(String codeNumber) {
+	public boolean changeCodeNumber(String ID, String codeNumber) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
+
 
 }

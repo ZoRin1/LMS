@@ -23,43 +23,43 @@ public class MiddleOrgDataSerImpl extends UnicastRemoteObject implements MiddleO
 	}
 
 	@Override
-	public String[] getBussinessmanList() {
+	public String[] getBussinessmanList(String ID) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
-	public boolean addBussinessman(long ID) {
+	public boolean addBussinessman(String ID, long bID) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public boolean removeBussinessman(long ID) {
+	public boolean removeBussinessman(String ID, long bID) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public String[] getStorgerList() {
+	public String[] getStorgerList(String ID) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
-	public boolean addStorger(long ID) {
+	public boolean addStorger(String ID, long bID) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public boolean removeStorger(long ID) {
+	public boolean removeStorger(String ID, long bID) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public String[] getBussinessHallList() {
+	public String[] getBussinessHallList(String ID) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
@@ -71,21 +71,22 @@ public class MiddleOrgDataSerImpl extends UnicastRemoteObject implements MiddleO
 	}
 
 	@Override
-	public boolean changeCity(String city) {
+	public boolean changeCity(String ID, String city) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public boolean addMiddleOrg(MiddleOrgPO po) {
+	public boolean addMiddleOrg(String ID, MiddleOrgPO po) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public boolean removeMiddleOrg(String codeNumber) {
+	public boolean removeMiddleOrg(String ID, String codeNumber) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
+
 
 }
