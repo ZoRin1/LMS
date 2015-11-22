@@ -1,16 +1,13 @@
 package businesslogic.documentsbl;
 
 //import mockObject.MockGetPosition;
-import vo.documentsVO.DocumentVO;
-import vo.documentsVO.GetOrderVO;
-import vo.documentsVO.InBillsVO;
-import vo.storageVO.DepotVO;
+
 import businesslogicservice.documentsblservice.createDocumentBlSer;
 
 public class createDocument implements createDocumentBlSer{
 
 	@Override
-	public DocumentVO createDocument(String doName) {
+	public String createDocument(String doName) {
 		// TODO Auto-generated method stub
 //		DocumentVO in=new DocumentVO();
 //		if(doName.equals("Èë¿âµ¥")){
