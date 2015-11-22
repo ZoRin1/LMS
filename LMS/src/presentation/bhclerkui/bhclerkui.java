@@ -108,7 +108,30 @@ public class bhclerkui extends JFrame{
 				bhclerkui.setVisible(false);
 			}
 		});
-	}
+		loaddocumentbButton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		acceptdocumentbButton.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		cashdocumentbButton.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 }
 class bhclerkJpanel extends JPanel{
 	private ImageIcon backgroundIcon=new ImageIcon("picture/±³¾°.png");

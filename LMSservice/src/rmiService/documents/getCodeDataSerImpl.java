@@ -26,6 +26,7 @@ public class getCodeDataSerImpl extends UnicastRemoteObject implements getCodeDa
 	public ArrayList<String> getCode(String doName, String startTime,
 			String endTime) {
 		// TODO 自动生成的方法存根
+		//此处仅针对收款单，付款单
 		return null;
 	}
 
@@ -33,6 +34,7 @@ public class getCodeDataSerImpl extends UnicastRemoteObject implements getCodeDa
 	public ArrayList<String> getStoCode(String account, String doName,
 			String startTime, String endTime) {
 		// TODO Auto-generated method stub
+		//此处仅针对入库单
 		return null;
 	}
 

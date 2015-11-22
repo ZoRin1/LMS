@@ -1,5 +1,6 @@
 package presentation.bhclerkui;
 
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.ImageIcon;
@@ -41,6 +42,9 @@ public class LoadingJpanel extends JPanel{
 	public void init(){
 		Font font=new Font("Ó×Ô²",Font.BOLD,20);
 		code=new JLabel("µ¥¾Ý±àºÅ");
+		code.setForeground(Color.white);
+		code.setFont(font);
+		code.setBounds(10,30,80,27);
 	}
 	private void registListener(final bhclerkui ui,final bhclerkJpanel panel,final LoadingJpanel panel2){
 		
