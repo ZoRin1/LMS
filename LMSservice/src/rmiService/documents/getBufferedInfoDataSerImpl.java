@@ -44,27 +44,9 @@ public class getBufferedInfoDataSerImpl extends UnicastRemoteObject implements g
 			resultSet.next();
 			switch (doName) {
 			case "出库单":
-					return new OutbillsPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),resultSet.getString(7), resultSet.getString(8));
-//				if (resultSet.getString(7).equals("PLANE")) {
-//					return new OutbillsPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),resultSet.getString(7), resultSet.getString(8));
-//				}
-//				else if (resultSet.getString(7).equals("TRAIN")) {
-//					return new OutbillsPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),resultSet.getString(7), resultSet.getString(8));
-//				}
-//				else{
-//					return new OutbillsPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),resultSet.getString(7), resultSet.getString(8));
-//				}
-
-//				if (resultSet.getString(7).equals("PLANE")) {
-//					return new OutbillsPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),ModeofTrans.PLANE, resultSet.getString(8));
-//				}
-//				else if (resultSet.getString(7).equals("TRAIN")) {
-//					return new OutbillsPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),ModeofTrans.TRAIN, resultSet.getString(8));
-//				}
-//				else{
-//					return new OutbillsPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),ModeofTrans.TRUCK, resultSet.getString(8));
-//				}
-
+				OutbillsPO outbillsPO=new OutbillsPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),resultSet.getString(7), resultSet.getString(8));
+				connection.close();
+				return outbillsPO;
 			case "付款单":
 				PaymentPO paymentPO=new PaymentPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDouble(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8),resultSet.getString(9));
 				connection.close();
