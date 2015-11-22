@@ -9,11 +9,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
+
 import po.documentsPO.DocumentPO;
+import po.documentsPO.GetOrderPO;
+import po.documentsPO.InBillsPO;
+import po.documentsPO.LoadingPO;
 import po.documentsPO.OrderPO;
 import po.documentsPO.OutbillsPO;
 import po.documentsPO.PaymentPO;
-
+import po.documentsPO.ReceiptPO;
+import po.documentsPO.YDispatchPO;
+import po.documentsPO.YReceivePO;
+import po.documentsPO.ZLoadingPO;
+import po.documentsPO.ZReceivePO;
 import dataservice.documentsdataservice.getBufferedInfoDataSer;
 
 public class getBufferedInfoDataSerImpl extends UnicastRemoteObject implements getBufferedInfoDataSer{
@@ -61,21 +69,21 @@ public class getBufferedInfoDataSerImpl extends UnicastRemoteObject implements g
 				connection.close();
 				return orderPO;
 			case "派件单":
-				break;
+		//		YDispatchPO yDispatchPO=new YDispatchPO(resultSet.getString(5), code, doName, account, name2);
 			case "入库单":
-				break;
+		//		InBillsPO inBillsPO=;
 			case "收件单":
-				break;
+		//		GetOrderPO getOrderPO=;
 			case "收款单":
-				break;
+		//		ReceiptPO receiptPO=;
 			case "营业厅接收单":
-				break;
+		//		YReceivePO yReceivePO=;
 			case "营业厅装车单":
-				break;
+		//		LoadingPO loadingPO=;
 			case "中转中心接收单":
-				break;
+		//		ZReceivePO zReceivePO=;
 			case "中转中心转运单":
-				break;
+		//		ZLoadingPO zLoadingPO=;
 			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
