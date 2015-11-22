@@ -2,6 +2,7 @@ package rmiService.documents;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 import po.documentsPO.DocumentPO;
 import po.documentsPO.GetOrderPO;
@@ -56,12 +57,25 @@ public class addDocummentInfoDataSerImpl extends UnicastRemoteObject implements 
 			break;
 		case "派件单":
 			YDispatchPO yDispatchPO=(YDispatchPO)po;
+			sql="insert into b派件单(code,code2,doName,account,date,name,examined) values ("+yDispatchPO.getCode()+","+yDispatchPO.getCode2()+","+yDispatchPO.getDoName()+","+yDispatchPO.getAccount()+","+yDispatchPO.getDate()+","+yDispatchPO.getName2()+",0)";
+			break;
 		case "入库单":
 			InBillsPO inBillsPO=(InBillsPO)po;
+			sql="insert into b入库单(code,doName,InDepotNum,InDepotDate,account,Destination,AreaNum,RowNum,ShelvesNum,SositionNum,examined) values ("+inBillsPO.getCode()+","+inBillsPO.getDoName()+","+inBillsPO.getInDepotNum()+","+inBillsPO.getInDepotDate()+","+inBillsPO.getAccount()+","+inBillsPO.getDestination()+","+inBillsPO.getAreaNum()+","+inBillsPO.getRowNum()+","+inBillsPO.getShelvesNum()+","+inBillsPO.getSositionNum()+",0)";
+			break;
 		case "收件单":
 			GetOrderPO getOrderPO=(GetOrderPO)po;
+			sql="insert into b收件单(code,code2,doName,account,ReceiverName,date,examined) values ("+getOrderPO.getCode()+","+getOrderPO.getCode1()+","+getOrderPO.getDoName()+","+getOrderPO.getAccount()+","+getOrderPO.getReceiverName()+","+getOrderPO.getDate()+",0)";
+			break;
 		case "收款单":
 			ReceiptPO receiptPO=(ReceiptPO)po;
+			ArrayList<String>tcodeArrayList=receiptPO.getTCode();
+			String tcode="";
+			for (int i = 0; i < tcodeArrayList.size(); i++) {
+				tcode=tcode+tcodeArrayList.get(i);
+			}
+			sql="insert into b收款单(code,doName,date,account,OrgCode,name,fund,Tcode,examined) values ("+receiptPO.getCode()+","+receiptPO.getDoName()+","+receiptPO.getDate()+","+receiptPO.getAccount()+","+""+","+receiptPO.getName2()+","+receiptPO.getFund()+","+tcode+",0)";
+			break;
 		case "营业厅接收单":
 			YReceivePO yReceivePO=(YReceivePO)po;
 		case "营业厅装车单":
