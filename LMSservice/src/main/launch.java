@@ -40,7 +40,7 @@ public class launch {
 			System.out.println("服务器注册了storage工厂");
 			//以上是storage接口rmi的通信
 			registry.rebind("accFactory", accFactory);
-			System.out.println("服务器注册了account工厂");
+			System.out.println("服务器注册了accFactory工厂");
 			//以上是account接口rmi的通信
 			registry.rebind("docFactory", docFactory);
 			System.out.println("服务器注册了docFactory工厂");

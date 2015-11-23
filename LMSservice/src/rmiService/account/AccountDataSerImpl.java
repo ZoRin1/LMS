@@ -39,7 +39,7 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			ResultSet resultSet=preparedStatement.executeQuery();
 			if (resultSet.next()) {
-				String string=resultSet.getString(4);
+				String string=resultSet.getString(1);
 				connection.close();
 				return string;
 			}
