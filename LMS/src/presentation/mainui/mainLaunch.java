@@ -42,7 +42,7 @@ public class mainLaunch {
 			ReceiptPO receiptPO=new ReceiptPO("15151516", "收款单", "2015-6-5", "151616", "1551", 1515, "asdasd", codeList);
 			
 		
-			addDocummentInfoDataSer.addDocumentInfo(orderPO);
+			addDocummentInfoDataSer.addDocumentInfo(receiptPO);
 			System.out.println("创建成功");
 //			//GetAccountDataSer accountSer = (GetAccountDataSer)Naming.lookup("rmi://127.0.0.1:6600/accountSer");
 //			financeFactory finFactory = (financeFactory)Naming.lookup("rmi://127.0.0.1:6600/finFactory");
