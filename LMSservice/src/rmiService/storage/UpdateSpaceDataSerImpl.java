@@ -2,6 +2,10 @@ package rmiService.storage;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import dataservice.storagedataservice.UpdateSpaceDataSer;
 
@@ -25,7 +29,25 @@ public class UpdateSpaceDataSerImpl extends UnicastRemoteObject implements Updat
 	public void updateDrive(int shipping, int trains, int motor,String city)  throws RemoteException{
 		// TODO 自动生成的方法存根
 		
-		//String sql = "UPDATE"+city+"中转中心仓库"+"set AreaNum="+qu+","+"RowNum="+pai+","+"ShelvesNum="+jia+","+"SositionNum="+wei+"where isFull=1";
+		String sql = "UPDATE"+city+"中转中心仓库"+"set AreaNum=5"+"where AreaNum=4 and SositionNum<="+shipping;
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			sql = "UPDATE"+city+"中转中心仓库"+"set AreaNum=6"+"where AreaNum=4 and SositionNum>"+shipping+"and SositionNum<="+(shipping+trains);
+			preparedStatement.executeUpdate();
+			sql = "UPDATE"+city+"中转中心仓库"+"set AreaNum=7"+"where AreaNum=4 and SositionNum>"+(shipping+trains)+"and SositionNum<="+(shipping+trains+motor);
+			preparedStatement.executeUpdate();
+			preparedStatement.close();
+			connection.close();
+		} catch (ClassNotFoundException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 		
 		
 		
