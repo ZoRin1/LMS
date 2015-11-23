@@ -13,5 +13,5 @@ public interface UpdateSpaceDataSer extends Remote{
 	 * @author YangGuan
 	 *
 	 */
-	public void updateDrive(int shipping,int trains,int motor) throws RemoteException;
+	public void updateDrive(int shipping,int trains,int motor,String city) throws RemoteException;
 }

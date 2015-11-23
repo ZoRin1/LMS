@@ -10,5 +10,5 @@ public interface UpdateSpaceDataSer {
 	 * @author YangGuan
 	 *
 	 */
-	public void updateDrive(int shipping,int trains,int motor);
+	public void updateDrive(int shipping,int trains,int motor,String city);
 }

@@ -22,8 +22,12 @@ public class UpdateSpaceDataSerImpl extends UnicastRemoteObject implements Updat
 	}
 
 	@Override
-	public void updateDrive(int shipping, int trains, int motor)  throws RemoteException{
+	public void updateDrive(int shipping, int trains, int motor,String city)  throws RemoteException{
 		// TODO 自动生成的方法存根
+		
+		//String sql = "UPDATE"+city+"中转中心仓库"+"set AreaNum="+qu+","+"RowNum="+pai+","+"ShelvesNum="+jia+","+"SositionNum="+wei+"where isFull=1";
+		
+		
 		
 	}
 

@@ -7,6 +7,7 @@ import dataservice.storagedataservice.Check_inventoryDataSer;
 import dataservice.storagedataservice.GetCountDataSer;
 import dataservice.storagedataservice.GetDepotDataSer;
 import dataservice.storagedataservice.InDepotDataSer;
+import dataservice.storagedataservice.OutDepotDataSer;
 import dataservice.storagedataservice.ReturnSpaceDataSer;
 import dataservice.storagedataservice.UpdateSpaceDataSer;
 import dataservice.storagedataservice.UsedSpaceDataSer;
@@ -62,6 +63,12 @@ public class storageFactoryImpl extends UnicastRemoteObject implements storageFa
 
 	@Override
 	public UsedSpaceDataSer createUsedSpaceDataSer() throws RemoteException {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public OutDepotDataSer createOutDepotDataSer() throws RemoteException {
 		// TODO 自动生成的方法存根
 		return null;
 	}

@@ -33,7 +33,8 @@ public class InDepotDataSerImpl extends UnicastRemoteObject implements InDepotDa
 		int pai = depo.getPai();
 		int jia = depo.getJia();
 		int wei = depo.getWei();
-		String sql = "UPDATE"+city+"中转中心仓库"+"set AreaNum="+qu+","+"RowNum="+pai+","+"ShelvesNum="+jia+","+"SositionNum="+wei+"where isFull=1";
+		//String sql = "UPDATE"+city+"中转中心仓库"+"set AreaNum="+qu+","+"RowNum="+pai+","+"ShelvesNum="+jia+","+"SositionNum="+wei+"where isFull=1";
+		String sql = "UPDATE"+city+"中转中心仓库"+"set isFull=1"+"where AreaNum="+qu+"and RowNum="+pai+"and ShelvesNum="+jia+"and SositionNum="+wei;
 		try {
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
