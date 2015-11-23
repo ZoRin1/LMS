@@ -60,7 +60,7 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 	@Override
 	public boolean insert(long ID, AccountInfoPO po) throws RemoteException{
 		// TODO 自动生成的方法存根
-		sql="insert into 帐号表(ID,password,name,state,phone,sID,date) values ("+po.getID()+","+po.getPassword()+","+po.getName()+","+po.getState()+","+po.getPhone()+","+po.getsID()+","+po.getDate()+")";//确定帐号的信息		
+		sql="insert into 帐号表(ID,password,name,state,phone,sID,date) values ('"+po.getID()+"','"+po.getPassword()+"','"+po.getName()+"','"+po.getState()+"','"+po.getPhone()+"','"+po.getsID()+"','"+po.getDate()+"')";//确定帐号的信息		
 			try {
 				Class.forName(DRIVER);
 				Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
@@ -81,7 +81,7 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 	@Override
 	public boolean update(long ID, AccountInfoPO po) throws RemoteException{
 		// TODO 自动生成的方法存根
-		sql="update 帐号表 set password="+po.getPassword()+",name="+po.getName()+",state="+po.getState()+",phone="+po.getPhone()+",sID="+po.getsID()+",date="+po.getDate()+" where ID='"+ID+"'";//确定帐号的信息
+		sql="update 帐号表 set password='"+po.getPassword()+"',name='"+po.getName()+"',state='"+po.getState()+"',phone='"+po.getPhone()+"',sID='"+po.getsID()+"',date='"+po.getDate()+"' where ID='"+ID+"'";//确定帐号的信息
 
 		try {
 			Class.forName(DRIVER);

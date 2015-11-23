@@ -30,65 +30,65 @@ public class documentsFactoryImpl extends UnicastRemoteObject implements documen
 	public addDocummentInfoDataSer createaddDocummentInfoDataSer()
 			throws RemoteException {
 		// TODO 自动生成的方法存根
-		return null;
+		return new addDocummentInfoDataSerImpl();
 	}
 
 	@Override
 	public deleteDataSer createDeleteDataSer() throws RemoteException {
 		// TODO 自动生成的方法存根
-		return null;
+		return new deleteDataSerImpl();
 	}
 
 	@Override
 	public getBufferedCodeDataSer createGetBudderedCodeDataSer()
 			throws RemoteException {
 		// TODO 自动生成的方法存根
-		return null;
+		return new getBufferedCodeDataSerImpl();
 	}
 
 	@Override
 	public getBufferedInfoDataSer createGetBufferedInfoDataSer()
 			throws RemoteException {
 		// TODO 自动生成的方法存根
-		return null;
+		return new getBufferedInfoDataSerImpl();
 	}
 
 	@Override
 	public getCodeDataSer createGetCodeDataSer() throws RemoteException {
 		// TODO 自动生成的方法存根
-		return null;
+		return new getCodeDataSerImpl();
 	}
 
 	@Override
 	public getDocumentInfoDataSer createGetDocumentInfoDataSer()
 			throws RemoteException {
 		// TODO 自动生成的方法存根
-		return null;
+		return new getDocumentInfoDataSerImpl();
 	}
 
 	@Override
 	public getNotPassDocCode createGetNotPassDocCode() throws RemoteException {
 		// TODO 自动生成的方法存根
-		return null;
+		return new getNotPassDocCodeImpl();
 	}
 
 	@Override
 	public NotApproved createNotApproved() throws RemoteException {
 		// TODO 自动生成的方法存根
-		return null;
+		return new NotApprovedImpl();
 	}
 
 	@Override
 	public GetDocCodeDataSer createGetDocCodeDataSer() throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return new GetDocCodeDataSerImpl();
 	}
 
 	@Override
 	public getWuliuInfoDataSer createGetWuliuDataSerInfo()
 			throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return new getWuliuInfoDataSerImpl();
 	}
 
 

@@ -28,7 +28,7 @@ public class NotApprovedImpl extends UnicastRemoteObject implements NotApproved{
 	@Override
 	public boolean NotApproved(String code, String doName) throws RemoteException{
 		// TODO 自动生成的方法存根
-		sql="update b"+doName+" set examined=1 where code ="+code;
+		sql="update b"+doName+" set examined=1 where code ='"+code+"'";
 		try {
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
