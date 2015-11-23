@@ -43,7 +43,7 @@ public class getWuliuInfoDataSerImpl extends UnicastRemoteObject implements getW
 			arrayList.add(resultSet.getString(5));
 			arrayList.add(resultSet.getString(6));
 			arrayList.add(resultSet.getString(7));
-			arrayList.add(resultSet.getString(9));
+			arrayList.add(resultSet.getString(8));
 			arrayList.add(resultSet.getString(9));
 			arrayList.add(resultSet.getString(10));
 			connection.close();
