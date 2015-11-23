@@ -24,20 +24,19 @@ public class MiddleOrgPO implements Serializable {
 	private ArrayList<AccountInfoPO> assisant;//中转中心营业员账号列表
 	private ArrayList<AccountInfoPO> storger;//仓库管理员账号列表
 	private ArrayList<BussinessOrgPO> bussinessHall;//下辖营业厅列表
-	private ArrayList<VehiclePO> vehicle;//车辆信息列表
-	private ArrayList<DriverPO> driver;//司机信息列表
+//	private ArrayList<VehiclePO> vehicle;//车辆信息列表
+//private ArrayList<DriverPO> driver;//司机信息列表
 	
 	public MiddleOrgPO(String city, String codeNumber, ArrayList<AccountInfoPO> assisant,
-			ArrayList<AccountInfoPO> storger, ArrayList<BussinessOrgPO> bussinessHall, ArrayList<VehiclePO> vehicle,
-			ArrayList<DriverPO> driver) {
+			ArrayList<AccountInfoPO> storger, ArrayList<BussinessOrgPO> bussinessHall) {
 		super();
 		this.city = city;
 		this.codeNumber = codeNumber;
 		this.assisant = assisant;
 		this.storger = storger;
 		this.bussinessHall = bussinessHall;
-		this.vehicle = vehicle;
-		this.driver = driver;
+//		this.vehicle = vehicle;
+//		this.driver = driver;
 		
 		for(AccountInfoPO po:assisant){
 			po.setState(3+"-"+city+"-中转中心"+"-"+codeNumber);
@@ -88,21 +87,21 @@ public class MiddleOrgPO implements Serializable {
 		this.bussinessHall = bussinessHall;
 	}
 
-	public ArrayList<VehiclePO> getVehicle() {
-		return vehicle;
-	}
-
-	public void setVehicle(ArrayList<VehiclePO> vehicle) {
-		this.vehicle = vehicle;
-	}
-
-	public ArrayList<DriverPO> getDriver() {
-		return driver;
-	}
-
-	public void setDriver(ArrayList<DriverPO> driver) {
-		this.driver = driver;
-	}
+//	public ArrayList<VehiclePO> getVehicle() {
+//		return vehicle;
+//	}
+//
+//	public void setVehicle(ArrayList<VehiclePO> vehicle) {
+//		this.vehicle = vehicle;
+//	}
+//
+//	public ArrayList<DriverPO> getDriver() {
+//		return driver;
+//	}
+//
+//	public void setDriver(ArrayList<DriverPO> driver) {
+//		this.driver = driver;
+//	}
 	
 	public void addAssisant(AccountInfoPO po){
 		this.assisant.add(po);	
@@ -134,22 +133,22 @@ public class MiddleOrgPO implements Serializable {
 		this.bussinessHall.remove(po);	
 	}
 	
-	public void addVehicle(VehiclePO po){
-		this.vehicle.add(po);
-	}
-	
-	public void removeVehicle(VehiclePO po){
-		this.vehicle.remove(po);
-	}
-
-	public void addDriver(DriverPO po){
-		this.driver.add(po);
-	}
-	
-	public void removeDriver(DriverPO po){
-		this.driver.remove(po);
-	}
-	
+//	public void addVehicle(VehiclePO po){
+//		this.vehicle.add(po);
+//	}
+//	
+//	public void removeVehicle(VehiclePO po){
+//		this.vehicle.remove(po);
+//	}
+//
+//	public void addDriver(DriverPO po){
+//		this.driver.add(po);
+//	}
+//	
+//	public void removeDriver(DriverPO po){
+//		this.driver.remove(po);
+//	}
+//	
 
 
 }
