@@ -171,7 +171,7 @@ public class AddAccount extends JPanel {
 				aui.searchButton.setEnabled(true);
 				aui.addaccountButton.setEnabled(true);
 				aui.accountField.setEditable(true);
-				aui.outjButton.setEnabled(true);
+
 				apl.repaint();
 			}
 		});

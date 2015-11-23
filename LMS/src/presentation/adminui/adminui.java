@@ -105,7 +105,7 @@ public class adminui extends JFrame{
 						aui.searchButton.setEnabled(false);
 						aui.addaccountButton.setEnabled(false);
 						aui.accountField.setEditable(false);
-						aui.outjButton.setEnabled(false);
+
 						new AddAccount(aui, apl);
 						aui.repaint();
 					}

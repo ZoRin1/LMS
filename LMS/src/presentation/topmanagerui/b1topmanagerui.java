@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 public class b1topmanagerui extends JFrame{
 	private topmanagerJpanel topmanagerJpanel;
 	private topmanagerb1OperationJpanel operationJpanel;
-	private JButton b1,b2,b3,b4,b5;
+	private JButton b1,b2,b3,b4,b5,b6;
 
 	public b1topmanagerui(String s,topmanagerui tmui) {
 		// TODO Auto-generated constructor stub
@@ -29,31 +29,32 @@ public class b1topmanagerui extends JFrame{
 		ImageIcon b3Icon=new ImageIcon("picture/中转中心业务员.png");
 		ImageIcon b4Icon=new ImageIcon("picture/中转中心仓库管理员.png");
 		ImageIcon b5Icon=new ImageIcon("picture/财务人员.png");
+		ImageIcon b6Icon=new ImageIcon("picture/管理员.png");
 		b1=new JButton(b1Icon);
 		b2=new JButton(b2Icon);
 		b3=new JButton(b3Icon);
 		b4=new JButton(b4Icon);
 		b5=new JButton(b5Icon);
-		
+		b6=new JButton(b6Icon);
 		b1.setContentAreaFilled(false);
 		b2.setContentAreaFilled(false);
 		b3.setContentAreaFilled(false);
 		b4.setContentAreaFilled(false);
 		b5.setContentAreaFilled(false);
+		b6.setContentAreaFilled(false);
 
-
-		b1.setBounds(30, 100,200, 50);
-		b2.setBounds(30,200,200, 50);
-		b3.setBounds(30,300,200, 50);
-		b4.setBounds(30,400,200, 50);
-		b5.setBounds(30,500,200, 50);
-
+		b1.setBounds(30, 50,200, 50);
+		b2.setBounds(30,150,200, 50);
+		b3.setBounds(30,250,200, 50);
+		b4.setBounds(30,350,200, 50);
+		b5.setBounds(30,450,200, 50);
+		b6.setBounds(30,550,200, 50);
 		topmanagerJpanel.add(b1);
 		topmanagerJpanel.add(b2);
 		topmanagerJpanel.add(b3);
 		topmanagerJpanel.add(b4);
 		topmanagerJpanel.add(b5);
-		
+		topmanagerJpanel.add(b6);
 
 		topmanagerJpanel.setLayout(null);
 
