@@ -40,7 +40,7 @@ public class getDocumentInfoDataSerImpl extends UnicastRemoteObject implements g
 	}
 
 	@Override
-	public DocumentPO getDocumentInfo(String code, String doName) {
+	public DocumentPO getDocumentInfo(String code, String doName) throws RemoteException {
 		// TODO 自动生成的方法存根
 		sql="select * from "+doName+" where code="+code;
 		try {

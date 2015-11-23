@@ -22,19 +22,19 @@ public class FinanceOrgDataSerImpl extends UnicastRemoteObject implements Financ
 	}
 
 	@Override
-	public String[] find() {
+	public String[] find() throws RemoteException{
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
-	public boolean insert(long ID) {
+	public boolean insert(long ID) throws RemoteException{
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public boolean delete(long ID) {
+	public boolean delete(long ID) throws RemoteException{
 		// TODO 自动生成的方法存根
 		return false;
 	}

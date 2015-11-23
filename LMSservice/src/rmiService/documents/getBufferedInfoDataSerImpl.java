@@ -43,7 +43,7 @@ public class getBufferedInfoDataSerImpl extends UnicastRemoteObject implements g
 	}
 
 	@Override
-	public DocumentPO getBufferedInfo(String code, String doName) {
+	public DocumentPO getBufferedInfo(String code, String doName) throws RemoteException{
 		// TODO 自动生成的方法存根
 		sql="select * from b"+doName+" where code='"+code+"'";
 		try {

@@ -1,6 +1,7 @@
 package dataservice.transportationdataservice;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 import po.transpotationPO.RoutePO;
 
@@ -14,7 +15,7 @@ public interface TransportationDataSer extends Remote{
 	 * @return boolean 操作是否成功的信息
 	 * 
 	 */
-	public boolean updateDistance(RoutePO route);
+	public boolean updateDistance(RoutePO route)throws RemoteException;
 	
 	/**
 	 * 更新成本常量
@@ -23,7 +24,7 @@ public interface TransportationDataSer extends Remote{
 	 * @return boolean 操作是否成功的信息
 	 * 
 	 */
-	public boolean updateCost(int type, double cost);
+	public boolean updateCost(int type, double cost)throws RemoteException;
 	
 	/**
 	 * 获得成本常量
@@ -32,7 +33,7 @@ public interface TransportationDataSer extends Remote{
 	 * @return int 成本常量
 	 * 
 	 */
-	public double findCost(int type);
+	public double findCost(int type)throws RemoteException;
 	
 	/**
 	 * 增加一条路线
@@ -40,7 +41,7 @@ public interface TransportationDataSer extends Remote{
 	 * @return boolean 操作是否成功的信息
 	 * 
 	 */
-	public boolean insertRoute(RoutePO route);
+	public boolean insertRoute(RoutePO route)throws RemoteException;
 	
 	/**
 	 * 获得对应线路的距离常量
@@ -48,14 +49,14 @@ public interface TransportationDataSer extends Remote{
 	 * @return int,距离常量
 	 * 
 	 */
-	public double findDistance(String line);
+	public double findDistance(String line)throws RemoteException;
 	
 	/**
 	 * 获得除选择的城市之外的城市列表
 	 * @param String city 选择的城市
 	 * @return String[] 城市列表
 	 */
-	public String[] findCityList(String city);
+	public String[] findCityList(String city)throws RemoteException;
 	
 	
 	/**
@@ -63,13 +64,13 @@ public interface TransportationDataSer extends Remote{
 	 * @param city 欲增加的城市
 	 * @return boolean 操作是否成功的信息
 	 */
-	public boolean insertCity(String city);
+	public boolean insertCity(String city)throws RemoteException;
 	
 	/**
 	 * 从现有城市列表删除一个城市
 	 * @param city 欲删除的城市
 	 * @return boolean 操作是否成功的信息
 	 */
-	public boolean removeCity(String city);
+	public boolean removeCity(String city)throws RemoteException;
 	
 }

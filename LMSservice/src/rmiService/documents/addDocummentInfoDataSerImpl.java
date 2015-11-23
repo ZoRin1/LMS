@@ -39,7 +39,7 @@ public class addDocummentInfoDataSerImpl extends UnicastRemoteObject implements 
 	}
 
 	@Override
-	public boolean addDocumentInfo(DocumentPO po) {
+	public boolean addDocumentInfo(DocumentPO po)throws RemoteException {
 		// TODO 自动生成的方法存根
 		switch (po.getDoName()) {
 		case "出库单":

@@ -28,7 +28,7 @@ public class getNotPassDocCodeImpl extends UnicastRemoteObject implements getNot
 	}
 
 	@Override
-	public ArrayList<String> getNotPassDocCode(String account) {
+	public ArrayList<String> getNotPassDocCode(String account) throws RemoteException{
 		// TODO 自动生成的方法存根
 		ArrayList<String> arrayList=new ArrayList<String>();
 		sql="select code,doName from b出库单 where examined='1' and account ='"+account+"'";

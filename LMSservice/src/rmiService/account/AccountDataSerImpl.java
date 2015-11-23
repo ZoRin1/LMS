@@ -30,7 +30,7 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 		// TODO 自动生成的构造函数存根
 	}
 	@Override
-	public String campare(long ID, String password) {
+	public String campare(long ID, String password) throws RemoteException {
 		// TODO 自动生成的方法存根
 		sql="SELECT state  from 帐号表 where ID='"+ID+"' and password='"+password+"'";//确定帐号的信息
 		try {
@@ -58,7 +58,7 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 	}
 
 	@Override
-	public boolean insert(long ID, AccountInfoPO po) {
+	public boolean insert(long ID, AccountInfoPO po) throws RemoteException{
 		// TODO 自动生成的方法存根
 		sql="insert into 帐号表(ID,password,name,state,phone,sID,date) values ("+po.getID()+","+po.getPassword()+","+po.getName()+","+po.getState()+","+po.getPhone()+","+po.getsID()+","+po.getDate()+")";//确定帐号的信息		
 			try {
@@ -79,7 +79,7 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 	}
 
 	@Override
-	public boolean update(long ID, AccountInfoPO po) {
+	public boolean update(long ID, AccountInfoPO po) throws RemoteException{
 		// TODO 自动生成的方法存根
 		sql="update 帐号表 set password="+po.getPassword()+",name="+po.getName()+",state="+po.getState()+",phone="+po.getPhone()+",sID="+po.getsID()+",date="+po.getDate()+" where ID='"+ID+"'";//确定帐号的信息
 
@@ -101,7 +101,7 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 	}
 
 	@Override
-	public boolean delete(long ID) {
+	public boolean delete(long ID) throws RemoteException{
 		// TODO 自动生成的方法存根
 		sql="delete from 帐号表 where ID='"+ID+"'";//确定帐号的信息
 		try {
@@ -122,7 +122,7 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 	}
 
 	@Override
-	public AccountInfoPO find(long ID) {
+	public AccountInfoPO find(long ID) throws RemoteException{
 		// TODO 自动生成的方法存根
 		sql="SELECT * from 帐号表 where ID='"+ID+"'";//确定帐号的信息
 		try {
@@ -150,14 +150,14 @@ public class AccountDataSerImpl extends UnicastRemoteObject implements AccountDa
 	}
 
 	@Override
-	public String[] find(String name) {
+	public String[] find(String name) throws RemoteException{
 		// TODO 自动生成的方法存根
 		//不必实现
 		return null;
 	}
 
 	@Override
-	public String[] find() {
+	public String[] find() throws RemoteException{
 		// TODO 自动生成的方法存根
 		sql="SELECT ID,name,state from 帐号表 ";//确定帐号的信息
 		ArrayList<String> arrayList=new ArrayList<String>();

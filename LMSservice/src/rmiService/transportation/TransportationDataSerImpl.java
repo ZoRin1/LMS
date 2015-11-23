@@ -23,49 +23,49 @@ public class TransportationDataSerImpl extends UnicastRemoteObject implements Tr
 	}
 
 	@Override
-	public boolean updateDistance(RoutePO route) {
+	public boolean updateDistance(RoutePO route) throws RemoteException{
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public boolean updateCost(int type, double cost) {
+	public boolean updateCost(int type, double cost)throws RemoteException {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public double findCost(int type) {
+	public double findCost(int type) throws RemoteException{
 		// TODO 自动生成的方法存根
 		return 0;
 	}
 
 	@Override
-	public boolean insertRoute(RoutePO route) {
+	public boolean insertRoute(RoutePO route) throws RemoteException{
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public double findDistance(String line) {
+	public double findDistance(String line) throws RemoteException{
 		// TODO 自动生成的方法存根
 		return 0;
 	}
 
 	@Override
-	public String[] findCityList(String city) {
+	public String[] findCityList(String city) throws RemoteException{
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
-	public boolean insertCity(String city) {
+	public boolean insertCity(String city) throws RemoteException{
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public boolean removeCity(String city) {
+	public boolean removeCity(String city) throws RemoteException{
 		// TODO 自动生成的方法存根
 		return false;
 	}

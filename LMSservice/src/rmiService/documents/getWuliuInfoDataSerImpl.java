@@ -28,7 +28,7 @@ public class getWuliuInfoDataSerImpl extends UnicastRemoteObject implements getW
 	}
 
 	@Override
-	public ArrayList<String> getWuliuInfo(String code) {
+	public ArrayList<String> getWuliuInfo(String code) throws RemoteException{
 		// TODO Auto-generated method stub
 		ArrayList<String> arrayList=new ArrayList<String>();
 		sql="select * from 物流信息 where code ='"+code+"'";

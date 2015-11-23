@@ -1,18 +1,21 @@
 package dataservice.organizationdataservice;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
 import po.orgPO.BussinessOrgPO;
 import po.orgPO.DriverPO;
 import po.orgPO.VehiclePO;
 
 
-public interface BussinessOrgDataSer {
+public interface BussinessOrgDataSer extends Remote{
 
 	/**
 	 * 获得业务员列表
 	 * @param ID 所属中转中心-营业厅编号
 	 * @return 业务员的ID+name列表
 	 */
-	public String[] getBussinessmanList(String ID);
+	public String[] getBussinessmanList(String ID)throws RemoteException;
 	
 	/**
 	 * 增加一个业务员
@@ -20,7 +23,7 @@ public interface BussinessOrgDataSer {
 	 * @param bID 欲增加的业务员账号
 	 * @return 操作是否成功的信息
 	 */
-	public boolean addBussinessman(String ID, long bID);
+	public boolean addBussinessman(String ID, long bID)throws RemoteException;
 	
 	/**
 	 * 删除一个业务员
@@ -28,7 +31,7 @@ public interface BussinessOrgDataSer {
 	 * @param bID 要删除的业务员的账号
 	 * @return 操作是否成功的信息
 	 */
-	public boolean removeBussinessman(String ID, long bID);
+	public boolean removeBussinessman(String ID, long bID)throws RemoteException;
 
 	/**
 	 * 获得快递员列表
@@ -36,14 +39,14 @@ public interface BussinessOrgDataSer {
 	 * @param bID 有一天编号
 	 * @return 仓库管理员的ID+name列表
 	 */
-	public String[] getCourierList(String ID, long bID);
+	public String[] getCourierList(String ID, long bID)throws RemoteException;
 	/**
 	 * 增加一个快递员
 	 * @param ID 所属中转中心-营业厅编号
 	 * @param bID 欲增加的业务员账号
 	 * @return 操作是否成功的信息
 	 */
-	public boolean addCourier(String ID, long bID);
+	public boolean addCourier(String ID, long bID)throws RemoteException;
 	
 	/**
 	 * 删除一个快递员
@@ -51,7 +54,7 @@ public interface BussinessOrgDataSer {
 	 * @param bID 要删除的仓库管理员的账号
 	 * @return 操作是否成功的信息
 	 */
-	public boolean removeCourier(String ID, long bID); 
+	public boolean removeCourier(String ID, long bID)throws RemoteException; 
 	
 	/**
 	 * 获得车辆列表
@@ -59,7 +62,7 @@ public interface BussinessOrgDataSer {
 	 * @return 车辆代号列表 城市编号+营业厅编号+编号
 	 * 
 	 */
-	public String[] getVehicleList(String ID);
+	public String[] getVehicleList(String ID)throws RemoteException;
 	
 	/**
 	 * 获得车辆详细信息
@@ -67,7 +70,7 @@ public interface BussinessOrgDataSer {
 	 * @param codeVehicle 车辆代号 城市编号+营业厅编号+编号
 	 * @return 车辆信息
 	 */
-	public VehiclePO getVehicleInfo(String ID, String codeVehicle);
+	public VehiclePO getVehicleInfo(String ID, String codeVehicle)throws RemoteException;
 	
 	/**
 	 * 增加一个车辆信息
@@ -77,7 +80,7 @@ public interface BussinessOrgDataSer {
 	 * 
 	 * @return 
 	 */
-	public boolean addVehicle(String ID, VehiclePO po);
+	public boolean addVehicle(String ID, VehiclePO po)throws RemoteException;
 	
 	/**
 	 * 删除一个车辆信息
@@ -85,7 +88,7 @@ public interface BussinessOrgDataSer {
 	 * @param codeVehicle 车辆代号 城市编号+营业厅编号+编号
 	 * @return 操作是否成功的信息
 	 */
-	public boolean removeVehicle(String ID, String codeVehicle);
+	public boolean removeVehicle(String ID, String codeVehicle)throws RemoteException;
 	
 	/**
 	 * 修改一个车辆信息
@@ -93,7 +96,7 @@ public interface BussinessOrgDataSer {
 	 * @param po 车辆详细信息
 	 * @return 操作是否成功的信息
 	 */
-	public boolean changeVehicle(String ID, VehiclePO po);
+	public boolean changeVehicle(String ID, VehiclePO po)throws RemoteException;
 		
 	/**
 	 * 获得司机列表
@@ -101,7 +104,7 @@ public interface BussinessOrgDataSer {
 	 * @return 司机列表 城市编号+营业厅编号+编号
 	 * 
 	 */
-	public String[] getDriverList(String ID);
+	public String[] getDriverList(String ID)throws RemoteException;
 	
 	/**
 	 * 获得司机详细信息
@@ -109,7 +112,7 @@ public interface BussinessOrgDataSer {
 	 * @param codeDriver 车辆代号 城市编号+营业厅编号+编号
 	 * @return 司机信息
 	 */
-	public DriverPO getDriverInfo(String ID, String codeDriver);
+	public DriverPO getDriverInfo(String ID, String codeDriver)throws RemoteException;
 	
 	/**
 	 * 增加一个司机信息
@@ -118,7 +121,7 @@ public interface BussinessOrgDataSer {
 	 * @return 操作是否成功的信息
 	 *
 	 */
-	public boolean addDriver(String ID, DriverPO po);
+	public boolean addDriver(String ID, DriverPO po)throws RemoteException;
 	
 	/**
 	 * 删除一个司机信息
@@ -126,7 +129,7 @@ public interface BussinessOrgDataSer {
 	 * @param codeDriver 车辆编号 城市编号+营业厅编号+编号
 	 * @return 操作是否成功的信息
 	 */
-	public boolean removeDriver(String ID, String codeDriver);
+	public boolean removeDriver(String ID, String codeDriver)throws RemoteException;
 	
 	/**
 	 * 修改一个司机信息
@@ -134,7 +137,7 @@ public interface BussinessOrgDataSer {
 	 * @param po 车辆详细信息
 	 * @return 操作是否成功的信息
 	 */
-	public boolean changeDriver(String ID, DriverPO po);
+	public boolean changeDriver(String ID, DriverPO po)throws RemoteException;
 	
 	/**
 	 * 新增一个营业厅
@@ -142,7 +145,7 @@ public interface BussinessOrgDataSer {
 	 * @param po 新增营业厅详细信息
 	 * @return 操作是否成功的信息
 	 */
-	public boolean addBussinessHall(String ID, BussinessOrgPO po);
+	public boolean addBussinessHall(String ID, BussinessOrgPO po)throws RemoteException;
 	
 	/**
 	 * 删除营业厅
@@ -150,13 +153,13 @@ public interface BussinessOrgDataSer {
 	 * @param codeNumber 营业厅编号 3位
 	 * @return 操作是否成功的信息
 	 */
-	public boolean removeBussinessHall(String ID, String codeNumber);
+	public boolean removeBussinessHall(String ID, String codeNumber)throws RemoteException;
 	
 	/**注意，此方法已经无意义，不必考虑具体实现
 	 * 获得营业厅所属中转中心编号
 	 * @return codeNumber 中转中心编号
 	 */
-	public String getCodeNumber();
+	public String getCodeNumber()throws RemoteException;
 	
 	/**
 	 * 修改营业厅所属中转中心编号
@@ -165,14 +168,14 @@ public interface BussinessOrgDataSer {
 	 * @param codeNumberOfMiddle 所属中转中心编号
 	 * @return 操作是否成功的信息
 	 */
-	public boolean changeCodeNumberOfMiddle(String ID, String codeNumberOfMiddle);
+	public boolean changeCodeNumberOfMiddle(String ID, String codeNumberOfMiddle)throws RemoteException;
 	
 	/**
 	 * 获得机构其他信息，即城市和编号
 	 * @param ID 所属中转中心-营业厅编号
 	 * @return 城市+编号
 	 */
-	public String getInfo(String ID);
+	public String getInfo(String ID)throws RemoteException;
 	
 	/**
 	 * 修改营业厅所在城市/地点（较小）
@@ -180,7 +183,7 @@ public interface BussinessOrgDataSer {
 	 * @param city 欲修改的城市
 	 * @return 操作是否成功的信息
 	 */
-	 public boolean changeCity(String ID, String city);
+	 public boolean changeCity(String ID, String city)throws RemoteException;
 	 
 	 /**
 	  * 修改营业厅编号，不是总经理输入，而是改变所属中转中心后有中转中心生成的编号
@@ -188,6 +191,6 @@ public interface BussinessOrgDataSer {
 	 * @param codeNumber 欲修改的机构编号
 	  * @return 操作是否成功的信息
 	  */
-	 public boolean changeCodeNumber(String ID, String codeNumber);
+	 public boolean changeCodeNumber(String ID, String codeNumber)throws RemoteException;
 	
 }

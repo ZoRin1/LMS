@@ -29,7 +29,7 @@ public class getCodeDataSerImpl extends UnicastRemoteObject implements getCodeDa
 
 	@Override
 	public ArrayList<String> getCode(String doName, String startTime,
-			String endTime) {
+			String endTime) throws RemoteException{
 		// TODO 自动生成的方法存根
 		//此处仅针对收款单，付款单
 		ArrayList<String> arrayList=new ArrayList<String>();

@@ -28,7 +28,7 @@ public class getBufferedCodeDataSerImpl extends UnicastRemoteObject implements g
 	}
 
 	@Override
-	public ArrayList<String> getCode() {
+	public ArrayList<String> getCode() throws RemoteException{
 		// TODO 自动生成的方法存根
 		ArrayList<String> arrayList=new ArrayList<String>();
 		sql="select code,doName from b出库单 where examined='0'";

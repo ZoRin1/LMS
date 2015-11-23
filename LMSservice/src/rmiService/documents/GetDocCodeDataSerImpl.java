@@ -29,7 +29,7 @@ public class GetDocCodeDataSerImpl extends UnicastRemoteObject implements GetDoc
 	}
 
 	@Override
-	public String getDocCode(String doName) {
+	public String getDocCode(String doName) throws RemoteException{
 		// TODO Auto-generated method stub
 		sql="select code from "+doName;
 		try {

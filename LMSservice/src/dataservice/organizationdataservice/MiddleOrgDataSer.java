@@ -1,15 +1,18 @@
 package dataservice.organizationdataservice;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
 import po.orgPO.MiddleOrgPO;
 
 
-public interface MiddleOrgDataSer {
+public interface MiddleOrgDataSer extends Remote{
 	/**
 	 * 获得业务员列表
 	 * @param ID 中转中心编号
 	 * @return 业务员的ID+name列表
 	 */
-	public String[] getBussinessmanList(String ID);
+	public String[] getBussinessmanList(String ID)throws RemoteException;
 	
 	/**
 	 * 增加一个业务员
@@ -17,7 +20,7 @@ public interface MiddleOrgDataSer {
 	 * @param bID 欲增加的业务员账号
 	 * @return 操作是否成功的信息
 	 */
-	public boolean addBussinessman(String ID, long bID);
+	public boolean addBussinessman(String ID, long bID)throws RemoteException;
 	
 	/**
 	 * 删除一个业务员
@@ -25,21 +28,21 @@ public interface MiddleOrgDataSer {
 	 * @param bID 要删除的业务员的账号
 	 * @return 操作是否成功的信息
 	 */
-	public boolean removeBussinessman(String ID, long bID);
+	public boolean removeBussinessman(String ID, long bID)throws RemoteException;
 
 	/**
 	 * 获得仓库管理员列表
 	 * @param ID 中转中心编号
 	 * @return 仓库管理员的ID+name列表
 	 */
-	public String[] getStorgerList(String ID);
+	public String[] getStorgerList(String ID)throws RemoteException;
 	/**
 	 * 增加一个仓库管理员
 	 * @param ID 中转中心编号
 	 * @param bID 欲增加的业务员账号
 	 * @return 操作是否成功的信息
 	 */
-	public boolean addStorger(String ID, long bID);
+	public boolean addStorger(String ID, long bID)throws RemoteException;
 	
 	/**
 	 * 删除一个仓库管理员
@@ -47,7 +50,7 @@ public interface MiddleOrgDataSer {
 	 * @param bID 要删除的仓库管理员的账号
 	 * @return 操作是否成功的信息
 	 */
-	public boolean removeStorger(String ID, long bID); 
+	public boolean removeStorger(String ID, long bID)throws RemoteException; 
 	
 	/**
 	 * 获得下辖营业厅列表
@@ -57,7 +60,7 @@ public interface MiddleOrgDataSer {
 	 * @param ID 中转中心编号
 	 * @return city+codeNumber列表
 	 */
-	public String[] getBussinessHallList(String ID);
+	public String[] getBussinessHallList(String ID)throws RemoteException;
 	
 	
 	/**此方法已经无意义，不必考虑实现
@@ -65,7 +68,7 @@ public interface MiddleOrgDataSer {
 	 * @return city+codeNumber
 	 */
 	
-	public String GetInfo();
+	public String GetInfo()throws RemoteException;
 	
 	/**
 	 * 修改中转中心所在城市    
@@ -74,7 +77,7 @@ public interface MiddleOrgDataSer {
 	 * @param city 欲修改的城市
 	 * @return 操作是否成功的信息
 	 */
-	public boolean changeCity(String ID, String city);
+	public boolean changeCity(String ID, String city)throws RemoteException;
 	
 	/**
 	 * 新增一个中转中心
@@ -82,7 +85,7 @@ public interface MiddleOrgDataSer {
 	 * @param vo 欲创建的中转中心机构信息
 	 * @return 操作是否成功的信息
 	 */
-	public boolean addMiddleOrg(String ID, MiddleOrgPO po);
+	public boolean addMiddleOrg(String ID, MiddleOrgPO po)throws RemoteException;
 	
 	/**
 	 * 删除一个中转中心
@@ -92,7 +95,7 @@ public interface MiddleOrgDataSer {
 	 * @param codeNumber 欲删除的中转中心的机构编号
 	 * @return 操作是否成功的信息
 	 */
-	public boolean removeMiddleOrg(String ID, String codeNumber);
+	public boolean removeMiddleOrg(String ID, String codeNumber)throws RemoteException;
 	
 
 }

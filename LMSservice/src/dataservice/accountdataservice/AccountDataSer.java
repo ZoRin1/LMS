@@ -1,10 +1,13 @@
 package dataservice.accountdataservice;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
 import po.accountPO.AccountInfoPO;
 
 
 
-public interface AccountDataSer {
+public interface AccountDataSer extends Remote{
 	/**
 	 * 提供信息验证-(所属中转中心城市-）所在城市-所属机构名称-中转中心编号（-营业厅编号）
 	 * @param ID 账号
@@ -23,7 +26,7 @@ public interface AccountDataSer {
 	 *      0 表示空闲
 	 *      null表示验证失败
 	 */
-	public String campare(long ID,String password);
+	public String campare(long ID,String password)throws RemoteException;
 	
 	/**
 	 * 增加一个账号
@@ -32,7 +35,7 @@ public interface AccountDataSer {
 	 * @return boolean 操作是否成功的信息
 	 * 
 	 */
-	public boolean insert(long ID,AccountInfoPO po);
+	public boolean insert(long ID,AccountInfoPO po)throws RemoteException;
 	
 	/**
 	 * 修改账号信息
@@ -41,7 +44,7 @@ public interface AccountDataSer {
 	 * @return  返回操作是否成功的信息
 	 * 
 	 */
-	public boolean update(long ID,AccountInfoPO po);
+	public boolean update(long ID,AccountInfoPO po)throws RemoteException;
 	
 	/**
 	 * 删除一个账号信息
@@ -49,28 +52,28 @@ public interface AccountDataSer {
 	 * @return 操作是否成功的信息
 	 * 
 	 */
-	public boolean delete(long ID);
+	public boolean delete(long ID)throws RemoteException;
 	
 	/**
 	 * 获得与输入ID相同的账号的信息
 	 * @param ID 账号
 	 * @return 账号信息
 	 */
-	public AccountInfoPO find(long ID);
+	public AccountInfoPO find(long ID)throws RemoteException;
 	/**
 	 * 获得与输入name相同的账号的ID+name列表
 	 * @param name 账号姓名
 	 * @return String[],ID+name
 	 * 
 	 */
-	public String[] find(String name);
+	public String[] find(String name)throws RemoteException;
 	
 	/**
 	 * 获得现在空闲的账号员工账号和姓名列表
 	 * @return ID+name列表
 	 * 
 	 */
-	public String[] find();
+	public String[] find()throws RemoteException;
 }
 
 

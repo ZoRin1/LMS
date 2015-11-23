@@ -1,6 +1,9 @@
 package dataservice.documentsdataservice;
 
-public interface deleteDataSer {
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+public interface deleteDataSer extends Remote{
 	
 	/**
 	 * code为单据编号,doName为单据名
@@ -9,5 +12,5 @@ public interface deleteDataSer {
 	 * @author XiongKaiQi
 	 *
 	 */
-	public boolean delete(String code,String doName);//xiugai
+	public boolean delete(String code,String doName)throws RemoteException;//xiugai
 }

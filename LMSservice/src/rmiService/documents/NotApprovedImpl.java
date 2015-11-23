@@ -26,7 +26,7 @@ public class NotApprovedImpl extends UnicastRemoteObject implements NotApproved{
 	}
 
 	@Override
-	public boolean NotApproved(String code, String doName) {
+	public boolean NotApproved(String code, String doName) throws RemoteException{
 		// TODO 自动生成的方法存根
 		sql="update b"+doName+" set examined=1 where code ="+code;
 		try {

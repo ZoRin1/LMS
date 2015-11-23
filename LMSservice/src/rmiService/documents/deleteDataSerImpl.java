@@ -29,7 +29,7 @@ public class deleteDataSerImpl extends UnicastRemoteObject implements deleteData
 
 
 	@Override
-	public boolean delete(String code, String doName) {
+	public boolean delete(String code, String doName) throws RemoteException{
 		// TODO 自动生成的方法存根
 		sql="select * from b"+doName+" where code='"+code+"'";
 		try {

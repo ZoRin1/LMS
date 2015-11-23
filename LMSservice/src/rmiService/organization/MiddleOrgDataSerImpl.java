@@ -23,67 +23,67 @@ public class MiddleOrgDataSerImpl extends UnicastRemoteObject implements MiddleO
 	}
 
 	@Override
-	public String[] getBussinessmanList(String ID) {
+	public String[] getBussinessmanList(String ID) throws RemoteException{
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
-	public boolean addBussinessman(String ID, long bID) {
+	public boolean addBussinessman(String ID, long bID) throws RemoteException{
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public boolean removeBussinessman(String ID, long bID) {
+	public boolean removeBussinessman(String ID, long bID) throws RemoteException{
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public String[] getStorgerList(String ID) {
+	public String[] getStorgerList(String ID) throws RemoteException{
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
-	public boolean addStorger(String ID, long bID) {
+	public boolean addStorger(String ID, long bID) throws RemoteException{
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public boolean removeStorger(String ID, long bID) {
+	public boolean removeStorger(String ID, long bID) throws RemoteException{
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public String[] getBussinessHallList(String ID) {
+	public String[] getBussinessHallList(String ID) throws RemoteException{
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
-	public String GetInfo() {
+	public String GetInfo() throws RemoteException{
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
-	public boolean changeCity(String ID, String city) {
+	public boolean changeCity(String ID, String city) throws RemoteException{
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public boolean addMiddleOrg(String ID, MiddleOrgPO po) {
+	public boolean addMiddleOrg(String ID, MiddleOrgPO po) throws RemoteException{
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
 	@Override
-	public boolean removeMiddleOrg(String ID, String codeNumber) {
+	public boolean removeMiddleOrg(String ID, String codeNumber) throws RemoteException{
 		// TODO 自动生成的方法存根
 		return false;
 	}
