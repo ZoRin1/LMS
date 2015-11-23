@@ -32,7 +32,7 @@ import dataservice.financedataservice.financeFactory;
 
 public class mainLaunch {
 	public static void main(String[] args){
-		try {
+//		try {
 //			documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://127.0.0.1:6600/docFactory");
 //			addDocummentInfoDataSer addDocummentInfoDataSer=documentsFactory.createaddDocummentInfoDataSer();
 //			GetOrderPO getOrderPO=new GetOrderPO("0505151511", "收件单", "0505151511", "151515", "wang", "2015-5-21");
@@ -100,16 +100,16 @@ public class mainLaunch {
 ////				System.out.print(account.getName()+"  "+account.getSums());
 ////				System.out.println();
 ////			}
-		} catch (MalformedURLException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		}
+//		} catch (MalformedURLException e) {
+//			// TODO 自动生成的 catch 块
+//			e.printStackTrace();
+//		} catch (RemoteException e) {
+//			// TODO 自动生成的 catch 块
+//			e.printStackTrace();
+//		} catch (NotBoundException e) {
+//			// TODO 自动生成的 catch 块
+//			e.printStackTrace();
+//		}
 		
 		
 	}
