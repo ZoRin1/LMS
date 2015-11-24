@@ -36,8 +36,10 @@ public class UpdateSpaceDataSerImpl extends UnicastRemoteObject implements Updat
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.executeUpdate();
 			sql = "UPDATE"+city+"中转中心仓库"+"set AreaNum=6"+"where AreaNum=4 and SositionNum>"+shipping+"and SositionNum<="+(shipping+trains);
+			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.executeUpdate();
 			sql = "UPDATE"+city+"中转中心仓库"+"set AreaNum=7"+"where AreaNum=4 and SositionNum>"+(shipping+trains)+"and SositionNum<="+(shipping+trains+motor);
+			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
 			connection.close();

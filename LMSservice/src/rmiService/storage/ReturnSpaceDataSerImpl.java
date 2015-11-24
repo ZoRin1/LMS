@@ -2,6 +2,10 @@ package rmiService.storage;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import dataservice.storagedataservice.ReturnSpaceDataSer;
 
@@ -24,7 +28,27 @@ public class ReturnSpaceDataSerImpl extends UnicastRemoteObject implements Retur
 	@Override
 	public void reSpace(int space,String city)  throws RemoteException{
 		// TODO 自动生成的方法存根
-		
+		String sql = "UPDATE"+city+"中转中心仓库"+"set AreaNum=4"+"where AreaNum=5";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			sql = "UPDATE"+city+"中转中心仓库"+"set AreaNum=4"+"where AreaNum=6";
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			sql = "UPDATE"+city+"中转中心仓库"+"set AreaNum=4"+"where AreaNum=7";
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			preparedStatement.close();
+			connection.close();
+		} catch (ClassNotFoundException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 	}
 
 }
