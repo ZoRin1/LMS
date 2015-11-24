@@ -10,7 +10,11 @@ public class GetCount implements GetAllcountBlSer{
 	@Override
 	public double getAllciunt(ArrayList<ReceiptVO> vo) {
 		// TODO 自动生成的方法存根
-		return 0;
+		double AllEarn = 0;
+		for(int i = 0 ; i<vo.size();i++){
+			AllEarn += vo.get(i).getFund();
+		}
+		return AllEarn;
 	}
 
 }

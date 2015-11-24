@@ -23,7 +23,7 @@ public interface GetReceivablesBillsBlSer {
 	 * @author YangGuan
 	 *
 	 */
-	public ArrayList<ReceiptVO> getAllReceivables(String selling);
+	public ArrayList<ReceiptVO> getAllReceivables(String end);
 	
 	
 	/**
@@ -32,5 +32,5 @@ public interface GetReceivablesBillsBlSer {
 	 * @author YangGuan
 	 *
 	 */
-	public ArrayList<ReceiptVO> getSomeReceivables(String selling,String start , String end);
+	public ArrayList<ReceiptVO> getSomeReceivables(String start,String end);
 }
