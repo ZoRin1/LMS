@@ -9,9 +9,9 @@ import vo.documentsVO.ReceiptVO;
 
 public class SettlementBL implements GetReceivablesBillsBlSer{
 	
-	ArrayList<ReceiptVO> vo;
-	ArrayList<ReceiptPO> po;
-	GetReceipt getReceipt;
+	private ArrayList<ReceiptVO> vo;
+	private ArrayList<ReceiptPO> po;
+	private GetReceipt getReceipt;
 	
 	public SettlementBL(){
 		super();

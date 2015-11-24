@@ -1,5 +1,8 @@
 package businesslogic.financebl.ProfitModel;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import vo.financeVO.ProfitVO;
 
 public class ProfitController {
@@ -10,10 +13,10 @@ public class ProfitController {
 	private ProfitBL profit;
 	
 	
-	public ProfitController(CostStatisticsBL cost, ProfitBL profit) {
+	public ProfitController() {
 		super();
-		this.cost = cost;
-		this.profit = profit;
+		cost = new CostStatisticsBL();
+		profit = new ProfitBL();
 	}
 
 	//不太需要
@@ -26,11 +29,12 @@ public class ProfitController {
 //		return 0;
 //	}
 	
-	public ProfitVO returnPro(String[] selling){
-//		double earn = cost.allEarn(null);
-//		double pay = cost.allPay(null);
-//		ProfitVO pro = new ProfitVO(earn,pay,null);
-		//时间的逻辑还没写！！！！！！！！！1
-		return null;
+	public ProfitVO returnPro(String end){
+		double earn = cost.CalculateGet(end);
+		double pay = cost.CalculatePay(end);
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		String date = df.format(new Date());
+		ProfitVO pro = new ProfitVO(earn,pay,date);
+		return pro;
 	}
 }

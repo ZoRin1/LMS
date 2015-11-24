@@ -8,7 +8,7 @@ import po.documentsPO.PaymentPO;
 public class GetPayment implements GetPaymentSer{
 
 	@Override
-	public ArrayList<PaymentPO> getAllPay(String selling) {
+	public ArrayList<PaymentPO> getAllPay(String end) {
 		// TODO Auto-generated method stub
 //		ArrayList<PaymentPO> list=new ArrayList();
 //		PaymentPO po=new PaymentPO("0000005","付款单","20151225",100.0,"米尔豪斯","2184309217","工资","开除");
