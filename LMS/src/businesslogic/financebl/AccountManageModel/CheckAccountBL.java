@@ -17,9 +17,30 @@ public class CheckAccountBL implements GetAccountBlSer{
 	@Override
 	public ArrayList<AccountVO> getAccount() {
 		// TODO 自动生成的方法存根
-		
-		//555555
-		return null;
+		ArrayList<AccountVO> vo = new ArrayList<AccountVO>();
+		ArrayList<AccountPO> po;
+		AccountVO v1;
+		AccountPO p1;
+		try {
+			financeFactory finFactory = (financeFactory)Naming.lookup("rmi://127.0.0.1:6600/finFactory");
+			GetAccountDataSer getAccount = finFactory.createGetAccountDataSer();
+			po = getAccount.getAccount();
+			for(int i = 0 ; i <po.size();i++){
+				p1 = po.get(i);
+				v1 = new AccountVO(p1.getName(),p1.getSums());
+				vo.add(v1);
+			}
+		} catch (MalformedURLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return vo;
 	}
 
 }

@@ -30,6 +30,7 @@ public class CoverDataSerImpl extends UnicastRemoteObject implements CoverDataSe
 	@Override
 	public void coverAccount(ArrayList<AccountPO> po)  throws RemoteException {
 		// TODO 自动生成的方法存根
+		//每次只允许一个财务人员进行 账户管理！  这个判断条件以后优化
 		for(int i = 0 ; i < po.size();i++){
 			AccountPO p = po.get(i);
 			String name = p.getName();
