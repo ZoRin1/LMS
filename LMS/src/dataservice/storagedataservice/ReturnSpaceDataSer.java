@@ -8,5 +8,5 @@ public interface ReturnSpaceDataSer {
 	 * @author YangGuan
 	 *
 	 */
-	public void reSpace(int space);
+	public void reSpace(int space,String city);
 }

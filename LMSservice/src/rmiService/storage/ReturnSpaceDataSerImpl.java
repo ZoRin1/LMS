@@ -22,7 +22,7 @@ public class ReturnSpaceDataSerImpl extends UnicastRemoteObject implements Retur
 	}
 
 	@Override
-	public void reSpace(int space)  throws RemoteException{
+	public void reSpace(int space,String city)  throws RemoteException{
 		// TODO 自动生成的方法存根
 		
 	}
