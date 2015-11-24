@@ -2,6 +2,12 @@ package rmiService.organization;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import po.orgPO.BussinessOrgPO;
 import po.orgPO.DriverPO;
@@ -27,36 +33,198 @@ public class BussinessOrgDataSerImpl extends UnicastRemoteObject implements Buss
 	@Override
 	public String[] getBussinessmanList(String ID) throws RemoteException{
 		// TODO 自动生成的方法存根
+		ArrayList<String> assisantList=new ArrayList<String>();
+		String IDString[]=ID.split("-");
+		sql="select assisant from 营业厅信息 where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			resultSet.next();
+			String assisantString[]=resultSet.getString(1).split(",");
+			for (int i = 0; i < assisantString.length; i++) {
+				sql="select name from 帐号表 where ID ='"+assisantString[i]+"'";
+				preparedStatement=connection.prepareStatement(sql);
+				resultSet=preparedStatement.executeQuery();
+				resultSet.next();
+				assisantList.add(assisantString[i]+"-"+resultSet.getString(1));
+			}
+			String assisantarray[]=new String[assisantList.size()];
+			for (int i = 0; i < assisantarray.length; i++) {
+				assisantarray[i]=assisantList.get(i);
+			}
+			connection.close();
+			return assisantarray;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
 	public boolean addBussinessman(String ID, long bID) throws RemoteException{
 		// TODO 自动生成的方法存根
+		String IDString[]=ID.split("-");
+		sql="select assisant from 营业厅信息 where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+			try {
+				Class.forName(DRIVER);
+				Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+				PreparedStatement preparedStatement=connection.prepareStatement(sql);
+				ResultSet resultSet=preparedStatement.executeQuery();
+				resultSet.next();
+				sql="update 营业厅信息 set assisant='"+resultSet.getString(1)+Long.toString(bID)+",' where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+				preparedStatement=connection.prepareStatement(sql);
+				preparedStatement.executeUpdate();
+				connection.close();
+				return true;
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		return false;
 	}
 
 	@Override
 	public boolean removeBussinessman(String ID, long bID) throws RemoteException{
 		// TODO 自动生成的方法存根
+		String IDString[]=ID.split("-");
+		sql="select assisant from 营业厅信息 where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+			try {
+				Class.forName(DRIVER);
+				Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+				PreparedStatement preparedStatement=connection.prepareStatement(sql);
+				ResultSet resultSet=preparedStatement.executeQuery();
+				resultSet.next();
+				String assisantString[]=resultSet.getString(1).split(",");
+				ArrayList<String>assisantList=new ArrayList<String>();
+				for (int i = 0; i < assisantString.length; i++) {
+					if (!assisantString[i].equals(Long.toString(bID))) {
+						assisantList.add(assisantString[i]);
+					}
+				}
+				String assisant="";
+				for (int i = 0; i < assisantList.size(); i++) {
+					assisant=assisant+assisantList.get(i)+",";
+				}
+				sql="update 营业厅信息 set assisant='"+assisant+",' where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+				preparedStatement=connection.prepareStatement(sql);
+				preparedStatement.executeUpdate();
+				connection.close();
+				return true;
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		return false;
 	}
 
 	@Override
 	public String[] getCourierList(String ID, long bID)throws RemoteException {
 		// TODO 自动生成的方法存根
+		ArrayList<String> courierList=new ArrayList<String>();
+		String IDString[]=ID.split("-");
+		sql="select courier from 营业厅信息 where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			resultSet.next();
+			String courierString[]=resultSet.getString(1).split(",");
+			for (int i = 0; i < courierString.length; i++) {
+				sql="select name from 帐号表 where ID ='"+courierString[i]+"'";
+				preparedStatement=connection.prepareStatement(sql);
+				resultSet=preparedStatement.executeQuery();
+				resultSet.next();
+				courierList.add(courierString[i]+"-"+resultSet.getString(1));
+			}
+			String courierarray[]=new String[courierList.size()];
+			for (int i = 0; i < courierarray.length; i++) {
+				courierarray[i]=courierList.get(i);
+			}
+			connection.close();
+			return courierarray;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
 	public boolean addCourier(String ID, long bID) throws RemoteException{
 		// TODO 自动生成的方法存根
+		String IDString[]=ID.split("-");
+		sql="select courier from 营业厅信息 where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+			try {
+				Class.forName(DRIVER);
+				Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+				PreparedStatement preparedStatement=connection.prepareStatement(sql);
+				ResultSet resultSet=preparedStatement.executeQuery();
+				resultSet.next();
+				sql="update 营业厅信息 set courier='"+resultSet.getString(1)+Long.toString(bID)+",' where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+				preparedStatement=connection.prepareStatement(sql);
+				preparedStatement.executeUpdate();
+				connection.close();
+				return true;
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		return false;
 	}
 
 	@Override
 	public boolean removeCourier(String ID, long bID) throws RemoteException{
 		// TODO 自动生成的方法存根
+		String IDString[]=ID.split("-");
+		sql="select courier from 营业厅信息 where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+			try {
+				Class.forName(DRIVER);
+				Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+				PreparedStatement preparedStatement=connection.prepareStatement(sql);
+				ResultSet resultSet=preparedStatement.executeQuery();
+				resultSet.next();
+				String courierString[]=resultSet.getString(1).split(",");
+				ArrayList<String>courierList=new ArrayList<String>();
+				for (int i = 0; i < courierString.length; i++) {
+					if (!courierString[i].equals(Long.toString(bID))) {
+						courierList.add(courierString[i]);
+					}
+				}
+				String courier="";
+				for (int i = 0; i < courierList.size(); i++) {
+					courier=courier+courierList.get(i)+",";
+				}
+				sql="update 营业厅信息 set courier='"+courier+",' where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+				preparedStatement=connection.prepareStatement(sql);
+				preparedStatement.executeUpdate();
+				connection.close();
+				return true;
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		return false;
 	}
 

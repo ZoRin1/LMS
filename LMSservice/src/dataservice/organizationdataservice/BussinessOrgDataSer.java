@@ -36,7 +36,7 @@ public interface BussinessOrgDataSer extends Remote{
 	/**
 	 * 获得快递员列表
 	 * @param ID 所属中转中心-营业厅编号
-	 * @param bID 有一天编号
+	 * @param bID 营业厅编号
 	 * @return 仓库管理员的ID+name列表
 	 */
 	public String[] getCourierList(String ID, long bID)throws RemoteException;
@@ -51,7 +51,7 @@ public interface BussinessOrgDataSer extends Remote{
 	/**
 	 * 删除一个快递员
 	 * @param ID 所属中转中心-营业厅编号
-	 * @param bID 要删除的仓库管理员的账号
+	 * @param bID 要删除的快递员的账号
 	 * @return 操作是否成功的信息
 	 */
 	public boolean removeCourier(String ID, long bID)throws RemoteException; 
