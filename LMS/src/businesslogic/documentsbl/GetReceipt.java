@@ -23,7 +23,7 @@ public class GetReceipt implements GetReceiptSer{
 	}
 
 	@Override
-	public ArrayList<ReceiptPO> getAllReceipts(String selling) {
+	public ArrayList<ReceiptPO> getAllReceipts(String end) {
 		// TODO Auto-generated method stub
 //		ArrayList<ReceiptPO> list=new ArrayList();
 //		ArrayList<String> list1=new ArrayList();
