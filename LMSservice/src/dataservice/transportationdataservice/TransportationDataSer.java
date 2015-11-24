@@ -73,4 +73,37 @@ public interface TransportationDataSer extends Remote{
 	 */
 	public boolean removeCity(String city)throws RemoteException;
 	
+	/*
+	 * 获得工资策略
+	 * @param employee 员工种类
+	 * 1代表快递员
+	 * 2代表营业厅业务员
+	 * 3代表中转中心业务员
+	 * 4代表中转中心仓库管理员
+	 * 5代表财务人员
+	 * 6代表总经理
+	 * 7代表系统管理员
+	 
+	 *@return double[] 对应员工的三个工资策略数值的数组  分别是 按月  计次  提成
+	 *
+	 */
+	public double[] getSalary(int employee) throws RemoteException;
+	
+	/*
+	 * 修改工资策略
+	 * @param employee 员工种类
+	 * 1代表快递员
+	 * 2代表营业厅业务员
+	 * 3代表中转中心业务员
+	 * 4代表中转中心仓库管理员
+	 * 5代表财务人员
+	 * 6代表总经理
+	 * 7代表系统管理员
+	 * @param salary 员工的三个工资策略数值的数组  分别是 按月  计次  提成
+	 * @return boolean 修改操作是否成功
+	 * 
+	 */
+	
+	public boolean changeSalary(int employee,double [] salary) throws RemoteException;
+	
 }

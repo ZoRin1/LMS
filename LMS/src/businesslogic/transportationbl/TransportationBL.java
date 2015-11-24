@@ -53,4 +53,16 @@ public class TransportationBL implements TransportationBLSer {
 		return false;
 	}
 
+	@Override
+	public double[] getSalary(int employee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean changeSalary(int employee, double[] salary) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
