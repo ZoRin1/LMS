@@ -155,41 +155,27 @@ public interface BussinessOrgDataSer extends Remote{
 	 */
 	public boolean removeBussinessHall(String ID, String codeNumber)throws RemoteException;
 	
-	/**注意，此方法已经无意义，不必考虑具体实现
-	 * 获得营业厅所属中转中心编号
-	 * @return codeNumber 中转中心编号
+	/**不实现
 	 */
 	public String getCodeNumber()throws RemoteException;
 	
 	/**
-	 * 修改营业厅所属中转中心编号
-	 * 修改后要重新获得营业厅编号，要修改营业厅编号
-	 * @param ID 所属中转中心-营业厅编号
-	 * @param codeNumberOfMiddle 所属中转中心编号
-	 * @return 操作是否成功的信息
+	 * 不实现
 	 */
 	public boolean changeCodeNumberOfMiddle(String ID, String codeNumberOfMiddle)throws RemoteException;
 	
 	/**
-	 * 获得机构其他信息，即城市和编号
-	 * @param ID 所属中转中心-营业厅编号
-	 * @return 城市+编号
+	 * 不实现
 	 */
 	public String getInfo(String ID)throws RemoteException;
 	
 	/**
-	 * 修改营业厅所在城市/地点（较小）
-	 * @param ID 所属中转中心-营业厅编号
-	 * @param city 欲修改的城市
-	 * @return 操作是否成功的信息
+	 * 不实现
 	 */
 	 public boolean changeCity(String ID, String city)throws RemoteException;
 	 
 	 /**
-	  * 修改营业厅编号，不是总经理输入，而是改变所属中转中心后有中转中心生成的编号
-	 * @param ID 所属中转中心-营业厅编号
-	 * @param codeNumber 欲修改的机构编号
-	  * @return 操作是否成功的信息
+	  * 不实现
 	  */
 	 public boolean changeCodeNumber(String ID, String codeNumber)throws RemoteException;
 	

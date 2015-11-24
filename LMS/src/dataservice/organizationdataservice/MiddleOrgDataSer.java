@@ -88,11 +88,10 @@ public interface MiddleOrgDataSer {
 	 * 删除一个中转中心
 	 * 
 	 * 注：没看到有修改机构信息的方法吧？机构的城市和编号不能修改，修改机构通过增减业务员、仓库管理员和下辖机构表现
-	 * @param ID 中转中心编号
-	 * @param codeNumber 欲删除的中转中心的机构编号
+	 * @param ID 删除中转中心编号
 	 * @return 操作是否成功的信息
 	 */
-	public boolean removeMiddleOrg(String ID, String codeNumber);
+	public boolean removeMiddleOrg(String ID);
 	
 
 }

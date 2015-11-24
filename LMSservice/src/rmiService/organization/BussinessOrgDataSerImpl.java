@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
+
 import po.orgPO.BussinessOrgPO;
 import po.orgPO.DriverPO;
 import po.orgPO.VehiclePO;
@@ -70,14 +72,17 @@ public class BussinessOrgDataSerImpl extends UnicastRemoteObject implements Buss
 	public boolean addBussinessman(String ID, long bID) throws RemoteException{
 		// TODO 自动生成的方法存根
 		String IDString[]=ID.split("-");
-		sql="select assisant from 营业厅信息 where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+		sql="select mcity,city,assisant from 营业厅信息 where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
 			try {
 				Class.forName(DRIVER);
 				Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
 				PreparedStatement preparedStatement=connection.prepareStatement(sql);
 				ResultSet resultSet=preparedStatement.executeQuery();
 				resultSet.next();
-				sql="update 营业厅信息 set assisant='"+resultSet.getString(1)+Long.toString(bID)+",' where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+				sql="update 营业厅信息 set assisant='"+resultSet.getString(3)+Long.toString(bID)+",' where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+				preparedStatement=connection.prepareStatement(sql);
+				preparedStatement.executeUpdate();
+				sql="update 帐号表 set state = '2-"+resultSet.getString(1)+"-"+resultSet.getString(2)+"-营业厅-"+ID+"' where ID ='"+bID+"'";
 				preparedStatement=connection.prepareStatement(sql);
 				preparedStatement.executeUpdate();
 				connection.close();
@@ -115,6 +120,9 @@ public class BussinessOrgDataSerImpl extends UnicastRemoteObject implements Buss
 					assisant=assisant+assisantList.get(i)+",";
 				}
 				sql="update 营业厅信息 set assisant='"+assisant+",' where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+				preparedStatement=connection.prepareStatement(sql);
+				preparedStatement.executeUpdate();
+				sql="update 帐号表 set state ='0' where ID='"+bID+"'";
 				preparedStatement=connection.prepareStatement(sql);
 				preparedStatement.executeUpdate();
 				connection.close();
@@ -179,6 +187,9 @@ public class BussinessOrgDataSerImpl extends UnicastRemoteObject implements Buss
 				sql="update 营业厅信息 set courier='"+resultSet.getString(1)+Long.toString(bID)+",' where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
 				preparedStatement=connection.prepareStatement(sql);
 				preparedStatement.executeUpdate();
+				sql="update 帐号表 set state = '1-"+resultSet.getString(1)+"-"+resultSet.getString(2)+"-营业厅-"+ID+"' where ID ='"+bID+"'";
+				preparedStatement=connection.prepareStatement(sql);
+				preparedStatement.executeUpdate();
 				connection.close();
 				return true;
 			} catch (ClassNotFoundException e) {
@@ -216,6 +227,9 @@ public class BussinessOrgDataSerImpl extends UnicastRemoteObject implements Buss
 				sql="update 营业厅信息 set courier='"+courier+",' where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
 				preparedStatement=connection.prepareStatement(sql);
 				preparedStatement.executeUpdate();
+				sql="update 帐号表 set state ='0' where ID='"+bID+"'";
+				preparedStatement=connection.prepareStatement(sql);
+				preparedStatement.executeUpdate();
 				connection.close();
 				return true;
 			} catch (ClassNotFoundException e) {
@@ -231,7 +245,6 @@ public class BussinessOrgDataSerImpl extends UnicastRemoteObject implements Buss
 	@Override
 	public String[] getVehicleList(String ID) throws RemoteException{
 		// TODO 自动生成的方法存根
-		ArrayList<String>vehicleList=new ArrayList<String>();
 		String IDString[]=ID.split("-");
 		sql="select vehicle from 营业厅信息 where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
 		try {
@@ -279,7 +292,6 @@ public class BussinessOrgDataSerImpl extends UnicastRemoteObject implements Buss
 	@Override
 	public boolean addVehicle(String ID, VehiclePO po) throws RemoteException{
 		// TODO 自动生成的方法存根
-		//按我的理解是把po增加到车辆信息这个表里 并且增加到营业厅 车辆列表里
 		sql="insert into 车辆信息 (codeVehicle,codeCity,codeBussinessHall,codeID,platNumber,date) values ('"+po.getCodeVehicle()+"','"+po.getCodeCity()+"','"+po.getCodeBussinessHall()+"','"+po.getCodeID()+"','"+po.getPlateNumber()+"','"+po.getDate()+"')";
 		try {
 			Class.forName(DRIVER);
@@ -303,7 +315,6 @@ public class BussinessOrgDataSerImpl extends UnicastRemoteObject implements Buss
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return false;
 	}
 
@@ -350,30 +361,123 @@ public class BussinessOrgDataSerImpl extends UnicastRemoteObject implements Buss
 	@Override
 	public boolean changeVehicle(String ID, VehiclePO po) throws RemoteException{
 		// TODO 自动生成的方法存根
+		
 		return false;
 	}
 
 	@Override
 	public String[] getDriverList(String ID) throws RemoteException{
 		// TODO 自动生成的方法存根
+		String IDString[]=ID.split("-");
+		sql="select driver from 营业厅信息 where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			resultSet.next();
+			String vehicleString[]=resultSet.getString(1).split(",");
+			connection.close();
+			return vehicleString;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
 	public DriverPO getDriverInfo(String ID, String codeDriver) throws RemoteException{
 		// TODO 自动生成的方法存根
+		sql="select * from 司机信息 where codeDriver ='"+codeDriver+"'";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			resultSet.next();
+			DriverPO driverPO=new DriverPO(resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9), resultSet.getString(10));
+			connection.close();
+			return driverPO;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
 	public boolean addDriver(String ID, DriverPO po) throws RemoteException{
 		// TODO 自动生成的方法存根
+		sql="insert into 司机信息 (codeDriver,codeCity,codeBussinessHall,codeID,name,date,ID,phone,sex,toDate) values ('"+po.getCodeDriver()+"','"+po.getCodeCity()+"','"+po.getCodeBussinessHall()+"','"+po.getCodeID()+"','"+po.getName()+"','"+po.getDate()+"','"+po.getID()+"','"+po.getPhone()+"','"+po.getSex()+"','"+po.getToDate()+"')";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			String IDString[]=ID.split("-");
+			sql="select driver from 营业厅信息 where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";			
+				preparedStatement=connection.prepareStatement(sql);
+					ResultSet resultSet=preparedStatement.executeQuery();
+					resultSet.next();
+					sql="update 营业厅信息 set driver='"+resultSet.getString(1)+po.getCodeDriver()+",' where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+					preparedStatement=connection.prepareStatement(sql);
+					preparedStatement.executeUpdate();
+					connection.close();
+					return true;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean removeDriver(String ID, String codeDriver) throws RemoteException{
 		// TODO 自动生成的方法存根
+		sql="delete from 司机信息 where codeDriver ='"+codeDriver+"'";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			String IDString[]=ID.split("-");
+			sql="select driver from 营业厅信息 where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+			preparedStatement=connection.prepareStatement(sql);
+					ResultSet resultSet=preparedStatement.executeQuery();
+					resultSet.next();
+					String driverString[]=resultSet.getString(1).split(",");
+					ArrayList<String>driverList=new ArrayList<String>();
+					for (int i = 0; i < driverString.length; i++) {
+						if (!driverString[i].equals(codeDriver)) {
+							driverList.add(driverString[i]);
+						}
+					}
+					String driver="";
+					for (int i = 0; i < driverList.size(); i++) {
+						driver=driver+driverList.get(i)+",";
+					}
+					sql="update 营业厅信息 set driver='"+driver+",' where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+					preparedStatement=connection.prepareStatement(sql);
+					preparedStatement.executeUpdate();
+					connection.close();
+					return true;
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		return false;
 	}
 
@@ -386,12 +490,88 @@ public class BussinessOrgDataSerImpl extends UnicastRemoteObject implements Buss
 	@Override
 	public boolean addBussinessHall(String ID, BussinessOrgPO po) throws RemoteException{
 		// TODO 自动生成的方法存根
+		sql="insert into 营业厅信息 (city,mcity,codeNumber,codeNumberOfMiddle) values ('"+po.getCity()+"','"+po.getMcity()+"','"+po.getCodeNumber()+"','"+po.getCodeNumberOfMiddle()+"')";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			sql="select bussinessHall from 中转中心信息 where codeNumber ='"+po.getCodeNumberOfMiddle()+"'";
+			preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			resultSet.next();
+			sql="update 中转中心信息 set bussinessHall='"+resultSet.getString(1)+po.getCodeNumber()+",' where codeNumber ='"+po.getCodeNumberOfMiddle()+"'";
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			connection.close();
+			return true;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
-
+	
 	@Override
 	public boolean removeBussinessHall(String ID, String codeNumber) throws RemoteException{
 		// TODO 自动生成的方法存根
+		try {
+		String IDString[]=ID.split("-");
+		sql="select assisant,courier,vehicle,driver from 营业厅信息 where codeNumber ='"+codeNumber+"' and codeNumberOfMiddle ='"+IDString[0]+"'";
+		Class.forName(DRIVER);
+		Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+		PreparedStatement preparedStatement=connection.prepareStatement(sql);
+		ResultSet resultSet=preparedStatement.executeQuery();
+		resultSet.next();
+		String assisantList[]=resultSet.getString(1).split(",");
+		String courierList[]=resultSet.getString(2).split(",");
+		String vehicleList[]=resultSet.getString(3).split(",");
+		String driverList[]=resultSet.getString(4).split(",");
+		for (int i = 0; i < assisantList.length; i++) {
+			removeBussinessman(ID, Long.parseLong(assisantList[i]));
+		}
+		for (int i = 0; i < courierList.length; i++) {
+			removeCourier(ID,Long.parseLong(courierList[i]));
+		}
+		for (int i = 0; i < vehicleList.length; i++) {
+			removeVehicle(ID, vehicleList[i]);
+		}
+		for (int j = 0; j < driverList.length; j++) {
+			removeDriver(ID, driverList[j]);
+		}
+		sql="delete from 营业厅信息 where codeNumber ='"+codeNumber+"' and codeNumberOfMiddle ='"+IDString[0]+"'";	
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			sql="select bussinessHall from 中转中心信息 where codeNumber='"+IDString[0]+"'";
+			preparedStatement=connection.prepareStatement(sql);
+			resultSet=preparedStatement.executeQuery();
+			resultSet.next();
+			String bussinessHallString[]=resultSet.getString(1).split(",");
+			ArrayList<String>bussinessHallList=new ArrayList<String>();
+			for (int i = 0; i < bussinessHallString.length; i++) {
+				if (!bussinessHallString[i].equals(codeNumber)) {
+					bussinessHallList.add(bussinessHallString[i]);
+				}
+			}
+			String bussinessHall="";
+			for (int i = 0; i < bussinessHallList.size(); i++) {
+				bussinessHall=bussinessHall+bussinessHallList.get(i)+",";
+			}
+			sql="update 中转中心信息 set bussinessHall='"+bussinessHall+",' where codeNumber ='"+IDString[0]+"'";
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			connection.close();
+			return true;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
 
