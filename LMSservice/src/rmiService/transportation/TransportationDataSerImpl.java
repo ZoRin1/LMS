@@ -175,6 +175,9 @@ public class TransportationDataSerImpl extends UnicastRemoteObject implements Tr
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.executeUpdate();
+			sql="create table "+city+"中转中心仓库 as select * from 仓库";
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
 			connection.close();
 			return true;
 		} catch (ClassNotFoundException e) {
@@ -195,6 +198,9 @@ public class TransportationDataSerImpl extends UnicastRemoteObject implements Tr
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			sql="drop table '"+city+"'";
+			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.executeUpdate();
 			connection.close();
 			return true;
@@ -222,6 +228,26 @@ public class TransportationDataSerImpl extends UnicastRemoteObject implements Tr
 	 *
 	 */
 	public double[] getSalary(int employee) throws RemoteException{
+		sql="select salary1,salary2,salary3 from 工资策略 where employee='"+employee+"'";
+		double salary[]=new double[3];
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			resultSet.next();
+			salary[0]=resultSet.getDouble(1);
+			salary[1]=resultSet.getDouble(2);
+			salary[2]=resultSet.getDouble(3);
+			connection.close();
+			return salary;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 		
 	}
@@ -242,6 +268,21 @@ public class TransportationDataSerImpl extends UnicastRemoteObject implements Tr
 	 */
 	
 	public boolean changeSalary(int employee,double [] salary) throws RemoteException{
+		sql="update 工资策略 set salary1='"+salary[0]+"',salary2='"+salary[1]+"',salary3='"+salary[2]+"' where employee ='"+employee+"'";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			connection.close();
+			return true;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 		
 	}

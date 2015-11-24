@@ -111,7 +111,4 @@ public class getBufferedCodeDataSerImpl extends UnicastRemoteObject implements g
 		}
 		return null;
 	}
-
-
-
 }

@@ -231,24 +231,119 @@ public class BussinessOrgDataSerImpl extends UnicastRemoteObject implements Buss
 	@Override
 	public String[] getVehicleList(String ID) throws RemoteException{
 		// TODO 自动生成的方法存根
+		ArrayList<String>vehicleList=new ArrayList<String>();
+		String IDString[]=ID.split("-");
+		sql="select vehicle from 营业厅信息 where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			resultSet.next();
+			String vehicleString[]=resultSet.getString(1).split(",");
+			connection.close();
+			return vehicleString;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
 	public VehiclePO getVehicleInfo(String ID, String codeVehicle) throws RemoteException{
 		// TODO 自动生成的方法存根
+		sql="select * from 车辆信息 where codeVehicle ='"+codeVehicle+"'";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			resultSet.next();
+			VehiclePO vehiclePO=new VehiclePO(resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6));
+			connection.close();
+			return vehiclePO;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
 	public boolean addVehicle(String ID, VehiclePO po) throws RemoteException{
 		// TODO 自动生成的方法存根
+		//按我的理解是把po增加到车辆信息这个表里 并且增加到营业厅 车辆列表里
+		sql="insert into 车辆信息 (codeVehicle,codeCity,codeBussinessHall,codeID,platNumber,date) values ('"+po.getCodeVehicle()+"','"+po.getCodeCity()+"','"+po.getCodeBussinessHall()+"','"+po.getCodeID()+"','"+po.getPlateNumber()+"','"+po.getDate()+"')";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			String IDString[]=ID.split("-");
+			sql="select vehicle from 营业厅信息 where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";			
+				preparedStatement=connection.prepareStatement(sql);
+					ResultSet resultSet=preparedStatement.executeQuery();
+					resultSet.next();
+					sql="update 营业厅信息 set vehicle='"+resultSet.getString(1)+po.getCodeVehicle()+",' where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+					preparedStatement=connection.prepareStatement(sql);
+					preparedStatement.executeUpdate();
+					connection.close();
+					return true;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 
 	@Override
 	public boolean removeVehicle(String ID, String codeVehicle) throws RemoteException{
 		// TODO 自动生成的方法存根
+		sql="delete from 车辆信息 where codeVehicle ='"+codeVehicle+"'";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			String IDString[]=ID.split("-");
+			sql="select vehicle from 营业厅信息 where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+			preparedStatement=connection.prepareStatement(sql);
+					ResultSet resultSet=preparedStatement.executeQuery();
+					resultSet.next();
+					String vehicleString[]=resultSet.getString(1).split(",");
+					ArrayList<String>vehicleList=new ArrayList<String>();
+					for (int i = 0; i < vehicleString.length; i++) {
+						if (!vehicleString[i].equals(codeVehicle)) {
+							vehicleList.add(vehicleString[i]);
+						}
+					}
+					String vehicle="";
+					for (int i = 0; i < vehicleList.size(); i++) {
+						vehicle=vehicle+vehicleList.get(i)+",";
+					}
+					sql="update 营业厅信息 set vehicle='"+vehicle+",' where codeNumberOfMiddle ='"+IDString[0]+"' and codeNumber ='"+IDString[1]+"'";
+					preparedStatement=connection.prepareStatement(sql);
+					preparedStatement.executeUpdate();
+					connection.close();
+					return true;
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		return false;
 	}
 
