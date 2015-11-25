@@ -149,11 +149,10 @@ public class AddAccount extends JPanel {
 		
 		yesButton=new JButton(yesIcon);
 		yesButton.setBounds(350, 530,48,48);
-		yesButton.setContentAreaFilled(false);
-	 	this.setBounds(260, 30, 730,650);	 	
+		yesButton.setContentAreaFilled(false);	 	 	
 	 	this.add(yesButton);
 	 	
-	 	
+	 	this.setBounds(260, 30, 730,650);	
 	 	this.setLayout(null);
 	 	this.setOpaque(false);		
 	}

@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import presentation.mainui.mainui;
@@ -154,6 +155,23 @@ class topmanagerOperationJpanel extends JPanel{
 		topmanagerJpanel.add(this);
 	}
 	private void init(){
+		this.setLayout(null);
+
+		Font font=new Font("幼圆",Font.BOLD,60);
+		
+		JLabel welcome1 = new JLabel("欢迎使用");
+		welcome1.setFont(font);
+		welcome1.setForeground(Color.WHITE);
+		welcome1.setBounds(220, 200, 300, 100);
+		this.add(welcome1);
+		
+		JLabel welcome2 = new JLabel("NJU物流管理系统");
+		welcome2.setFont(font);
+		welcome2.setForeground(Color.WHITE);
+		welcome2.setBounds(110, 300, 700, 100);
+		this.add(welcome2);
+		this.setBounds(260, 30, 730,650);
+		this.setOpaque(false);
 		this.setBounds(260, 30,730,650);
 		this.setOpaque(false);
 	}

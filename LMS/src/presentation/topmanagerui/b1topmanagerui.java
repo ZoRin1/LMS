@@ -1,6 +1,8 @@
 package presentation.topmanagerui;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -9,17 +11,21 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class b1topmanagerui extends JFrame{
-	private topmanagerJpanel topmanagerJpanel;
-	private topmanagerb1OperationJpanel operationJpanel;
-	private JButton b1,b2,b3,b4,b5,b6;
+import presentation.financialstaffui.financialstaffui;
 
-	public b1topmanagerui(String s,topmanagerui tmui) {
+public class b1topmanagerui extends JFrame{
+	topmanagerJpanel topmanagerJpanel;
+	topmanagerb1OperationJpanel operationJpanel;
+	JButton b1,b2,b3,b4,b5,b6;
+
+	public b1topmanagerui(String s,topmanagerui tui) {
 		// TODO Auto-generated constructor stub
 		super(s);
-		init(tmui);
+		init(tui);	
+		registListener(tui,topmanagerJpanel,this);
 	}
 	private void init(topmanagerui topmanagerui){
 		topmanagerJpanel=new topmanagerJpanel();
@@ -73,6 +79,129 @@ public class b1topmanagerui extends JFrame{
 		this.setResizable(false);
 		this.setVisible(true);
 	}
+	
+	private void registListener(final topmanagerui tui,final topmanagerJpanel tjpl,final b1topmanagerui b1ui){
+		
+		b1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				tjpl.remove(b1ui.operationJpanel);
+				b1ui.setTitle("设置快递员工资策略");
+				b1ui.b2.setEnabled(false);
+				b1ui.b3.setEnabled(false);
+				b1ui.b4.setEnabled(false);
+				b1ui.b5.setEnabled(false);
+				b1ui.b6.setEnabled(false);
+				
+				new Salary(tui,tjpl,b1ui);
+				b1ui.repaint();
+				
+				
+			}
+		});
+		
+
+		b2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				tjpl.remove(b1ui.operationJpanel);
+				b1ui.setTitle("设置营业厅业务员工资策略");
+				b1ui.b1.setEnabled(false);
+				b1ui.b3.setEnabled(false);
+				b1ui.b4.setEnabled(false);
+				b1ui.b5.setEnabled(false);
+				b1ui.b6.setEnabled(false);
+				
+				new Salary(tui,tjpl,b1ui);
+				b1ui.repaint();
+				
+				
+			}
+		});
+
+
+		
+		b3.addActionListener(new ActionListener() {	    
+			@Override	
+			public void actionPerformed(ActionEvent e) {
+		
+				// TODO Auto-generated method stub
+		
+				tjpl.remove(b1ui.operationJpanel);
+				b1ui.setTitle("设置中转中心业务员工资策略");
+				b1ui.b1.setEnabled(false);
+				b1ui.b2.setEnabled(false);		
+				b1ui.b4.setEnabled(false);		
+				b1ui.b5.setEnabled(false);		
+				b1ui.b6.setEnabled(false);		
+		
+				new Salary(tui,tjpl,b1ui);
+				b1ui.repaint();
+			}
+		});
+
+
+
+		b4.addActionListener(new ActionListener() {
+	
+	
+			@Override	
+			public void actionPerformed(ActionEvent e) {		
+				// TODO Auto-generated method stub		
+				tjpl.remove(b1ui.operationJpanel);
+				b1ui.setTitle("设置中转中心仓库管理员工资策略");
+				b1ui.b1.setEnabled(false);		
+				b1ui.b2.setEnabled(false);						
+				b1ui.b3.setEnabled(false);		
+				b1ui.b5.setEnabled(false);		
+				b1ui.b6.setEnabled(false);				
+		
+				new Salary(tui,tjpl,b1ui);	
+				b1ui.repaint();
+			}
+		});
+
+		b5.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				tjpl.remove(b1ui.operationJpanel);
+				b1ui.setTitle("设置财务人员工资策略");
+				b1ui.b1.setEnabled(false);
+				b1ui.b2.setEnabled(false);
+				b1ui.b3.setEnabled(false);
+				b1ui.b4.setEnabled(false);
+				b1ui.b6.setEnabled(false);
+
+				new Salary(tui,tjpl,b1ui);
+				b1ui.repaint();
+			}
+		});
+
+		b6.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				tjpl.remove(b1ui.operationJpanel);
+				b1ui.setTitle("设置系统管理员工资策略");
+				b1ui.b2.setEnabled(false);
+				b1ui.b3.setEnabled(false);
+				b1ui.b4.setEnabled(false);
+				b1ui.b5.setEnabled(false);
+				b1ui.b1.setEnabled(false);
+
+				new Salary(tui,tjpl,b1ui);
+				b1ui.dispose();	
+			}
+		});
+
+	}
 
 }
 class topmanagerb1OperationJpanel extends JPanel{
@@ -85,6 +214,18 @@ class topmanagerb1OperationJpanel extends JPanel{
 		registListener(topmanagerui, b1topmanagerui);
 	}
 	private void init(){
+		this.setLayout(null);
+
+		Font font=new Font("幼圆",Font.BOLD,50);
+		
+		JLabel welcome = new JLabel("请选择员工种类");
+		welcome.setFont(font);
+		welcome.setForeground(Color.WHITE);
+		welcome.setBounds(200, 200, 400, 100);
+		this.add(welcome);
+		
+		this.setBounds(260, 30, 730,650);
+		this.setOpaque(false);
 		ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662, 575, 48,48);
