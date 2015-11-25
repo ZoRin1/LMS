@@ -45,12 +45,13 @@ class mainFrame extends JFrame{
 	private mainJpanel mainJPanel;
 	private JLabel titleJLabel;
 	private JButton tuichuButton;
+	private JButton zuixiaohuaButton;
 		public mainFrame(String s,String []args) {
 			// TODO Auto-generated constructor stub
 			super(s);
 			init();
 			//此方法为预览各个界面，之后删除
-			preview(this,args);
+			//preview(this,args);
 			registerLister(this,args);
 		}
 		private void init() {
@@ -60,6 +61,11 @@ class mainFrame extends JFrame{
 			ImageIcon checkIcon=new ImageIcon("picture/查询.png");
 			ImageIcon aboutIcon=new ImageIcon("picture/关于.png");
 			ImageIcon tuichuIcon=new ImageIcon("picture/退出.png");
+			ImageIcon zuixiaohuaIcon=new ImageIcon("picture/最小化.png");
+			zuixiaohuaButton=new JButton(zuixiaohuaIcon);
+			zuixiaohuaButton.setBounds(904, 0, 50, 50);
+			zuixiaohuaButton.setContentAreaFilled(false);
+			zuixiaohuaButton.setBorderPainted(false);
 			tuichuButton=new JButton(tuichuIcon);
 			tuichuButton.setBounds(974, 0, 50, 50);
 			tuichuButton.setContentAreaFilled(false);
@@ -121,6 +127,7 @@ class mainFrame extends JFrame{
 			mainJPanel.add(passwordJLabel);
 			mainJPanel.add(titleJLabel);
 			mainJPanel.add(tuichuButton);
+			mainJPanel.add(zuixiaohuaButton);
 			this.setContentPane(mainJPanel);
 			this.setSize( 1024, 730);
 			//居中
@@ -145,6 +152,39 @@ class mainFrame extends JFrame{
 //				System.exit(0);	
 //				}
 //			});
+			zuixiaohuaButton.addMouseListener(new MouseListener() {
+				ImageIcon zuixiaohuaIcon=new ImageIcon("picture/最小化.png");
+				ImageIcon zuixiaohuaIcon2=new ImageIcon("picture/最小化2.png");
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+					 mf.setExtendedState(JFrame.ICONIFIED);
+				}
+				
+				@Override
+				public void mouseExited(MouseEvent e) {
+					// TODO Auto-generated method stub
+					zuixiaohuaButton.setIcon(zuixiaohuaIcon);
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					// TODO Auto-generated method stub
+					zuixiaohuaButton.setIcon(zuixiaohuaIcon2);
+				}
+				
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
 			tuichuButton.addMouseListener(new MouseListener() {
 				ImageIcon tuichuIcon=new ImageIcon("picture/退出.png");
 				ImageIcon tuichuIcon2=new ImageIcon("picture/退出2.png");
