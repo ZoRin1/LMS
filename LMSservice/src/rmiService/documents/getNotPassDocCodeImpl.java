@@ -31,18 +31,12 @@ public class getNotPassDocCodeImpl extends UnicastRemoteObject implements getNot
 	public ArrayList<String> getNotPassDocCode(String account) throws RemoteException{
 		// TODO 自动生成的方法存根
 		ArrayList<String> arrayList=new ArrayList<String>();
-		sql="select code,doName from b出库单 where examined='1' and account ='"+account+"'";
+		sql="select code,doName from b付款单 where examined='1' and account ='"+account+"'";
 		try {
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			ResultSet resultSet=preparedStatement.executeQuery();
-			while (resultSet.next()) {
-				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
-			}
-			sql="select code,doName from b付款单 where examined='1' and account ='"+account+"'";
-			 preparedStatement=connection.prepareStatement(sql);
-			 resultSet=preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
 			}
@@ -53,12 +47,6 @@ public class getNotPassDocCodeImpl extends UnicastRemoteObject implements getNot
 				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
 			}
 			sql="select code,doName from b派件单 where examined='1' and account ='"+account+"'";
-			 preparedStatement=connection.prepareStatement(sql);
-			 resultSet=preparedStatement.executeQuery();
-			while (resultSet.next()) {
-				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
-			}
-			sql="select code,doName from b入库单 where examined='1' and account ='"+account+"'";
 			 preparedStatement=connection.prepareStatement(sql);
 			 resultSet=preparedStatement.executeQuery();
 			while (resultSet.next()) {

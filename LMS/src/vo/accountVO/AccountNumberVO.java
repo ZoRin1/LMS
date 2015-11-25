@@ -30,10 +30,10 @@ public class AccountNumberVO {
 	 */
 	private String phone;//电话号码
 	private String sID;//身份证号码
-	private Calendar date;//注册时间
+	private String date;//注册时间
 	
 	
-	public AccountNumberVO(String name, long iD, String password, String state, String phone, String sID, Calendar date) {
+	public AccountNumberVO(String name, long iD, String password, String state, String phone, String sID, String date) {
 		super();
 		this.name = name;
 		ID = iD;
@@ -68,10 +68,10 @@ public class AccountNumberVO {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public Calendar getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Calendar date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

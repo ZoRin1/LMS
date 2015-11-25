@@ -44,7 +44,7 @@ public class addDocummentInfoDataSerImpl extends UnicastRemoteObject implements 
 		switch (po.getDoName()) {
 		case "出库单":
 			OutbillsPO outbillsPO=(OutbillsPO)po;
-			sql="insert into b出库单(code,doName,packCode,date,account,arrival,Mode,transCode,examined) values ('"+outbillsPO.getCode()+"','"+outbillsPO.getDoName()+"','"+outbillsPO.getPackCode()+"','"+outbillsPO.getDate()+"','"+outbillsPO.getAccount()+"','"+outbillsPO.getArrival()+"','"+outbillsPO.getMode()+"','"+outbillsPO.getTransCode()+"',0)";
+			sql="insert into 出库单(code,doName,packCode,date,account,arrival,Mode,transCode,examined) values ('"+outbillsPO.getCode()+"','"+outbillsPO.getDoName()+"','"+outbillsPO.getPackCode()+"','"+outbillsPO.getDate()+"','"+outbillsPO.getAccount()+"','"+outbillsPO.getArrival()+"','"+outbillsPO.getMode()+"','"+outbillsPO.getTransCode()+"',0)";
 			break;
 		case "付款单":
 			PaymentPO paymentPO=(PaymentPO)po;
@@ -65,7 +65,7 @@ public class addDocummentInfoDataSerImpl extends UnicastRemoteObject implements 
 			break;
 		case "入库单":
 			InBillsPO inBillsPO=(InBillsPO)po;
-			sql="insert into b入库单 (code,doName,InDepotNum,InDepotDate,account,Destination,AreaNum,RowNum,ShelvesNum,SositionNum,examined) values ('"+inBillsPO.getCode()+"','"+inBillsPO.getDoName()+"','"+inBillsPO.getInDepotNum()+"','"+inBillsPO.getInDepotDate()+"','"+inBillsPO.getAccount()+"','"+inBillsPO.getDestination()+"','"+inBillsPO.getAreaNum()+"','"+inBillsPO.getRowNum()+"','"+inBillsPO.getShelvesNum()+"','"+inBillsPO.getSositionNum()+"',0)";
+			sql="insert into 入库单 (code,doName,InDepotNum,InDepotDate,account,Destination,AreaNum,RowNum,ShelvesNum,SositionNum,examined) values ('"+inBillsPO.getCode()+"','"+inBillsPO.getDoName()+"','"+inBillsPO.getInDepotNum()+"','"+inBillsPO.getInDepotDate()+"','"+inBillsPO.getAccount()+"','"+inBillsPO.getDestination()+"','"+inBillsPO.getAreaNum()+"','"+inBillsPO.getRowNum()+"','"+inBillsPO.getShelvesNum()+"','"+inBillsPO.getSositionNum()+"',0)";
 			break;
 		case "收件单":
 			GetOrderPO getOrderPO=(GetOrderPO)po;

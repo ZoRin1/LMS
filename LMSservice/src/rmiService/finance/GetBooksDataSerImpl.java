@@ -31,12 +31,13 @@ public class GetBooksDataSerImpl extends UnicastRemoteObject implements GetBooks
 	public BooksPO Books(String date)  throws RemoteException{
 		// TODO 自动生成的方法存根
 		sql="SELECT *  from 帐本 where year"+date;
+		BooksPO po = null;
 		try {
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			ResultSet resultSet=preparedStatement.executeQuery();
-			BooksPO po;
+			po = new BooksPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7));
 			//有待改进
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -45,7 +46,7 @@ public class GetBooksDataSerImpl extends UnicastRemoteObject implements GetBooks
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return po;
 	}
 	
 }
