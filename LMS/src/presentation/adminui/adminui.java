@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import businesslogic.financebl.AccountManageModel.addAccountBL;
 import presentation.mainui.mainui;
 import presentation.senderui.senderui;
+import vo.accountVO.AccountNumberVO;
 
 public class adminui extends JFrame{
 			private String[] args;
@@ -29,6 +30,7 @@ public class adminui extends JFrame{
 			private adminJpanel adminJpanel;
 			adminOperationJpanel operationJpanel;
 			JButton outjButton;
+			private JButton account;//用来调用账号详细信息界面，实现账号表显示后去掉
 			public adminui(String s,String[] args) {
 				// TODO Auto-generated constructor stub
 				super(s);
@@ -69,6 +71,12 @@ public class adminui extends JFrame{
 				adminJpanel.add(accountField);
 				adminJpanel.add(searchButton);
 				
+				account = new JButton("账号");//账号详细信息，稍后删除
+				account.setFont(new Font("幼圆", Font.BOLD, 30));
+				account.setForeground(Color.WHITE);
+				account.setBounds(40, 520, 120, 40);
+				adminJpanel.add(account);
+				
 				adminJpanel.setLayout(null);
 				this.add(adminJpanel);
 				this.setSize( 1024, 730);
@@ -82,6 +90,10 @@ public class adminui extends JFrame{
 				this.setLocation((screenWidth-windowWidth)/2, (screenHeight-windowHeight)/2);
 				this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				//不允许窗口改变大小
+				
+				
+				
+				
 				this.setResizable(false);
 				this.setVisible(true);
 			}
@@ -96,22 +108,39 @@ public class adminui extends JFrame{
 					}
 				});
 				
-				addaccountButton.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						// TODO Auto-generated method stub
-						apl.remove(aui.operationJpanel);
-						aui.searchButton.setEnabled(false);
-						aui.addaccountButton.setEnabled(false);
-						aui.accountField.setEditable(false);
+		addaccountButton.addActionListener(new ActionListener() {
 
-						new AddAccount(aui, apl);
-						aui.repaint();
-					}
-				}
-					
-				);
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				apl.remove(aui.operationJpanel);
+				aui.searchButton.setEnabled(false);
+				aui.addaccountButton.setEnabled(false);
+				aui.accountField.setEditable(false);
+
+				new AddAccount(aui, apl);
+				aui.repaint();
+			}
+		}
+
+		);
+		
+		account.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				apl.remove(aui.operationJpanel);
+				aui.searchButton.setEnabled(false);
+				aui.addaccountButton.setEnabled(false);
+				aui.accountField.setEditable(false);
+
+				AccountNumberVO accountNumberVO = new AccountNumberVO("杨华安", 1000000, "admin", null, "13270807992", "522123199505051039", "2015-11-26");
+				
+				new AccountInfo(aui,apl, accountNumberVO);
+				aui.repaint();
+			}
+		});
 			}
 }
 class adminJpanel extends JPanel{
@@ -126,10 +155,12 @@ class adminOperationJpanel extends JPanel{
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
 	private JLabel welcome1;
 	private JLabel welcome2;
+	
 	public adminOperationJpanel(adminJpanel adminJpanel) {
 		// TODO Auto-generated constructor stub
 		init();
 		adminJpanel.add(this);
+		
 	}
 	private void init(){
 		
@@ -150,7 +181,12 @@ class adminOperationJpanel extends JPanel{
 		this.add(welcome2);
 		this.setBounds(260, 30, 730,650);
 		this.setOpaque(false);
+		
+		
+		
 	}
+
+	
 	public void paintComponent(Graphics g)  
 	{  
 	    super.paintComponent(g);    
