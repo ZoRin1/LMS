@@ -13,5 +13,5 @@ public interface GetBooksDataSer extends Remote{
 	 * @author YangGuan
 	 *
 	 */
-	public BooksPO Books(String year) throws RemoteException;
+	public BooksPO Books(String date) throws RemoteException;
 }

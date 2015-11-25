@@ -28,9 +28,9 @@ public class GetBooksDataSerImpl extends UnicastRemoteObject implements GetBooks
 	}
 
 	@Override
-	public BooksPO Books(String year)  throws RemoteException{
+	public BooksPO Books(String date)  throws RemoteException{
 		// TODO 自动生成的方法存根
-		sql="SELECT *  from 帐本表 where year"+year;
+		sql="SELECT *  from 帐本 where year"+date;
 		try {
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);

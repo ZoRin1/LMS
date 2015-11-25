@@ -1,89 +1,94 @@
 package vo.financeVO;
 
-import java.util.ArrayList;
 
-import po.orgPO.BussinessOrgPO;
-import po.orgPO.VehiclePO;
-import po.accountPO.*;
-import po.documentsPO.InBillsPO;
-import po.financePO.AccountPO;
 
 /**
- * 用于显示账本信息
+ * 用于存储或返回账本信息
  * @author YangGuan
  *
  */
-public class BooksVO {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+import po.accountPO.AccountInfoPO;
+import po.documentsPO.InBillsPO;
+import po.orgPO.BussinessOrgPO;
+import po.orgPO.VehiclePO;
+
+
+public class BooksVO  implements Serializable {
 	
-	private ArrayList<BussinessOrgPO>  ArrOrg; // 机构
-	private ArrayList<AccountInfoPO>  person; //人员
-	private ArrayList<VehiclePO>  Vehicle; // 车辆
-	private ArrayList<AccountPO> Account; //账户
-	private ArrayList<InBillsPO> InBills; // 入库单（不知道是不是库存）
+	private String  bussinessHallCode; // 机构
+	private String  middleCode;
+	private String  financeCode;
+	private String  IDCode; //人员
+	private String  VehicleCode; // 车辆
+	private String AccountName; //账户
 	
-	
-	public BooksVO(ArrayList<BussinessOrgPO> arrOrg, ArrayList<AccountInfoPO> person,
-			ArrayList<VehiclePO> vehicle, ArrayList<AccountPO> account,
-			ArrayList<InBillsPO> inBills) {
+	public BooksVO(String bussinessHallCode, String middleCode,
+			String financeCode, String iDCode, String vehicleCode,
+			String accountName) {
 		super();
-		ArrOrg = arrOrg;
-		this.person = person;
-		Vehicle = vehicle;
-		Account = account;
-		InBills = inBills;
+		this.bussinessHallCode = bussinessHallCode;
+		this.middleCode = middleCode;
+		this.financeCode = financeCode;
+		this.IDCode = iDCode;
+		this.VehicleCode = vehicleCode;
+		this.AccountName = accountName;
 	}
 
-
-	public ArrayList<BussinessOrgPO> getArrOrg() {
-		return ArrOrg;
+	public String getBussinessHallCode() {
+		return bussinessHallCode;
 	}
 
-
-	public void setArrOrg(ArrayList<BussinessOrgPO> arrOrg) {
-		ArrOrg = arrOrg;
+	public void setBussinessHallCode(String bussinessHallCode) {
+		this.bussinessHallCode = bussinessHallCode;
 	}
 
-
-	public ArrayList<AccountInfoPO> getPerson() {
-		return person;
+	public String getMiddleCode() {
+		return middleCode;
 	}
 
-
-	public void setPerson(ArrayList<AccountInfoPO> person) {
-		this.person = person;
+	public void setMiddleCode(String middleCode) {
+		this.middleCode = middleCode;
 	}
 
-
-	public ArrayList<VehiclePO> getVehicle() {
-		return Vehicle;
+	public String getFinanceCode() {
+		return financeCode;
 	}
 
-
-	public void setVehicle(ArrayList<VehiclePO> vehicle) {
-		Vehicle = vehicle;
+	public void setFinanceCode(String financeCode) {
+		this.financeCode = financeCode;
 	}
 
-
-	public ArrayList<AccountPO> getAccount() {
-		return Account;
+	public String getIDCode() {
+		return IDCode;
 	}
 
-
-	public void setAccount(ArrayList<AccountPO> account) {
-		Account = account;
+	public void setIDCode(String iDCode) {
+		IDCode = iDCode;
 	}
 
-
-	public ArrayList<InBillsPO> getInBills() {
-		return InBills;
+	public String getVehicleCode() {
+		return VehicleCode;
 	}
 
-
-	public void setInBills(ArrayList<InBillsPO> inBills) {
-		InBills = inBills;
+	public void setVehicleCode(String vehicleCode) {
+		VehicleCode = vehicleCode;
 	}
+
+	public String getAccountName() {
+		return AccountName;
+	}
+
+	public void setAccountName(String accountName) {
+		AccountName = accountName;
+	}
+
 	
-	
+
+
+
 	
 	
 }

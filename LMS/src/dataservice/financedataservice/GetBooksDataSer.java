@@ -10,5 +10,5 @@ public interface GetBooksDataSer {
 	 * @author YangGuan
 	 *
 	 */
-	public BooksPO Books(String year);
+	public BooksPO Books(String date);
 }
