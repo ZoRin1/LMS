@@ -60,7 +60,6 @@ class mainFrame extends JFrame{
 			ImageIcon checkIcon=new ImageIcon("picture/查询.png");
 			ImageIcon aboutIcon=new ImageIcon("picture/关于.png");
 			ImageIcon tuichuIcon=new ImageIcon("picture/退出.png");
-			ImageIcon tuichuIcon2=new ImageIcon("picture/退出2.png");
 			tuichuButton=new JButton(tuichuIcon);
 			tuichuButton.setBounds(974, 0, 50, 50);
 			tuichuButton.setContentAreaFilled(false);
