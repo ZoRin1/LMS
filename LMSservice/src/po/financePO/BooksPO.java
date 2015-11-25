@@ -24,10 +24,11 @@ public class BooksPO  implements Serializable {
 	private String  IDCode; //人员
 	private String  VehicleCode; // 车辆
 	private String AccountName; //账户
+	private String date;//日期
 	
 	public BooksPO(String bussinessHallCode, String middleCode,
 			String financeCode, String iDCode, String vehicleCode,
-			String accountName) {
+			String accountName,String date) {
 		super();
 		this.bussinessHallCode = bussinessHallCode;
 		this.middleCode = middleCode;
@@ -35,6 +36,7 @@ public class BooksPO  implements Serializable {
 		this.IDCode = iDCode;
 		this.VehicleCode = vehicleCode;
 		this.AccountName = accountName;
+		this.date = date;
 	}
 
 	public String getBussinessHallCode() {
@@ -85,10 +87,13 @@ public class BooksPO  implements Serializable {
 		AccountName = accountName;
 	}
 
-	
+	public String getDate() {
+		return date;
+	}
 
+	public void setDate(String date) {
+		this.date = date;
+	}
 
-
-	
 	
 }

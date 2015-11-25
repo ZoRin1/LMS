@@ -7,6 +7,6 @@ import po.storagePO.DepotPO;
 
 public interface GetDepotDataSer extends Remote{
 	
-	public DepotPO getDepot(String city) throws RemoteException;
+	public DepotPO getDepot(String city, int AreaNum) throws RemoteException;
 	
 }
