@@ -46,7 +46,7 @@ public class deleteDataSerImpl extends UnicastRemoteObject implements deleteData
 				sql="insert into 付款单(code,doName,date,account,fund,name,account2,type,remark) values ('"+resultSet.getString(1)+"','"+resultSet.getString(2)+"','"+resultSet.getString(3)+"','"+resultSet.getString(4)+"','"+resultSet.getString(5)+"','"+resultSet.getString(6)+"','"+resultSet.getString(7)+"','"+resultSet.getString(8)+"','"+resultSet.getString(9)+"')";
 				break;
 			case "寄件单":
-				sql="insert into 寄件单(code,doName,account,date,SenderName,SenderAddress,SenderOrg,SPhoneNumber,SMobileNumber,ReceiverName,ReceiverAddress,ReceiverOrg,RPhoneNumber,RMobileNumber,number,weight,shape,cargoNameList,sizeList,sumCost,state) values ('"+resultSet.getString(1)+"','"+resultSet.getString(2)+"','"+resultSet.getString(3)+"','"+resultSet.getString(4)+"','"+resultSet.getString(5)+"','"+resultSet.getString(6)+"','"+resultSet.getString(7)+"','"+resultSet.getString(8)+"','"+resultSet.getString(9)+","+resultSet.getString(10)+"','"+resultSet.getString(11)+"','"+resultSet.getString(12)+"','"+resultSet.getString(13)+"','"+resultSet.getString(14)+"','"+resultSet.getInt(15)+"','"+resultSet.getDouble(16)+"','"+resultSet.getDouble(17)+"','"+resultSet.getString(18)+"','"+resultSet.getString(19)+"','"+resultSet.getDouble(20)+"','"+resultSet.getString(21)+"')";
+				sql="insert into 寄件单(code,doName,account,date,SenderName,SenderAddress,SenderOrg,SPhoneNumber,SMobileNumber,ReceiverName,ReceiverAddress,ReceiverOrg,RPhoneNumber,RMobileNumber,number,weight,shape,cargoNameList,sizeList,sumCost,state) values ('"+resultSet.getString(1)+"','"+resultSet.getString(2)+"','"+resultSet.getString(3)+"','"+resultSet.getString(4)+"','"+resultSet.getString(5)+"','"+resultSet.getString(6)+"','"+resultSet.getString(7)+"','"+resultSet.getString(8)+"','"+resultSet.getString(9)+"','"+resultSet.getString(10)+"','"+resultSet.getString(11)+"','"+resultSet.getString(12)+"','"+resultSet.getString(13)+"','"+resultSet.getString(14)+"','"+resultSet.getInt(15)+"','"+resultSet.getDouble(16)+"','"+resultSet.getDouble(17)+"','"+resultSet.getString(18)+"','"+resultSet.getString(19)+"','"+resultSet.getDouble(20)+"','"+resultSet.getString(21)+"')";
 			break;
 			case "派件单":
 				sql="insert into 派件单(code,code2,doName,account,date,name) values ('"+resultSet.getString(1)+"','"+resultSet.getString(2)+"','"+resultSet.getString(3)+"','"+resultSet.getString(4)+"','"+resultSet.getString(5)+"','"+resultSet.getString(6)+"')";
@@ -80,7 +80,6 @@ public class deleteDataSerImpl extends UnicastRemoteObject implements deleteData
 			String dateString;
 			String stateString;
 			String s[];
-			String code2String;
 			switch (doName) {
 			case "寄件单":
 				sql="select account,date from b寄件单 where code='"+code+"'";
@@ -95,7 +94,7 @@ public class deleteDataSerImpl extends UnicastRemoteObject implements deleteData
 				stateString=resultSet2.getString(1);
 				s=stateString.split("-");
 				String wuliu1=dateString+" 您的快递已到达"+s[2]+"营业厅";
-				sql="insert into 物流信息 (code,wuliu1) values ("+code+","+wuliu1+")";
+				sql="insert into 物流信息 (code,wuliu1) values ('"+code+"','"+wuliu1+"')";
 				preparedStatement=connection.prepareStatement(sql);
 				preparedStatement.executeUpdate();
 				break;
@@ -105,7 +104,7 @@ public class deleteDataSerImpl extends UnicastRemoteObject implements deleteData
 				resultSet2=preparedStatement.executeQuery();
 				resultSet2.next();		
 				String wuliu9=resultSet2.getString(2)+" 您的快递已签收 签收人:"+resultSet2.getString(3);
-				sql="update 物流信息 set wuliu9="+wuliu9+" where code='"+resultSet2.getString(1)+"'";
+				sql="update 物流信息 set wuliu9='"+wuliu9+"' where code='"+resultSet2.getString(1)+"'";
 				preparedStatement=connection.prepareStatement(sql);
 				preparedStatement.executeUpdate();
 				break;
@@ -115,7 +114,7 @@ public class deleteDataSerImpl extends UnicastRemoteObject implements deleteData
 				resultSet2=preparedStatement.executeQuery();
 				resultSet2.next();
 				String wuliu7=resultSet2.getString(2)+" 您的快递已到达"+resultSet2.getString(3);
-				sql="update 物流信息 set wuliu7="+wuliu7+" where code='"+resultSet2.getString(1)+"'";
+				sql="update 物流信息 set wuliu7='"+wuliu7+"'  where code='"+resultSet2.getString(1)+"'";
 				preparedStatement=connection.prepareStatement(sql);
 				preparedStatement.executeUpdate();
 				break;
@@ -126,7 +125,7 @@ public class deleteDataSerImpl extends UnicastRemoteObject implements deleteData
 				resultSet2=preparedStatement.executeQuery();
 				resultSet2.next();
 				String wuliu8=resultSet2.getString(2)+" 您的快递正在派件";
-				sql="update 物流信息 set wuliu8="+wuliu8+"where code ='"+resultSet2.getString(1)+"'";
+				sql="update 物流信息 set wuliu8='"+wuliu8+"' where code ='"+resultSet2.getString(1)+"'";
 				preparedStatement=connection.prepareStatement(sql);
 				preparedStatement.executeUpdate();
 				break;
@@ -138,7 +137,7 @@ public class deleteDataSerImpl extends UnicastRemoteObject implements deleteData
 				s=resultSet2.getString(2).split(",");
 				String wuliu2=resultSet2.getString(1)+" 您的快递已离开"+resultSet2.getString(3);
 				for (int i = 0; i < s.length; i++) {
-					sql="update 物流信息 set wuliu2="+wuliu2+"where code ='"+s[i]+"'";
+					sql="update 物流信息 set wuliu2='"+wuliu2+"' where code ='"+s[i]+"'";
 					preparedStatement=connection.prepareStatement(sql);
 					preparedStatement.executeUpdate();
 				}
@@ -156,10 +155,10 @@ public class deleteDataSerImpl extends UnicastRemoteObject implements deleteData
 					resultSet2=preparedStatement.executeQuery();
 					resultSet2.next();
 					if (!resultSet2.getString(1).equals(null)) {
-						sql="update 物流信息 set wuliu5="+wuliu35+"where code ='"+s[i]+"'";
+						sql="update 物流信息 set wuliu5='"+wuliu35+"' where code ='"+s[i]+"'";
 					}
 					else {
-						sql="update 物流信息 set wuliu3="+wuliu35+"where code ='"+s[i]+"'";
+						sql="update 物流信息 set wuliu3='"+wuliu35+"' where code ='"+s[i]+"'";
 					}
 					preparedStatement=connection.prepareStatement(sql);
 					preparedStatement.executeUpdate();
@@ -178,10 +177,10 @@ public class deleteDataSerImpl extends UnicastRemoteObject implements deleteData
 					resultSet2=preparedStatement.executeQuery();
 					resultSet2.next();
 					if (!resultSet2.getString(1).equals(null)) {
-						sql="update 物流信息 set wuliu6="+wuliu46+"where code ='"+s[i]+"'";
+						sql="update 物流信息 set wuliu6='"+wuliu46+"' where code ='"+s[i]+"'";
 					}
 					else {
-						sql="update 物流信息 set wuliu4="+wuliu46+"where code ='"+s[i]+"'";
+						sql="update 物流信息 set wuliu4='"+wuliu46+"' where code ='"+s[i]+"'";
 					}
 					preparedStatement=connection.prepareStatement(sql);
 					preparedStatement.executeUpdate();
