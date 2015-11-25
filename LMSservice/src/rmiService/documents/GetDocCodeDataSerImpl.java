@@ -31,9 +31,9 @@ public class GetDocCodeDataSerImpl extends UnicastRemoteObject implements GetDoc
 	@Override
 	public String getDocCode(String doName) throws RemoteException{
 		// TODO Auto-generated method stub
-		sql="select code from "+doName;
+	
 		try {
-			Class.forName(DRIVER);
+			sql="select code from b"+doName;
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			ResultSet resultSet=preparedStatement.executeQuery();
@@ -48,11 +48,26 @@ public class GetDocCodeDataSerImpl extends UnicastRemoteObject implements GetDoc
 				return code;
 			}
 			else {
-				connection.close();
-				return "0000000001";
+				sql="select code from "+doName;
+				connection=DriverManager.getConnection(URL, USER, PASSWORD);
+				preparedStatement=connection.prepareStatement(sql);
+				resultSet=preparedStatement.executeQuery();
+					if (resultSet.last()) {		
+						int codenum=Integer.parseInt(resultSet.getString(1));
+						codenum=codenum+1;
+						String code=Integer.toString(codenum);
+						while (code.length()!=10) {
+							code="0"+code;
+						}
+						connection.close();
+						return code;
+					}
+					else {
+						connection.close();
+						return "0000000001";
+					}		
 			}
-			
-		} catch (ClassNotFoundException e) {
+		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -60,6 +75,6 @@ public class GetDocCodeDataSerImpl extends UnicastRemoteObject implements GetDoc
 			e.printStackTrace();
 		}
 		return null;	
+	
 	}
-
 }
