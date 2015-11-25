@@ -40,7 +40,7 @@ public class bhclerkui extends JFrame{
 		ImageIcon loaddocumentIcon=new ImageIcon("picture/装车单创建.png");
 		ImageIcon documentreplyIcon=new ImageIcon("picture/单据反馈.png");
 		outjButton=new JButton(outIcon);
-		outjButton.setBounds(30, 620, 48,48);
+		outjButton.setBounds(30, 650, 48,48);
 		outjButton.setContentAreaFilled(false);
 		loaddocumentbButton=new JButton(loaddocumentIcon);
 		loaddocumentbButton.setContentAreaFilled(false);
@@ -58,12 +58,12 @@ public class bhclerkui extends JFrame{
 		operationJpanel=new bhclerkOperationJpanel(bhclerkJpanel);
 
 
-		loaddocumentbButton.setBounds(30, 50,200, 50);
-		cashdocumentbButton.setBounds(30,150,200, 50);
-		acceptdocumentbButton.setBounds(30, 250, 200, 50);
-		carinformationbButton.setBounds(30, 350, 200, 50);
-		driverinformationbButton.setBounds(30, 450, 200, 50);
-		documentreplyButton.setBounds(30,550 ,200, 50);
+		loaddocumentbButton.setBounds(30, 80,200, 50);
+		cashdocumentbButton.setBounds(30,180,200, 50);
+		acceptdocumentbButton.setBounds(30, 280, 200, 50);
+		carinformationbButton.setBounds(30, 380, 200, 50);
+		driverinformationbButton.setBounds(30, 480, 200, 50);
+		documentreplyButton.setBounds(30,580 ,200, 50);
 		bhclerkJpanel.add(outjButton);
 		bhclerkJpanel.add(documentreplyButton);
 		bhclerkJpanel.add(loaddocumentbButton);
@@ -84,9 +84,9 @@ public class bhclerkui extends JFrame{
 		int windowWidth=this.getWidth();
 		int windowHeight=this.getHeight();
 		this.setLocation((screenWidth-windowWidth)/2, (screenHeight-windowHeight)/2);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//不允许窗口改变大小
 		this.setResizable(false);
+		this.setUndecorated(true);
 		this.setVisible(true);
 	}
 	private void registListener(final bhclerkui bhclerkui){
@@ -192,7 +192,7 @@ class bhclerkOperationJpanel extends JPanel{
 		bhclerkJpanel.add(this);
 	}
 	private void init(){
-		this.setBounds(260, 30, 730,650);
+		this.setBounds(260, 60, 730,650);
 		this.setOpaque(false);
 	}
 	public void paintComponent(Graphics g)  

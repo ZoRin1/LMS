@@ -108,7 +108,7 @@ public class Salary extends JPanel {
 		
 		
 		
-		this.setBounds(260, 30, 730,650);	 	
+		this.setBounds(260, 60, 730,650);	 	
 		
 	 	this.setLayout(null);
 		this.setOpaque(false);	

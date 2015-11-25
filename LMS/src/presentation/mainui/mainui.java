@@ -6,6 +6,8 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -42,6 +44,7 @@ class mainFrame extends JFrame{
 	private JLabel numberJLabel,passwordJLabel,codeJLabel;
 	private mainJpanel mainJPanel;
 	private JLabel titleJLabel;
+	private JButton tuichuButton;
 		public mainFrame(String s,String []args) {
 			// TODO Auto-generated constructor stub
 			super(s);
@@ -56,9 +59,14 @@ class mainFrame extends JFrame{
 			ImageIcon logicIcon=new ImageIcon("picture/登录.png");
 			ImageIcon checkIcon=new ImageIcon("picture/查询.png");
 			ImageIcon aboutIcon=new ImageIcon("picture/关于.png");
-			
+			ImageIcon tuichuIcon=new ImageIcon("picture/退出.png");
+			ImageIcon tuichuIcon2=new ImageIcon("picture/退出2.png");
+			tuichuButton=new JButton(tuichuIcon);
+			tuichuButton.setBounds(974, 0, 50, 50);
+			tuichuButton.setContentAreaFilled(false);
+			tuichuButton.setBorderPainted(false);
 			titleJLabel=new JLabel(titleIcon);
-			titleJLabel.setBounds(0, 20, 1024, 150);
+			titleJLabel.setBounds(0, 50, 1024, 150);
 			numberIconJLabel=new JLabel(numberIcon);
 			codeJTextField=new JTextField();
 			codeJTextField.setOpaque(false);
@@ -91,16 +99,16 @@ class mainFrame extends JFrame{
 
 			checkButton.setContentAreaFilled(false);
 			mainJPanel.setLayout(null);
-			codeJTextField.setBounds(400, 240, 250, 30);
-			codeJLabel.setBounds(250,240, 150, 30);
-			accountnumberJTextField.setBounds(400, 350, 250, 30);
-			passwordField.setBounds(400,400,250,30);
-			checkButton.setBounds(710,220,64,64);
-			loginButton.setBounds(590,460 , 64, 64);
-			aboutButton.setBounds(840, 610, 150, 50);
-			numberJLabel.setBounds(300, 350, 100, 30);
-			numberIconJLabel.setBounds(220, 340,52, 52);
-			passwordJLabel.setBounds(300, 400,100, 30);
+			codeJTextField.setBounds(400, 270, 250, 30);
+			codeJLabel.setBounds(250,270, 150, 30);
+			accountnumberJTextField.setBounds(400, 400, 250, 30);
+			passwordField.setBounds(400,460,250,30);
+			checkButton.setBounds(710,250,64,64);
+			loginButton.setBounds(590,520 , 64, 64);
+			aboutButton.setBounds(840, 640, 150, 50);
+			numberJLabel.setBounds(300, 400, 100, 30);
+			numberIconJLabel.setBounds(220, 380,52, 52);
+			passwordJLabel.setBounds(300, 460,100, 30);
 			checkButton.setForeground(Color.RED);
 			mainJPanel.add(numberIconJLabel);
 			mainJPanel.add(codeJLabel);
@@ -113,6 +121,7 @@ class mainFrame extends JFrame{
 			mainJPanel.add(numberJLabel);
 			mainJPanel.add(passwordJLabel);
 			mainJPanel.add(titleJLabel);
+			mainJPanel.add(tuichuButton);
 			this.setContentPane(mainJPanel);
 			this.setSize( 1024, 730);
 			//居中
@@ -123,13 +132,53 @@ class mainFrame extends JFrame{
 			int windowWidth=this.getWidth();
 			int windowHeight=this.getHeight();
 			this.setLocation((screenWidth-windowWidth)/2, (screenHeight-windowHeight)/2);
-			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			//不允许窗口改变大小
 			this.setResizable(false);
-			
+			this.setUndecorated(true);
 			this.setVisible(true);
 		}
 		private void registerLister(final mainFrame mf,final String[] args) {
+//			tuichuButton.addActionListener(new ActionListener() {
+//				
+//				@Override
+//				public void actionPerformed(ActionEvent e) {
+//					// TODO Auto-generated method stub
+//				System.exit(0);	
+//				}
+//			});
+			tuichuButton.addMouseListener(new MouseListener() {
+				ImageIcon tuichuIcon=new ImageIcon("picture/退出.png");
+				ImageIcon tuichuIcon2=new ImageIcon("picture/退出2.png");
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+					System.exit(0);	
+				}
+				
+				@Override
+				public void mouseExited(MouseEvent e) {
+					// TODO Auto-generated method stub
+					tuichuButton.setIcon(tuichuIcon);
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					// TODO Auto-generated method stub
+					tuichuButton.setIcon(tuichuIcon2);
+				}
+				
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
 			loginButton.addActionListener(new ActionListener() {
 				
 				@Override
@@ -155,7 +204,7 @@ class mainFrame extends JFrame{
 				}
 			});
 		}
-		//此方法为预览各个界面，之后删除
+//		此方法为预览各个界面，之后删除
 		private void preview(final mainFrame mf,final String[] args){
 			JLabel privewJLabel=new JLabel("预览界面");
 			 JButton b1,b2,b3,b4,b5,b6,b7;

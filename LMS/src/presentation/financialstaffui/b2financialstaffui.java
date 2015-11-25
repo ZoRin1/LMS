@@ -36,11 +36,11 @@ public class b2financialstaffui extends JFrame{
 		b3=new JButton(b3Icon);
 		b4=new JButton(b4Icon);
 		b5=new JButton(b5Icon);
-		b1.setBounds(30, 100,200, 50);
-		b2.setBounds(30, 200,200, 50);
-		b3.setBounds(30, 300,200, 50);
-		b4.setBounds(30, 400,200, 50);
-		b5.setBounds(30, 500,200, 50);
+		b1.setBounds(30, 130,200, 50);
+		b2.setBounds(30, 230,200, 50);
+		b3.setBounds(30, 330,200, 50);
+		b4.setBounds(30, 430,200, 50);
+		b5.setBounds(30, 530,200, 50);
 		b1.setContentAreaFilled(false);
 		b2.setContentAreaFilled(false);
 		b3.setContentAreaFilled(false);
@@ -64,9 +64,9 @@ public class b2financialstaffui extends JFrame{
 		int windowWidth=this.getWidth();
 		int windowHeight=this.getHeight();
 		this.setLocation((screenWidth-windowWidth)/2, (screenHeight-windowHeight)/2);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//不允许窗口改变大小
 		this.setResizable(false);
+		this.setUndecorated(true);
 		this.setVisible(true);
 	}
 }
@@ -86,8 +86,7 @@ class financialstaffb2OperationJpanel extends JPanel{
 		returnButton.setContentAreaFilled(false);	
 		this.setLayout(null);
 		this.setOpaque(false);
-		this.setBounds(260, 30,730,650);
-		this.setBounds(260, 30, 730,650);
+		this.setBounds(260, 60,730,650);
 		this.add(returnButton);
 	}
 	private void registListener(final financialstaffui fsui,final b2financialstaffui b2fsui){

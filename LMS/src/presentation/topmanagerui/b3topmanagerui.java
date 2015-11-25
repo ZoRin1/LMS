@@ -57,17 +57,17 @@ public class b3topmanagerui extends JFrame{
 		b9.setContentAreaFilled(false);
 		b10.setContentAreaFilled(false);
 		b11.setContentAreaFilled(false);
-		b1.setBounds(30, 40,200, 50);
-		b2.setBounds(30,95,200, 50);
-		b3.setBounds(30,150,200, 50);
-		b4.setBounds(30,205,200, 50);
-		b5.setBounds(30,260,200, 50);
-		b6.setBounds(30,315,200, 50);
-		b7.setBounds(30,370,200, 50);
-		b8.setBounds(30,425,200, 50);
-		b9.setBounds(30,480,200, 50);
-		b10.setBounds(30,535,200, 50);
-		b11.setBounds(30,590,200, 50);
+		b1.setBounds(30, 70,200, 50);
+		b2.setBounds(30,125,200, 50);
+		b3.setBounds(30,180,200, 50);
+		b4.setBounds(30,235,200, 50);
+		b5.setBounds(30,290,200, 50);
+		b6.setBounds(30,345,200, 50);
+		b7.setBounds(30,400,200, 50);
+		b8.setBounds(30,455,200, 50);
+		b9.setBounds(30,510,200, 50);
+		b10.setBounds(30,565,200, 50);
+		b11.setBounds(30,620,200, 50);
 		topmanagerJpanel.add(b1);
 		topmanagerJpanel.add(b2);
 		topmanagerJpanel.add(b3);
@@ -91,9 +91,9 @@ public class b3topmanagerui extends JFrame{
 		int windowWidth=this.getWidth();
 		int windowHeight=this.getHeight();
 		this.setLocation((screenWidth-windowWidth)/2, (screenHeight-windowHeight)/2);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//不允许窗口改变大小
 		this.setResizable(false);
+		this.setUndecorated(true);
 		this.setVisible(true);
 	}
 
@@ -112,7 +112,7 @@ class topmanagerb3OperationJpanel extends JPanel{
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662, 575, 48,48);
 		returnButton.setContentAreaFilled(false);
-		this.setBounds(260, 30,730,650);
+		this.setBounds(260, 60,730,650);
 		this.setOpaque(false);
 		this.setLayout(null);
 		this.add(returnButton);

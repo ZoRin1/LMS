@@ -32,8 +32,8 @@ public class b1financialstaffui extends JFrame{
 		b1.setContentAreaFilled(false);
 		b2.setContentAreaFilled(false);
 	
-		b1.setBounds(30, 200,200, 50);
-		b2.setBounds(30, 400,200, 50);
+		b1.setBounds(30, 230,200, 50);
+		b2.setBounds(30, 430,200, 50);
 		financialstaffJpanel.add(b1);
 		financialstaffJpanel.add(b2);
 		financialstaffJpanel.setLayout(null);
@@ -48,9 +48,9 @@ public class b1financialstaffui extends JFrame{
 		int windowWidth=this.getWidth();
 		int windowHeight=this.getHeight();
 		this.setLocation((screenWidth-windowWidth)/2, (screenHeight-windowHeight)/2);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//不允许窗口改变大小
 		this.setResizable(false);
+		this.setUndecorated(true);
 		this.setVisible(true);
 	}
 
@@ -71,8 +71,7 @@ class financialstaffb1OperationJpanel extends JPanel{
 		returnButton.setContentAreaFilled(false);	
 		this.setLayout(null);
 		this.setOpaque(false);
-		this.setBounds(260, 30,730,650);
-		this.setBounds(260, 30, 730,650);
+		this.setBounds(260, 60,730,650);
 		this.add(returnButton);
 	}
 	private void registListener(final financialstaffui fsui,final b1financialstaffui b1fsui){

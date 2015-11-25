@@ -23,7 +23,7 @@ public class documentb2Jpanel1 extends JPanel{
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662, 575,48,48);
 		returnButton.setContentAreaFilled(false);
-	 	this.setBounds(260, 30, 730,650);
+	 	this.setBounds(260, 60, 730,650);
 	 	this.add(returnButton);
 	 	this.setLayout(null);
 	 	this.setOpaque(false);

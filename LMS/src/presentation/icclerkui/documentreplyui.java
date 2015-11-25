@@ -31,9 +31,9 @@ public class documentreplyui extends JFrame{
 		b1=new JButton(b1Icon);
 		b2=new JButton(b2Icon);
 		b3=new JButton(b3Icon);
-		b1.setBounds(30, 150,200, 50);
-		b2.setBounds(30, 250,200, 50);
-		b3.setBounds(30, 350, 200, 50);
+		b1.setBounds(30, 180,200, 50);
+		b2.setBounds(30, 280,200, 50);
+		b3.setBounds(30, 380, 200, 50);
 		b1.setContentAreaFilled(false);
 		b2.setContentAreaFilled(false);
 		b3.setContentAreaFilled(false);
@@ -51,9 +51,9 @@ public class documentreplyui extends JFrame{
 		int windowWidth=this.getWidth();
 		int windowHeight=this.getHeight();
 		this.setLocation((screenWidth-windowWidth)/2, (screenHeight-windowHeight)/2);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//不允许窗口改变大小
 		this.setResizable(false);
+		this.setUndecorated(true);
 		this.setVisible(true);
 	}
 
@@ -73,7 +73,7 @@ class icclerkdocumentreplyOperationJpanel extends JPanel{
 		returnButton.setBounds(662, 575,48,48);
 		returnButton.setContentAreaFilled(false);
 		this.add(returnButton);
-		this.setBounds(260, 30, 730,650);
+		this.setBounds(260, 60, 730,650);
 		this.setOpaque(false);
 		this.setLayout(null);
 	}

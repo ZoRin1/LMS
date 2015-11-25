@@ -60,7 +60,7 @@ public class adminui extends JFrame{
 				searchButton.setBounds(180, 250, 48, 48);
 				searchButton.setContentAreaFilled(false);
 
-				outjButton.setBounds(30, 620, 48,48);
+				outjButton.setBounds(30, 650, 48,48);
 				outjButton.setContentAreaFilled(false);
 				accountJLabel.setFont(new Font("幼圆",Font.BOLD, 20));
 				accountJLabel.setForeground(Color.white);
@@ -88,12 +88,11 @@ public class adminui extends JFrame{
 				int windowWidth=this.getWidth();
 				int windowHeight=this.getHeight();
 				this.setLocation((screenWidth-windowWidth)/2, (screenHeight-windowHeight)/2);
-				this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				//不允许窗口改变大小
 				
 				
 				
-				
+				this.setUndecorated(true);
 				this.setResizable(false);
 				this.setVisible(true);
 			}
@@ -179,7 +178,7 @@ class adminOperationJpanel extends JPanel{
 		welcome2.setForeground(Color.WHITE);
 		welcome2.setBounds(110, 300, 700, 100);
 		this.add(welcome2);
-		this.setBounds(260, 30, 730,650);
+		this.setBounds(260, 60, 730,650);
 		this.setOpaque(false);
 		
 		

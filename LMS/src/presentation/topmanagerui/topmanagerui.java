@@ -47,15 +47,15 @@ public class topmanagerui extends JFrame{
 		b3.setContentAreaFilled(false);
 		b4.setContentAreaFilled(false);
 		b5.setContentAreaFilled(false);
-		b1.setBounds(30, 100,200, 50);
-		b2.setBounds(30, 200,200, 50);
-		b3.setBounds(30, 300,200, 50);
-		b4.setBounds(30, 400,200, 50);
-		b5.setBounds(30, 500,200, 50);
+		b1.setBounds(30, 130,200, 50);
+		b2.setBounds(30, 230,200, 50);
+		b3.setBounds(30, 330,200, 50);
+		b4.setBounds(30, 430,200, 50);
+		b5.setBounds(30, 530,200, 50);
 
 		ImageIcon outIcon=new ImageIcon("picture/退出登录.png");
 		outjButton=new JButton(outIcon);
-		outjButton.setBounds(30, 620,  48,48);
+		outjButton.setBounds(30, 650,  48,48);
 		outjButton.setContentAreaFilled(false);
 		 topmanagerJpanel.add(outjButton);
 		topmanagerJpanel.add(b1);
@@ -74,9 +74,9 @@ public class topmanagerui extends JFrame{
 		int windowWidth=this.getWidth();
 		int windowHeight=this.getHeight();
 		this.setLocation((screenWidth-windowWidth)/2, (screenHeight-windowHeight)/2);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//不允许窗口改变大小
 		this.setResizable(false);
+		this.setUndecorated(true);
 		this.setVisible(true);
 	}
 	private void registListener(final topmanagerui topmanagerui){
@@ -170,9 +170,7 @@ class topmanagerOperationJpanel extends JPanel{
 		welcome2.setForeground(Color.WHITE);
 		welcome2.setBounds(110, 300, 700, 100);
 		this.add(welcome2);
-		this.setBounds(260, 30, 730,650);
-		this.setOpaque(false);
-		this.setBounds(260, 30,730,650);
+		this.setBounds(260, 60, 730,650);
 		this.setOpaque(false);
 	}
 	public void paintComponent(Graphics g)  

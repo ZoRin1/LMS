@@ -49,12 +49,12 @@ public class b1topmanagerui extends JFrame{
 		b5.setContentAreaFilled(false);
 		b6.setContentAreaFilled(false);
 
-		b1.setBounds(30, 50,200, 50);
-		b2.setBounds(30,150,200, 50);
-		b3.setBounds(30,250,200, 50);
-		b4.setBounds(30,350,200, 50);
-		b5.setBounds(30,450,200, 50);
-		b6.setBounds(30,550,200, 50);
+		b1.setBounds(30, 80,200, 50);
+		b2.setBounds(30,180,200, 50);
+		b3.setBounds(30,280,200, 50);
+		b4.setBounds(30,380,200, 50);
+		b5.setBounds(30,480,200, 50);
+		b6.setBounds(30,580,200, 50);
 		topmanagerJpanel.add(b1);
 		topmanagerJpanel.add(b2);
 		topmanagerJpanel.add(b3);
@@ -74,9 +74,9 @@ public class b1topmanagerui extends JFrame{
 		int windowWidth=this.getWidth();
 		int windowHeight=this.getHeight();
 		this.setLocation((screenWidth-windowWidth)/2, (screenHeight-windowHeight)/2);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//不允许窗口改变大小
 		this.setResizable(false);
+		this.setUndecorated(true);
 		this.setVisible(true);
 	}
 	
@@ -230,13 +230,12 @@ class topmanagerb1OperationJpanel extends JPanel{
 		welcome.setBounds(200, 200, 400, 100);
 		this.add(welcome);
 		
-		this.setBounds(260, 30, 730,650);
+		this.setBounds(260, 60, 730,650);
 		this.setOpaque(false);
 		ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662, 575, 48,48);
 		returnButton.setContentAreaFilled(false);
-		this.setBounds(260, 30,730,650);
 		this.setOpaque(false);
 		this.setLayout(null);
 		this.add(returnButton);

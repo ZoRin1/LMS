@@ -42,12 +42,12 @@ public class courierui extends JFrame{
 	 	courierJpanel=new courierJpanel();
 	 	operationJpanel=new courierOperationJpanel(courierJpanel);
 
-	 	orderfoundButton.setBounds(30, 100, 200, 50);
-	 	orderfinishButton.setBounds(30, 300, 200, 50);
-	 	documentreplyButton.setBounds(30, 500, 200, 50);
+	 	orderfoundButton.setBounds(30, 130, 200, 50);
+	 	orderfinishButton.setBounds(30, 330, 200, 50);
+	 	documentreplyButton.setBounds(30, 530, 200, 50);
 	 	ImageIcon outIcon=new ImageIcon("picture/退出登录.png");
 		outjButton=new JButton(outIcon);
-		outjButton.setBounds(30, 620,  48,48);
+		outjButton.setBounds(30, 650,  48,48);
 		outjButton.setContentAreaFilled(false);
 		courierJpanel.add(documentreplyButton);
 		 courierJpanel.add(outjButton);
@@ -66,9 +66,9 @@ public class courierui extends JFrame{
 		int windowWidth=this.getWidth();
 		int windowHeight=this.getHeight();
 		this.setLocation((screenWidth-windowWidth)/2, (screenHeight-windowHeight)/2);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//不允许窗口改变大小
 		this.setResizable(false);
+		this.setUndecorated(true);
 		this.setVisible(true);
 		
 }
@@ -136,7 +136,7 @@ class courierOperationJpanel extends JPanel{
 		 	courierJpanel.add(this);
 		}
 		private void init(){
-		 	this.setBounds(260, 30, 730,650);
+		 	this.setBounds(260, 60, 730,650);
 		 	this.setOpaque(false);
 		}
 		public void paintComponent(Graphics g)  

@@ -56,17 +56,17 @@ public class icwarehousemanui extends JFrame{
 		b5.setContentAreaFilled(false);
 		b6.setContentAreaFilled(false);
 
-		b1.setBounds(30,90,200, 50);
-		b2.setBounds(30,180,200, 50);
-		b3.setBounds(30, 270,200, 50);
-		b4.setBounds(30, 360,200, 50);
-		b5.setBounds(30,450 , 200, 50);
-		b6.setBounds(30, 540, 200, 50);
+		b1.setBounds(30,120,200, 50);
+		b2.setBounds(30,210,200, 50);
+		b3.setBounds(30, 300,200, 50);
+		b4.setBounds(30, 390,200, 50);
+		b5.setBounds(30,480 , 200, 50);
+		b6.setBounds(30, 570, 200, 50);
 
-		warnJLabel.setBounds(30,30, 30, 30);
+		warnJLabel.setBounds(30,60, 30, 30);
 		ImageIcon outIcon=new ImageIcon("picture/退出登录.png");
 		outjButton=new JButton(outIcon);
-		outjButton.setBounds(30, 620,  48,48);
+		outjButton.setBounds(30, 650,  48,48);
 		outjButton.setContentAreaFilled(false);
 		 icwarehousemanJpanel.add(warnJLabel);
 		 icwarehousemanJpanel.add(outjButton);
@@ -89,9 +89,9 @@ public class icwarehousemanui extends JFrame{
 		int windowWidth=this.getWidth();
 		int windowHeight=this.getHeight();
 		this.setLocation((screenWidth-windowWidth)/2, (screenHeight-windowHeight)/2);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//不允许窗口改变大小
 		this.setResizable(false);
+		this.setUndecorated(true);
 		this.setVisible(true);
 	}
 	private void registListener(final icwarehousemanui icwarehousemanui){
@@ -142,7 +142,7 @@ class icwarehousemanOperationJpanel extends JPanel{
 	}
 	private void init(){
 		this.setOpaque(false);
-		this.setBounds(260, 30, 730,650);
+		this.setBounds(260, 60, 730,650);
 
 	}
 	public void paintComponent(Graphics g)  

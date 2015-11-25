@@ -152,7 +152,7 @@ public class AddAccount extends JPanel {
 		yesButton.setContentAreaFilled(false);	 	 	
 	 	this.add(yesButton);
 	 	
-	 	this.setBounds(260, 30, 730,650);	
+	 	this.setBounds(260, 60, 730,650);	
 	 	this.setLayout(null);
 	 	this.setOpaque(false);		
 	}

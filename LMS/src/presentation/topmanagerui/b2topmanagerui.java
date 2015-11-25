@@ -35,10 +35,10 @@ public class b2topmanagerui extends JFrame{
 		b2.setContentAreaFilled(false);
 		b3.setContentAreaFilled(false);
 		b4.setContentAreaFilled(false);
-		b1.setBounds(30, 100,200, 50);
-		b2.setBounds(30,200,200, 50);
-		b3.setBounds(30,300,200, 50);
-		b4.setBounds(30,400,200, 50);
+		b1.setBounds(30, 130,200, 50);
+		b2.setBounds(30,230,200, 50);
+		b3.setBounds(30,330,200, 50);
+		b4.setBounds(30,430,200, 50);
 		topmanagerJpanel.add(b1);
 		topmanagerJpanel.add(b2);
 		topmanagerJpanel.add(b3);
@@ -54,9 +54,9 @@ public class b2topmanagerui extends JFrame{
 		int windowWidth=this.getWidth();
 		int windowHeight=this.getHeight();
 		this.setLocation((screenWidth-windowWidth)/2, (screenHeight-windowHeight)/2);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//不允许窗口改变大小
 		this.setResizable(false);
+		this.setUndecorated(true);
 		this.setVisible(true);
 	}
 }
@@ -74,7 +74,7 @@ class topmanagerb2OperationJpanel extends JPanel{
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662, 575, 48,48);
 		returnButton.setContentAreaFilled(false);
-		this.setBounds(260, 30,730,650);
+		this.setBounds(260, 60,730,650);
 		this.setOpaque(false);
 		this.setLayout(null);
 		this.add(returnButton);

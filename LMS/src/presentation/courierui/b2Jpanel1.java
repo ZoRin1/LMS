@@ -170,7 +170,7 @@ class b2Jpanel2 extends JPanel{
 		yesButton=new JButton(yesIcon);
 		yesButton.setBounds(602, 575,48,48);
 		yesButton.setContentAreaFilled(false);
-	 	this.setBounds(260, 30, 730,650);
+	 	this.setBounds(260, 60, 730,650);
 	 	this.add(dingdantiaoxingmahaoJLabel);
 	 	this.add(dingdantiaoxingmahaonumJLabel);
 	 	this.add(shoujiandanbianhaoJLabel);

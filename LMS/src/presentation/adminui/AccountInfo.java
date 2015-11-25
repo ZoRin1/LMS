@@ -116,7 +116,7 @@ public class AccountInfo extends JPanel {
 		zhuCeRiQiI.setBounds(470, 520, 150, 40);
 		this.add(zhuCeRiQiI);
 		
-		this.setBounds(260, 30, 730,650);	
+		this.setBounds(260, 60, 730,650);	
 	 	this.setLayout(null);
 	 	this.setOpaque(false);	
 	}

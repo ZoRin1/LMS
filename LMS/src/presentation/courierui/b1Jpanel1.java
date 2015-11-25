@@ -420,7 +420,7 @@ class b1Jpanel2 extends JPanel{
 		this.add(shijibaojianumber);
 		this.add(tianJLabel);
 		this.add(yuan3);
-	 	this.setBounds(260, 30, 730,650);
+	 	this.setBounds(260, 60, 730,650);
 	 	this.add(yesButton);
 	 	this.add(returnButton);
 	 	this.setLayout(null);
