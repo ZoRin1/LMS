@@ -53,10 +53,6 @@ public class getBufferedInfoDataSerImpl extends UnicastRemoteObject implements g
 			ResultSet resultSet=preparedStatement.executeQuery();
 			resultSet.next();
 			switch (doName) {
-			case "出库单":
-				OutbillsPO outbillsPO=new OutbillsPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),resultSet.getString(7), resultSet.getString(8));
-				connection.close();
-				return outbillsPO;
 			case "付款单":
 				PaymentPO paymentPO=new PaymentPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDouble(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8),resultSet.getString(9));
 				connection.close();
@@ -74,10 +70,6 @@ public class getBufferedInfoDataSerImpl extends UnicastRemoteObject implements g
 				YDispatchPO yDispatchPO=new YDispatchPO(resultSet.getString(5), resultSet.getString(1), resultSet.getString(3), resultSet.getString(2), resultSet.getString(4), resultSet.getString(6));
 				connection.close();
 				return yDispatchPO;
-			case "入库单":
-			InBillsPO inBillsPO=new InBillsPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getInt(7),  resultSet.getInt(8),  resultSet.getInt(9),  resultSet.getInt(10));
-			connection.close();
-			return inBillsPO;
 			case "收件单":
 				GetOrderPO getOrderPO=new GetOrderPO(resultSet.getString(1), resultSet.getString(3), resultSet.getString(2), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6));
 				connection.close();

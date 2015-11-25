@@ -39,9 +39,6 @@ public class deleteDataSerImpl extends UnicastRemoteObject implements deleteData
 			ResultSet resultSet=preparedStatement.executeQuery();
 			resultSet.next();
 			switch (doName) {
-			case "出库单":
-				sql="insert into 出库单(code,doName,packCode,date,account,arrival,Mode,transCode) values ('"+resultSet.getString(1)+"','"+resultSet.getString(2)+"','"+resultSet.getString(3)+"','"+resultSet.getString(4)+"','"+resultSet.getString(5)+"','"+resultSet.getString(6)+"','"+resultSet.getString(7)+"','"+resultSet.getString(8)+"')";
-				break;
 			case "付款单":
 				sql="insert into 付款单(code,doName,date,account,fund,name,account2,type,remark) values ('"+resultSet.getString(1)+"','"+resultSet.getString(2)+"','"+resultSet.getString(3)+"','"+resultSet.getString(4)+"','"+resultSet.getString(5)+"','"+resultSet.getString(6)+"','"+resultSet.getString(7)+"','"+resultSet.getString(8)+"','"+resultSet.getString(9)+"')";
 				break;
@@ -50,9 +47,6 @@ public class deleteDataSerImpl extends UnicastRemoteObject implements deleteData
 			break;
 			case "派件单":
 				sql="insert into 派件单(code,code2,doName,account,date,name) values ('"+resultSet.getString(1)+"','"+resultSet.getString(2)+"','"+resultSet.getString(3)+"','"+resultSet.getString(4)+"','"+resultSet.getString(5)+"','"+resultSet.getString(6)+"')";
-				break;
-			case "入库单":
-				sql="insert into 入库单(code,doName,InDepotNum,InDepotDate,account,Destination,AreaNum,RowNum,ShelvesNum,SositionNum) values ('"+resultSet.getString(1)+"','"+resultSet.getString(2)+"','"+resultSet.getString(3)+"','"+resultSet.getString(4)+"','"+resultSet.getString(5)+"','"+resultSet.getString(6)+"','"+resultSet.getInt(7)+"','"+resultSet.getInt(8)+"','"+resultSet.getInt(9)+"','"+resultSet.getInt(10)+"')";
 				break;
 			case "收件单":
 				sql="insert into 收件单(code,code2,doName,account,ReceiverName,date) values ('"+resultSet.getString(1)+"','"+resultSet.getString(2)+"','"+resultSet.getString(3)+"','"+resultSet.getString(4)+"','"+resultSet.getString(5)+"','"+resultSet.getString(6)+"')";
