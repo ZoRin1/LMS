@@ -89,6 +89,7 @@ public class b1topmanagerui extends JFrame{
 				// TODO Auto-generated method stub
 				tjpl.remove(b1ui.operationJpanel);
 				b1ui.setTitle("设置快递员工资策略");
+				b1ui.b1.setEnabled(false);
 				b1ui.b2.setEnabled(false);
 				b1ui.b3.setEnabled(false);
 				b1ui.b4.setEnabled(false);
@@ -111,6 +112,7 @@ public class b1topmanagerui extends JFrame{
 				tjpl.remove(b1ui.operationJpanel);
 				b1ui.setTitle("设置营业厅业务员工资策略");
 				b1ui.b1.setEnabled(false);
+				b1ui.b2.setEnabled(false);
 				b1ui.b3.setEnabled(false);
 				b1ui.b4.setEnabled(false);
 				b1ui.b5.setEnabled(false);
@@ -134,7 +136,8 @@ public class b1topmanagerui extends JFrame{
 				tjpl.remove(b1ui.operationJpanel);
 				b1ui.setTitle("设置中转中心业务员工资策略");
 				b1ui.b1.setEnabled(false);
-				b1ui.b2.setEnabled(false);		
+				b1ui.b2.setEnabled(false);
+				b1ui.b3.setEnabled(false);
 				b1ui.b4.setEnabled(false);		
 				b1ui.b5.setEnabled(false);		
 				b1ui.b6.setEnabled(false);		
@@ -156,7 +159,8 @@ public class b1topmanagerui extends JFrame{
 				b1ui.setTitle("设置中转中心仓库管理员工资策略");
 				b1ui.b1.setEnabled(false);		
 				b1ui.b2.setEnabled(false);						
-				b1ui.b3.setEnabled(false);		
+				b1ui.b3.setEnabled(false);	
+				b1ui.b4.setEnabled(false);		
 				b1ui.b5.setEnabled(false);		
 				b1ui.b6.setEnabled(false);				
 		
@@ -176,6 +180,7 @@ public class b1topmanagerui extends JFrame{
 				b1ui.b2.setEnabled(false);
 				b1ui.b3.setEnabled(false);
 				b1ui.b4.setEnabled(false);
+				b1ui.b5.setEnabled(false);	
 				b1ui.b6.setEnabled(false);
 
 				new Salary(tui,tjpl,b1ui);
@@ -190,6 +195,7 @@ public class b1topmanagerui extends JFrame{
 				// TODO Auto-generated method stub
 				tjpl.remove(b1ui.operationJpanel);
 				b1ui.setTitle("设置系统管理员工资策略");
+				b1ui.b6.setEnabled(false);
 				b1ui.b2.setEnabled(false);
 				b1ui.b3.setEnabled(false);
 				b1ui.b4.setEnabled(false);
