@@ -31,7 +31,7 @@ public class AccountInfo extends JPanel {
 	private void init(AccountNumberVO accountNumberVO){
 		
 		Font fontB=new Font("Ó×Ô²",Font.BOLD,30);
-		Font font=new Font("Ó×Ô²",Font.BOLD,20);
+		Font font=new Font("Ó×Ô²",Font.BOLD,25);
 		
 		daBiaoTi = new JLabel("ÕËºÅÏêÏ¸ÐÅÏ¢");
 		daBiaoTi.setForeground(Color.WHITE);
@@ -43,7 +43,7 @@ public class AccountInfo extends JPanel {
 		zhangHao = new JLabel("ÕËºÅ£º");
 		zhangHao.setForeground(Color.WHITE);
 		zhangHao.setFont(font);
-		zhangHao.setBounds(100, 150, 64, 40);
+		zhangHao.setBounds(100, 150, 80, 40);
 		this.add(zhangHao);
 		
 		zangHaoI = new JLabel(Long.toString(accountNumberVO.getID()));
@@ -56,64 +56,64 @@ public class AccountInfo extends JPanel {
 		miMa = new JLabel("ÃÜÂë£º");
 		miMa.setForeground(Color.WHITE);
 		miMa.setFont(font);
-		miMa.setBounds(100, 220, 64, 40);
+		miMa.setBounds(340, 150, 80, 40);
 		this.add(miMa);
 		
 		miMaI = new JLabel(accountNumberVO.getPassword());
 		miMaI.setForeground(Color.WHITE);
 		miMaI.setFont(font);
-		miMaI.setBounds(340, 220, 100, 40);
+		miMaI.setBounds(430, 150, 120, 40);
 		this.add(miMaI);
 		
 		
 		xinMing = new JLabel("ÐÕÃû£º");
 		xinMing.setForeground(Color.WHITE);
 		xinMing.setFont(font);
-		xinMing.setBounds(100, 300, 64, 40);
+		xinMing.setBounds(100, 230, 80, 40);
 		this.add(xinMing);
 		
 		xinMingI = new JLabel(accountNumberVO.getName());
 		xinMingI.setForeground(Color.WHITE);
 		xinMingI.setFont(font);
-		xinMingI.setBounds(310, 300, 160, 40);
+		xinMingI.setBounds(180, 230, 200, 40);
 		this.add(xinMingI);
 		
 			
 		dianHua = new JLabel("µç»°£º");
 		dianHua.setFont(font);
 		dianHua.setForeground(Color.WHITE);
-		dianHua.setBounds(100, 380, 64, 40);
+		dianHua.setBounds(340, 230, 80, 40);
 		this.add(dianHua);
 		
 		dianHuaI = new JLabel(accountNumberVO.getPhone());
 		dianHuaI.setForeground(Color.WHITE);
 		dianHuaI.setFont(font);
-		dianHuaI.setBounds(340, 380, 150, 40);
+		dianHuaI.setBounds(430, 230, 180, 40);
 		this.add(dianHuaI);
 		
 		
 		shenFenZhengHao = new JLabel("Éí·ÝÖ¤ºÅÂë£º");
 		shenFenZhengHao.setForeground(Color.WHITE);
 		shenFenZhengHao.setFont(font);
-		shenFenZhengHao.setBounds(100, 460, 150, 40);
+		shenFenZhengHao.setBounds(100, 310, 180, 40);
 		this.add(shenFenZhengHao);
 		
 		shenFenZhengHaoI = new JLabel(accountNumberVO.getsID());
 		shenFenZhengHaoI.setForeground(Color.WHITE);
 		shenFenZhengHaoI.setFont(font);
-		shenFenZhengHaoI.setBounds(470, 460, 150, 40);
+		shenFenZhengHaoI.setBounds(260, 310, 300, 40);
 		this.add(shenFenZhengHaoI);
 		
 		zhuCeRiQi = new JLabel("×¢²áÈÕÆÚ£º");
 		zhuCeRiQi.setForeground(Color.WHITE);
 		zhuCeRiQi.setFont(font);
-		zhuCeRiQi.setBounds(100, 520, 150, 40);
+		zhuCeRiQi.setBounds(100, 390, 160, 40);
 		this.add(zhuCeRiQi);
 		
 		zhuCeRiQiI = new JLabel(accountNumberVO.getDate());
 		zhuCeRiQiI.setForeground(Color.WHITE);
 		zhuCeRiQiI.setFont(font);
-		zhuCeRiQiI.setBounds(470, 520, 150, 40);
+		zhuCeRiQiI.setBounds(240, 390, 180, 40);
 		this.add(zhuCeRiQiI);
 		
 		this.setBounds(260, 60, 730,650);	

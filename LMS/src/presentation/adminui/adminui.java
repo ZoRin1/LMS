@@ -140,6 +140,20 @@ public class adminui extends JFrame{
 				aui.repaint();
 			}
 		});
+		
+		searchButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String Id = accountField.getText();
+				String[]temp = {Id + "-" + "Ñî»ª°²"};
+				apl.remove(aui.operationJpanel);
+				
+				new SearchAccount(aui, apl, temp);
+				aui.repaint();
+			}
+		});
 			}
 }
 class adminJpanel extends JPanel{
