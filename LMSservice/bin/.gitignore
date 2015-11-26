@@ -1,6 +1,5 @@
 /dataservice/
-<<<<<<< HEAD
-/rmiService/
-=======
->>>>>>> 7bffb0db4fd29a80b4fe11ab0fc2dcb037574234
+/main/
 /po/
+/rmiService/
+/state/

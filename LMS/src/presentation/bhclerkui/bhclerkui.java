@@ -16,20 +16,20 @@ import presentation.mainui.mainui;
 
 public class bhclerkui extends JFrame{
 	private String[] args;
-	private JButton outjButton;
-	private JButton loaddocumentbButton;
-	private JButton cashdocumentbButton;
-	private JButton acceptdocumentbButton;
-	private JButton carinformationbButton;
-	private JButton driverinformationbButton;
-	private JButton documentreplyButton;
-	private bhclerkOperationJpanel operationJpanel;
+	JButton outjButton;
+	JButton loaddocumentbButton;
+	JButton cashdocumentbButton;
+	JButton acceptdocumentbButton;
+	JButton carinformationbButton;
+	JButton driverinformationbButton;
+	JButton documentreplyButton;
+	bhclerkOperationJpanel operationJpanel;
 	private bhclerkJpanel bhclerkJpanel;
 	public bhclerkui(String s,String[] args) {
 		super(s);
 		this.args=args;
 		init();
-		registListener(this);
+		registListener(this,bhclerkJpanel);
 	}
 	private void init(){
 		ImageIcon outIcon=new ImageIcon("picture/ÍË³öµÇÂ¼.png");
@@ -89,7 +89,7 @@ public class bhclerkui extends JFrame{
 		this.setUndecorated(true);
 		this.setVisible(true);
 	}
-	private void registListener(final bhclerkui bhclerkui){
+	private void registListener(final bhclerkui bhclerkui,final bhclerkJpanel bhclerkJpanel){
 		outjButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -118,6 +118,7 @@ public class bhclerkui extends JFrame{
 				bhclerkui.documentreplyButton.setEnabled(false);
 				bhclerkui.driverinformationbButton.setEnabled(false);
 				bhclerkui.loaddocumentbButton.setEnabled(false);
+				bhclerkui.acceptdocumentbButton.setEnabled(false);
 				new LoadingJpanel(bhclerkui,bhclerkJpanel);
 				bhclerkJpanel.repaint();
 			}
@@ -133,6 +134,9 @@ public class bhclerkui extends JFrame{
 				bhclerkui.documentreplyButton.setEnabled(false);
 				bhclerkui.driverinformationbButton.setEnabled(false);
 				bhclerkui.loaddocumentbButton.setEnabled(false);
+				bhclerkui.acceptdocumentbButton.setEnabled(false);
+				new AcceptDocumentJpanel(bhclerkui,bhclerkJpanel);
+				bhclerkJpanel.repaint();
 			}
 		});
 		cashdocumentbButton.addActionListener(new ActionListener(){
@@ -146,6 +150,9 @@ public class bhclerkui extends JFrame{
 				bhclerkui.documentreplyButton.setEnabled(false);
 				bhclerkui.driverinformationbButton.setEnabled(false);
 				bhclerkui.loaddocumentbButton.setEnabled(false);
+				bhclerkui.acceptdocumentbButton.setEnabled(false);
+				new ReceiptJPanel(bhclerkui,bhclerkJpanel);
+				bhclerkJpanel.repaint();
 			}
 		});
 		carinformationbButton.addActionListener(new ActionListener(){
@@ -159,6 +166,8 @@ public class bhclerkui extends JFrame{
 				bhclerkui.documentreplyButton.setEnabled(false);
 				bhclerkui.driverinformationbButton.setEnabled(false);
 				bhclerkui.loaddocumentbButton.setEnabled(false);
+				bhclerkui.acceptdocumentbButton.setEnabled(false);
+				
 			}
 		});
 		driverinformationbButton.addActionListener(new ActionListener(){
@@ -172,6 +181,7 @@ public class bhclerkui extends JFrame{
 				bhclerkui.documentreplyButton.setEnabled(false);
 				bhclerkui.driverinformationbButton.setEnabled(false);
 				bhclerkui.loaddocumentbButton.setEnabled(false);
+				bhclerkui.acceptdocumentbButton.setEnabled(false);
 			}
 		});
 }

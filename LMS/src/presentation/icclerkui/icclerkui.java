@@ -19,8 +19,8 @@ public class icclerkui extends JFrame{
 	private String[] args;
 	private JButton outjButton;
 	private icclerkJpanel icclerkJpanel;
-	private icclerkOperationJpanel operationJpanel;
-	private JButton b1,b2,b3,b4,b5,b6;
+	icclerkOperationJpanel operationJpanel;
+	JButton b1,b2,b3,b4,b5,b6;
 	public icclerkui(String s,String [] args) {
 		// TODO Auto-generated constructor stub
 		super(s);
@@ -95,6 +95,35 @@ public class icclerkui extends JFrame{
 				
 				new mainui().main(args);
 				icclerkui.dispose();
+			}
+		});
+		b1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				icclerkJpanel.remove(operationJpanel);
+				b1.setEnabled(false);
+				b2.setEnabled(false);
+				b3.setEnabled(false);
+				b4.setEnabled(false);
+				b5.setEnabled(false);
+				b6.setEnabled(false);
+				new ZReceiveJpanel(icclerkui, icclerkJpanel);
+				icclerkJpanel.repaint();
+			}
+		});
+		b2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				icclerkJpanel.remove(operationJpanel);
+				b1.setEnabled(false);
+				b2.setEnabled(false);
+				b3.setEnabled(false);
+				b4.setEnabled(false);
+				b5.setEnabled(false);
+				b6.setEnabled(false);
+				
 			}
 		});
 		b6.addActionListener(new ActionListener() {
