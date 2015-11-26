@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -144,29 +145,9 @@ class mainFrame extends JFrame{
 			this.setVisible(true);
 		}
 		private void registerLister(final mainFrame mf,final String[] args) {
-//			tuichuButton.addActionListener(new ActionListener() {
-//				
-//				@Override
-//				public void actionPerformed(ActionEvent e) {
-//					// TODO Auto-generated method stub
-//				System.exit(0);	
-//				}
-//			});
-			zuixiaohuaButton.addMouseListener(new MouseListener() {
+			zuixiaohuaButton.addMouseListener(new MouseAdapter() {
 				ImageIcon zuixiaohuaIcon=new ImageIcon("picture/最小化.png");
 				ImageIcon zuixiaohuaIcon2=new ImageIcon("picture/最小化2.png");
-				@Override
-				public void mouseReleased(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				@Override
-				public void mousePressed(MouseEvent e) {
-					// TODO Auto-generated method stub
-					 mf.setExtendedState(JFrame.ICONIFIED);
-				}
-				
 				@Override
 				public void mouseExited(MouseEvent e) {
 					// TODO Auto-generated method stub
@@ -182,20 +163,14 @@ class mainFrame extends JFrame{
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					// TODO Auto-generated method stub
-					
+					 mf.setExtendedState(JFrame.ICONIFIED);
 				}
 			});
-			tuichuButton.addMouseListener(new MouseListener() {
+			tuichuButton.addMouseListener(new MouseAdapter() {
 				ImageIcon tuichuIcon=new ImageIcon("picture/退出.png");
 				ImageIcon tuichuIcon2=new ImageIcon("picture/退出2.png");
 				@Override
-				public void mouseReleased(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				@Override
-				public void mousePressed(MouseEvent e) {
+				public void mouseClicked(MouseEvent e) {
 					// TODO Auto-generated method stub
 					System.exit(0);	
 				}
@@ -211,13 +186,8 @@ class mainFrame extends JFrame{
 					// TODO Auto-generated method stub
 					tuichuButton.setIcon(tuichuIcon2);
 				}
-				
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
 			});
+			
 			loginButton.addActionListener(new ActionListener() {
 				
 				@Override
