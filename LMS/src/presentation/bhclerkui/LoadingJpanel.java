@@ -5,6 +5,9 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,9 +16,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import businesslogic.documentsbl.createDocument;
+import vo.documentsVO.LoadingVO;
+
 
 public class LoadingJpanel extends JPanel{
 	private JLabel code;
+	private JLabel code1;
 	private JLabel doName;
 //	private JLabel OrgCode;
 //	private JLabel orgcode;
@@ -52,6 +59,13 @@ public class LoadingJpanel extends JPanel{
 		code.setFont(font);
 		code.setBounds(30,30,125,27);
 		this.add(code);
+		
+		code1=new JLabel();
+		code1.setText(new createDocument().createDocument("装车单"));
+		code1.setForeground(Color.white);
+		code1.setFont(font);
+		code1.setBounds(155,30,131,27);
+		this.add(code1);
 		
 		doName=new JLabel("单据名：装车单");
 		doName.setForeground(Color.white);
@@ -141,6 +155,7 @@ public class LoadingJpanel extends JPanel{
 	 	this.setOpaque(false);
 	}
 	private void registListener(final bhclerkui ui,final bhclerkJpanel panel,final LoadingJpanel panel2){
+
 		returnButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
