@@ -15,10 +15,12 @@ public class checkDepotDialog {
 	JLabel start,end;
 	JPanel panel;
 	ImageIcon checkIcon,b1Icon,b2Icon;
+	JFrame temp;
 	
 	public checkDepotDialog(JFrame ui){
+		temp = ui;
 	    checkIcon = new ImageIcon("picture/库存查询框.png");
-	    b1Icon = new ImageIcon("picture/确定.png");
+	    b1Icon = new ImageIcon("picture/对话框确定.png");
 	    b2Icon = new ImageIcon("picture/取消.png");
 		checkDepot = new JDialog(ui,"时间段输入",true);
 		b1 = new JButton(b1Icon);
@@ -60,7 +62,6 @@ public class checkDepotDialog {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
-				
 			}
 		});
 		

@@ -24,7 +24,7 @@ public class icwarehousemanui extends JFrame{
 	private icwarehousemanOperationJpanel operationJpanel;
 	private JButton b1,b2,b3,b4,b5,b6;
 	private checkDepotDialog check;
-	//一下是2015/11/26日添加的界面
+	//以下是2015/11/26日添加的界面
 	private JLabel checkDepot;
 	public icwarehousemanui(String s,String [] args) {
 		// TODO Auto-generated constructor stub
