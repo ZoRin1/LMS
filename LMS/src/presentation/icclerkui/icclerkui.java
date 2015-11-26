@@ -123,7 +123,8 @@ public class icclerkui extends JFrame{
 				b4.setEnabled(false);
 				b5.setEnabled(false);
 				b6.setEnabled(false);
-				
+				new LoadingJpanel(icclerkui, icclerkJpanel);
+				icclerkJpanel.repaint();
 			}
 		});
 		b6.addActionListener(new ActionListener() {
