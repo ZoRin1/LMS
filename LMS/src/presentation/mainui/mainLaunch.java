@@ -46,6 +46,7 @@ public class mainLaunch {
 			GetDocCodeDataSer getDocCodeDataSer=documentsFactory.createGetDocCodeDataSer();
 			System.out.println(getDocCodeDataSer.getDocCode("ÊÕ¼þµ¥"));
 			
+			
 //			ArrayList<String> codeList=new ArrayList<String>();
 //			codeList.add("1212");
 //			codeList.add("1515");

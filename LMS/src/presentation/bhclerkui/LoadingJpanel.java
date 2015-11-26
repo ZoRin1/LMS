@@ -61,7 +61,7 @@ public class LoadingJpanel extends JPanel{
 		this.add(code);
 		
 		code1=new JLabel();
-		code1.setText(new createDocument().createDocument("装车单"));
+		code1.setText(new createDocument().createDocument("营业厅装车单"));
 		code1.setForeground(Color.white);
 		code1.setFont(font);
 		code1.setBounds(155,30,131,27);
