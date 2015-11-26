@@ -147,9 +147,11 @@ public class adminui extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				String Id = accountField.getText();
-				String[]temp = {Id + "-" + "杨华安"};
+				String[]temp = {"1002356-杨华安"};
 				apl.remove(aui.operationJpanel);
-				
+				aui.searchButton.setEnabled(false);
+				aui.addaccountButton.setEnabled(false);
+				aui.accountField.setEditable(false);
 				new SearchAccount(aui, apl, temp);
 				aui.repaint();
 			}
