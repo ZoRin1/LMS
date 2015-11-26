@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,6 +18,8 @@ public class b3financialstaffui extends JFrame{
 	financialstaffb3OperationJpanel operationJpanel;
 	JButton b1;
 	JButton b2;
+	private JButton tuichuButton;
+	private JButton zuixiaohuaButton;
 	public b3financialstaffui(String s,financialstaffui fsui) {
 		// TODO Auto-generated constructor stub
 		super(s);
@@ -25,6 +29,48 @@ public class b3financialstaffui extends JFrame{
 	private void registListener(
 			final b3financialstaffui b3financialstaffui,
 			final financialstaffJpanel financialstaffJpanel) {
+		zuixiaohuaButton.addMouseListener(new MouseAdapter() {
+			ImageIcon zuixiaohuaIcon=new ImageIcon("picture/最小化.png");
+			ImageIcon zuixiaohuaIcon2=new ImageIcon("picture/最小化2.png");
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				zuixiaohuaButton.setIcon(zuixiaohuaIcon);
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				zuixiaohuaButton.setIcon(zuixiaohuaIcon2);
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				b3financialstaffui.setExtendedState(JFrame.ICONIFIED);
+			}
+		});
+		tuichuButton.addMouseListener(new MouseAdapter() {
+			ImageIcon tuichuIcon=new ImageIcon("picture/退出.png");
+			ImageIcon tuichuIcon2=new ImageIcon("picture/退出2.png");
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				System.exit(0);	
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				tuichuButton.setIcon(tuichuIcon);
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				tuichuButton.setIcon(tuichuIcon2);
+			}
+		});
 		// TODO Auto-generated method stub
 		b1.addActionListener(new ActionListener() {
 			
@@ -57,7 +103,16 @@ public class b3financialstaffui extends JFrame{
 		ImageIcon b1Icon=new ImageIcon("picture/新建付款单.png");
 		ImageIcon b2Icon=new ImageIcon("picture/单据反馈.png");
 		ImageIcon returnIcon=new ImageIcon("picture/返回.png");
-
+		ImageIcon tuichuIcon=new ImageIcon("picture/退出.png");
+		ImageIcon zuixiaohuaIcon=new ImageIcon("picture/最小化.png");
+		zuixiaohuaButton=new JButton(zuixiaohuaIcon);
+		zuixiaohuaButton.setBounds(904, 0, 50, 50);
+		zuixiaohuaButton.setContentAreaFilled(false);
+		zuixiaohuaButton.setBorderPainted(false);
+		tuichuButton=new JButton(tuichuIcon);
+		tuichuButton.setBounds(974, 0, 50, 50);
+		tuichuButton.setContentAreaFilled(false);
+		tuichuButton.setBorderPainted(false);
 		b1=new JButton(b1Icon);
 		b2=new JButton(b2Icon);
 		b1.setBounds(30, 230,200, 50);
@@ -66,6 +121,8 @@ public class b3financialstaffui extends JFrame{
 		b2.setContentAreaFilled(false);
 		financialstaffJpanel.add(b1);
 		financialstaffJpanel.add(b2);
+		financialstaffJpanel.add(tuichuButton);
+		financialstaffJpanel.add(zuixiaohuaButton);
 		financialstaffJpanel.setLayout(null);
 
 		this.add(financialstaffJpanel);

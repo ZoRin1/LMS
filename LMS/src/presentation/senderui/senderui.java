@@ -7,6 +7,8 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -33,6 +35,8 @@ public class senderui extends JFrame{
 	private senderOperationJpanel operationJpanel;
 	private JLabel informationJLabel;
 	private JButton returnjButton;
+	private JButton tuichuButton;
+	private JButton zuixiaohuaButton;
 	public senderui(String s,String[] args) {
 		// TODO Auto-generated constructor stub
 		super(s);
@@ -41,6 +45,16 @@ public class senderui extends JFrame{
 		registerLister(this);
 	}
 	private void init(){
+		ImageIcon tuichuIcon=new ImageIcon("picture/退出.png");
+		ImageIcon zuixiaohuaIcon=new ImageIcon("picture/最小化.png");
+		zuixiaohuaButton=new JButton(zuixiaohuaIcon);
+		zuixiaohuaButton.setBounds(904, 0, 50, 50);
+		zuixiaohuaButton.setContentAreaFilled(false);
+		zuixiaohuaButton.setBorderPainted(false);
+		tuichuButton=new JButton(tuichuIcon);
+		tuichuButton.setBounds(974, 0, 50, 50);
+		tuichuButton.setContentAreaFilled(false);
+		tuichuButton.setBorderPainted(false);
 		Font font=new Font("幼圆",Font.BOLD,20);
 		jLabel1=new JLabel("2015.10.1 08:17 您的快递已到达西城营业厅");
 		jLabel1.setForeground(Color.white);
@@ -104,6 +118,8 @@ public class senderui extends JFrame{
 		senderJpanel.add(jLabel7);
 		senderJpanel.add(jLabel8);
 		senderJpanel.add(jLabel9);
+		senderJpanel.add(zuixiaohuaButton);
+		senderJpanel.add(tuichuButton);
 		this.add(senderJpanel);
 		this.setSize( 1024, 730);
 		//居中
@@ -120,6 +136,48 @@ public class senderui extends JFrame{
 		this.setVisible(true);
 	}
 	private void registerLister(final senderui s){
+		zuixiaohuaButton.addMouseListener(new MouseAdapter() {
+			ImageIcon zuixiaohuaIcon=new ImageIcon("picture/最小化.png");
+			ImageIcon zuixiaohuaIcon2=new ImageIcon("picture/最小化2.png");
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				zuixiaohuaButton.setIcon(zuixiaohuaIcon);
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				zuixiaohuaButton.setIcon(zuixiaohuaIcon2);
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				s.setExtendedState(JFrame.ICONIFIED);
+			}
+		});
+		tuichuButton.addMouseListener(new MouseAdapter() {
+			ImageIcon tuichuIcon=new ImageIcon("picture/退出.png");
+			ImageIcon tuichuIcon2=new ImageIcon("picture/退出2.png");
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				System.exit(0);	
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				tuichuButton.setIcon(tuichuIcon);
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				tuichuButton.setIcon(tuichuIcon2);
+			}
+		});
 		returnjButton.addActionListener(new ActionListener() {
 			
 			@Override

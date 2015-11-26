@@ -6,6 +6,8 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,6 +25,8 @@ public class bhclerkui extends JFrame{
 	JButton carinformationbButton;
 	JButton driverinformationbButton;
 	JButton documentreplyButton;
+	private JButton tuichuButton;
+	private JButton zuixiaohuaButton;
 	bhclerkOperationJpanel operationJpanel;
 	private bhclerkJpanel bhclerkJpanel;
 	public bhclerkui(String s,String[] args) {
@@ -39,6 +43,16 @@ public class bhclerkui extends JFrame{
 		ImageIcon cashdocumentIcon=new ImageIcon("picture/收款单创建.png");
 		ImageIcon loaddocumentIcon=new ImageIcon("picture/装车单创建.png");
 		ImageIcon documentreplyIcon=new ImageIcon("picture/单据反馈.png");
+		ImageIcon tuichuIcon=new ImageIcon("picture/退出.png");
+		ImageIcon zuixiaohuaIcon=new ImageIcon("picture/最小化.png");
+		zuixiaohuaButton=new JButton(zuixiaohuaIcon);
+		zuixiaohuaButton.setBounds(904, 0, 50, 50);
+		zuixiaohuaButton.setContentAreaFilled(false);
+		zuixiaohuaButton.setBorderPainted(false);
+		tuichuButton=new JButton(tuichuIcon);
+		tuichuButton.setBounds(974, 0, 50, 50);
+		tuichuButton.setContentAreaFilled(false);
+		tuichuButton.setBorderPainted(false);
 		outjButton=new JButton(outIcon);
 		outjButton.setBounds(30, 650, 48,48);
 		outjButton.setContentAreaFilled(false);
@@ -71,7 +85,8 @@ public class bhclerkui extends JFrame{
 		bhclerkJpanel.add(acceptdocumentbButton);
 		bhclerkJpanel.add(carinformationbButton);
 		bhclerkJpanel.add(driverinformationbButton);
-		
+		bhclerkJpanel.add(tuichuButton);
+		bhclerkJpanel.add(zuixiaohuaButton);
 		bhclerkJpanel.setLayout(null);
 		
 		this.add(bhclerkJpanel);
@@ -90,6 +105,48 @@ public class bhclerkui extends JFrame{
 		this.setVisible(true);
 	}
 	private void registListener(final bhclerkui bhclerkui,final bhclerkJpanel bhclerkJpanel){
+		zuixiaohuaButton.addMouseListener(new MouseAdapter() {
+			ImageIcon zuixiaohuaIcon=new ImageIcon("picture/最小化.png");
+			ImageIcon zuixiaohuaIcon2=new ImageIcon("picture/最小化2.png");
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				zuixiaohuaButton.setIcon(zuixiaohuaIcon);
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				zuixiaohuaButton.setIcon(zuixiaohuaIcon2);
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				 bhclerkui.setExtendedState(JFrame.ICONIFIED);
+			}
+		});
+		tuichuButton.addMouseListener(new MouseAdapter() {
+			ImageIcon tuichuIcon=new ImageIcon("picture/退出.png");
+			ImageIcon tuichuIcon2=new ImageIcon("picture/退出2.png");
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				System.exit(0);	
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				tuichuButton.setIcon(tuichuIcon);
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				tuichuButton.setIcon(tuichuIcon2);
+			}
+		});
 		outjButton.addActionListener(new ActionListener() {
 			
 			@Override
