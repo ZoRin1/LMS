@@ -1,5 +1,6 @@
 package presentation.financialstaffui;
 
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -9,17 +10,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-
-public class b1b1Jpanel1 extends JPanel{
+public class b5b2Jpanel1 extends JPanel{
 	
 	private ImageIcon frameIcon =new ImageIcon("picture/²Ù×÷Ãæ°å.png");
 	private JButton returnButton;
 	private ImageIcon returnIcon=new ImageIcon("picture/·µ»Ø.png");
-	public b1b1Jpanel1(b1financialstaffui b1financialstaffui,financialstaffJpanel financialstaffJpanel) {
+	public b5b2Jpanel1(b5financialstaffui b5financialstaffui,financialstaffJpanel financialstaffJpanel) {
 		// TODO Auto-generated constructor stub
 		init();
 		financialstaffJpanel.add(this);
-		registListener(b1financialstaffui,financialstaffJpanel,this);
+		registListener(b5financialstaffui,financialstaffJpanel,this);
 	}
 	private void init(){
 		Font font=new Font("Ó×Ô²",Font.BOLD,20);
@@ -34,16 +34,17 @@ public class b1b1Jpanel1 extends JPanel{
 	 	this.setLayout(null);
 	 	this.setOpaque(false);
 	}
-	private void registListener(final b1financialstaffui b1financialstaffui,final financialstaffJpanel financialstaffJpanel,final b1b1Jpanel1 b1b1Jpanel1){
+	private void registListener(final b5financialstaffui b5financialstaffui,final financialstaffJpanel financialstaffJpanel,final b5b2Jpanel1 b5b2Jpanel1){
 		returnButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				Component b3b1Jpanel1;
 				// TODO Auto-generated method stub
-				financialstaffJpanel.remove(b1b1Jpanel1);
-				financialstaffJpanel.add(b1financialstaffui.operationJpanel);
-				b1financialstaffui.b1.setEnabled(true);
-				b1financialstaffui.b2.setEnabled(true);
+				financialstaffJpanel.remove(b5b2Jpanel1);
+				financialstaffJpanel.add(b5financialstaffui.operationJpanel);
+				b5financialstaffui.b1.setEnabled(true);
+				b5financialstaffui.b2.setEnabled(true);
 				financialstaffJpanel.repaint();
 			}
 		});
@@ -54,3 +55,4 @@ public class b1b1Jpanel1 extends JPanel{
 		g.drawImage(frameIcon.getImage(),-7,-12,null);
  }
 }
+

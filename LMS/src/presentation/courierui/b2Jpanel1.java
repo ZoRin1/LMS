@@ -68,7 +68,7 @@ public class b2Jpanel1 extends JPanel{
 		this.add(dingdantiaoxingmahaoJLabel);
 		this.add(dingdantiaoxingmanumJLabel);
 		this.add(serchButton);
-	 	this.setBounds(260, 30, 730,650);
+	 	this.setBounds(260, 60, 730,650);
 	 	this.add(yesButton);
 	 	this.add(returnButton);
 	 	this.setLayout(null);

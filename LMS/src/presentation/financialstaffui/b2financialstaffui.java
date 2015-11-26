@@ -14,13 +14,98 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class b2financialstaffui extends JFrame{
-	private financialstaffJpanel financialstaffJpanel;
-	private financialstaffb2OperationJpanel operationJpanel;
-	private JButton b1,b2,b3,b4,b5;
+	 private financialstaffJpanel financialstaffJpanel;
+	 financialstaffb2OperationJpanel operationJpanel;
+	JButton b1;
+	 JButton b2;
+	 JButton b3;
+	JButton b4;
+	 JButton b5;
 	public b2financialstaffui(String s,financialstaffui fsui) {
 		// TODO Auto-generated constructor stub
 		super(s);
 		init(fsui);
+		registListener(this,financialstaffJpanel);
+	}
+	private void registListener(
+			final b2financialstaffui b2financialstaffui,
+			final financialstaffJpanel financialstaffJpanel) {
+		// TODO Auto-generated method stub
+		b1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				new b2b1Jpanel1(b2financialstaffui, financialstaffJpanel);
+				financialstaffJpanel.remove(operationJpanel);
+				b1.setEnabled(false);
+				b2.setEnabled(false);
+				b3.setEnabled(false);
+				b4.setEnabled(false);
+				b5.setEnabled(false);
+				financialstaffJpanel.repaint();
+			}
+		});
+		b2.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						new b2b2Jpanel1(b2financialstaffui, financialstaffJpanel);
+						financialstaffJpanel.remove(operationJpanel);
+						b1.setEnabled(false);
+						b2.setEnabled(false);
+						b3.setEnabled(false);
+						b4.setEnabled(false);
+						b5.setEnabled(false);
+						financialstaffJpanel.repaint();
+					}
+				});
+		b3.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				new b2b3Jpanel1(b2financialstaffui, financialstaffJpanel);
+				financialstaffJpanel.remove(operationJpanel);
+				b1.setEnabled(false);
+				b2.setEnabled(false);
+				b3.setEnabled(false);
+				b4.setEnabled(false);
+				b5.setEnabled(false);
+				financialstaffJpanel.repaint();
+			}
+		});
+		b4.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				new b2b4Jpanel1(b2financialstaffui, financialstaffJpanel);
+				financialstaffJpanel.remove(operationJpanel);
+				b1.setEnabled(false);
+				b2.setEnabled(false);
+				b3.setEnabled(false);
+				b4.setEnabled(false);
+				b5.setEnabled(false);
+				financialstaffJpanel.repaint();
+			}
+		});
+		b5.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				new b2b5Jpanel1(b2financialstaffui, financialstaffJpanel);
+				financialstaffJpanel.remove(operationJpanel);
+				b1.setEnabled(false);
+				b2.setEnabled(false);
+				b3.setEnabled(false);
+				b4.setEnabled(false);
+				b5.setEnabled(false);
+				financialstaffJpanel.repaint();
+			}
+		});
 	}
 	private void init(financialstaffui fsui){
 		financialstaffJpanel=new financialstaffJpanel();

@@ -9,13 +9,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-
-public class b1b1Jpanel1 extends JPanel{
+public class b1b2Jpanel1 extends JPanel{
 	
 	private ImageIcon frameIcon =new ImageIcon("picture/²Ù×÷Ãæ°å.png");
 	private JButton returnButton;
 	private ImageIcon returnIcon=new ImageIcon("picture/·µ»Ø.png");
-	public b1b1Jpanel1(b1financialstaffui b1financialstaffui,financialstaffJpanel financialstaffJpanel) {
+	public b1b2Jpanel1(b1financialstaffui b1financialstaffui,financialstaffJpanel financialstaffJpanel) {
 		// TODO Auto-generated constructor stub
 		init();
 		financialstaffJpanel.add(this);
@@ -34,13 +33,13 @@ public class b1b1Jpanel1 extends JPanel{
 	 	this.setLayout(null);
 	 	this.setOpaque(false);
 	}
-	private void registListener(final b1financialstaffui b1financialstaffui,final financialstaffJpanel financialstaffJpanel,final b1b1Jpanel1 b1b1Jpanel1){
+	private void registListener(final b1financialstaffui b1financialstaffui,final financialstaffJpanel financialstaffJpanel,final b1b2Jpanel1 b1b2Jpanel1){
 		returnButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				financialstaffJpanel.remove(b1b1Jpanel1);
+				financialstaffJpanel.remove(b1b2Jpanel1);
 				financialstaffJpanel.add(b1financialstaffui.operationJpanel);
 				b1financialstaffui.b1.setEnabled(true);
 				b1financialstaffui.b2.setEnabled(true);
@@ -54,3 +53,4 @@ public class b1b1Jpanel1 extends JPanel{
 		g.drawImage(frameIcon.getImage(),-7,-12,null);
  }
 }
+

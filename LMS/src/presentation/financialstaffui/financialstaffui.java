@@ -21,14 +21,14 @@ public class financialstaffui extends JFrame{
 	private String[] args;
 	private JButton outjButton;
 	private financialstaffJpanel financialstaffJpanel;
-	private financialstaffOperationJpanel operationJpanel;
-	private JButton b1,b2,b3,b4,b5;
+	financialstaffOperationJpanel operationJpanel;
+	 JButton b1,b2,b3,b4,b5;
 	public financialstaffui(String s,String [] args) {
 		// TODO Auto-generated constructor stub
 		super(s);
 		this.args=args;
 		init();
-		registListener(this);
+		registListener(this,financialstaffJpanel);
 	}
 	private void init(){
 		financialstaffJpanel=new financialstaffJpanel();
@@ -86,7 +86,7 @@ public class financialstaffui extends JFrame{
 		this.setUndecorated(true);
 		this.setVisible(true);
 	}
-	private void registListener(final financialstaffui financialstaffui){
+	private void registListener(final financialstaffui financialstaffui,final financialstaffJpanel financialstaffJpanel){
 		outjButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -124,6 +124,21 @@ public class financialstaffui extends JFrame{
 				// TODO Auto-generated method stub
 				new b3financialstaffui("财务人员——成本管理", financialstaffui);
 				financialstaffui.setVisible(false);
+			}
+		});
+		b4.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				new b4Jpanel1(financialstaffui, financialstaffJpanel);
+				financialstaffJpanel.remove(operationJpanel);
+				b1.setEnabled(false);
+				b2.setEnabled(false);
+				b3.setEnabled(false);
+				b4.setEnabled(false);
+				b5.setEnabled(false);
+				financialstaffJpanel.repaint();
 			}
 		});
 		b5.addActionListener(new ActionListener() {

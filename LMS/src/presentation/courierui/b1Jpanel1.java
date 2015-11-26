@@ -278,7 +278,7 @@ public class b1Jpanel1 extends JPanel{
 		yesButton=new JButton(yesIcon);
 		yesButton.setBounds(602, 575,48,48);
 		yesButton.setContentAreaFilled(false);
-	 	this.setBounds(260, 30, 730,650);
+	 	this.setBounds(260, 60, 730,650);
 	 	this.add(yesButton);
 	 	this.add(returnButton);
 	 	this.setLayout(null);

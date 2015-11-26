@@ -9,17 +9,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-
-public class b1b1Jpanel1 extends JPanel{
+public class b2b5Jpanel1 extends JPanel{
 	
 	private ImageIcon frameIcon =new ImageIcon("picture/²Ù×÷Ãæ°å.png");
 	private JButton returnButton;
 	private ImageIcon returnIcon=new ImageIcon("picture/·µ»Ø.png");
-	public b1b1Jpanel1(b1financialstaffui b1financialstaffui,financialstaffJpanel financialstaffJpanel) {
+	public b2b5Jpanel1(b2financialstaffui b2financialstaffui,financialstaffJpanel financialstaffJpanel) {
 		// TODO Auto-generated constructor stub
 		init();
 		financialstaffJpanel.add(this);
-		registListener(b1financialstaffui,financialstaffJpanel,this);
+		registListener(b2financialstaffui,financialstaffJpanel,this);
 	}
 	private void init(){
 		Font font=new Font("Ó×Ô²",Font.BOLD,20);
@@ -34,16 +33,19 @@ public class b1b1Jpanel1 extends JPanel{
 	 	this.setLayout(null);
 	 	this.setOpaque(false);
 	}
-	private void registListener(final b1financialstaffui b1financialstaffui,final financialstaffJpanel financialstaffJpanel,final b1b1Jpanel1 b1b1Jpanel1){
+	private void registListener(final b2financialstaffui b2financialstaffui,final financialstaffJpanel financialstaffJpanel,final b2b5Jpanel1 b2b5Jpanel1){
 		returnButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				financialstaffJpanel.remove(b1b1Jpanel1);
-				financialstaffJpanel.add(b1financialstaffui.operationJpanel);
-				b1financialstaffui.b1.setEnabled(true);
-				b1financialstaffui.b2.setEnabled(true);
+				financialstaffJpanel.remove(b2b5Jpanel1);
+				financialstaffJpanel.add(b2financialstaffui.operationJpanel);
+				b2financialstaffui.b1.setEnabled(true);
+				b2financialstaffui.b2.setEnabled(true);
+				b2financialstaffui.b3.setEnabled(true);
+				b2financialstaffui.b4.setEnabled(true);
+				b2financialstaffui.b5.setEnabled(true);
 				financialstaffJpanel.repaint();
 			}
 		});
@@ -54,3 +56,4 @@ public class b1b1Jpanel1 extends JPanel{
 		g.drawImage(frameIcon.getImage(),-7,-12,null);
  }
 }
+

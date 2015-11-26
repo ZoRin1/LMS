@@ -15,12 +15,41 @@ import javax.swing.JPanel;
 
 public class b1financialstaffui extends JFrame{
 	private financialstaffJpanel financialstaffJpanel;
-	private financialstaffb1OperationJpanel operationJpanel;
-	private JButton b1,b2;
+	financialstaffb1OperationJpanel operationJpanel;
+	JButton b1,b2;
 	public b1financialstaffui(String s,financialstaffui fsui) {
 		// TODO Auto-generated constructor stub
 		super(s);
 		init(fsui);
+		registListener(this,financialstaffJpanel);
+	}
+	private void registListener(final b1financialstaffui b1financialstaffui,
+			final financialstaffJpanel financialstaffJpanel) {
+		// TODO Auto-generated method stub
+		b1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				new b1b1Jpanel1(b1financialstaffui, financialstaffJpanel);
+				financialstaffJpanel.remove(operationJpanel);
+				b1.setEnabled(false);
+				b2.setEnabled(false);
+				financialstaffJpanel.repaint();
+			}
+		});
+		b2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				new b1b2Jpanel1(b1financialstaffui, financialstaffJpanel);
+				financialstaffJpanel.remove(operationJpanel);
+				b1.setEnabled(false);
+				b2.setEnabled(false);
+				financialstaffJpanel.repaint();
+			}
+		});
 	}
 	private void init(financialstaffui fsui){
 		financialstaffJpanel=new financialstaffJpanel();
