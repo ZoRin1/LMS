@@ -127,6 +127,51 @@ public class icclerkui extends JFrame{
 				icclerkJpanel.repaint();
 			}
 		});
+		b3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				icclerkJpanel.remove(operationJpanel);
+				b1.setEnabled(false);
+				b2.setEnabled(false);
+				b3.setEnabled(false);
+				b4.setEnabled(false);
+				b5.setEnabled(false);
+				b6.setEnabled(false);
+				new ZloadingJpanel(icclerkui, icclerkJpanel, "普通快递");
+				icclerkJpanel.repaint();
+			}
+		});
+		b4.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				icclerkJpanel.remove(operationJpanel);
+				b1.setEnabled(false);
+				b2.setEnabled(false);
+				b3.setEnabled(false);
+				b4.setEnabled(false);
+				b5.setEnabled(false);
+				b6.setEnabled(false);
+				new ZloadingJpanel(icclerkui, icclerkJpanel, "特快专递");
+				icclerkJpanel.repaint();
+			}
+		});
+		b5.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				icclerkJpanel.remove(operationJpanel);
+				b1.setEnabled(false);
+				b2.setEnabled(false);
+				b3.setEnabled(false);
+				b4.setEnabled(false);
+				b5.setEnabled(false);
+				b6.setEnabled(false);
+				new ZloadingJpanel(icclerkui, icclerkJpanel, "经济快递");
+				icclerkJpanel.repaint();
+			}
+		});
 		b6.addActionListener(new ActionListener() {
 			
 			@Override

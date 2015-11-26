@@ -49,13 +49,13 @@ public class ZReceiveJpanel extends JPanel{
 		code.setBounds(30,30,125,27);
 		this.add(code);
 		
-		doName=new JLabel("单据名：中转中心装运单");
+		doName=new JLabel("单据名：中转中心接收单");
 		doName.setForeground(Color.white);
 		doName.setFont(font);
 		doName.setBounds(360,30,275,27);
 		this.add(doName);
 		
-		date=new JLabel("收款日期:");
+		date=new JLabel("到达日期:");
 		date.setForeground(Color.white);
 		date.setFont(font);
 		date.setBounds(30,97,125,27);
@@ -96,6 +96,17 @@ public class ZReceiveJpanel extends JPanel{
 //		jsp.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		this.add(tcode);
 //		this.add(jsp);
+		
+		state=new JLabel("货物状态：");
+		state.setForeground(Color.white);
+		state.setFont(font);
+		state.setBounds(30,365,125,27);
+		this.add(state);
+		
+		State=new JTextField();
+		State.setBounds(155,365,125,27);
+		State.setFont(font);
+		this.add(State);
 		
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662,575,48,48);

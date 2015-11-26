@@ -167,7 +167,8 @@ public class bhclerkui extends JFrame{
 				bhclerkui.driverinformationbButton.setEnabled(false);
 				bhclerkui.loaddocumentbButton.setEnabled(false);
 				bhclerkui.acceptdocumentbButton.setEnabled(false);
-				
+				new CarInfoJpanel(bhclerkui,bhclerkJpanel);
+				bhclerkJpanel.repaint();
 			}
 		});
 		driverinformationbButton.addActionListener(new ActionListener(){
@@ -182,6 +183,8 @@ public class bhclerkui extends JFrame{
 				bhclerkui.driverinformationbButton.setEnabled(false);
 				bhclerkui.loaddocumentbButton.setEnabled(false);
 				bhclerkui.acceptdocumentbButton.setEnabled(false);
+				new DriverInfoJpanel(bhclerkui,bhclerkJpanel);
+				bhclerkJpanel.repaint();
 			}
 		});
 }
