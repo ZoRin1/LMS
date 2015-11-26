@@ -23,6 +23,9 @@ public class icwarehousemanui extends JFrame{
 	private icwarehousemanJpanel icwarehousemanJpanel;
 	private icwarehousemanOperationJpanel operationJpanel;
 	private JButton b1,b2,b3,b4,b5,b6;
+	private checkDepotDialog check;
+	//一下是2015/11/26日添加的界面
+	private JLabel checkDepot;
 	public icwarehousemanui(String s,String [] args) {
 		// TODO Auto-generated constructor stub
 		super(s);
@@ -121,6 +124,15 @@ public class icwarehousemanui extends JFrame{
 			// TODO Auto-generated method stub
 			new b2icwarehousemanui("中转中心仓库管理员——入库", icwarehousemanui);
 			icwarehousemanui.setVisible(false);
+		}
+	});
+	b3.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO 自动生成的方法
+			System.out.println("wocao1");
+			check = new checkDepotDialog(icwarehousemanui);
 		}
 	});
 	}
