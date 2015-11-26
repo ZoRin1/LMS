@@ -21,7 +21,6 @@ public class createDocument implements createDocumentBlSer{
 			documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://114.212.42.143:6600/docFactory");
 			GetDocCodeDataSer getDocCodeDataSer=documentsFactory.createGetDocCodeDataSer();
 			code=getDocCodeDataSer.getDocCode(doName);
-			System.out.println(code);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
