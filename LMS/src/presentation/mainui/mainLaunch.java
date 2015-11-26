@@ -42,9 +42,9 @@ public class mainLaunch {
 	public static void main(String[] args){
 		try {
 //			documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://127.0.0.1:6600/docFactory");
-			organizationFactory organizationFactory=(organizationFactory)Naming.lookup("rmi://127.0.0.1:6600/orgFactory");
-//			FinanceOrgDataSer financeOrgDataSer=organizationFactory.createFinanceOrgDataSer();
-//			financeOrgDataSer.delete(1551);
+			documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://127.0.0.1:6600/docFactory");
+			GetDocCodeDataSer getDocCodeDataSer=documentsFactory.createGetDocCodeDataSer();
+			System.out.println(getDocCodeDataSer.getDocCode("ÊÕ¼þµ¥"));
 			
 //			ArrayList<String> codeList=new ArrayList<String>();
 //			codeList.add("1212");
