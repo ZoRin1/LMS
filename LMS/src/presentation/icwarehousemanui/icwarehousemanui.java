@@ -188,7 +188,6 @@ public class icwarehousemanui extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO 自动生成的方法
-			System.out.println("wocao1");
 			check = new checkDepotDialog(icwarehousemanui);
 		}
 	});
