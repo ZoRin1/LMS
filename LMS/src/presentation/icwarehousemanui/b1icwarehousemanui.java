@@ -17,9 +17,19 @@ import javax.swing.JPanel;
 public class b1icwarehousemanui extends JFrame{
 	private icwarehousemanJpanel icwarehousemanJpanel;
 	private icwarehousemanb1OperationJpanel operationJpanel;
+	public icwarehousemanb1OperationJpanel getOperationJpanel() {
+		return operationJpanel;
+	}
+	public JButton getB1() {
+		return b1;
+	}
+	public JButton getB2() {
+		return b2;
+	}
 	private JButton b1,b2;
 	private JButton tuichuButton;
 	private JButton zuixiaohuaButton;
+	private b1Jpanel1 b1jpanel;
 	public b1icwarehousemanui(String s,icwarehousemanui icwarehousemanui) {
 		// TODO Auto-generated constructor stub
 		super(s);
@@ -68,6 +78,19 @@ public class b1icwarehousemanui extends JFrame{
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
 				tuichuButton.setIcon(tuichuIcon2);
+			}
+		});
+		
+		b1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO 自动生成的方法存根
+				icwarehousemanJpanel.remove(operationJpanel);
+				b1icwarehousemanui.b1.setEnabled(false);
+				b1icwarehousemanui.b2.setEnabled(false);
+				new b1Jpanel1(b1icwarehousemanui,icwarehousemanJpanel);
+				icwarehousemanJpanel.repaint();
 			}
 		});
 	}
