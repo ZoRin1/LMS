@@ -12,5 +12,5 @@ public interface AddBooksDataSer extends Remote{
 	 * @author YangGuan
 	 *
 	 */
-	public void addBooks(BooksPO po) throws RemoteException;
+	public void addBooks() throws RemoteException;
 }

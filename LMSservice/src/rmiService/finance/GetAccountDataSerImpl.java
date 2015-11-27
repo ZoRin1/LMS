@@ -34,7 +34,7 @@ public class GetAccountDataSerImpl extends UnicastRemoteObject implements GetAcc
 		// TODO 自动生成的方法存根
 		System.out.println("Get Account Start");
 		sql="SELECT * from 账户表";
-		ArrayList<AccountPO> po = new ArrayList();
+		ArrayList<AccountPO> po = new ArrayList<AccountPO>();
 		try {
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);

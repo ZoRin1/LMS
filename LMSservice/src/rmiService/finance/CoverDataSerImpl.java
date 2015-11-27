@@ -29,29 +29,31 @@ public class CoverDataSerImpl extends UnicastRemoteObject implements CoverDataSe
 
 	@Override
 	public void coverAccount(ArrayList<AccountPO> po)  throws RemoteException {
-		// TODO 自动生成的方法存根
-		//每次只允许一个财务人员进行 账户管理！  这个判断条件以后优化
-		for(int i = 0 ; i < po.size();i++){
-			AccountPO p = po.get(i);
-			String name = p.getName();
-			double sums = p.getSums();
-			String sql = "INSERT into 账户表(name,sums) values("+name+","+sums+")";
-			try {
-				Class.forName(DRIVER);
-				Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
-				PreparedStatement preparedStatement=connection.prepareStatement(sql);
-				preparedStatement.executeUpdate();
-				preparedStatement.close();
-				connection.close();
-			} catch (ClassNotFoundException e) {
-				// TODO 自动生成的 catch 块
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO 自动生成的 catch 块
-				e.printStackTrace();
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement;
+			String  sql="delete from 账户表";
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();		
+			// TODO 自动生成的方法存根
+			//每次只允许一个财务人员进行 账户管理！  这个判断条件以后优化
+			for(int i = 0 ; i < po.size();i++){
+				AccountPO p = po.get(i);
+				String name = p.getName();
+				double sums = p.getSums();
+					sql = "INSERT into 账户表(name,sums) values('"+name+"','"+sums+"')";	
+					preparedStatement=connection.prepareStatement(sql);
+					preparedStatement.executeUpdate();				
 			}
-			
-		}
+			connection.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 		System.out.println("已经传输过来了");
 		ArrayList<AccountPO> pp = po;
 		for(AccountPO account:pp){

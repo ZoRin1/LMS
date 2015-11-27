@@ -10,5 +10,5 @@ public interface AddBooksDataSer {
 	 * @author YangGuan
 	 *
 	 */
-	public void addBooks(BooksPO po);
+	public void addBooks();
 }

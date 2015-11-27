@@ -5,7 +5,11 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 import po.financePO.BooksPO;
 import dataservice.financedataservice.AddBooksDataSer;
@@ -27,37 +31,62 @@ public class AddBooksDataSerImpl extends UnicastRemoteObject implements AddBooks
 	}
 
 	@Override
-	public void addBooks(BooksPO po) throws RemoteException {
+	public void addBooks() throws RemoteException {
 		// TODO 自动生成的方法存根
-        String  bussinessHallCode; // 机构
-        String  middleCode;
-        String  financeCode;
-        String  IDCode; //人员
-        String  VehicleCode; // 车辆
-        String  AccountName;//账户
-        String  date;//日期
-        bussinessHallCode = po.getBussinessHallCode();
-        middleCode = po.getMiddleCode();
-        financeCode = po.getFinanceCode();
-        VehicleCode = po.getVehicleCode();
-        IDCode = po.getIDCode();
-        AccountName = po.getAccountName();
-        date = po.getDate();
-	    sql = "INSERT into 账本(bussinessHallCode,middleCode,financeCode,IDCode,VehicleCode,AccountName) values("+bussinessHallCode+","+middleCode+","+financeCode+","+IDCode+","+VehicleCode+","+AccountName+","+date+")";
 		try {
+			sql="select codeNumberOfMiddle,codeNumber from 营业厅信息";
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			String bussinessHallCode="";
+			String middleCode="";
+			while (resultSet.next()) {
+				bussinessHallCode=bussinessHallCode+resultSet.getString(1)+resultSet.getString(2)+",";
+				middleCode=middleCode+resultSet.getString(1)+",";
+			}
+			sql="select codeNumber from 财务部信息";
+			preparedStatement=connection.prepareStatement(sql);
+			resultSet=preparedStatement.executeQuery();
+			String financeCode="";
+			resultSet.next();
+			financeCode=resultSet.getString(1);
+			sql="select ID from 帐号表";
+			preparedStatement=connection.prepareStatement(sql);
+			resultSet=preparedStatement.executeQuery();
+			String IDCode="";
+			while (resultSet.next()) {
+				IDCode=IDCode+resultSet.getString(1)+",";
+			}
+			sql="select codeVehicle from 车辆信息";
+			preparedStatement=connection.prepareStatement(sql);
+			resultSet=preparedStatement.executeQuery();
+			String VehicleCode="";
+			while (resultSet.next()) {
+				VehicleCode=VehicleCode+resultSet.getString(1)+",";
+			}
+			sql="select name from 账户表";
+			preparedStatement=connection.prepareStatement(sql);
+			resultSet=preparedStatement.executeQuery();
+			String AccountName="";
+			while (resultSet.next()) {
+				AccountName=AccountName+resultSet.getString(1)+",";
+			}
+			Date now = new Date(); 
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+			String riqi = dateFormat.format( now );
+			sql="insert into 账本 (bussinessHallCode,financeCode,middleCode,IDCode,VehicleCode,AccountName,date) values ('"+bussinessHallCode+"','"+financeCode+"','"+middleCode+"','"+IDCode+"','"+VehicleCode+"','"+AccountName+"','"+riqi+"')";
+			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.executeUpdate();
-			preparedStatement.close();
 			connection.close();
 		} catch (ClassNotFoundException e) {
-			// TODO 自动生成的 catch 块
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO 自动生成的 catch 块
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 
 }
