@@ -32,7 +32,7 @@ public class GetCountDataSerImpl extends UnicastRemoteObject implements GetCount
 	public int getCount(String city)  throws RemoteException{
 		// TODO 自动生成的方法存根
 		int count = 0;
-		sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+"where isFull=0";
+		sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+" where isFull=0";
 		try {
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);

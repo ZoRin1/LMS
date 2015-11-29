@@ -44,6 +44,7 @@ public class GetAccountDataSerImpl extends UnicastRemoteObject implements GetAcc
 				AccountPO acc = new AccountPO(resultSet.getString(1),resultSet.getDouble(2));
 				po.add(acc);
 			}
+			connection.close();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

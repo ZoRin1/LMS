@@ -32,7 +32,7 @@ public class StorageProDataSerImpl extends UnicastRemoteObject implements Storag
 		double TotalRevenue = po.getTotalRevenue();
 		double TotalPay = po.getTotalPay();
 		String GenerationDate = po.getGenerationDate();
-		String sql = "INSERT into 收益记录表(TotalRevenue,TotalPay,GenerationDate) values("+TotalRevenue+","+TotalPay+","+GenerationDate+")";
+		String sql = "INSERT into 收益记录表(TotalRevenue,TotalPay,GenerationDate) values('"+TotalRevenue+"','"+TotalPay+"','"+GenerationDate+"')";
 		try {
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);

@@ -17,10 +17,6 @@ public class GetReceivablesBillsDataSerImpl extends UnicastRemoteObject implemen
 	 * 
 	 */
 	private static final long serialVersionUID = -3837846709835354119L;
-	
-	ArrayList<ReceiptPO> receiptList = new ArrayList();
-	ArrayList<String> code = new ArrayList();
-	String c1 = "02156401",c2="02156402",c3="02156403",c4="02156404";
 
 	public GetReceivablesBillsDataSerImpl() throws RemoteException {
 		super();

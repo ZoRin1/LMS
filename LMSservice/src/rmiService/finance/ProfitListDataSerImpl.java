@@ -44,6 +44,7 @@ public class ProfitListDataSerImpl extends UnicastRemoteObject implements Profit
 				ProfitPO pro = new ProfitPO(resultSet.getDouble(1), resultSet.getDouble(2), resultSet.getString(3));
 				proPO.add(pro);
 			}
+			connection.close();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

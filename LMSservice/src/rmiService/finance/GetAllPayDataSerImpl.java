@@ -43,6 +43,7 @@ public class GetAllPayDataSerImpl extends UnicastRemoteObject implements GetAllP
 				PaymentPO po = new PaymentPO(resultSet.getString(1),resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getDouble(5), resultSet.getString(6),resultSet.getString(7),resultSet.getString(8),resultSet.getString(9));
 				ArrPo.add(po);
 			}
+			connection.close();
 		} catch (ClassNotFoundException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();

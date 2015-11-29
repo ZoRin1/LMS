@@ -62,7 +62,7 @@ public class UsedSpaceDataSerImpl extends UnicastRemoteObject implements UsedSpa
 	public int[] getAllSpace(String city)  throws RemoteException{
 		// TODO 自动生成的方法存根
 		int space[] = new int[3];
-		sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+"where AreaNum=1";
+		sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+" where AreaNum=1";
 		try {
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
@@ -70,12 +70,12 @@ public class UsedSpaceDataSerImpl extends UnicastRemoteObject implements UsedSpa
 			ResultSet resultSet=preparedStatement.executeQuery();
 			resultSet.last();
 			space[0] = resultSet.getRow();
-			sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+"where AreaNum=2";
+			sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+" where AreaNum=2";
 			preparedStatement=connection.prepareStatement(sql);
 			resultSet=preparedStatement.executeQuery();
 			resultSet.last();
 			space[1] = resultSet.getRow();
-			sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+"where AreaNum=3";
+			sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+" where AreaNum=3";
 			preparedStatement=connection.prepareStatement(sql);
 			resultSet=preparedStatement.executeQuery();
 			resultSet.last();
