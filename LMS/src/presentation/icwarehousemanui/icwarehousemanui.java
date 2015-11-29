@@ -1,6 +1,7 @@
 package presentation.icwarehousemanui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -23,7 +24,13 @@ public class icwarehousemanui extends JFrame{
 	private String[] args;
 	private JButton outjButton;
 	private icwarehousemanJpanel icwarehousemanJpanel;
+	public icwarehousemanJpanel getIcwarehousemanJpanel() {
+		return icwarehousemanJpanel;
+	}
 	private icwarehousemanOperationJpanel operationJpanel;
+	public icwarehousemanOperationJpanel getOperationJpanel() {
+		return operationJpanel;
+	}
 	private JButton b1,b2,b3,b4,b5,b6;
 	private JButton tuichuButton;
 	private JButton zuixiaohuaButton;

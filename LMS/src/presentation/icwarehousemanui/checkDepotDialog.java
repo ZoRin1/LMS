@@ -15,10 +15,15 @@ public class checkDepotDialog {
 	JLabel start,end;
 	JPanel panel;
 	ImageIcon checkIcon,b1Icon,b2Icon;
-	JFrame temp;
+	icwarehousemanui icUI;
+	checkDepotPanel panel1;
+	icwarehousemanJpanel icwarehousemanJpanel;
+	icwarehousemanOperationJpanel operationJpanel;
 	
-	public checkDepotDialog(JFrame ui){
-		temp = ui;
+	public checkDepotDialog(final icwarehousemanui ui){
+		icUI = ui;
+		icwarehousemanJpanel = ui.getIcwarehousemanJpanel();
+		operationJpanel = ui.getOperationJpanel();
 	    checkIcon = new ImageIcon("picture/库存查询框.png");
 	    b1Icon = new ImageIcon("picture/对话框确定.png");
 	    b2Icon = new ImageIcon("picture/取消.png");
@@ -62,6 +67,11 @@ public class checkDepotDialog {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
+				checkDepot.setVisible(false);
+				System.out.println("wocao");
+				icwarehousemanJpanel.remove(operationJpanel);
+				new checkDepotPanel(ui,icwarehousemanJpanel);
+				icwarehousemanJpanel.repaint();
 			}
 		});
 		
