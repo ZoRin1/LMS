@@ -1,6 +1,7 @@
 package presentation.adminui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -12,16 +13,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import businesslogic.accountbl.AccountInfoController;
 import vo.accountVO.AccountNumberVO;
 
-public class AddAccount extends JPanel {
+public class ChangeAccount extends JPanel {
 	private JLabel daBiaoTi;
 	private JLabel zhangHao;
 	private JLabel zhangHaoNo;
 	private JLabel miMa;
 	private JTextField miMaF;
-	JLabel miMaTishi;
+	private JLabel miMaTishi;
 	private JLabel xinMing;
 	private JTextField xinMingF;
 	private JLabel xinMingTiShi;
@@ -37,17 +37,15 @@ public class AddAccount extends JPanel {
 	private JButton yesButton;
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	private ImageIcon yesIcon=new ImageIcon("picture/确定.png");
+	protected Component aat;
 	
-	public AddAccount(adminui aui,adminJpanel apl){
-		init();
-		aui.setTitle("新建账户号");
+	public ChangeAccount(adminui aui,adminJpanel apl,AccountInfo accountInfo,AccountNumberVO accountNumberVO){
+		init(accountNumberVO);
 		apl.add(this);
-		registListener(aui, apl, this);
+		registListener(aui, apl, this,accountNumberVO);
 	}
 	
-	
-	
-	private void init(){
+private void init(AccountNumberVO accountNumberVO){
 		
 		Font fontB=new Font("幼圆",Font.BOLD,30);
 		Font font=new Font("幼圆",Font.BOLD,20);
@@ -66,7 +64,8 @@ public class AddAccount extends JPanel {
 		zhangHao.setBounds(100, 150, 64, 40);
 		this.add(zhangHao);
 		
-		zhangHaoNo = new JLabel("111111");
+		long ID = accountNumberVO.getID();
+		zhangHaoNo = new JLabel(String.valueOf(ID));
 		zhangHaoNo.setForeground(Color.WHITE);
 		zhangHaoNo.setFont(font);
 		zhangHaoNo.setBounds(180, 150, 150, 40);
@@ -79,7 +78,7 @@ public class AddAccount extends JPanel {
 		miMa.setBounds(100, 220, 64, 40);
 		this.add(miMa);
 		
-		miMaF = new JTextField();
+		miMaF = new JTextField(accountNumberVO.getPassword());
 		miMaF.setFont(font);
 		miMaF.setBounds(180, 220, 150, 40);
 		this.add(miMaF);
@@ -97,12 +96,12 @@ public class AddAccount extends JPanel {
 		xinMing.setBounds(100, 300, 64, 40);
 		this.add(xinMing);
 		
-		xinMingF = new JTextField();
+		xinMingF = new JTextField(accountNumberVO.getName());
 		xinMingF.setFont(font);
 		xinMingF.setBounds(180, 300, 120, 40);
 		this.add(xinMingF);
 		
-		xinMingTiShi = new JLabel("(至少两个字符)");
+		xinMingTiShi = new JLabel("(2--4个汉字)");
 		xinMingTiShi.setForeground(Color.WHITE);
 		xinMingTiShi.setFont(font);
 		xinMingTiShi.setBounds(310, 300, 160, 40);
@@ -115,10 +114,9 @@ public class AddAccount extends JPanel {
 		dianHua.setBounds(100, 380, 64, 40);
 		this.add(dianHua);
 		
-		dianHuaF = new JTextField(11);
+		dianHuaF = new JTextField(accountNumberVO.getPhone());
 		dianHuaF.setFont(font);
 		dianHuaF.setBounds(180, 380, 150, 40);
-		dianHuaF.addKeyListener(new NumberFieldListener());
 		this.add(dianHuaF);
 		
 		dianHuaTiShi = new JLabel("(11个数字)");
@@ -134,8 +132,7 @@ public class AddAccount extends JPanel {
 		shenFenZhengHaoMa.setBounds(100, 460, 150, 40);
 		this.add(shenFenZhengHaoMa);
 		
-		shenFenZhengHaoMaF = new JTextField(18);
-		shenFenZhengHaoMaF.addKeyListener(new NumberFieldListener());
+		shenFenZhengHaoMaF = new JTextField(accountNumberVO.getsID());
 		shenFenZhengHaoMaF.setFont(font);
 		shenFenZhengHaoMaF.setBounds(240, 460, 220, 40);
 		this.add(shenFenZhengHaoMaF);
@@ -162,71 +159,39 @@ public class AddAccount extends JPanel {
 	 	this.setOpaque(false);		
 	}
 
-	private void registListener(final adminui aui,final adminJpanel apl,final AddAccount aat){
-		
+	private void registListener(final adminui aui, final adminJpanel apl, final ChangeAccount changeAccount,final AccountNumberVO accountNumberVO) {
+
 		returnButton.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				aui.setTitle("管理员主界面");
-				apl.remove(aat);
-				apl.add(aui.operationJpanel);
-				aui.searchButton.setEnabled(true);
-				aui.addaccountButton.setEnabled(true);
-				aui.accountField.setEditable(true);
+				apl.remove(changeAccount);
+				
+				new AccountInfo(aui, apl, accountNumberVO);
 
 				apl.repaint();
 			}
 		});
-		
+
 		yesButton.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				aat.miMaTishi.setForeground(Color.WHITE);
-				aat.xinMingTiShi.setForeground(Color.WHITE);
-				aat.dianHuaTiShi.setForeground(Color.WHITE);
-				aat.shenFenZhengHaoMaTiShi.setForeground(Color.WHITE);
-				
-				boolean bMiMa = (miMaF.getText().length() == 6);
-				boolean bXinMing = (xinMingF.getText().length()>=2 && xinMingF.getText().length()<=10);
-				boolean bDianHua = (dianHuaF.getText().length() == 11);
-				boolean bShenFenZhengHao = (shenFenZhengHaoMaF.getText().length() == 18);
-				
-				if(!bMiMa){
-					aat.miMaTishi.setForeground(Color.RED);
+				if (true) {
+					changeAccount.miMaTishi.setForeground(Color.RED);
+					changeAccount.xinMingTiShi.setForeground(Color.RED);
+					changeAccount.dianHuaTiShi.setForeground(Color.RED);
+					changeAccount.shenFenZhengHaoMaTiShi.setForeground(Color.RED);
+
 				}
-				if (!bXinMing) {
-					aat.xinMingTiShi.setForeground(Color.RED);
-				}
-				if (!bDianHua) {
-					aat.dianHuaTiShi.setForeground(Color.RED);
-				}
-				if (!bShenFenZhengHao) {
-					aat.shenFenZhengHaoMaTiShi.setForeground(Color.RED);
-				}
-				
-				//暂时不用
-				//正常使用时启用
-//				if(bMiMa && bXinMing && bDianHua && bShenFenZhengHao){
-//					AccountNumberVO accountNumberVO = new AccountNumberVO(xinMingF.getText(), 
-//							Long.parseLong(zhangHaoNo.getText()), miMaF.getText(),
-//							null, dianHuaF.getText(), shenFenZhengHaoMaF.getText(), 
-//							"注册日期，得到当前时间的字符串表示");
-//					AccountInfoController accountInfoController = new AccountInfoController();
-//					accountInfoController.changeInfo(Long.parseLong(zhangHaoNo.getText()), accountNumberVO);
-//										
-//					
-//				}
-				
+
 			}
 		});
 	}
-	public void paintComponent(Graphics g)  
-	{  
-			super.paintComponent(g);    
-			g.drawImage(frameIcon.getImage(),-7,-12,null);
-	 }
-	
+
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(frameIcon.getImage(), -7, -12, null);
+	}
 }

@@ -3,6 +3,8 @@ package presentation.adminui;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,16 +16,17 @@ import vo.accountVO.AccountNumberVO;
 
 public class AccountInfo extends JPanel {
 	private JLabel daBiaoTi,zhangHao,zangHaoI,miMa,miMaI,xinMing,xinMingI,dianHua,dianHuaI,shenFenZhengHao,shenFenZhengHaoI,zhuCeRiQi,zhuCeRiQiI;
-	private JButton shange,delete,back;
+	private JButton change,delete,returnButton;
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
 	
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	private ImageIcon yesIcon=new ImageIcon("picture/确定.png");
 	
-	public AccountInfo(adminui aui,adminJpanel ajpl,AccountNumberVO accountNumberVO){
+	public AccountInfo(adminui aui,adminJpanel apl,AccountNumberVO accountNumberVO){
 		init(accountNumberVO);
 		aui.setTitle("账号详细信息");
-		ajpl.add(this);
+		apl.add(this);
+		registListener(aui, apl, this,accountNumberVO);
 	}
 
 	
@@ -116,9 +119,63 @@ public class AccountInfo extends JPanel {
 		zhuCeRiQiI.setBounds(240, 390, 180, 40);
 		this.add(zhuCeRiQiI);
 		
+		//到时候再加图片
+		change = new JButton("修改");
+		change.setForeground(Color.BLACK);
+		change.setContentAreaFilled(true);
+		change.setBorderPainted(true);
+		change.setBounds(120, 470, 160, 50);
+		this.add(change);
+
+		delete = new JButton("删除");
+		delete.setForeground(Color.BLACK);
+		delete.setContentAreaFilled(true);
+		delete.setBorderPainted(true);
+		delete.setBounds(310, 470, 160, 50);
+		this.add(delete);
+
+		returnButton = new JButton(returnIcon);
+		returnButton.setBounds(500, 470, 48, 48);
+		returnButton.setContentAreaFilled(false);
+		this.add(returnButton);
+		
 		this.setBounds(260, 60, 730,650);	
 	 	this.setLayout(null);
 	 	this.setOpaque(false);	
+	}
+	
+	
+	private void registListener(final adminui aui,final adminJpanel apl,final AccountInfo accountInfo,final AccountNumberVO accountNumberVO) {
+		returnButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				apl.remove(accountInfo);
+				apl.add(aui.operationJpanel);
+				aui.accountField.setEditable(true);
+				aui.searchButton.setEnabled(true);
+				aui.addaccountButton.setEnabled(true);
+				
+				aui.repaint();
+				
+				
+				
+			}
+		});
+		
+		change.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				apl.remove(accountInfo);
+				
+				new ChangeAccount(aui, apl, accountInfo, accountNumberVO);
+				
+				aui.repaint();
+			}
+		});
 	}
 	
 	public void paintComponent(Graphics g)  

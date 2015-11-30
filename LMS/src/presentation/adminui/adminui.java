@@ -18,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import businesslogic.accountbl.AccountInfoController;
 import businesslogic.financebl.AccountManageModel.addAccountBL;
 import presentation.mainui.mainui;
 import presentation.senderui.senderui;
@@ -34,7 +35,7 @@ public class adminui extends JFrame{
 			JButton outjButton;
 			private JButton tuichuButton;
 			private JButton zuixiaohuaButton;
-			private JButton account;//用来调用账号详细信息界面，实现账号表显示后去掉
+
 			public adminui(String s,String[] args) {
 				// TODO Auto-generated constructor stub
 				super(s);
@@ -86,11 +87,7 @@ public class adminui extends JFrame{
 				adminJpanel.add(searchButton);
 				adminJpanel.add(tuichuButton);
 				adminJpanel.add(zuixiaohuaButton);
-				account = new JButton("账号");//账号详细信息，稍后删除
-				account.setFont(new Font("幼圆", Font.BOLD, 30));
-				account.setForeground(Color.WHITE);
-				account.setBounds(40, 520, 120, 40);
-				adminJpanel.add(account);				
+								
 				adminJpanel.setLayout(null);
 				this.add(adminJpanel);
 				this.setSize( 1024, 730);
@@ -180,33 +177,22 @@ public class adminui extends JFrame{
 
 		);
 		
-		account.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				apl.remove(aui.operationJpanel);
-				aui.searchButton.setEnabled(false);
-				aui.addaccountButton.setEnabled(false);
-				aui.accountField.setEditable(false);
-
-				AccountNumberVO accountNumberVO = new AccountNumberVO("杨华安", 1000000, "admin", null, "13270807992", "522123199505051039", "2015-11-26");
-				
-				new AccountInfo(aui,apl, accountNumberVO);
-				aui.repaint();
-			}
-		});
 		
 		searchButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				String Id = accountField.getText();
+				//暂时不用，正常使用时启用
+//				String Id = accountField.getText();
+//				long ID = Long.parseLong(Id);
+//				AccountInfoController accountInfoController = new AccountInfoController();
+//				String[] result = accountInfoController.getAccount(ID);
 				String[]temp = {"1002356-杨华安"};
 				apl.remove(aui.operationJpanel);
 				aui.searchButton.setEnabled(false);
 				aui.addaccountButton.setEnabled(false);
+				aui.accountField.setText("");
 				aui.accountField.setEditable(false);
 				new SearchAccount(aui, apl, temp);
 				aui.repaint();
