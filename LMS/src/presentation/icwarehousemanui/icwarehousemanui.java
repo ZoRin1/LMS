@@ -32,9 +32,28 @@ public class icwarehousemanui extends JFrame{
 		return operationJpanel;
 	}
 	private JButton b1,b2,b3,b4,b5,b6;
+	public JButton getB1() {
+		return b1;
+	}
+	public JButton getB2() {
+		return b2;
+	}
+	public JButton getB3() {
+		return b3;
+	}
+	public JButton getB4() {
+		return b4;
+	}
+	public JButton getB5() {
+		return b5;
+	}
+	public JButton getB6() {
+		return b6;
+	}
 	private JButton tuichuButton;
 	private JButton zuixiaohuaButton;
 	private checkDepotDialog check;
+	private stockDepotPanel stock;
 	//以下是2015/11/26日添加的界面
 	private JLabel checkDepot;
 	public icwarehousemanui(String s,String [] args) {
@@ -196,6 +215,29 @@ public class icwarehousemanui extends JFrame{
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO 自动生成的方法
 			check = new checkDepotDialog(icwarehousemanui);
+			b1.setEnabled(false);
+			b2.setEnabled(false);
+			b3.setEnabled(false);
+			b4.setEnabled(false);
+			b5.setEnabled(false);
+			b6.setEnabled(false);
+		}
+	});
+	b4.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO 自动生成的方法存根
+			System.out.println("库存盘点");
+			stock = new stockDepotPanel(icwarehousemanui,icwarehousemanJpanel);
+			icwarehousemanJpanel.remove(operationJpanel);
+			b1.setEnabled(false);
+			b2.setEnabled(false);
+			b3.setEnabled(false);
+			b4.setEnabled(false);
+			b5.setEnabled(false);
+			b6.setEnabled(false);
+			icwarehousemanJpanel.repaint();
 		}
 	});
 	}

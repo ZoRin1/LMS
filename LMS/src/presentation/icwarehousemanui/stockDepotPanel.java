@@ -1,27 +1,24 @@
 package presentation.icwarehousemanui;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-public class checkDepotPanel extends JPanel{
+public class stockDepotPanel extends JPanel{
 	
 	
 	private ImageIcon frameIcon =new ImageIcon("picture/²Ù×÷Ãæ°å.png");
 	private JButton returnButton;
 	private JLabel j1;
-	private inDepotCheckJTable inDepotCheckJTable;
+//	private inDepotCheckJTable inDepotCheckJTable;
 //	private JTable inDepotTable;
 	
-	public checkDepotPanel(icwarehousemanui icwarehousemanui,icwarehousemanJpanel icwarehousemanJpanel){
+	public stockDepotPanel(icwarehousemanui icwarehousemanui,icwarehousemanJpanel icwarehousemanJpanel){
 		init();
 		icwarehousemanJpanel.add(this);
 		registListener(icwarehousemanui,icwarehousemanJpanel,this);
@@ -30,12 +27,11 @@ public class checkDepotPanel extends JPanel{
 	
 	private void  init(){
 		ImageIcon returnIcon=new ImageIcon("picture/·µ»Ø.png");
-		ImageIcon kuangjia = new ImageIcon("picture/¿â´æÍ¼Æ¬/¿â´æÐÅÏ¢¿ò.png");
+		ImageIcon kuangjia = new ImageIcon("picture/¿â´æÍ¼Æ¬/¿â´æÅÌµã¿ò.png");
 		returnButton=new JButton(returnIcon);
 		j1 = new JLabel(kuangjia);
 		j1.setBounds(0, 0, 720, 570);
 		
-		inDepotCheckJTable = new inDepotCheckJTable(this);
 		
 //		initTable();
 //		JScrollPane scrollPane = new JScrollPane(inDepotTable); 
@@ -52,17 +48,17 @@ public class checkDepotPanel extends JPanel{
 		
 		this.add(j1);
 		this.add(returnButton);
-		j1.add(inDepotCheckJTable.getScrollPane());
+//		j1.add(inDepotCheckJTable.getScrollPane());
 		this.setOpaque(false);
 		this.setBounds(260, 60, 730,650);
 		this.setLayout(null);
 	}
 	
-	private void registListener(final icwarehousemanui ui,final icwarehousemanJpanel icwarehousemanJpanel,final checkDepotPanel checkDepotPanel){
+	private void registListener(final icwarehousemanui ui,final icwarehousemanJpanel icwarehousemanJpanel,final stockDepotPanel stockDepotPanel){
 		returnButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				icwarehousemanJpanel.remove(checkDepotPanel);
+				icwarehousemanJpanel.remove(stockDepotPanel);
 				ui.getB1().setEnabled(true);
 				ui.getB2().setEnabled(true);
 				ui.getB3().setEnabled(true);
