@@ -4,25 +4,22 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
-public class stockDepotPanel extends JPanel{
+public class stockDepotPanel1 extends JPanel{
 	
 	
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
 	private JButton returnButton;
 	private JLabel j1;
-	private stockDepotJTable stockTable;
-	private JButton tieyun,qiyun;
-	private stockDepotPanel1 stock1;
-	private stockDepotPanel2 stock2;
+	private stockDepotJTable1 stockTable1;
+	private JButton hangyun,qiyun;
 //	private inDepotCheckJTable inDepotCheckJTable;
 //	private JTable inDepotTable;
+	private stockDepotPanel stock;
+	private stockDepotPanel2 stock2;
 	
-	public stockDepotPanel(icwarehousemanui icwarehousemanui,icwarehousemanJpanel icwarehousemanJpanel){
+	public stockDepotPanel1(icwarehousemanui icwarehousemanui,icwarehousemanJpanel icwarehousemanJpanel){
 		init();
 		icwarehousemanJpanel.add(this);
 		registListener(icwarehousemanui,icwarehousemanJpanel,this);
@@ -31,12 +28,12 @@ public class stockDepotPanel extends JPanel{
 	
 	private void  init(){
 		ImageIcon returnIcon=new ImageIcon("picture/返回.png");
-		ImageIcon kuangjia = new ImageIcon("picture/库存图片/库存盘点框.png");
+		ImageIcon kuangjia = new ImageIcon("picture/库存图片/铁运区.png");
 		returnButton=new JButton(returnIcon);
-		tieyun = new JButton();
-		tieyun.setBounds(82, 15, 38, 15);
-		tieyun.setContentAreaFilled(false);
-		tieyun.setBorderPainted(false);
+		hangyun = new JButton();
+		hangyun.setBounds(20, 15, 38, 15);
+		hangyun.setContentAreaFilled(false);
+		hangyun.setBorderPainted(false);
 		qiyun = new JButton();
 		qiyun.setBounds(134, 16, 38, 17);
 		qiyun.setContentAreaFilled(false);
@@ -45,7 +42,7 @@ public class stockDepotPanel extends JPanel{
 		j1.setBounds(0, 0, 720, 570);
 		
 		
-		stockTable = new stockDepotJTable(this);
+		stockTable1 = new stockDepotJTable1(this);
 //		initTable();
 //		JScrollPane scrollPane = new JScrollPane(inDepotTable); 
 //		scrollPane.getViewport().setOpaque(false);
@@ -61,19 +58,19 @@ public class stockDepotPanel extends JPanel{
 		
 		this.add(j1);
 		this.add(returnButton);
-		j1.add(stockTable.getScrollPane());
+		j1.add(stockTable1.getScrollPane());
 		j1.add(qiyun);
-		j1.add(tieyun);
+		j1.add(hangyun);
 		this.setOpaque(false);
 		this.setBounds(260, 60, 730,650);
 		this.setLayout(null);
 	}
 	
-	private void registListener(final icwarehousemanui ui,final icwarehousemanJpanel icwarehousemanJpanel,final stockDepotPanel stockDepotPanel){
+	private void registListener(final icwarehousemanui ui,final icwarehousemanJpanel icwarehousemanJpanel,final stockDepotPanel1 stockDepotPanel1){
 		returnButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				icwarehousemanJpanel.remove(stockDepotPanel);
+				icwarehousemanJpanel.remove(stockDepotPanel1);
 				ui.getB1().setEnabled(true);
 				ui.getB2().setEnabled(true);
 				ui.getB3().setEnabled(true);
@@ -84,15 +81,15 @@ public class stockDepotPanel extends JPanel{
 				icwarehousemanJpanel.repaint();
 			}
 		});
-		tieyun.addActionListener(new ActionListener() {
+		hangyun.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
-				System.out.println("tieyun");
-				icwarehousemanJpanel.remove(stockDepotPanel);
-				stock1 = new stockDepotPanel1(ui, icwarehousemanJpanel);
-				icwarehousemanJpanel.add(stock1);
+				System.out.println("hangyun");
+				icwarehousemanJpanel.remove(stockDepotPanel1);
+				stock = new stockDepotPanel(ui, icwarehousemanJpanel);
+				icwarehousemanJpanel.add(stock);
 				icwarehousemanJpanel.repaint();
 			}
 		});
@@ -102,11 +99,10 @@ public class stockDepotPanel extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
 				System.out.println("qiyun");
-				icwarehousemanJpanel.remove(stockDepotPanel);
+				icwarehousemanJpanel.remove(stockDepotPanel1);
 				stock2 = new stockDepotPanel2(ui, icwarehousemanJpanel);
 				icwarehousemanJpanel.add(stock2);
 				icwarehousemanJpanel.repaint();
-				
 			}
 		});
 	}
