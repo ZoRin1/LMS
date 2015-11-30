@@ -15,6 +15,7 @@ public class stockDepotPanel extends JPanel{
 	private ImageIcon frameIcon =new ImageIcon("picture/²Ù×÷Ãæ°å.png");
 	private JButton returnButton;
 	private JLabel j1;
+	private stockDepotJTable stockTable;
 //	private inDepotCheckJTable inDepotCheckJTable;
 //	private JTable inDepotTable;
 	
@@ -33,6 +34,7 @@ public class stockDepotPanel extends JPanel{
 		j1.setBounds(0, 0, 720, 570);
 		
 		
+		stockTable = new stockDepotJTable(this);
 //		initTable();
 //		JScrollPane scrollPane = new JScrollPane(inDepotTable); 
 //		scrollPane.getViewport().setOpaque(false);
@@ -48,7 +50,7 @@ public class stockDepotPanel extends JPanel{
 		
 		this.add(j1);
 		this.add(returnButton);
-//		j1.add(inDepotCheckJTable.getScrollPane());
+		j1.add(stockTable.getScrollPane());
 		this.setOpaque(false);
 		this.setBounds(260, 60, 730,650);
 		this.setLayout(null);

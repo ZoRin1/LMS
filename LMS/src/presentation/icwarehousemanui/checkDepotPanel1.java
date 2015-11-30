@@ -1,29 +1,26 @@
 package presentation.icwarehousemanui;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-public class checkDepotPanel extends JPanel{
+public class checkDepotPanel1 extends JPanel{
 	
 	
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
 	private JButton returnButton;
 	private JLabel j1;
-	private inDepotCheckJTable inDepotCheckJTable;
-	private JButton outDepot;
-	private checkDepotPanel1 check1;
+	private inDepotCheckJTable1 inDepotCheckJTable1;
+	private JButton inDepot;
+	private checkDepotPanel check;
 //	private JTable inDepotTable;
 	
-	public checkDepotPanel(icwarehousemanui icwarehousemanui,icwarehousemanJpanel icwarehousemanJpanel){
+	public checkDepotPanel1(icwarehousemanui icwarehousemanui,icwarehousemanJpanel icwarehousemanJpanel){
 		init();
 		icwarehousemanJpanel.add(this);
 		registListener(icwarehousemanui,icwarehousemanJpanel,this);
@@ -32,16 +29,16 @@ public class checkDepotPanel extends JPanel{
 	
 	private void  init(){
 		ImageIcon returnIcon=new ImageIcon("picture/返回.png");
-		ImageIcon kuangjia = new ImageIcon("picture/库存图片/库存信息框.png");
+		ImageIcon kuangjia = new ImageIcon("picture/库存图片/库存信息框(出库).png");
 		returnButton=new JButton(returnIcon);
-		outDepot = new JButton();
-		outDepot.setBounds(61, 17, 34, 17);
-		outDepot.setContentAreaFilled(false);
-		outDepot.setBorderPainted(false);
+		inDepot = new JButton();
+		inDepot.setBounds(22, 17, 34, 17);
+		inDepot.setContentAreaFilled(false);
+		inDepot.setBorderPainted(false);
 		j1 = new JLabel(kuangjia);
 		j1.setBounds(0, 0, 720, 570);
 		
-		inDepotCheckJTable = new inDepotCheckJTable(this);
+		inDepotCheckJTable1 = new inDepotCheckJTable1(this);
 		
 //		initTable();
 //		JScrollPane scrollPane = new JScrollPane(inDepotTable); 
@@ -58,18 +55,18 @@ public class checkDepotPanel extends JPanel{
 		
 		this.add(j1);
 		this.add(returnButton);
-		j1.add(inDepotCheckJTable.getScrollPane());
-		j1.add(outDepot);
+		j1.add(inDepotCheckJTable1.getScrollPane());
+		j1.add(inDepot);
 		this.setOpaque(false);
 		this.setBounds(260, 60, 730,650);
 		this.setLayout(null);
 	}
 	
-	private void registListener(final icwarehousemanui ui,final icwarehousemanJpanel icwarehousemanJpanel,final checkDepotPanel checkDepotPanel){
+	private void registListener(final icwarehousemanui ui,final icwarehousemanJpanel icwarehousemanJpanel,final checkDepotPanel1 checkDepotPanel1){
 		returnButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				icwarehousemanJpanel.remove(checkDepotPanel);
+				icwarehousemanJpanel.remove(checkDepotPanel1);
 				ui.getB1().setEnabled(true);
 				ui.getB2().setEnabled(true);
 				ui.getB3().setEnabled(true);
@@ -80,14 +77,14 @@ public class checkDepotPanel extends JPanel{
 				icwarehousemanJpanel.repaint();
 			}
 		});
-		outDepot.addActionListener(new ActionListener() {
+		inDepot.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
-				icwarehousemanJpanel.remove(checkDepotPanel);
-				check1 = new checkDepotPanel1(ui, icwarehousemanJpanel);
-				icwarehousemanJpanel.add(check1);
+				icwarehousemanJpanel.remove(checkDepotPanel1);
+				check = new checkDepotPanel(ui, icwarehousemanJpanel);
+				icwarehousemanJpanel.add(check);
 				icwarehousemanJpanel.repaint();
 			}
 		});

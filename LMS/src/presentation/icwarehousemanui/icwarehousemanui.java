@@ -214,13 +214,13 @@ public class icwarehousemanui extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO 自动生成的方法
-			check = new checkDepotDialog(icwarehousemanui);
 			b1.setEnabled(false);
 			b2.setEnabled(false);
 			b3.setEnabled(false);
 			b4.setEnabled(false);
 			b5.setEnabled(false);
 			b6.setEnabled(false);
+			check = new checkDepotDialog(icwarehousemanui);
 		}
 	});
 	b4.addActionListener(new ActionListener() {

@@ -67,7 +67,7 @@ public class checkDepotDialog {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
-				checkDepot.setVisible(false);
+				checkDepot.dispose();
 				System.out.println("wocao");
 				icwarehousemanJpanel.remove(operationJpanel);
 				new checkDepotPanel(ui,icwarehousemanJpanel);
@@ -80,7 +80,13 @@ public class checkDepotDialog {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
-				checkDepot.setVisible(false);
+				checkDepot.dispose();
+				ui.getB1().setEnabled(true);
+				ui.getB2().setEnabled(true);
+				ui.getB3().setEnabled(true);
+				ui.getB4().setEnabled(true);
+				ui.getB5().setEnabled(true);
+				ui.getB6().setEnabled(true);
 			}
 		});
 		checkDepot.add(panel);
