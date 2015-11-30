@@ -14,8 +14,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import businesslogic.documentsbl.createDocument;
+
 public class AcceptDocumentJpanel extends JPanel{
 	private JLabel code;
+	private JLabel code1;
 	private JLabel doName;
 	private JLabel date;
 	private JLabel date1;
@@ -45,6 +48,13 @@ public class AcceptDocumentJpanel extends JPanel{
 		code.setFont(font);
 		code.setBounds(30,30,125,27);
 		this.add(code);
+		
+		code1=new JLabel();
+		code1.setText(new createDocument().createDocument("营业厅装车单"));
+		code1.setForeground(Color.white);
+		code1.setFont(font);
+		code1.setBounds(155,30,131,27);
+		this.add(code1);
 		
 		doName=new JLabel("单据名：接收单");
 		doName.setForeground(Color.white);

@@ -17,20 +17,20 @@ public class createDocument implements createDocumentBlSer{
 	public String createDocument(String doName) {
 		// TODO Auto-generated method stub
 		String code=null;
-		try {
-			documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://114.212.42.143:6600/docFactory");
-			GetDocCodeDataSer getDocCodeDataSer=documentsFactory.createGetDocCodeDataSer();
-			code=getDocCodeDataSer.getDocCode(doName);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://114.212.42.143:6600/docFactory");
+//			GetDocCodeDataSer getDocCodeDataSer=documentsFactory.createGetDocCodeDataSer();
+//			code=getDocCodeDataSer.getDocCode(doName);
+//		} catch (MalformedURLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (RemoteException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (NotBoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		return code; 
 	}
 }
