@@ -258,7 +258,7 @@ public class b1topmanagerui extends JFrame{
 				b1ui.b1.setEnabled(false);
 
 				new Salary(tui,tjpl,b1ui,6);
-				b1ui.dispose();	
+				b1ui.repaint();
 			}
 		});
 

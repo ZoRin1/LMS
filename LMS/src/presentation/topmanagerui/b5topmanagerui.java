@@ -17,8 +17,9 @@ import javax.swing.JPanel;
 
 public class b5topmanagerui extends JFrame{
 	private topmanagerJpanel topmanagerJpanel;
-	private topmanagerb5OperationJpanel operationJpanel;
-	private JButton b1,b2;
+	topmanagerb5OperationJpanel operationJpanel;
+	JButton b1;
+	JButton b2;
 	private JButton tuichuButton;
 	private JButton zuixiaohuaButton;
 	public b5topmanagerui(String s,topmanagerui tmui) {
@@ -69,6 +70,23 @@ public class b5topmanagerui extends JFrame{
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
 				tuichuButton.setIcon(tuichuIcon2);
+			}
+		});
+		
+		b2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				b5topmanagerui.topmanagerJpanel.remove(operationJpanel);
+				b5topmanagerui.b1.setEnabled(false);
+				b5topmanagerui.b2.setEnabled(false);
+				
+				new CostConst(b5topmanagerui, topmanagerJpanel);
+				
+				b5topmanagerui.repaint();
+				
 			}
 		});
 	}
@@ -144,6 +162,8 @@ class topmanagerb5OperationJpanel extends JPanel{
 				
 			}
 		});
+		
+		
 	}
 	public void paintComponent(Graphics g)  
 	{  
