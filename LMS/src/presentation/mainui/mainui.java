@@ -193,7 +193,7 @@ class mainFrame extends JFrame{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					
+					new loginFailDialog(mf, "登陆失败", true);
 				}
 			});
 			checkButton.addActionListener(new ActionListener() {
@@ -201,8 +201,9 @@ class mainFrame extends JFrame{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					new senderui("物流信息查询",args);
-					mf.dispose();
+					 new checkFailDialog(mf, "查询失败", true);
+//					new senderui("物流信息查询",args);
+//					mf.dispose();
 					
 				}
 			});
@@ -343,7 +344,7 @@ class aboutDialog extends JDialog{
 		jButton=new JButton(yesIcon);
 		jButton.setContentAreaFilled(false);
 		jPanel.setLayout(null);
-		jButton.setBounds(218, 160, 64, 64);
+		jButton.setBounds(218, 190, 64, 64);
 		jLabel.setBounds(0, 0, 500, 200);
 		jPanel.add(jLabel);
 		jPanel.add(jButton);
@@ -375,3 +376,89 @@ class dialogJpanel extends JPanel{
       
      }
    }
+class loginFailDialog extends JDialog{
+	private dialogJpanel jPanel;
+	private JButton jButton;
+	private JLabel jLabel;
+	public loginFailDialog(JFrame frame,String title,boolean modal) {
+		super(frame,title,modal);
+		init();
+		registerListener();
+		this.setVisible(true);
+	}
+	private void init(){
+		ImageIcon yesIcon=new ImageIcon("picture/登录.png");
+		jLabel=new JLabel("", JLabel.CENTER);
+		jLabel.setText("<html>帐号或密码错误，请重新输入</html>"); 
+		jLabel.setForeground(Color.white);
+		jLabel.setFont(new Font("幼圆",Font.BOLD,27));
+		jPanel=new dialogJpanel();
+		jButton=new JButton(yesIcon);
+		jButton.setContentAreaFilled(false);
+		jPanel.setLayout(null);
+		jButton.setBounds(218, 190, 64, 64);
+		jLabel.setBounds(0, 0, 500, 200);
+		jPanel.add(jLabel);
+		jPanel.add(jButton);
+		this.add(jPanel);
+		this.setSize(500, 300);
+		Toolkit kitToolkit =Toolkit.getDefaultToolkit();
+		Dimension screenSize=kitToolkit.getScreenSize();
+		int screenWidth=screenSize.width;
+		int screenHeight=screenSize.height;
+		int dialogWidth=this.getWidth();
+		int dialogHeight=this.getHeight();
+		this.setLocation((screenWidth-dialogWidth)/2, (screenHeight-dialogHeight)/2);
+		this.setResizable(false);
+	}
+	private void registerListener(){
+		jButton.addActionListener(new ActionListener() {		
+			public void actionPerformed(ActionEvent e) {
+				loginFailDialog.this.dispose();
+			}
+		});
+	}
+}
+class checkFailDialog extends JDialog{
+	private dialogJpanel jPanel;
+	private JButton jButton;
+	private JLabel jLabel;
+	public checkFailDialog(JFrame frame,String title,boolean modal) {
+		super(frame,title,modal);
+		init();
+		registerListener();
+		this.setVisible(true);
+	}
+	private void init(){
+		ImageIcon yesIcon=new ImageIcon("picture/登录.png");
+		jLabel=new JLabel("", JLabel.CENTER);
+		jLabel.setText("<html>条形码号不存在，请重新输入</html>"); 
+		jLabel.setForeground(Color.white);
+		jLabel.setFont(new Font("幼圆",Font.BOLD,27));
+		jPanel=new dialogJpanel();
+		jButton=new JButton(yesIcon);
+		jButton.setContentAreaFilled(false);
+		jPanel.setLayout(null);
+		jButton.setBounds(218, 190, 64, 64);
+		jLabel.setBounds(0, 0, 500, 200);
+		jPanel.add(jLabel);
+		jPanel.add(jButton);
+		this.add(jPanel);
+		this.setSize(500, 300);
+		Toolkit kitToolkit =Toolkit.getDefaultToolkit();
+		Dimension screenSize=kitToolkit.getScreenSize();
+		int screenWidth=screenSize.width;
+		int screenHeight=screenSize.height;
+		int dialogWidth=this.getWidth();
+		int dialogHeight=this.getHeight();
+		this.setLocation((screenWidth-dialogWidth)/2, (screenHeight-dialogHeight)/2);
+		this.setResizable(false);
+	}
+	private void registerListener(){
+		jButton.addActionListener(new ActionListener() {		
+			public void actionPerformed(ActionEvent e) {
+				checkFailDialog.this.dispose();
+			}
+		});
+	}
+}
