@@ -56,7 +56,9 @@ public class TransportationBL implements TransportationBLSer {
 	@Override
 	public double[] getSalary(int employee) {
 		// TODO Auto-generated method stub
-		return null;
+		double[] result = {2000.0,1.0,15.0};
+		
+		return result;
 	}
 
 	@Override

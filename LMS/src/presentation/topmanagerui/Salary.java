@@ -24,15 +24,15 @@ public class Salary extends JPanel {
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	private ImageIcon yesIcon=new ImageIcon("picture/确定.png");
 	
-	public Salary(topmanagerui tui,topmanagerJpanel tjpl,b1topmanagerui b1ui) {
-		init();
+	public Salary(topmanagerui tui,topmanagerJpanel tjpl,b1topmanagerui b1ui,int employee) {
+		init(employee);
 		tjpl.add(this);
 		registListener(tjpl, b1ui, this);
 		
 		
 	}
 	
-	private void init() {
+	private void init(int employee) {//employee 为员工种类
 	
 		
 		

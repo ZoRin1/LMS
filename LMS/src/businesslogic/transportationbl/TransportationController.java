@@ -39,5 +39,15 @@ public class TransportationController {
 		return tBL.getCityList(city);
 	}
 
+	public double[] getSalary(int employee) {
+		// TODO Auto-generated method stub
+		return tBL.getSalary(employee);
+	}
+
+
+	public boolean changeSalary(int employee, double[] salary) {
+		// TODO Auto-generated method stub
+		return tBL.changeSalary(employee, salary);
+	}
 
 }
