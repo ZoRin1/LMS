@@ -1,13 +1,15 @@
 package businesslogicservice.documentsblservice;
 
-import vo.documentsVO.DocumentVO;
+import po.documentsPO.DocumentPO;
+
 
 public interface getBufferedInfoBlSer {
-	/**
-	 * 系统返回一个完整的VO对象
+	/**vo神马的都棍吧
+	 * 系统返回一个完整的PO对象
 	 * 用于显示单据的完整信息
 	 * @author XiongKaiQi
 	 *
 	 */
-	public DocumentVO getBufferedInfo(String code);
+
+	public DocumentPO getBufferedInfo(String code, String doName);
 }

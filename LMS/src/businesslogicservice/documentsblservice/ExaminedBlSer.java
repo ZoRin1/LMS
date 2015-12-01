@@ -7,5 +7,6 @@ public interface ExaminedBlSer {
 	 * @author XiongKaiQi
 	 *
 	 */
-	public boolean examined(boolean examined);
+
+	public boolean examined(String code,String doName,boolean examined);
 }

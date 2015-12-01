@@ -1,6 +1,7 @@
 package businesslogicservice.documentsblservice;
 
-import vo.documentsVO.DocumentVO;
+import po.documentsPO.DocumentPO;
+
 
 public interface createBlockBlSer {
 	/**
@@ -10,5 +11,5 @@ public interface createBlockBlSer {
 	 * @author XiongKaiQi
 	 *
 	 */
-	public boolean createBlock(DocumentVO vo);
+	public boolean createBlock(DocumentPO po);
 }

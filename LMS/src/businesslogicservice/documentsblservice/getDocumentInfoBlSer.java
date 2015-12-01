@@ -1,6 +1,6 @@
 package businesslogicservice.documentsblservice;
 
-import vo.documentsVO.DocumentVO;
+import po.documentsPO.DocumentPO;
 
 public interface getDocumentInfoBlSer {
 	/**
@@ -9,5 +9,5 @@ public interface getDocumentInfoBlSer {
 	 * @author XiongKaiQi
 	 *
 	 */
-	public DocumentVO getDocumentInfo(String code);
+	public DocumentPO getDocumentInfo(String code,String doName);
 }
