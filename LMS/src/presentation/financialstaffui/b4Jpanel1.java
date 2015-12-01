@@ -22,6 +22,7 @@ public class b4Jpanel1 extends JPanel{
 	private JButton returnButton;
 	private ImageIcon returnIcon=new ImageIcon("picture/·µ»Ø.png");
 	private ImageIcon yesIcon=new ImageIcon("picture/È·¶¨.png");
+	private b4Jpanel2 b4Jpanel2;
 	public b4Jpanel1(financialstaffui financialstaffui,financialstaffJpanel financialstaffJpanel) {
 		// TODO Auto-generated constructor stub
 		init();
@@ -82,7 +83,10 @@ public class b4Jpanel1 extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+				b4Jpanel2 = new b4Jpanel2(financialstaffui, financialstaffJpanel);
+				financialstaffJpanel.add(b4Jpanel2);
+				financialstaffJpanel.remove(b4Jpanel1);
+				financialstaffJpanel.repaint();
 			}
 		});
 	}

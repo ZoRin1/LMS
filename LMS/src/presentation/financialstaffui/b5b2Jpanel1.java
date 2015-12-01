@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class b5b2Jpanel1 extends JPanel{
@@ -15,6 +16,8 @@ public class b5b2Jpanel1 extends JPanel{
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
 	private JButton returnButton;
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
+	private JLabel j1;
+	
 	public b5b2Jpanel1(b5financialstaffui b5financialstaffui,financialstaffJpanel financialstaffJpanel) {
 		// TODO Auto-generated constructor stub
 		init();
@@ -23,6 +26,9 @@ public class b5b2Jpanel1 extends JPanel{
 	}
 	private void init(){
 		Font font=new Font("幼圆",Font.BOLD,20);
+		ImageIcon i1 = new ImageIcon("picture/财务图片/账本列表.png");
+		j1 = new JLabel(i1);
+		j1.setBounds(0, 0, 723, 569);
 
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662, 575,48,48);
@@ -30,6 +36,7 @@ public class b5b2Jpanel1 extends JPanel{
 
 	 	this.setBounds(260, 60, 730,650);
 
+	 	this.add(j1);
 	 	this.add(returnButton);
 	 	this.setLayout(null);
 	 	this.setOpaque(false);
