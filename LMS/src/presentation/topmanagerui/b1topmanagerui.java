@@ -151,7 +151,7 @@ public class b1topmanagerui extends JFrame{
 				b1ui.b5.setEnabled(false);
 				b1ui.b6.setEnabled(false);
 				
-				new Salary(tui,tjpl,b1ui);
+				new Salary(tui,tjpl,b1ui,1);
 				b1ui.repaint();
 				
 				
@@ -173,7 +173,7 @@ public class b1topmanagerui extends JFrame{
 				b1ui.b5.setEnabled(false);
 				b1ui.b6.setEnabled(false);
 				
-				new Salary(tui,tjpl,b1ui);
+				new Salary(tui,tjpl,b1ui,2);
 				b1ui.repaint();
 				
 				
@@ -197,7 +197,7 @@ public class b1topmanagerui extends JFrame{
 				b1ui.b5.setEnabled(false);		
 				b1ui.b6.setEnabled(false);		
 		
-				new Salary(tui,tjpl,b1ui);
+				new Salary(tui,tjpl,b1ui,3);
 				b1ui.repaint();
 			}
 		});
@@ -219,7 +219,7 @@ public class b1topmanagerui extends JFrame{
 				b1ui.b5.setEnabled(false);		
 				b1ui.b6.setEnabled(false);				
 		
-				new Salary(tui,tjpl,b1ui);	
+				new Salary(tui,tjpl,b1ui,4);	
 				b1ui.repaint();
 			}
 		});
@@ -238,7 +238,7 @@ public class b1topmanagerui extends JFrame{
 				b1ui.b5.setEnabled(false);	
 				b1ui.b6.setEnabled(false);
 
-				new Salary(tui,tjpl,b1ui);
+				new Salary(tui,tjpl,b1ui,5);
 				b1ui.repaint();
 			}
 		});
@@ -257,7 +257,7 @@ public class b1topmanagerui extends JFrame{
 				b1ui.b5.setEnabled(false);
 				b1ui.b1.setEnabled(false);
 
-				new Salary(tui,tjpl,b1ui);
+				new Salary(tui,tjpl,b1ui,6);
 				b1ui.dispose();	
 			}
 		});

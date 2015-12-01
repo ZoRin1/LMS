@@ -59,6 +59,7 @@ public class adminui extends JFrame{
 				tuichuButton.setContentAreaFilled(false);
 				tuichuButton.setBorderPainted(false);
 				accountField=new JTextField();
+				accountField.addKeyListener(new NumberFieldListener());
 				accountField.setOpaque(false);
 				accountField.setFont(new Font("свт╡",Font.BOLD,24));
 				accountField.setForeground(Color.white);
