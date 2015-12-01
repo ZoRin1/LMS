@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -173,6 +174,17 @@ public class AccountInfo extends JPanel {
 				
 				new ChangeAccount(aui, apl, accountInfo, accountNumberVO);
 				
+				aui.repaint();
+			}
+		});
+		delete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JOptionPane.showMessageDialog(null, "你确定删除此账号？", "确定删除", JOptionPane.YES_NO_OPTION);
+				apl.remove(accountInfo);
+				apl.add(aui.operationJpanel);
 				aui.repaint();
 			}
 		});

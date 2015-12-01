@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -209,16 +210,25 @@ public class AddAccount extends JPanel {
 				
 				//暂时不用
 				//正常使用时启用
-//				if(bMiMa && bXinMing && bDianHua && bShenFenZhengHao){
-//					AccountNumberVO accountNumberVO = new AccountNumberVO(xinMingF.getText(), 
-//							Long.parseLong(zhangHaoNo.getText()), miMaF.getText(),
-//							null, dianHuaF.getText(), shenFenZhengHaoMaF.getText(), 
-//							"注册日期，得到当前时间的字符串表示");
-//					AccountInfoController accountInfoController = new AccountInfoController();
-//					accountInfoController.changeInfo(Long.parseLong(zhangHaoNo.getText()), accountNumberVO);
-//										
-//					
-//				}
+				if(bMiMa && bXinMing && bDianHua && bShenFenZhengHao){
+					AccountNumberVO accountNumberVO = new AccountNumberVO(xinMingF.getText(), 
+							Long.parseLong(zhangHaoNo.getText()), miMaF.getText(),
+							null, dianHuaF.getText(), shenFenZhengHaoMaF.getText(), 
+							"注册日期，得到当前时间的字符串表示");
+					AccountInfoController accountInfoController = new AccountInfoController();
+					boolean result = accountInfoController.addAccount(Long.parseLong(zhangHaoNo.getText()), accountNumberVO);
+					if (bMiMa && bXinMing && bDianHua && bShenFenZhengHao) {
+						JOptionPane.showMessageDialog(aui, "修改成功");
+						apl.remove(aat);
+						apl.add(aui.operationJpanel);
+						aui.accountField.setEditable(true);
+						aui.searchButton.setEnabled(true);
+						aui.addaccountButton.setEnabled(true);
+						aui.repaint();
+					}
+										
+					
+				}
 				
 			}
 		});

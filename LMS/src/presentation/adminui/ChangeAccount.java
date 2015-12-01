@@ -6,13 +6,16 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.AppletInitializer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import businesslogic.accountbl.AccountInfoController;
 import vo.accountVO.AccountNumberVO;
 
 public class ChangeAccount extends JPanel {
@@ -178,11 +181,47 @@ private void init(AccountNumberVO accountNumberVO){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (true) {
+				changeAccount.miMaTishi.setForeground(Color.WHITE);
+				changeAccount.xinMingTiShi.setForeground(Color.WHITE);
+				changeAccount.dianHuaTiShi.setForeground(Color.WHITE);
+				changeAccount.shenFenZhengHaoMaTiShi.setForeground(Color.WHITE);
+				
+				boolean bMiMa = (miMaF.getText().length() == 6);
+				boolean bXinMing = (xinMingF.getText().length()>=2 && xinMingF.getText().length()<=10);
+				boolean bDianHua = (dianHuaF.getText().length() == 11);
+				boolean bShenFenZhengHao = (shenFenZhengHaoMaF.getText().length() == 18);
+				
+				if(!bMiMa){
 					changeAccount.miMaTishi.setForeground(Color.RED);
+				}
+				if (!bXinMing) {
 					changeAccount.xinMingTiShi.setForeground(Color.RED);
+				}
+				if (!bDianHua) {
 					changeAccount.dianHuaTiShi.setForeground(Color.RED);
+				}
+				if (!bShenFenZhengHao) {
 					changeAccount.shenFenZhengHaoMaTiShi.setForeground(Color.RED);
+				}
+				
+				//暂时不用
+				//正常使用时启用
+				if(bMiMa && bXinMing && bDianHua && bShenFenZhengHao){
+					AccountNumberVO accountNumberVO = new AccountNumberVO(xinMingF.getText(), 
+							Long.parseLong(zhangHaoNo.getText()), miMaF.getText(),
+							null, dianHuaF.getText(), shenFenZhengHaoMaF.getText(), 
+							"注册日期，得到当前时间的字符串表示");
+					AccountInfoController accountInfoController = new AccountInfoController();
+					boolean result = accountInfoController.changeInfo(Long.parseLong(zhangHaoNo.getText()), accountNumberVO);
+					if (bMiMa && bXinMing && bDianHua && bShenFenZhengHao) {
+						JOptionPane.showMessageDialog(aui, "修改成功");
+						apl.remove(changeAccount);
+						apl.add(aui.operationJpanel);
+						aui.accountField.setEditable(true);
+						aui.searchButton.setEnabled(true);
+						aui.addaccountButton.setEnabled(true);
+						aui.repaint();
+					}
 
 				}
 

@@ -70,7 +70,7 @@ public class SearchAccount extends JPanel {
 //					AccountInfoController accountInfoController = new AccountInfoController();
 //					AccountNumberVO accountNumberVO = accountInfoController.getInfo(ID);   
 										
-					AccountNumberVO accountNumberVO1 = new AccountNumberVO("杨华安", 1000000, "admin", null, "13270807992", "522123199505051039", "2015-11-26");					
+					AccountNumberVO accountNumberVO1 = new AccountNumberVO("杨华安", 1000000, "admin1", null, "13270807992", "522123199505051039", "2015-11-26");					
 					new AccountInfo(aui,apl, accountNumberVO1);
 					aui.repaint();
 			 }
