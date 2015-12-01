@@ -184,10 +184,17 @@ public class AccountInfo extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				JOptionPane.showMessageDialog(null, "你确定删除此账号？", "确定删除", JOptionPane.YES_NO_OPTION);
-				apl.remove(accountInfo);
-				apl.add(aui.operationJpanel);
-				aui.repaint();
+				Object[] options = {"确定","取消"};
+				int result = JOptionPane.showOptionDialog(null, "删除账号", "删除账号", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, 
+						null, options, options[1]);
+				if (result == 0) {
+					apl.remove(accountInfo);
+					apl.add(aui.operationJpanel);					
+					aui.accountField.setEditable(true);
+					aui.searchButton.setEnabled(true);
+					aui.addaccountButton.setEnabled(true);
+					aui.repaint();
+				}
 			}
 		});
 	}
