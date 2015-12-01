@@ -9,12 +9,15 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import vo.accountVO.AccountNumberVO;
 
 public class AccountInfo extends JPanel {
+	
+	//sdajf;sdf;safs
 	private JLabel daBiaoTi,zhangHao,zangHaoI,miMa,miMaI,xinMing,xinMingI,dianHua,dianHuaI,shenFenZhengHao,shenFenZhengHaoI,zhuCeRiQi,zhuCeRiQiI;
 	private JButton change,delete,returnButton;
 	private ImageIcon frameIcon =new ImageIcon("picture/²Ù×÷Ãæ°å.png");
@@ -174,6 +177,24 @@ public class AccountInfo extends JPanel {
 				new ChangeAccount(aui, apl, accountInfo, accountNumberVO);
 				
 				aui.repaint();
+			}
+		});
+		delete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Object[] options = {"È·¶¨","È¡Ïû"};
+				int result = JOptionPane.showOptionDialog(null, "É¾³ýÕËºÅ", "É¾³ýÕËºÅ", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, 
+						null, options, options[1]);
+				if (result == 0) {
+					apl.remove(accountInfo);
+					apl.add(aui.operationJpanel);					
+					aui.accountField.setEditable(true);
+					aui.searchButton.setEnabled(true);
+					aui.addaccountButton.setEnabled(true);
+					aui.repaint();
+				}
 			}
 		});
 	}

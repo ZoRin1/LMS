@@ -24,15 +24,15 @@ public class Salary extends JPanel {
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	private ImageIcon yesIcon=new ImageIcon("picture/确定.png");
 	
-	public Salary(topmanagerui tui,topmanagerJpanel tjpl,b1topmanagerui b1ui) {
-		init();
+	public Salary(topmanagerui tui,topmanagerJpanel tjpl,b1topmanagerui b1ui,int employee) {
+		init(employee);
 		tjpl.add(this);
 		registListener(tjpl, b1ui, this);
 		
 		
 	}
 	
-	private void init() {
+	private void init(int employee) {//employee 为员工种类
 	
 		
 		
@@ -149,7 +149,7 @@ public class Salary extends JPanel {
 				tjpl.remove(salary);
 				tjpl.add(b1ui.operationJpanel);
 				
-				JOptionPane.showMessageDialog(b1ui, "修改成功哦！");
+				JOptionPane.showMessageDialog(b1ui, "修改成功！");
 				b1ui.b1.setEnabled(true);
 				b1ui.b2.setEnabled(true);
 				b1ui.b3.setEnabled(true);

@@ -145,8 +145,12 @@ public class courierui extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new documentreplyui("快递员——单据反馈",courierui);
-				courierui.setVisible(false);
+				courierJpanel.remove(courierui.operationJpanel);
+				courierui.orderfinishButton.setEnabled(false);
+				courierui.orderfoundButton.setEnabled(false);
+				courierui.documentreplyButton.setEnabled(false);
+				new documentJpanel(courierui,courierJpanel);
+				courierJpanel.repaint();
 			}
 		});
 		orderfoundButton.addActionListener(new ActionListener() {

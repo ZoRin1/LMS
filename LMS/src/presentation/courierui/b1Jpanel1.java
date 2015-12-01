@@ -479,7 +479,7 @@ class finishDialog extends JDialog{
 		jButton=new JButton(yesIcon);
 		jButton.setContentAreaFilled(false);
 		jPanel.setLayout(null);
-		jButton.setBounds(218,160, 64, 64);
+		jButton.setBounds(218,190, 64, 64);
 		jLabel.setBounds(0, 0, 500, 200);
 		jPanel.add(jLabel);
 		jPanel.add(jButton);
