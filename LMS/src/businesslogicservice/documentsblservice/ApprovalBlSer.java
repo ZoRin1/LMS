@@ -7,5 +7,5 @@ public interface ApprovalBlSer {
 	 * @author XiongKaiQi
 	 *
 	 */
-	public boolean approval(boolean approved);
+	public boolean approval(boolean approved,String code,String doName);
 }
