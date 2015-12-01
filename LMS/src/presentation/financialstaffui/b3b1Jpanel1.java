@@ -104,10 +104,12 @@ public class b3b1Jpanel1 extends JPanel{
 		beizhulistModel.addElement("司机计次");
 		beizhulistModel.addElement("业务员月薪");
 		tiaomuJList=new JList<String>(tiaomulistModel);
-		tiaomuJList.setBounds(200, 350, 150, 80);
+		tiaomuJList.setBounds(150, 350, 200, 150);
+		tiaomuJList.setFont(font);
 		tiaomuJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		beizhuJList=new JList<String>(beizhulistModel);
-		beizhuJList.setBounds(500, 350, 150, 120);
+		beizhuJList.setBounds(500, 350, 150, 150);
+		beizhuJList.setFont(font);
 		beizhuJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.add(bianhaoJLabel);
 		this.add(bianhaoField);
