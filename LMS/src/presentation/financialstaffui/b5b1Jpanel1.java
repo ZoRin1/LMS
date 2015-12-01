@@ -72,7 +72,7 @@ public class b5b1Jpanel1 extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new finishDialog(b5financialstaffui, "新建账本完成", true);
+				new finishzhangbenDialog(b5financialstaffui, "新建账本完成", true);
 				financialstaffJpanel.remove(b5b1Jpanel1);
 				financialstaffJpanel.add(b5financialstaffui.operationJpanel);
 				b5financialstaffui.b1.setEnabled(true);
@@ -87,11 +87,11 @@ public class b5b1Jpanel1 extends JPanel{
 		g.drawImage(frameIcon.getImage(),-7,-12,null);
  }
 }
-class finishDialog extends JDialog{
+class finishzhangbenDialog extends JDialog{
 	private dialogJpanel jPanel;
 	private JLabel jLabel;
 	private JButton jButton;
-	public finishDialog(JFrame frame,String title,boolean modal) {
+	public finishzhangbenDialog(JFrame frame,String title,boolean modal) {
 		super(frame,title,modal);
 		init();
 		registerListener();
@@ -124,7 +124,7 @@ class finishDialog extends JDialog{
 	private void registerListener(){
 		jButton.addActionListener(new ActionListener() {		
 			public void actionPerformed(ActionEvent e) {
-				finishDialog.this.dispose();
+				finishzhangbenDialog.this.dispose();
 			}
 		});
 	}
