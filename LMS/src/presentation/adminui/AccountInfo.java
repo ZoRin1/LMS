@@ -16,6 +16,8 @@ import javax.swing.JTextField;
 import vo.accountVO.AccountNumberVO;
 
 public class AccountInfo extends JPanel {
+	
+	//sdajf;sdf;safs
 	private JLabel daBiaoTi,zhangHao,zangHaoI,miMa,miMaI,xinMing,xinMingI,dianHua,dianHuaI,shenFenZhengHao,shenFenZhengHaoI,zhuCeRiQi,zhuCeRiQiI;
 	private JButton change,delete,returnButton;
 	private ImageIcon frameIcon =new ImageIcon("picture/²Ù×÷Ãæ°å.png");
