@@ -149,7 +149,7 @@ public class Salary extends JPanel {
 				tjpl.remove(salary);
 				tjpl.add(b1ui.operationJpanel);
 				
-				JOptionPane.showMessageDialog(b1ui, "修改成功哦！");
+				JOptionPane.showMessageDialog(b1ui, "修改成功！");
 				b1ui.b1.setEnabled(true);
 				b1ui.b2.setEnabled(true);
 				b1ui.b3.setEnabled(true);
