@@ -9,7 +9,7 @@ public class TransportationBL implements TransportationBLSer {
 	@Override
 	public boolean changeDistance(RouteVO route) {
 		// TODO 自动生成的方法存根
-		return false;
+		return true;
 	}
 
 	@Override
