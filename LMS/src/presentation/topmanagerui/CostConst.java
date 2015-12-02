@@ -54,10 +54,10 @@ public class CostConst extends JPanel {
 		qiCheF.addKeyListener(new NumberFieldListener());
 		this.add(qiCheF);
 		
-		qiCheDanwei = new JLabel("元/(千克*公里)");
+		qiCheDanwei = new JLabel("元/(千克*100公里)");
 		qiCheDanwei.setForeground(Color.WHITE);
 		qiCheDanwei.setFont(small);
-		qiCheDanwei.setBounds(410, 240, 200, 43);
+		qiCheDanwei.setBounds(410, 240, 230, 43);
 		this.add(qiCheDanwei);
 		
 		huoChe = new JLabel("*火车：");
@@ -72,10 +72,10 @@ public class CostConst extends JPanel {
 		huoCheF.addKeyListener(new NumberFieldListener());
 		this.add(huoCheF);
 		
-		huoCheDanWei = new JLabel("元/(千克*公里)");
+		huoCheDanWei = new JLabel("元/(千克*100公里)");
 		huoCheDanWei.setForeground(Color.WHITE);
 		huoCheDanWei.setFont(small);
-		huoCheDanWei.setBounds(410, 310, 200, 43);
+		huoCheDanWei.setBounds(410, 310, 230, 43);
 		this.add(huoCheDanWei);
 		
 		feiJi = new JLabel("*飞机：");
@@ -90,10 +90,10 @@ public class CostConst extends JPanel {
 		feiJiF.addKeyListener(new NumberFieldListener());
 		this.add(feiJiF);
 		
-		feiJiDanWei = new JLabel("元/(千克*公里)");
+		feiJiDanWei = new JLabel("元/(千克*100公里)");
 		feiJiDanWei.setForeground(Color.WHITE);
 		feiJiDanWei.setFont(small);
-		feiJiDanWei.setBounds(410, 380, 200, 43);
+		feiJiDanWei.setBounds(410, 380, 230, 43);
 		this.add(feiJiDanWei);
 		
 		yesButton=new JButton(yesIcon);
