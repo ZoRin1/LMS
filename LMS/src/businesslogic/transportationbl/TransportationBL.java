@@ -45,7 +45,8 @@ public class TransportationBL implements TransportationBLSer {
 	@Override
 	public String[] getCityList(String city) {
 		// TODO 自动生成的方法存根
-		return null;
+		String[] result = {"南京","上海","北京","广东"};
+		return result;
 	}
 
 	@Override

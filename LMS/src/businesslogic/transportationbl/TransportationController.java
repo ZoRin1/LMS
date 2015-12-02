@@ -10,7 +10,7 @@ public class TransportationController {
 	}
 
 
-	public boolean changeCost(int type, int cost) {
+	public boolean changeCost(int type, double cost) {
 		// TODO 自动生成的方法存根
 		return tBL.changeCost(type, cost);
 	}

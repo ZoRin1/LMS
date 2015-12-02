@@ -137,7 +137,14 @@ public class CostConst extends JPanel {
 				// TODO Auto-generated method stub
 				tjpl.remove(costConst);
 				tjpl.add(b5ui.operationJpanel);
+				
+				//暂时不用，正常使用时启用
 
+//				TransportationController transportationController = new TransportationController();
+//				transportationController.changeCost(1, Double.parseDouble(qiCheF.getText()));
+//				transportationController.changeCost(2, Double.parseDouble(huoCheF.getText()));
+//				transportationController.changeCost(3, Double.parseDouble(feiJiF.getText()));
+			
 				JOptionPane.showMessageDialog(b5ui, "修改成功！");
 				b5ui.b1.setEnabled(true);
 				b5ui.b2.setEnabled(true);
