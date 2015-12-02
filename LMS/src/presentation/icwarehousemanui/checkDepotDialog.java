@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.*;
 
@@ -67,10 +69,20 @@ public class checkDepotDialog {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
+				//这里要加对时间段格式的判断
+				String starttime = startTime.getText();
+				System.out.println(starttime);
+				String endtime = endTime.getText();
+				System.out.println(endtime);
+				//这里要加对时间段格式的判断
+				
+				//这中间要加对单据的调用
+				
+				
+				//这中间要加对单据的调用
 				checkDepot.dispose();
-				System.out.println("wocao");
 				icwarehousemanJpanel.remove(operationJpanel);
-				new checkDepotPanel(ui,icwarehousemanJpanel);
+				new checkDepotPanel(ui,icwarehousemanJpanel);//checkDepotPanel的构造函数还要加上单据的参数才能显示
 				icwarehousemanJpanel.repaint();
 			}
 		});
@@ -87,6 +99,38 @@ public class checkDepotDialog {
 				ui.getB4().setEnabled(true);
 				ui.getB5().setEnabled(true);
 				ui.getB6().setEnabled(true);
+			}
+		});
+		startTime.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				int keyChar = e.getKeyChar();
+				if(keyChar>=KeyEvent.VK_0&&keyChar<=KeyEvent.VK_9){
+					
+				}else if(keyChar==KeyEvent.VK_SHIFT){
+					if(keyChar==KeyEvent.VK_SEMICOLON){
+						
+					}else{
+						e.consume();
+					}
+				}else{
+					e.consume();
+				}
+			}
+		});
+		endTime.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				int keyChar = e.getKeyChar();
+				if(keyChar>=KeyEvent.VK_0&&keyChar<=KeyEvent.VK_9){
+					
+				}else if(keyChar==KeyEvent.VK_SHIFT){
+					if(keyChar==KeyEvent.VK_SEMICOLON){
+						
+					}else{
+						e.consume();
+					}
+				}else{
+					e.consume();
+				}
 			}
 		});
 		checkDepot.add(panel);

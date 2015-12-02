@@ -1,5 +1,8 @@
 package presentation.icwarehousemanui;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -50,7 +53,28 @@ public class inDepotCheckJTable1 {
 		
 		DefaultTableModel tableModel = new DefaultTableModel(inDepotValue,inDepotName);
 		
-		inDepotTable = new JTable(tableModel);
+		inDepotTable = new JTable(tableModel){
+			public boolean isCellEditable(int row, int column){
+				return false;
+			}
+		};
+		
+		inDepotTable.getTableHeader().setReorderingAllowed(false); //设置列不可重排
+		
+		//对双击的监听
+		inDepotTable.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+				if(e.getClickCount()==2){
+					int row = inDepotTable.getSelectedRow();
+					String value = inDepotTable.getValueAt(row, 0).toString().trim();
+					System.out.println(value);
+					
+					//下面实现对出入库单的调用！！！！
+					//还要实现一个出入库单的dialog 来显示调用的出入库单
+				}
+			}
+		});
 		inDepotTable.setRowHeight(32);
 		inDepotTable.setShowGrid(false);
 		TableColumn column = null;

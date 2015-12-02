@@ -38,7 +38,7 @@ public class checkDepotPanel1 extends JPanel{
 		j1 = new JLabel(kuangjia);
 		j1.setBounds(0, 0, 720, 570);
 		
-		inDepotCheckJTable1 = new inDepotCheckJTable1(this);
+		inDepotCheckJTable1 = new inDepotCheckJTable1(this);//还要加一个单据的参数  这样才能显示！！！！
 		
 //		initTable();
 //		JScrollPane scrollPane = new JScrollPane(inDepotTable); 

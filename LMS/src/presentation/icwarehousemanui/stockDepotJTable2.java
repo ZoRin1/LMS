@@ -53,7 +53,15 @@ public class stockDepotJTable2 {
 		
 		DefaultTableModel tableModel = new DefaultTableModel(inDepotValue,inDepotName);
 		
-		stockDepotTable = new JTable(tableModel);
+		stockDepotTable = new JTable(tableModel){
+			public boolean isCellEditable(int row, int column){
+				return false;
+			}
+		};
+		
+		stockDepotTable.getTableHeader().setReorderingAllowed(false); //设置列不可重排
+		
+		
 		stockDepotTable.setRowHeight(32);
 		stockDepotTable.setShowGrid(false);
 		TableColumn column = null;
