@@ -105,4 +105,11 @@ public class getCodeDataSerImpl extends UnicastRemoteObject implements getCodeDa
 		return null;
 	}
 
+	@Override
+	public ArrayList<String> getPayCode(String selling, String doName,
+			String startTime, String endTime) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

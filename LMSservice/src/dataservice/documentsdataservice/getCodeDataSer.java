@@ -21,4 +21,14 @@ public interface getCodeDataSer extends Remote{
 	 *
 	 */
 	public ArrayList<String> getStoCode(String account,String doName,String startTime,String endTime)throws RemoteException;
+	/**
+	 * 
+	 * 系统返回一段时间内营业厅所有收款单的编码和单据名
+	 * startTime和endTime分别为一天内的开始时间和结束时间
+	 * selling指的是营业厅的名字（汉字）
+	 * 这个主要是因为营业厅不止一个业务员才添加的
+	 * @author XiongKaiQi
+	 *
+	 */
+	public ArrayList<String> getPayCode(String selling,String doName,String startTime,String endTime);
 }

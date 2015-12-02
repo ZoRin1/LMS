@@ -13,6 +13,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class b5topmanagerui extends JFrame{
@@ -158,6 +159,17 @@ class topmanagerb5OperationJpanel extends JPanel{
 		registListener(topmanagerui, b5topmanagerui);
 	}
 	private void init(){
+
+		Font font=new Font("幼圆",Font.BOLD,50);
+		
+		JLabel welcome1 = new JLabel("请选择常量种类");
+		welcome1.setFont(font);
+		welcome1.setForeground(Color.WHITE);
+		welcome1.setBounds(180, 250, 4000, 100);
+		this.add(welcome1);
+		
+		
+		
 		ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662, 575, 48,48);
