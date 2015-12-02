@@ -51,7 +51,15 @@ public class b1b2Jpanel1JTable {
 		
 		DefaultTableModel tableModel = new DefaultTableModel(inDepotValue,inDepotName);
 		
-		ProfitJtabel = new JTable(tableModel);
+		ProfitJtabel = new JTable(tableModel){
+			public boolean isCellEditable(int row, int column){
+				return false;
+			}
+		};
+		
+		ProfitJtabel.getTableHeader().setReorderingAllowed(false); //设置列不可重排
+		ProfitJtabel.getTableHeader().setResizingAllowed(false);//设置列不可拖动
+		
 		ProfitJtabel.setRowHeight(32);
 		ProfitJtabel.setShowGrid(false);
 		TableColumn column = null;

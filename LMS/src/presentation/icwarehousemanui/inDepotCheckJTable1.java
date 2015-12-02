@@ -60,6 +60,7 @@ public class inDepotCheckJTable1 {
 		};
 		
 		inDepotTable.getTableHeader().setReorderingAllowed(false); //设置列不可重排
+		inDepotTable.getTableHeader().setResizingAllowed(false); //设置列不可拖动
 		
 		//对双击的监听
 		inDepotTable.addMouseListener(new MouseAdapter() {

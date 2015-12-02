@@ -50,7 +50,15 @@ public class b2b1Jpanel1JTable {
 		
 		DefaultTableModel tableModel = new DefaultTableModel(inDepotValue,inDepotName);
 		
-		accountJtabel = new JTable(tableModel);
+		accountJtabel = new JTable(tableModel){
+			public boolean isCellEditable(int row, int column){
+				return false;
+			}
+		};
+		
+		accountJtabel.getTableHeader().setReorderingAllowed(false); //设置列不可重排
+		accountJtabel.getTableHeader().setResizingAllowed(false);//设置列不可拖动
+		
 		accountJtabel.setRowHeight(32);
 		accountJtabel.setShowGrid(false);
 		TableColumn column = null;

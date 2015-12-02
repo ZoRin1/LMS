@@ -57,7 +57,7 @@ public class stockDepotJTable {
 		};
 		
 		stockDepotTable.getTableHeader().setReorderingAllowed(false); //设置列不可重排
-		
+		stockDepotTable.getTableHeader().setResizingAllowed(false); //设置列不可拖动
 		
 		
 		stockDepotTable.setRowHeight(32);

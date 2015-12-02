@@ -17,6 +17,7 @@ public class b5b2Jpanel1 extends JPanel{
 	private JButton returnButton;
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	private JLabel j1;
+	private b5b2Jpanel1JTable b5b2Jpanel1JTable;
 	
 	public b5b2Jpanel1(b5financialstaffui b5financialstaffui,financialstaffJpanel financialstaffJpanel) {
 		// TODO Auto-generated constructor stub
@@ -33,9 +34,12 @@ public class b5b2Jpanel1 extends JPanel{
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662, 575,48,48);
 		returnButton.setContentAreaFilled(false);
+		
+		b5b2Jpanel1JTable = new b5b2Jpanel1JTable(this);//还要传账本的参数进去！！！！才能自动显示出来
 
 	 	this.setBounds(260, 60, 730,650);
 
+	 	j1.add(b5b2Jpanel1JTable.getScrollPane());
 	 	this.add(j1);
 	 	this.add(returnButton);
 	 	this.setLayout(null);

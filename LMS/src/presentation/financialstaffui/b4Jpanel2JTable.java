@@ -51,7 +51,15 @@ public class b4Jpanel2JTable {
 		
 		DefaultTableModel tableModel = new DefaultTableModel(inDepotValue,inDepotName);
 		
-		billsJtabel = new JTable(tableModel);
+		billsJtabel = new JTable(tableModel){
+			public boolean isCellEditable(int row, int column){
+				return false;
+			}
+		};
+		
+		billsJtabel.getTableHeader().setReorderingAllowed(false); //设置列不可重排
+		billsJtabel.getTableHeader().setResizingAllowed(false);//设置列不可拖动
+		
 		billsJtabel.setRowHeight(32);
 		billsJtabel.setShowGrid(false);
 		TableColumn column = null;

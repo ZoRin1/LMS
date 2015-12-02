@@ -10,31 +10,31 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
-public class b3b2Jpanel1JTable {
+public class b5b2Jpanel1JTable {
 	
-	private JTable billsJtabel;
-	private b3b2Jpanel1 b3b2Jpanel1;
+	private JTable booksJtabel;
+	private b5b2Jpanel1 b5b2Jpanel1;
 	private JScrollPane scrollPane;
 	
 	public JScrollPane getScrollPane() {
 		return scrollPane;
 	}
-	public b3b2Jpanel1JTable(b3b2Jpanel1 b3b2Jpanel1){
-		this.b3b2Jpanel1 = b3b2Jpanel1;
+	public b5b2Jpanel1JTable(b5b2Jpanel1 b5b2Jpanel1){
+		this.b5b2Jpanel1 = b5b2Jpanel1;
 		initTable();
 		init();
 	}
 	private void init(){
-        scrollPane = new JScrollPane(billsJtabel); 
+        scrollPane = new JScrollPane(booksJtabel); 
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
-		scrollPane.setViewportView(billsJtabel);
-        scrollPane.setColumnHeaderView(billsJtabel.getTableHeader());
+		scrollPane.setViewportView(booksJtabel);
+        scrollPane.setColumnHeaderView(booksJtabel.getTableHeader());
         
         scrollPane.getColumnHeader().setOpaque(false);
-		scrollPane.setBounds(0,32, 730, 540);
+		scrollPane.setBounds(0,35, 730, 540);
         
-		b3b2Jpanel1.add(scrollPane);
+		b5b2Jpanel1.add(scrollPane);
 	}
 	
 	private void initTable(){
@@ -51,35 +51,34 @@ public class b3b2Jpanel1JTable {
 		
 		DefaultTableModel tableModel = new DefaultTableModel(inDepotValue,inDepotName);
 		
-		billsJtabel = new JTable(tableModel){
+		booksJtabel = new JTable(tableModel){
 			public boolean isCellEditable(int row, int column){
 				return false;
 			}
 		};
 		
-		billsJtabel.getTableHeader().setReorderingAllowed(false); //设置列不可重排
-		billsJtabel.getTableHeader().setResizingAllowed(false);//设置列不可拖动
+		booksJtabel.getTableHeader().setReorderingAllowed(false); //设置列不可重排
+		booksJtabel.getTableHeader().setResizingAllowed(false);//设置列不可拖动
 		
-		
-		billsJtabel.setRowHeight(32);
-		billsJtabel.setShowGrid(false);
+		booksJtabel.setRowHeight(32);
+		booksJtabel.setShowGrid(true);
 		TableColumn column = null;
-		column = billsJtabel.getColumnModel().getColumn(0);
+		column = booksJtabel.getColumnModel().getColumn(0);
 		column.setPreferredWidth(361);
-		column = billsJtabel.getColumnModel().getColumn(1);
-		column.setPreferredWidth(366);
+		column = booksJtabel.getColumnModel().getColumn(1);
+		column.setPreferredWidth(362);
 		
 		
-		billsJtabel.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		billsJtabel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); 
+		booksJtabel.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		booksJtabel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); 
 		
-		billsJtabel.setOpaque(false); 
+		booksJtabel.setOpaque(false); 
 		DefaultTableCellRenderer render = new DefaultTableCellRenderer();   
 		render.setOpaque(false);
 		
-		billsJtabel.setDefaultRenderer(Object.class,render);
+		booksJtabel.setDefaultRenderer(Object.class,render);
 		
-		JTableHeader header = billsJtabel.getTableHeader();
+		JTableHeader header = booksJtabel.getTableHeader();
 		header.setOpaque(false);
 		header.getTable().setOpaque(false);
 		
