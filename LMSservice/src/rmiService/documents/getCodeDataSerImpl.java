@@ -46,10 +46,10 @@ public class getCodeDataSerImpl extends UnicastRemoteObject implements getCodeDa
 		else {
 			switch (doName) {
 			case "收款单":
-				sql="select code,doName from 收款单 where InDepotDate between '"+startTime+"' and '"+endTime+"'";
+				sql="select code,doName from 收款单 where InDepotDate >'"+startTime+"' and InDepotDate < '"+endTime+"'";
 				break;
 			case "付款单":
-				sql="select code,doName from 付款单 where InDepotDate between '"+startTime+"' and '"+endTime+"'";
+				sql="select code,doName from 付款单 where InDepotDate > '"+startTime+"' and InDepotDate < '"+endTime+"'";
 				break;
 			}		
 		}		
@@ -83,7 +83,7 @@ public class getCodeDataSerImpl extends UnicastRemoteObject implements getCodeDa
 			sql="select code,doName from 入库单 where InDepotDate < '"+endTime+"' and account='"+account+"'";
 		}
 		else {
-			sql="select code,doName from 入库单 where InDepotDate between '"+startTime+"' and '"+endTime+"' and account='"+account+"'";
+			sql="select code,doName from 入库单 where InDepotDate > '"+startTime+"' and InDepotDate < '"+endTime+"' and account='"+account+"'";
 		}		
 		try {
 			Class.forName(DRIVER);
@@ -106,10 +106,30 @@ public class getCodeDataSerImpl extends UnicastRemoteObject implements getCodeDa
 	}
 
 	@Override
-	public ArrayList<String> getPayCode(String selling, String doName,
+	public ArrayList<String> getReceiptCode(String selling, String doName,
 			String startTime, String endTime) {
 		// TODO Auto-generated method stub
+		ArrayList<String> arrayList=new ArrayList<String>();
+		sql="select code,doName from 收款单 where date >'"+startTime+"' and date < '"+endTime+"' and OrgCode ='"+selling+"'";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				arrayList.add(resultSet.getString(1)+","+resultSet.getString(2));
+			}
+			connection.close();
+			return arrayList;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
+
 
 }
