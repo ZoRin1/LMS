@@ -1,6 +1,7 @@
 package businesslogic.transportationbl;
 
 import businesslogicservice.transportationblservice.TransportationBLSer;
+import presentation.icclerkui.icclerkui;
 import vo.transportationVO.RouteVO;
 
 public class TransportationBL implements TransportationBLSer {
@@ -8,7 +9,7 @@ public class TransportationBL implements TransportationBLSer {
 	@Override
 	public boolean changeDistance(RouteVO route) {
 		// TODO 自动生成的方法存根
-		return false;
+		return true;
 	}
 
 	@Override
@@ -20,7 +21,13 @@ public class TransportationBL implements TransportationBLSer {
 	@Override
 	public double getCost(int type) {
 		// TODO 自动生成的方法存根
-		return 0;
+		if (type == 1){
+			return 0.5;
+		}else if (type == 2) {
+			return 0.9;	
+		}else {
+			return 1.0;
+		}
 	}
 
 	@Override
@@ -38,7 +45,8 @@ public class TransportationBL implements TransportationBLSer {
 	@Override
 	public String[] getCityList(String city) {
 		// TODO 自动生成的方法存根
-		return null;
+		String[] result = {"南京","上海","北京","广东"};
+		return result;
 	}
 
 	@Override

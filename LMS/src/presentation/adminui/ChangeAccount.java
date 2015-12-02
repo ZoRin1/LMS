@@ -120,6 +120,7 @@ private void init(AccountNumberVO accountNumberVO){
 		dianHuaF = new JTextField(accountNumberVO.getPhone());
 		dianHuaF.setFont(font);
 		dianHuaF.setBounds(180, 380, 150, 40);
+		dianHuaF.addKeyListener(new NumberFieldListener());
 		this.add(dianHuaF);
 		
 		dianHuaTiShi = new JLabel("(11个数字)");
@@ -138,6 +139,7 @@ private void init(AccountNumberVO accountNumberVO){
 		shenFenZhengHaoMaF = new JTextField(accountNumberVO.getsID());
 		shenFenZhengHaoMaF.setFont(font);
 		shenFenZhengHaoMaF.setBounds(240, 460, 220, 40);
+		shenFenZhengHaoMaF.addKeyListener(new NumberFieldListener());
 		this.add(shenFenZhengHaoMaF);
 		
 		shenFenZhengHaoMaTiShi = new JLabel("(18位数字)");

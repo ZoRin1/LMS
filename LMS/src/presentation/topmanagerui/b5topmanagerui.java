@@ -13,12 +13,14 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class b5topmanagerui extends JFrame{
 	private topmanagerJpanel topmanagerJpanel;
-	private topmanagerb5OperationJpanel operationJpanel;
-	private JButton b1,b2;
+	topmanagerb5OperationJpanel operationJpanel;
+	JButton b1;
+	JButton b2;
 	private JButton tuichuButton;
 	private JButton zuixiaohuaButton;
 	public b5topmanagerui(String s,topmanagerui tmui) {
@@ -69,6 +71,39 @@ public class b5topmanagerui extends JFrame{
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
 				tuichuButton.setIcon(tuichuIcon2);
+			}
+		});
+		b1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				b5topmanagerui.topmanagerJpanel.remove(operationJpanel);
+				b5topmanagerui.b1.setEnabled(false);
+				b5topmanagerui.b2.setEnabled(false);
+				
+				new DistanceConst(b5topmanagerui, topmanagerJpanel);
+				
+				b5topmanagerui.repaint();
+				
+				
+			}
+		});
+		
+		b2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				b5topmanagerui.topmanagerJpanel.remove(operationJpanel);
+				b5topmanagerui.b1.setEnabled(false);
+				b5topmanagerui.b2.setEnabled(false);
+				
+				new CostConst(b5topmanagerui, topmanagerJpanel);
+				
+				b5topmanagerui.repaint();
+				
 			}
 		});
 	}
@@ -124,6 +159,17 @@ class topmanagerb5OperationJpanel extends JPanel{
 		registListener(topmanagerui, b5topmanagerui);
 	}
 	private void init(){
+
+		Font font=new Font("幼圆",Font.BOLD,50);
+		
+		JLabel welcome1 = new JLabel("请选择常量种类");
+		welcome1.setFont(font);
+		welcome1.setForeground(Color.WHITE);
+		welcome1.setBounds(180, 250, 4000, 100);
+		this.add(welcome1);
+		
+		
+		
 		ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662, 575, 48,48);
@@ -144,6 +190,8 @@ class topmanagerb5OperationJpanel extends JPanel{
 				
 			}
 		});
+		
+		
 	}
 	public void paintComponent(Graphics g)  
 	{  

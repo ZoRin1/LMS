@@ -21,7 +21,7 @@ public class NumberFieldListener implements KeyListener {
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		int keyChar=e.getKeyChar();
-		if (keyChar>=KeyEvent.VK_0 && keyChar<=KeyEvent.VK_9) {
+		if ((keyChar>=KeyEvent.VK_0 && keyChar<=KeyEvent.VK_9 )||keyChar == KeyEvent.VK_PERIOD) {
 
 		} else {
 		e.consume(); 

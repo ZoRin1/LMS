@@ -14,6 +14,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import businesslogic.transportationbl.TransportationController;
+import presentation.adminui.NumberFieldListener;
+
 public class Salary extends JPanel {
 	private JLabel tiShi,anYue,yuanMeiYue,jiCi,yuanMeiCi,tiCheng,baiFenHao;
 	private JTextField anYueF,jiCiF,tiChengF;
@@ -34,7 +37,8 @@ public class Salary extends JPanel {
 	
 	private void init(int employee) {//employee 为员工种类
 	
-		
+		TransportationController transportationController = new TransportationController();
+		double[] salary = transportationController.getSalary(employee);
 		
 		Font big = new Font("幼圆", Font.BOLD, 40);
 		Font small = new Font("幼圆", Font.BOLD, 32);
@@ -51,9 +55,10 @@ public class Salary extends JPanel {
 		anYue.setBounds(170, 240, 120, 43);
 		this.add(anYue);
 		
-		anYueF = new JTextField();
+		anYueF = new JTextField(String.valueOf(salary[0]));
 		anYueF.setFont(small);
 		anYueF.setBounds(280, 240, 150, 43);
+		anYueF.addKeyListener(new NumberFieldListener());
 		this.add(anYueF);
 		
 		yuanMeiYue = new JLabel("元/月");
@@ -68,9 +73,10 @@ public class Salary extends JPanel {
 		jiCi.setBounds(170, 310, 120, 43);
 		this.add(jiCi);
 		
-		jiCiF = new JTextField();
+		jiCiF = new JTextField(String.valueOf(salary[1]));
 		jiCiF.setFont(small);
 		jiCiF.setBounds(280, 310, 150, 43);
+		jiCiF.addKeyListener(new NumberFieldListener());
 		this.add(jiCiF);
 		
 		yuanMeiCi = new JLabel("元/次");
@@ -85,9 +91,10 @@ public class Salary extends JPanel {
 		tiCheng.setBounds(170, 380, 120, 43);
 		this.add(tiCheng);
 		
-		tiChengF = new JTextField();
+		tiChengF = new JTextField(String.valueOf(salary[2]));
 		tiChengF.setFont(small);
 		tiChengF.setBounds(280, 380, 150, 43);
+		tiChengF.addKeyListener(new NumberFieldListener());
 		this.add(tiChengF);
 		
 		baiFenHao = new JLabel("%");
