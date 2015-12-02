@@ -52,8 +52,10 @@ public class b3b1Jpanel1 extends JPanel{
 		riqiJLabel.setForeground(Color.white);
 		riqiJLabel.setFont(font);
 		riqiJLabel.setBounds(50, 150, 150, 30);
-		riqiField=new JTextField();
+		DateChooser date = DateChooser.getInstance("yyyy-MM-dd");//选择日期类
+		riqiField=new JTextField("点击选择日期");
 		riqiField.setFont(font);
+		date.register(riqiField);
 		riqiField.setBounds(200, 150, 150, 30);
 		fukuanrenxingmingJLabel=new JLabel("付款人姓名:");
 		fukuanrenxingmingJLabel.setForeground(Color.white);

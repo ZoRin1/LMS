@@ -42,7 +42,9 @@ public class b4Jpanel1 extends JPanel{
 		dateJLabel.setForeground(Color.white);
 		dateJLabel.setFont(font);
 		dateJLabel.setBounds(100, 300, 200, 30);
-		dateField=new JTextField();
+		dateField=new JTextField("点击选择日期");
+	    DateChooser date = DateChooser.getInstance("yyyy-MM-dd");        //日期选择类
+	    date.register(dateField);
 		dateField.setFont(font);
 		dateField.setBounds(320, 300, 250, 30);
 		yesButton=new JButton(yesIcon);

@@ -10,6 +10,8 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.*;
 
+import presentation.financialstaffui.DateChooser;
+
 public class checkDepotDialog {
 	JDialog checkDepot;
 	JButton b1,b2;
@@ -23,6 +25,9 @@ public class checkDepotDialog {
 	icwarehousemanOperationJpanel operationJpanel;
 	
 	public checkDepotDialog(final icwarehousemanui ui){
+		DateChooser date1 =  DateChooser.getInstance("yyyy-MM-dd");
+		DateChooser date2 =  DateChooser.getInstance("yyyy-MM-dd");
+		
 		icUI = ui;
 		icwarehousemanJpanel = ui.getIcwarehousemanJpanel();
 		operationJpanel = ui.getOperationJpanel();
@@ -42,10 +47,13 @@ public class checkDepotDialog {
 		end.setFont(new Font("свт╡",Font.BOLD,20));
 		startTime = new JTextField();
 		endTime = new JTextField();
+		
 		startTime.setForeground(Color.black);
 		endTime.setForeground(Color.black);
 		startTime.setFont(new Font("свт╡",Font.BOLD,20));
 		endTime.setFont(new Font("свт╡",Font.BOLD,20));
+//		date1.register(startTime);
+//		date2.register(endTime);
 		startTime.setBounds(150, 60, 200, 24);
 		endTime.setBounds(150, 130, 200, 24);
 		checkDepot.setBounds(830, 400, 450, 249);
@@ -138,6 +146,9 @@ public class checkDepotDialog {
 		checkDepot.setVisible(true);
 	}
 	
+	private boolean checkFormat(String test){
+		return false;
+	}
 	
 	
 	private class tempJpanel extends JPanel{
