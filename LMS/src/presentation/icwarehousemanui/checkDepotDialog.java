@@ -27,6 +27,7 @@ public class checkDepotDialog {
 	public checkDepotDialog(final icwarehousemanui ui){
 		DateChooser date1 =  DateChooser.getInstance("yyyy-MM-dd");
 		DateChooser date2 =  DateChooser.getInstance("yyyy-MM-dd");
+//		timeChooser date = new timeChooser(this);
 		
 		icUI = ui;
 		icwarehousemanJpanel = ui.getIcwarehousemanJpanel();
@@ -52,6 +53,7 @@ public class checkDepotDialog {
 		endTime.setForeground(Color.black);
 		startTime.setFont(new Font("свт╡",Font.BOLD,20));
 		endTime.setFont(new Font("свт╡",Font.BOLD,20));
+//		date.register(startTime);
 //		date1.register(startTime);
 //		date2.register(endTime);
 		startTime.setBounds(150, 60, 200, 24);
