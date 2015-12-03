@@ -106,8 +106,8 @@ public class documentController {
 	}
 	
 	//出库单更新库存信息
-	public void updateDrive(String InDepotCode){
-		UpdateSpace up=new UpdateSpace(InDepotCode);
+	public void updateDrive(String InDepotCode,String city){
+		UpdateSpace up=new UpdateSpace(InDepotCode,city);
 		up.updateDrive();
 	}
 }

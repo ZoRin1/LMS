@@ -15,12 +15,13 @@ import businesslogicservice.modelservice.storageInfo.UpdateSpaceSer;
 public class UpdateSpace implements UpdateSpaceSer{
 	//此处仅和出库单有关
 	private OutDepotBL out;
+	private String city;
 	private int qu;
 	private int pai;
 	private int jia;
 	private int wei;
 	private InBillsPO po;
-	public UpdateSpace(String InDepotCode) {
+	public UpdateSpace(String InDepotCode,String city) {
 		super();
 		try {
 			documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://114.212.42.143:6600/docFactory");
@@ -40,6 +41,7 @@ public class UpdateSpace implements UpdateSpaceSer{
 		this.pai = po.getRowNum();
 		this.jia = po.getShelvesNum();
 		this.wei = po.getSositionNum();
+		this.city=city;
 	}
 
 	@Override
@@ -47,6 +49,6 @@ public class UpdateSpace implements UpdateSpaceSer{
 		// TODO Auto-generated method stub
 		DepotVO vo = new DepotVO(qu, pai, jia, wei);
 		out = new OutDepotBL();
-		out.outDepot(vo);
+		out.outDepot(vo,city);
 	}
 }
