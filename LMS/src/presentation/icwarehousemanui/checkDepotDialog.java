@@ -239,7 +239,27 @@ public class checkDepotDialog {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
-				//这里要加对时间段前后的判断
+				//时间段前后的判断
+				if(Integer.parseInt(shi_1)>Integer.parseInt(shi_2)){
+					try {
+						throw new timeException();
+					} catch (timeException e) {
+						// TODO 自动生成的 catch 块
+						//这个地方要弹出对话框
+						System.out.println("时间段输入错误");
+					}
+				}else if(Integer.parseInt(shi_1)==Integer.parseInt(shi_2)){
+					if(Integer.parseInt(fen_1)<Integer.parseInt(fen_2)||Integer.parseInt(fen_1)==Integer.parseInt(fen_2)){
+						try {
+							throw new timeException();
+						} catch (timeException e) {
+							// TODO 自动生成的 catch 块
+							//这个地方要弹出对话框
+							System.out.println("时间段输入错误");
+						}
+					}
+				}
+				//时间段前后的判断
 				if(miao_1==null){
 					miao_1 = "00";
 				}
@@ -256,7 +276,6 @@ public class checkDepotDialog {
 				System.out.println(starttime);
 				String endtime = shi_2+":"+fen_2+":"+miao_2;
 				System.out.println(endtime);
-				//这里要加对时间段前后的判断
 				
 				//这中间要加对单据的调用
 				
@@ -324,6 +343,14 @@ public class checkDepotDialog {
 		return false;
 	}
 	
+	private class timeException extends Exception{
+		public timeException(){
+			
+		}
+		public timeException(String message){
+			super(message);
+		}
+	}
 	
 	private class tempJpanel extends JPanel{
 		public tempJpanel(){
