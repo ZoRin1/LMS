@@ -114,7 +114,7 @@ public class BusinessBL implements BussinessOrgBLSer {
 	@Override
 	public boolean removeBussinessHall(String ID, String codeNumber) {
 		// TODO 自动生成的方法存根
-		return false;
+		return true;
 	}
 
 	@Override

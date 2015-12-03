@@ -3,11 +3,14 @@ package presentation.topmanagerui;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import businesslogic.organizationbl.BusinessController;
@@ -22,8 +25,10 @@ public class b2BusinessInfo extends JPanel {
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	
 	public b2BusinessInfo(b2topmanagerui b2ui,topmanagerJpanel tjpl,String ID){
+		
 		init(b2ui, tjpl, ID);
 		tjpl.add(this);
+		registListener(b2ui, tjpl, this,ID);
 	}
 	private void init(b2topmanagerui b2ui,topmanagerJpanel tjpl,String ID) {
 		
@@ -32,19 +37,19 @@ public class b2BusinessInfo extends JPanel {
 		Font bFont = new Font("幼圆", Font.BOLD, 30);
 		Font sFont = new Font("幼圆", Font.BOLD, 20);
 		
-		suoShu = new JLabel("所属中转中心编号");
+		suoShu = new JLabel("所属中转中心编号:");
 		suoShu.setFont(bFont);
 		suoShu.setForeground(Color.WHITE);
-		suoShu.setBounds(100, 70, 240, 50);
+		suoShu.setBounds(100, 70, 300, 50);
 		this.add(suoShu);
 		
 		suoShuC = new JLabel(temp[0]);
 		suoShuC.setFont(bFont);
 		suoShuC.setForeground(Color.WHITE);
-		suoShuC.setBounds(350, 70, 200, 50);
+		suoShuC.setBounds(400, 70, 200, 50);
 		this.add(suoShuC);
 		
-		suoZai = new JLabel("所在地区");
+		suoZai = new JLabel("所在地区:");
 		suoZai.setFont(bFont);
 		suoZai.setForeground(Color.WHITE);
 		suoZai.setBounds(100, 130, 180, 50);
@@ -56,7 +61,7 @@ public class b2BusinessInfo extends JPanel {
 		suoZaiC.setBounds(290, 130, 150, 50);
 		this.add(suoZaiC);
 		
-		bianHao = new JLabel("机构编号");
+		bianHao = new JLabel("机构编号:");
 		bianHao.setFont(bFont);
 		bianHao.setForeground(Color.WHITE);
 		bianHao.setBounds(100, 190, 200, 50);
@@ -65,7 +70,7 @@ public class b2BusinessInfo extends JPanel {
 		bianHaoC = new JLabel(temp[1]);
 		bianHaoC.setFont(bFont);
 		bianHaoC.setForeground(Color.WHITE);
-		bianHaoC.setBounds(310, 190, 180, 50);
+		bianHaoC.setBounds(290, 190, 180, 50);
 		this.add(bianHaoC);
 		
 		kuaiDiYuan = new JLabel("快递员列表:");
@@ -118,6 +123,50 @@ public class b2BusinessInfo extends JPanel {
 		this.setBounds(260, 60, 730, 650);
 		this.setLayout(null);
 		this.setOpaque(false);
+		
+	}
+	
+	private void registListener(final b2topmanagerui b2ui,final topmanagerJpanel tjpl,final b2BusinessInfo b2BusinessInfo,final String ID) {
+		
+		returnButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				tjpl.remove(b2BusinessInfo);
+				tjpl.add(b2ui.operationJpanel);
+				b2ui.b1.setEnabled(true);
+				b2ui.b2.setEnabled(true);
+				b2ui.b3.setEnabled(true);
+				b2ui.b4.setEnabled(false);
+				b2ui.repaint();
+
+			}
+		});
+		
+		delete.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Object[] options = { "确定", "取消" };
+				int result = JOptionPane.showOptionDialog(null, "删除账号", "删除账号", JOptionPane.YES_NO_OPTION,
+						JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+				if (result == 0) {
+					BusinessController businessController = new BusinessController();
+					boolean b = businessController.removeBussinessHall(ID, ID);
+					if(b){
+					tjpl.remove(b2BusinessInfo);
+					tjpl.add(b2ui.operationJpanel);
+					b2ui.b1.setEnabled(true);
+					b2ui.b2.setEnabled(true);
+					b2ui.b3.setEnabled(true);
+					b2ui.b4.setEnabled(false);
+					tjpl.repaint();
+					}
+				}
+			}
+		});
 		
 	}
 	

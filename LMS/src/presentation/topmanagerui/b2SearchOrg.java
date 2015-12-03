@@ -118,15 +118,18 @@ public class b2SearchOrg extends JPanel {
 						
 						 public void mouseClicked(MouseEvent e) {
 							 if(e.getClickCount()==2){
-								 tjpl.remove(b2SearchOrg);
 								 
-								 b2ui.b1.setEnabled(false);
-								 b2ui.b2.setEnabled(false);
-								 b2ui.b3.setEnabled(false);
 								 int r = orgTable.getSelectedRow();
 								 if (org.equals("ÓªÒµÌü")) {
-									 new b2BusinessInfo(b2ui, tjpl, data[r][0]);
-									tjpl.repaint();
+									 if(!data[r][0].equals("")){
+										 tjpl.remove(b2SearchOrg);
+										 
+										b2ui.b1.setEnabled(false);
+										b2ui.b2.setEnabled(false);
+										b2ui.b3.setEnabled(false);
+										new b2BusinessInfo(b2ui, tjpl, data[r][0]);
+										tjpl.repaint();
+									 }
 								}
 								 System.out.println(r);
 							 }
