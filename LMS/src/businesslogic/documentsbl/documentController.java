@@ -20,10 +20,15 @@ public class documentController {
 		return cr.createBlock(po);
 	}
 	
-	//寄件单与装车单，装运单计算运费
+	//寄件单,装运单计算运费
 	public double getCost(String departure, String arrival, String trans,double weight){
 		DocumentsList list=new DocumentsList(departure,arrival,trans,weight);
 		return list.getCost();
+	}
+	//装车单计算运费
+	public double getShortCost(){
+		DocumentsLineItem item=new DocumentsLineItem(1);
+		return item.getCost();
 	}
 	
 	//寄件单中获得预计天数

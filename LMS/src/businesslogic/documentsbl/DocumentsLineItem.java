@@ -17,6 +17,11 @@ public class DocumentsLineItem{
 		this.weight=weight;
 		this.type=type;
 	}
+	public DocumentsLineItem(int type){
+		TransportationController co=new TransportationController();
+		this.type=type;
+		cost=co.getCost(type);
+	}
 	public double getTotal(){
 		return distance*cost*weight;
 	}
@@ -32,5 +37,8 @@ public class DocumentsLineItem{
 			days=(int) (distance/200)+1;
 		}
 		return days;
+	}
+	public double getCost(){
+		return 0.3*10000*cost;
 	}
 }
