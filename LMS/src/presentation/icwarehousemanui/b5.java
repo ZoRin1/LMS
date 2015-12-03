@@ -3,7 +3,6 @@ package presentation.icwarehousemanui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,17 +14,12 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.event.DocumentListener;
-import javax.swing.event.UndoableEditListener;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
-import javax.swing.text.Element;
 import javax.swing.text.PlainDocument;
-import javax.swing.text.Position;
-import javax.swing.text.Segment;
+
+import businesslogic.storagebl.DriveModel.spaceBL;
 
 public class b5{
 	public b5(icwarehousemanui icwarehousemanui) {
@@ -46,6 +40,9 @@ class finishb5Dialog extends JDialog{
 	private JLabel j1,j2,j3,j4,j5,j6;
 	private JLabel j11,j12,j13,j21,j22,j23;
 	private JTextField t1,t2,t3;
+	private spaceBL spaceBL;
+	private int[] used;
+	private int[] all;
 	public finishb5Dialog(JFrame frame,String title,boolean modal) {
 		super(frame,title,modal);
 		init();
@@ -205,6 +202,10 @@ class finishb5Dialog extends JDialog{
 				finishb5Dialog.this.dispose();
 			}
 		});
+	}
+	
+	private int[] usedSpace(){
+		return null;
 	}
 	
 	private class MyDocument extends PlainDocument{
