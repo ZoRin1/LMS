@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 
 
+
 import po.orgPO.BussinessOrgPO;
 import po.orgPO.DriverPO;
 import po.orgPO.VehiclePO;
@@ -590,6 +591,24 @@ public class BussinessOrgDataSerImpl extends UnicastRemoteObject implements Buss
 	@Override
 	public String getInfo(String ID) throws RemoteException{
 		// TODO 自动生成的方法存根
+		String s[]=ID.split("-");
+		sql="select city from 营业厅信息 where codeNumberOfMiddle ='"+s[0]+"' and codeNumber ='"+s[1]+"'";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			resultSet.next();
+			String cityString= resultSet.getString(1);
+			connection.close();
+			return cityString;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
