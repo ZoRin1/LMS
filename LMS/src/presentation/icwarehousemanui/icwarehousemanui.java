@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,6 +18,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dataservice.accountdataservice.AccountDataSer;
+import dataservice.accountdataservice.accountFactory;
 import presentation.mainui.mainui;
 
 public class icwarehousemanui extends JFrame{
@@ -139,6 +142,7 @@ public class icwarehousemanui extends JFrame{
 		this.setVisible(true);
 	}
 	private void registListener(final icwarehousemanui icwarehousemanui){
+	
 		zuixiaohuaButton.addMouseListener(new MouseAdapter() {
 			ImageIcon zuixiaohuaIcon=new ImageIcon("picture/最小化.png");
 			ImageIcon zuixiaohuaIcon2=new ImageIcon("picture/最小化2.png");
@@ -238,6 +242,22 @@ public class icwarehousemanui extends JFrame{
 			b5.setEnabled(false);
 			b6.setEnabled(false);
 			icwarehousemanJpanel.repaint();
+		}
+	});
+	b5.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			new b5(icwarehousemanui);
+		}
+	});
+	b6.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			new b6(icwarehousemanui);
 		}
 	});
 	}
