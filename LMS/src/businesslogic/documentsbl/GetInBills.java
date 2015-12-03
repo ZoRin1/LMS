@@ -28,12 +28,43 @@ public class GetInBills implements GetInBillsSer{
 			documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://114.212.42.143:6600/docFactory");
 			getCodeDataSer getCodeDataSer=documentsFactory.createGetCodeDataSer();
 			getDocumentInfoDataSer getDocumentInfoDataSer=documentsFactory.createGetDocumentInfoDataSer();
-			list=getCodeDataSer.getStoCode(account, "出库单", start, end);
+			list=getCodeDataSer.getStoCode(account, "入库单", start, end);
 			size=list.size();
 			for(int i=0;i<size;i++){
 				str=list.get(i);
 				str1=str.substring(0, 10);
-				str2=str.substring(10);
+				str2=str.substring(11);
+				po=(InBillsPO) getDocumentInfoDataSer.getDocumentInfo(str1, str2);
+				list1.add(po);
+			}
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list1;
+	}
+	@Override
+	public ArrayList<InBillsPO> getAllInBills(String account, String end) {
+		// TODO Auto-generated method stub
+		list=new ArrayList<>();
+		list1=new ArrayList<>();
+		InBillsPO po;
+		try {
+			documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://114.212.42.143:6600/docFactory");
+			getCodeDataSer getCodeDataSer=documentsFactory.createGetCodeDataSer();
+			getDocumentInfoDataSer getDocumentInfoDataSer=documentsFactory.createGetDocumentInfoDataSer();
+			list=getCodeDataSer.getStoCode(account, "入库单", null, end);
+			size=list.size();
+			for(int i=0;i<size;i++){
+				str=list.get(i);
+				str1=str.substring(0, 10);
+				str2=str.substring(11);
 				po=(InBillsPO) getDocumentInfoDataSer.getDocumentInfo(str1, str2);
 				list1.add(po);
 			}
