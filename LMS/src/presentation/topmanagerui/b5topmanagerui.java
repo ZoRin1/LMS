@@ -82,7 +82,7 @@ public class b5topmanagerui extends JFrame{
 				b5topmanagerui.b1.setEnabled(false);
 				b5topmanagerui.b2.setEnabled(false);
 				
-				new DistanceConst(b5topmanagerui, topmanagerJpanel);
+				new b5DistanceConst(b5topmanagerui, topmanagerJpanel);
 				
 				b5topmanagerui.repaint();
 				
@@ -100,7 +100,7 @@ public class b5topmanagerui extends JFrame{
 				b5topmanagerui.b1.setEnabled(false);
 				b5topmanagerui.b2.setEnabled(false);
 				
-				new CostConst(b5topmanagerui, topmanagerJpanel);
+				new b5CostConst(b5topmanagerui, topmanagerJpanel);
 				
 				b5topmanagerui.repaint();
 				
