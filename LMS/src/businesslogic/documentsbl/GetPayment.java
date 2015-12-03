@@ -33,7 +33,7 @@ public class GetPayment implements GetPaymentSer{
 			for(int i=0;i<size;i++){
 				str=list.get(i);
 				str1=str.substring(0, 10);
-				str2=str.substring(10);
+				str2=str.substring(11);
 				po=(PaymentPO) getDocumentInfoDataSer.getDocumentInfo(str1, str2);
 				list1.add(po);
 			}
@@ -65,7 +65,7 @@ public class GetPayment implements GetPaymentSer{
 			for(int i=0;i<size;i++){
 				str=list.get(i);
 				str1=str.substring(0, 10);
-				str2=str.substring(10);
+				str2=str.substring(11);
 				po=(PaymentPO) getDocumentInfoDataSer.getDocumentInfo(str1, str2);
 				list1.add(po);
 			}

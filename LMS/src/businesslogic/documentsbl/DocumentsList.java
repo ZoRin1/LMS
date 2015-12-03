@@ -13,7 +13,7 @@ public class DocumentsList {
 		this.weight=weight;
 	}
 	public double getCost(){
-		String line=departure+arrival;
+		String line=departure+"-"+arrival;
 		int type=0;
 		double cost=0;
 		if(trans.equals("ÌØ¿ì×¨µÝ"))
