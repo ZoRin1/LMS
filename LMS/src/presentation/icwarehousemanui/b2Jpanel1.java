@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.*;
 
@@ -14,7 +16,7 @@ public class b2Jpanel1 extends JPanel{
 	private JButton returnButton;
 	private JLabel j1,j2,j3,j4,j5,j6,j7,j8,j9,j10,j11;
 	private JTextField t1,t2,t3,t4,t5,t6,t7,t8,t9;
-	private JButton queding,quxiao;
+	private JButton queding,quxiao,sousuo;
 	public b2Jpanel1(b2icwarehousemanui ui,icwarehousemanJpanel icwarehousemanJpanel) {
 		// TODO Auto-generated constructor stub
 		init();
@@ -34,6 +36,8 @@ public class b2Jpanel1 extends JPanel{
 		ImageIcon i9 = new ImageIcon("picture/库存图片/排.png");
 		ImageIcon i10 = new ImageIcon("picture/库存图片/架.png");
 		ImageIcon i11 = new ImageIcon("picture/库存图片/位.png");
+	    final ImageIcon i12 = new ImageIcon("picture/小搜索.png");
+		final ImageIcon i13 = new ImageIcon("picture/小搜索红.png");
 		ImageIcon ex = new ImageIcon("picture/对话框确定.png");
 		ImageIcon es = new ImageIcon("picture/取消.png");
 		returnButton=new JButton(returnIcon);
@@ -103,9 +107,46 @@ public class b2Jpanel1 extends JPanel{
 		
 		queding = new JButton(ex);
 		quxiao = new JButton(es);
+		sousuo = new JButton(i12);
 		
 		queding.setBounds(427, 511, 72, 24);
 		quxiao.setBounds(575, 511, 72, 24);
+		sousuo.setBounds(310, 378, 24, 24);
+		sousuo.setContentAreaFilled(false);
+		sousuo.setBorderPainted(false);
+		sousuo.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				// TODO 自动生成的方法存根
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				// TODO 自动生成的方法存根
+				System.out.println("666");
+				//这个监听用来搜索快递编号的！！！
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				// TODO 自动生成的方法存根
+				sousuo.setIcon(i12);
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO 自动生成的方法存根
+				sousuo.setIcon(i13);
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				// TODO 自动生成的方法存根
+				
+			}
+		});
 		
 		returnButton.setBounds(662, 575,48,48);
 		returnButton.setContentAreaFilled(false);
@@ -132,6 +173,7 @@ public class b2Jpanel1 extends JPanel{
 		this.add(t9);
 		this.add(queding);
 		this.add(quxiao);
+		this.add(sousuo);
 		
 		this.setOpaque(false);
 		this.setBounds(260, 60, 730,650);

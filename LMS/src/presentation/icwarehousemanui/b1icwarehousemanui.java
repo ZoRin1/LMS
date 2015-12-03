@@ -29,7 +29,7 @@ public class b1icwarehousemanui extends JFrame{
 	private JButton b1,b2;
 	private JButton tuichuButton;
 	private JButton zuixiaohuaButton;
-	private b1Jpanel1 b1jpanel;
+	private b1Jpanel2 b1jpanel;
 	public b1icwarehousemanui(String s,icwarehousemanui icwarehousemanui) {
 		// TODO Auto-generated constructor stub
 		super(s);
@@ -89,6 +89,7 @@ public class b1icwarehousemanui extends JFrame{
 				icwarehousemanJpanel.remove(operationJpanel);
 				b1icwarehousemanui.b1.setEnabled(false);
 				b1icwarehousemanui.b2.setEnabled(false);
+//				new b1Jpanel2(b1icwarehousemanui,icwarehousemanJpanel);
 				new b1Jpanel1(b1icwarehousemanui,icwarehousemanJpanel);
 				icwarehousemanJpanel.repaint();
 			}
