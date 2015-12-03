@@ -26,6 +26,12 @@ public class documentController {
 		return list.getCost();
 	}
 	
+	//获得预计天数
+	public int getDays(String departure, String arrival, String trans,double weight){
+		DocumentsList list=new DocumentsList(departure,arrival,trans,weight);
+		return list.getDays();
+	}
+	
 	//将单个单据已审批和通过情况传入数据库，返回值为是否成功（实际并没有意义，下面还没有防范措施）（总经理）
 	public boolean examined(String code, String doName, boolean Examined){
 		Examined ex=new Examined();
