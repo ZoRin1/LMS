@@ -1,6 +1,7 @@
 package presentation.bhclerkui;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -11,24 +12,25 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
 public class documentreplyui extends JFrame{
-private bhclerkJpanel bhclerkJpanel;
-private bhclerkdocumentreplyOperationJpanel operationJpanel;
-private JButton b1,b2,b3,b4;
-private JButton tuichuButton;
-private JButton zuixiaohuaButton;
-public documentreplyui(String s,bhclerkui bhclerkui) {
-	// TODO Auto-generated constructor stub
-	super(s);
-	init(bhclerkui);
-	registListener(this);
-}
-private void registListener(final documentreplyui documentreplyui) {
-	// TODO Auto-generated method stub
-	zuixiaohuaButton.addMouseListener(new MouseAdapter() {
+	private bhclerkJpanel bhclerkJpanel;
+	private bhclerkdocumentreplyOperationJpanel operationJpanel;
+//	private JButton b1,b2,b3,b4;
+	private JButton tuichuButton;
+	private JButton zuixiaohuaButton;
+	public documentreplyui(String s,bhclerkui bhclerkui) {
+		// TODO Auto-generated constructor stub
+		super(s);
+		init(bhclerkui);
+		registListener(this);
+	}
+	private void registListener(final documentreplyui documentreplyui) {
+		// TODO Auto-generated method stub
+		zuixiaohuaButton.addMouseListener(new MouseAdapter() {
 		ImageIcon zuixiaohuaIcon=new ImageIcon("picture/最小化.png");
 		ImageIcon zuixiaohuaIcon2=new ImageIcon("picture/最小化2.png");
 		@Override
@@ -49,7 +51,7 @@ private void registListener(final documentreplyui documentreplyui) {
 			documentreplyui.setExtendedState(JFrame.ICONIFIED);
 		}
 	});
-	tuichuButton.addMouseListener(new MouseAdapter() {
+		tuichuButton.addMouseListener(new MouseAdapter() {
 		ImageIcon tuichuIcon=new ImageIcon("picture/退出.png");
 		ImageIcon tuichuIcon2=new ImageIcon("picture/退出2.png");
 		@Override
@@ -74,10 +76,10 @@ private void registListener(final documentreplyui documentreplyui) {
 private void init(bhclerkui bhclerkui){
 	bhclerkJpanel=new bhclerkJpanel();
 	operationJpanel=new bhclerkdocumentreplyOperationJpanel(bhclerkJpanel,bhclerkui,this);
-	ImageIcon b1Icon=new ImageIcon("picture/装车单反馈.png");
-	ImageIcon b2Icon=new ImageIcon("picture/收款单反馈.png");
-	ImageIcon b3Icon=new ImageIcon("picture/接收单反馈.png");
-	ImageIcon b4Icon=new ImageIcon("picture/派件单反馈.png");
+//	ImageIcon b1Icon=new ImageIcon("picture/装车单反馈.png");
+//	ImageIcon b2Icon=new ImageIcon("picture/收款单反馈.png");
+//	ImageIcon b3Icon=new ImageIcon("picture/接收单反馈.png");
+//	ImageIcon b4Icon=new ImageIcon("picture/派件单反馈.png");
 	ImageIcon tuichuIcon=new ImageIcon("picture/退出.png");
 	ImageIcon zuixiaohuaIcon=new ImageIcon("picture/最小化.png");
 	zuixiaohuaButton=new JButton(zuixiaohuaIcon);
@@ -88,23 +90,23 @@ private void init(bhclerkui bhclerkui){
 	tuichuButton.setBounds(974, 0, 50, 50);
 	tuichuButton.setContentAreaFilled(false);
 	tuichuButton.setBorderPainted(false);
-	b1=new JButton(b1Icon);
-	b2=new JButton(b2Icon);
-	b3=new JButton(b3Icon);
-	b4=new JButton(b4Icon);
-	b1.setBounds(30, 180,200, 50);
-	b2.setBounds(30, 280,200, 50);
-	b3.setBounds(30, 380, 200, 50);
-	b4.setBounds(30, 480,200,50);
-	b1.setContentAreaFilled(false);
-	b2.setContentAreaFilled(false);
-	b3.setContentAreaFilled(false);
-	b4.setContentAreaFilled(false);
+//	b1=new JButton(b1Icon);
+//	b2=new JButton(b2Icon);
+//	b3=new JButton(b3Icon);
+//	b4=new JButton(b4Icon);
+//	b1.setBounds(30, 180,200, 50);
+//	b2.setBounds(30, 280,200, 50);
+//	b3.setBounds(30, 380, 200, 50);
+//	b4.setBounds(30, 480,200,50);
+//	b1.setContentAreaFilled(false);
+//	b2.setContentAreaFilled(false);
+//	b3.setContentAreaFilled(false);
+//	b4.setContentAreaFilled(false);
 
-	bhclerkJpanel.add(b1);
-	bhclerkJpanel.add(b2);
-	bhclerkJpanel.add(b3);
-	bhclerkJpanel.add(b4);
+//	bhclerkJpanel.add(b1);
+//	bhclerkJpanel.add(b2);
+//	bhclerkJpanel.add(b3);
+//	bhclerkJpanel.add(b4);
 	bhclerkJpanel.add(tuichuButton);
 	bhclerkJpanel.add(zuixiaohuaButton);
 	bhclerkJpanel.setLayout(null);
@@ -130,7 +132,9 @@ private void init(bhclerkui bhclerkui){
 class bhclerkdocumentreplyOperationJpanel extends JPanel{
 	private JButton returnButton;
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
-	ImageIcon returnIcon=new ImageIcon("picture/返回.png");
+	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
+	private JLabel j1;
+	private documentReplyJTable jtable;
 	public bhclerkdocumentreplyOperationJpanel(bhclerkJpanel bhclerkJpanel,bhclerkui bhclerkui,documentreplyui documentreplyui) {
 		// TODO Auto-generated constructor stub
 		init();
@@ -143,10 +147,18 @@ class bhclerkdocumentreplyOperationJpanel extends JPanel{
 	    g.drawImage(frameIcon.getImage(),-7,-12,null);
      }
 	private void init(){
+		Font font=new Font("幼圆",Font.BOLD,20);
+		ImageIcon i1 = new ImageIcon("picture/财务图片/单据反馈框架.png");
+		j1 = new JLabel(i1);
+		j1.setBounds(0, 0, 720, 566);
+		jtable=new documentReplyJTable(this);
+		
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662, 575,48,48);
 		returnButton.setContentAreaFilled(false);
+		
 		this.setBounds(260, 60, 730,650);
+		this.add(j1);
 		this.add(returnButton);
 		this.setLayout(null);
 		this.setOpaque(false);
