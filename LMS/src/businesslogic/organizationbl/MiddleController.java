@@ -50,9 +50,9 @@ public class MiddleController {
 	}
 
 
-	public String GetInfo() {
+	public String GetInfo(String ID) {
 		// TODO 自动生成的方法存根
-		return mBL.GetInfo();
+		return mBL.GetInfo(ID);
 	}
 
 

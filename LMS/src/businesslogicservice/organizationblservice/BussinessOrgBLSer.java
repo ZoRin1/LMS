@@ -167,11 +167,12 @@ public interface BussinessOrgBLSer {
 	 */
 	public boolean changeCodeNumberOfMiddle(String ID, String codeNumberOfMiddle);
 	
-	/**此方法及无意义，不必考虑实现
+	/**
 	 * 获得机构其他信息，即城市和编号
+	 * @param ID 所属中转中心-营业厅编号
 	 * @return 城市+编号
 	 */
-	public String getInfo();
+	public String getInfo(String ID);
 	
 	/**
 	 * 修改营业厅所在城市/地点（较小）

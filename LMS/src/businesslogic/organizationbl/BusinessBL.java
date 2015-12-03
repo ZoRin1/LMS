@@ -128,9 +128,10 @@ public class BusinessBL implements BussinessOrgBLSer {
 	}
 
 	@Override
-	public String getInfo() {
+	public String getInfo(String ID) {
 		// TODO 自动生成的方法存根
-		return null;
+		String result = "鼓楼-001001";
+		return result;
 	}
 
 	@Override

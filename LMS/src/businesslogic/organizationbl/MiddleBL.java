@@ -48,9 +48,10 @@ public class MiddleBL implements MiddleOrgBLSer {
 	}
 
 	@Override
-	public String GetInfo() {
+	public String GetInfo(String ID) {
 		// TODO 自动生成的方法存根
-		return null;
+		String result = "南京-001";
+		return result;
 	}
 
 	@Override

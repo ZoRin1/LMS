@@ -65,9 +65,9 @@ public class BusinessController {
 	}
 
 
-	public String getInfo() {
+	public String getInfo(String ID) {
 		// TODO 自动生成的方法存根
-		return bBL.getInfo();
+		return bBL.getInfo(ID);
 	}
 
 
