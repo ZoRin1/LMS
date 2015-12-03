@@ -14,15 +14,15 @@ public class InDepotInfVO {
 	private String InDepotNum; //入库快递编号
 	private String InDepotDate; //入库日期
 	private String Destination; // 目的地
-	private String AreaNum; //区号
-	private String RowNum; //排号
-	private String ShelvesNum;  //架号
-	private String SositionNum; //位号
+	private int AreaNum; //区号
+	private int RowNum; //排号
+	private int ShelvesNum;  //架号
+	private int SositionNum; //位号
 	
 	
 	public InDepotInfVO(String inDepotNum, String inDepotDate,
-			String destination, String areaNum, String rowNum,
-			String shelvesNum, String sositionNum) {
+			String destination, int areaNum, int rowNum,
+			int shelvesNum, int sositionNum) {
 		super();
 		InDepotNum = inDepotNum;
 		InDepotDate = inDepotDate;
@@ -64,42 +64,42 @@ public class InDepotInfVO {
 	}
 
 
-	public String getAreaNum() {
+	public int getAreaNum() {
 		return AreaNum;
 	}
 
 
-	public void setAreaNum(String areaNum) {
+	public void setAreaNum(int areaNum) {
 		AreaNum = areaNum;
 	}
 
 
-	public String getRowNum() {
+	public int getRowNum() {
 		return RowNum;
 	}
 
 
-	public void setRowNum(String rowNum) {
+	public void setRowNum(int rowNum) {
 		RowNum = rowNum;
 	}
 
 
-	public String getShelvesNum() {
+	public int getShelvesNum() {
 		return ShelvesNum;
 	}
 
 
-	public void setShelvesNum(String shelvesNum) {
+	public void setShelvesNum(int shelvesNum) {
 		ShelvesNum = shelvesNum;
 	}
 
 
-	public String getSositionNum() {
+	public int getSositionNum() {
 		return SositionNum;
 	}
 
 
-	public void setSositionNum(String sositionNum) {
+	public void setSositionNum(int sositionNum) {
 		SositionNum = sositionNum;
 	}
 	
