@@ -4,6 +4,6 @@ import vo.storageVO.DepotVO;
 
 public interface GetPositionBlSer {
 	
-	public DepotVO getPOsition();
+	public DepotVO getPOsition(String city, int qu);
 	
 }

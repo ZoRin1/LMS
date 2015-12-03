@@ -48,6 +48,7 @@ public class UsedSpaceDataSerImpl extends UnicastRemoteObject implements UsedSpa
 			resultSet=preparedStatement.executeQuery();
 			resultSet.last();
 			space[2] = resultSet.getRow();
+			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

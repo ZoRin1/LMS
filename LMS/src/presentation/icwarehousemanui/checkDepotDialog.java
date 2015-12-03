@@ -10,10 +10,15 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.*;
 
+import businesslogic.storagebl.CheckModel.CheckController;
 import presentation.financialstaffui.DateChooser;
+import vo.storageVO.SimpleInDepotInfVO;
 
 public class checkDepotDialog {
 	JDialog checkDepot;
@@ -29,6 +34,7 @@ public class checkDepotDialog {
 	checkDepotPanel panel1;
 	icwarehousemanJpanel icwarehousemanJpanel;
 	icwarehousemanOperationJpanel operationJpanel;
+	CheckController checkController;
 	
 	public checkDepotDialog(final icwarehousemanui ui){
 		final String labels[] = {"00","01","02","03","04","05","06","07","08","09",
@@ -272,15 +278,22 @@ public class checkDepotDialog {
 				if(fen_2==null){
 					fen_2 = "00";
 				}
-				String starttime = shi_1+":"+fen_1+":"+miao_1;
+				String now ="";
+				Date date = new Date();
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");   
+				now = sdf.format(date);
+				
+				String starttime = now+" "+shi_1+":"+fen_1+":"+miao_1;
 				System.out.println(starttime);
-				String endtime = shi_2+":"+fen_2+":"+miao_2;
+				String endtime = now+" "+shi_2+":"+fen_2+":"+miao_2;
 				System.out.println(endtime);
 				
-				//这中间要加对单据的调用
-				
 				
 				//这中间要加对单据的调用
+				checkController = new CheckController();
+				//ArrayList<SimpleInDepotInfVO> simpleInf = checkController.conCheck(account, starttime, endtime);
+				//这中间要加对单据的调用
+				
 				checkDepot.dispose();
 				icwarehousemanJpanel.remove(operationJpanel);
 				new checkDepotPanel(ui,icwarehousemanJpanel);//checkDepotPanel的构造函数还要加上单据的参数才能显示

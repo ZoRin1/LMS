@@ -14,6 +14,7 @@ public class DriverBL implements DriveBlSer{
 	@Override
 	public ResultMessage drive(int shipping, int trains, int motor) {
 		// TODO 自动生成的方法存根
+		
 		return null;
 	}
 	
