@@ -9,8 +9,9 @@ public class BusinessBL implements BussinessOrgBLSer {
 
 	@Override
 	public String[] getBussinessmanList(String ID) {
+		String[] result = {"1000001-张飞","1000002-李四","1000003-王伟"};
 		// TODO 自动生成的方法存根
-		return null;
+		return result;
 	}
 
 	@Override
@@ -27,8 +28,9 @@ public class BusinessBL implements BussinessOrgBLSer {
 
 	@Override
 	public String[] getCourierList(String ID) {
+		String[] result = {"1000001-张飞","1000002-李四","1000003-王伟"};
 		// TODO 自动生成的方法存根
-		return null;
+		return result;
 	}
 
 	@Override
@@ -130,7 +132,7 @@ public class BusinessBL implements BussinessOrgBLSer {
 	@Override
 	public String getInfo(String ID) {
 		// TODO 自动生成的方法存根
-		String result = "鼓楼-001001";
+		String result = "鼓楼";
 		return result;
 	}
 

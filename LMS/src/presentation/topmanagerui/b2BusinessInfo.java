@@ -2,6 +2,7 @@ package presentation.topmanagerui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,6 +21,10 @@ public class b2BusinessInfo extends JPanel {
 	private ImageIcon frameIcon =new ImageIcon("picture/²Ù×÷Ãæ°å.png");	
 	private ImageIcon returnIcon=new ImageIcon("picture/·µ»Ø.png");
 	
+	public b2BusinessInfo(b2topmanagerui b2ui,topmanagerJpanel tjpl,String ID){
+		init(b2ui, tjpl, ID);
+		tjpl.add(this);
+	}
 	private void init(b2topmanagerui b2ui,topmanagerJpanel tjpl,String ID) {
 		
 		BusinessController businessController = new BusinessController();
@@ -84,6 +89,8 @@ public class b2BusinessInfo extends JPanel {
 		yeWuYuanb = new JComboBox(businessController.getBussinessmanList(ID));
 		yeWuYuanb.setFont(sFont);
 		yeWuYuanb.setForeground(Color.BLACK);
+		yeWuYuanb.setBounds(330, 310, 180, 40);
+		this.add(yeWuYuanb);
 		
 		
 		
@@ -113,5 +120,11 @@ public class b2BusinessInfo extends JPanel {
 		this.setOpaque(false);
 		
 	}
+	
+	public void paintComponent(Graphics g)  
+	{  
+	    super.paintComponent(g);    
+	    g.drawImage(frameIcon.getImage(),-7,-12,null);
+     }
 
 }

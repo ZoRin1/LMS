@@ -61,7 +61,7 @@ public class b2SearchOrg extends JPanel {
 		orgF.setFont(font);
 		orgF.setForeground(Color.BLACK);
 		orgF.setBounds(150, 160, 200, 50);
-		orgF.addKeyListener(new NumberFieldListener());
+//		orgF.addKeyListener(new NumberFieldListener());
 		this.add(orgF);
 		
 		search = new JButton("ËÑË÷");
@@ -100,9 +100,8 @@ public class b2SearchOrg extends JPanel {
 					orgs = middleController.GetInfo(input);
 				}
 				if (orgs != null) {
-					String[] result = orgs.split("-");
-					data[0][1] = result[0] + org;
-					data[0][0] = result[1];
+					data[0][1] = orgs + org;
+					data[0][0] = input;
 					orgTable = new MyTable(data,columnNames);
 					orgTable.setForeground(Color.GRAY);
 					orgTable.setFont(font);
@@ -120,10 +119,16 @@ public class b2SearchOrg extends JPanel {
 						 public void mouseClicked(MouseEvent e) {
 							 if(e.getClickCount()==2){
 								 tjpl.remove(b2SearchOrg);
+								 
 								 b2ui.b1.setEnabled(false);
 								 b2ui.b2.setEnabled(false);
 								 b2ui.b3.setEnabled(false);
-								 System.out.println("¹þ¹þ¹þ¹þ");
+								 int r = orgTable.getSelectedRow();
+								 if (org.equals("ÓªÒµÌü")) {
+									 new b2BusinessInfo(b2ui, tjpl, data[r][0]);
+									tjpl.repaint();
+								}
+								 System.out.println(r);
 							 }
 							 }
 					
