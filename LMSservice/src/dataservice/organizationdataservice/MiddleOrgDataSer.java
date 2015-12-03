@@ -63,10 +63,10 @@ public interface MiddleOrgDataSer extends Remote{
 	public String[] getBussinessHallList(String ID)throws RemoteException;
 	
 	
-	/**此方法已经无意义，不必考虑实现
-	 * 返回机构其他信息，即城市和编号
+	/**
+	 * 返回中转中心所在城市
 	 * @param ID 中转中心编号
-	 * @return city+codeNumber
+	 * @return city
 	 */
 	
 	public String GetInfo(String ID)throws RemoteException;

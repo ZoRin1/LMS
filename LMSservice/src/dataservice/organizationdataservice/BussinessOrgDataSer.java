@@ -165,7 +165,8 @@ public interface BussinessOrgDataSer extends Remote{
 	public boolean changeCodeNumberOfMiddle(String ID, String codeNumberOfMiddle)throws RemoteException;
 	
 	/**
-	 * 不实现
+	 * 返回营业厅所在地区
+	 * @return city
 	 */
 	public String getInfo(String ID)throws RemoteException;
 	

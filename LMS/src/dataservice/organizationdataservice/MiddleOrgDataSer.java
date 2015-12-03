@@ -60,12 +60,13 @@ public interface MiddleOrgDataSer {
 	public String[] getBussinessHallList(String ID);
 	
 	
-	/**此
+	/**
 	 * 返回机构所在城市
+	 * @param ID 中转中心编号
 	 * @return city
 	 */
 	
-	public String GetInfo();
+	public String GetInfo(String ID);
 	
 	/**
 	 * 修改中转中心所在城市    
