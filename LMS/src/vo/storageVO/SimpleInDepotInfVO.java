@@ -12,16 +12,14 @@ public class SimpleInDepotInfVO {
 	
 	
 	private String InDepotNum; //Èë¿â¿ìµÝ±àºÅ
-	private double Sums; //½ð¶îÐÅÏ¢
-	private String AreaNum; //ÇøºÅ
-	private String RowNum; //ÅÅºÅ
-	private String ShelvesNum;  //¼ÜºÅ
-	private String SositionNum; //Î»ºÅ
-	public SimpleInDepotInfVO(String inDepotNum, double sums, String areaNum,
-			String rowNum, String shelvesNum, String sositionNum) {
+	private int AreaNum; //ÇøºÅ
+	private int RowNum; //ÅÅºÅ
+	private int ShelvesNum;  //¼ÜºÅ
+	private int SositionNum; //Î»ºÅ
+	public SimpleInDepotInfVO(String inDepotNum, int areaNum,
+			int rowNum, int shelvesNum, int sositionNum) {
 		super();
 		InDepotNum = inDepotNum;
-		Sums = sums;
 		AreaNum = areaNum;
 		RowNum = rowNum;
 		ShelvesNum = shelvesNum;
@@ -33,34 +31,28 @@ public class SimpleInDepotInfVO {
 	public void setInDepotNum(String inDepotNum) {
 		InDepotNum = inDepotNum;
 	}
-	public double getSums() {
-		return Sums;
-	}
-	public void setSums(double sums) {
-		Sums = sums;
-	}
-	public String getAreaNum() {
+	public int getAreaNum() {
 		return AreaNum;
 	}
-	public void setAreaNum(String areaNum) {
+	public void setAreaNum(int areaNum) {
 		AreaNum = areaNum;
 	}
-	public String getRowNum() {
+	public int getRowNum() {
 		return RowNum;
 	}
-	public void setRowNum(String rowNum) {
+	public void setRowNum(int rowNum) {
 		RowNum = rowNum;
 	}
-	public String getShelvesNum() {
+	public int getShelvesNum() {
 		return ShelvesNum;
 	}
-	public void setShelvesNum(String shelvesNum) {
+	public void setShelvesNum(int shelvesNum) {
 		ShelvesNum = shelvesNum;
 	}
-	public String getSositionNum() {
+	public int getSositionNum() {
 		return SositionNum;
 	}
-	public void setSositionNum(String sositionNum) {
+	public void setSositionNum(int sositionNum) {
 		SositionNum = sositionNum;
 	}
 	

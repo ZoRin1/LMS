@@ -17,12 +17,12 @@ public class CheckController {
 	}
 
 
-	public ArrayList<SimpleInDepotInfVO>conCheck(int start,int end) {
-		return null;
+	public ArrayList<SimpleInDepotInfVO>conCheck(String account,String start, String end) {		
+		return check.check(account, start, end);
 	}
 	
 	
-	public ArrayList<InDepotInfVO> conInventory() {
-		return null;
+	public ArrayList<InDepotInfVO> conInventory(String account,String start, String end) {
+		return check.inventory(account, start, end);
 	}
 }

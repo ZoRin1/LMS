@@ -62,12 +62,13 @@ public interface MiddleOrgBLSer {
 	public String[] getBussinessHallList(String ID);
 	
 	
-	/**此方法已经无意义，不必考虑实现
+	/**
 	 * 返回机构其他信息，即城市和编号
+	 * @param ID 中转中心编号
 	 * @return city+codeNumber
 	 */
 	
-	public String GetInfo();
+	public String GetInfo(String ID);
 	
 	/**
 	 * 修改中转中心所在城市    

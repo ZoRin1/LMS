@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 import businesslogic.transportationbl.TransportationController;
 import presentation.adminui.NumberFieldListener;
 
-public class Salary extends JPanel {
+public class b1Salary extends JPanel {
 	private JLabel tiShi,anYue,yuanMeiYue,jiCi,yuanMeiCi,tiCheng,baiFenHao;
 	private JTextField anYueF,jiCiF,tiChengF;
 	
@@ -27,7 +27,7 @@ public class Salary extends JPanel {
 	private ImageIcon returnIcon=new ImageIcon("picture/·µ»Ø.png");
 	private ImageIcon yesIcon=new ImageIcon("picture/È·¶¨.png");
 	
-	public Salary(topmanagerui tui,topmanagerJpanel tjpl,b1topmanagerui b1ui,int employee) {
+	public b1Salary(topmanagerui tui,topmanagerJpanel tjpl,b1topmanagerui b1ui,int employee) {
 		init(employee);
 		tjpl.add(this);
 		registListener(tjpl, b1ui, this);
@@ -125,7 +125,7 @@ public class Salary extends JPanel {
 	}
 
 	
-	private void registListener(final topmanagerJpanel tjpl,final b1topmanagerui b1ui,final Salary salary) {
+	private void registListener(final topmanagerJpanel tjpl,final b1topmanagerui b1ui,final b1Salary salary) {
 		
 		returnButton.addActionListener(new ActionListener() {
 			

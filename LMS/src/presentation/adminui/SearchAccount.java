@@ -56,7 +56,7 @@ public class SearchAccount extends JPanel {
 			
 			 public void mouseClicked(MouseEvent e) {
 				 if(e.getClickCount()==2){
-					int r = accountTable.getSelectedRow();
+					
 				
 					aui.setTitle("账号详细信息");
 					apl.remove(searchAccount);
@@ -66,6 +66,7 @@ public class SearchAccount extends JPanel {
 					
 					//真正使用时去掉
 		        	//暂时不用
+//					int r = accountTable.getSelectedRow();
 //					long ID = Long.parseLong(data[r][0]);
 //					AccountInfoController accountInfoController = new AccountInfoController();
 //					AccountNumberVO accountNumberVO = accountInfoController.getInfo(ID);   
