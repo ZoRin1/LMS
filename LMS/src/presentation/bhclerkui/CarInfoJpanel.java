@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class CarInfoJpanel extends JPanel{
@@ -15,6 +16,8 @@ public class CarInfoJpanel extends JPanel{
 	private JButton yesButton;
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	private ImageIcon yesIcon=new ImageIcon("picture/确定.png");
+	private JLabel CarLabel;
+	private CarInfoJpanelJTable CarInfoJpanelJTable;
 	public CarInfoJpanel(bhclerkui ui,bhclerkJpanel bhclerkJpanel) {
 		init();
 		bhclerkJpanel.add(this);
@@ -22,14 +25,24 @@ public class CarInfoJpanel extends JPanel{
 	}
 	public void init(){
 		Font font=new Font("幼圆",Font.BOLD,24);
+		ImageIcon i1 = new ImageIcon("picture/车辆信息框架.png");
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662,575,48,48);
 		returnButton.setContentAreaFilled(false);
+		
+		CarInfoJpanelJTable = new CarInfoJpanelJTable(this);
+		
+		CarLabel = new JLabel(i1);
+		CarLabel.setBounds(0, 0, 723, 571);
+		CarLabel.add(CarInfoJpanelJTable.getScrollPane());
+		
 		this.add(returnButton);
 		
 		yesButton=new JButton(yesIcon);
 		yesButton.setBounds(602, 575,48,48);
 		yesButton.setContentAreaFilled(false);
+		
+		this.add(CarLabel);
 		this.add(yesButton);
 		
 		this.setBounds(260, 60, 730,650);

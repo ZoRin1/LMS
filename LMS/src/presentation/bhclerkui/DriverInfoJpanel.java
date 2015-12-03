@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class DriverInfoJpanel extends JPanel{
@@ -15,6 +16,8 @@ public class DriverInfoJpanel extends JPanel{
 	private JButton yesButton;
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	private ImageIcon yesIcon=new ImageIcon("picture/确定.png");
+	private JLabel kuangjia;
+	private DriverInfoJpanelJTable DriverInfoJpanelJTable;
 	public DriverInfoJpanel(bhclerkui ui,bhclerkJpanel bhclerkJpanel) {
 		init();
 		bhclerkJpanel.add(this);
@@ -22,15 +25,25 @@ public class DriverInfoJpanel extends JPanel{
 	}
 	private void init() {
 		// TODO Auto-generated method stub
+		ImageIcon i1 =new  ImageIcon("picture/司机信息框架.png");
 		Font font=new Font("幼圆",Font.BOLD,24);
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662,575,48,48);
 		returnButton.setContentAreaFilled(false);
+		
+		DriverInfoJpanelJTable = new DriverInfoJpanelJTable(this);
+		
+		kuangjia = new JLabel(i1);
+		kuangjia.setBounds(0, 0, 723, 571);
+		kuangjia.add(DriverInfoJpanelJTable.getScrollPane());
+		
 		this.add(returnButton);
 		
 		yesButton=new JButton(yesIcon);
 		yesButton.setBounds(602, 575,48,48);
 		yesButton.setContentAreaFilled(false);
+		
+		this.add(kuangjia);
 		this.add(yesButton);
 		
 		this.setBounds(260, 60, 730,650);
