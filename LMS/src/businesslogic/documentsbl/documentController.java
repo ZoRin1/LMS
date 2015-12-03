@@ -8,25 +8,25 @@ import po.documentsPO.PaymentPO;
 import po.documentsPO.ReceiptPO;
 
 public class documentController {
-	//创建单据时获得单据编号
+	//创建单据时获得单据编号（所有单据都要经过这一步）
 	public String getDocCode(String doName) {
 		createDocument cr=new createDocument();
 		return cr.createDocument(doName);
 	}
 	
-	//将po存入数据库
+	//将po存入数据库（所有单据都要经过这一步）
 	public boolean createBlock(DocumentPO po){
 		createBlock cr=new createBlock();
 		return cr.createBlock(po);
 	}
 	
-	//计算运费
+	//寄件单与装车单，装运单计算运费
 	public double getCost(String departure, String arrival, String trans,double weight){
 		DocumentsList list=new DocumentsList(departure,arrival,trans,weight);
 		return list.getCost();
 	}
 	
-	//获得预计天数
+	//寄件单中获得预计天数
 	public int getDays(String departure, String arrival, String trans,double weight){
 		DocumentsList list=new DocumentsList(departure,arrival,trans,weight);
 		return list.getDays();
@@ -105,9 +105,9 @@ public class documentController {
 		return get.getWuliuInfo(code);
 	}
 	
-	//更新库存信息
-	public void updateDrive(String city,String qu, String pai, String jia, String wei){
-		UpdateSpace up=new UpdateSpace();
-		up.updateDrive(city, qu, pai, jia, wei);
+	//出库单更新库存信息
+	public void updateDrive(String InDepotCode){
+		UpdateSpace up=new UpdateSpace(InDepotCode);
+		up.updateDrive();
 	}
 }
