@@ -65,10 +65,11 @@ public interface MiddleOrgDataSer extends Remote{
 	
 	/**此方法已经无意义，不必考虑实现
 	 * 返回机构其他信息，即城市和编号
+	 * @param ID 中转中心编号
 	 * @return city+codeNumber
 	 */
 	
-	public String GetInfo()throws RemoteException;
+	public String GetInfo(String ID)throws RemoteException;
 	
 	/**
 	 * 修改中转中心所在城市    

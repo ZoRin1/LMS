@@ -9,6 +9,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import businesslogic.organizationbl.BusinessController;
 import vo.orgVO.BussinessOrgVO;
 
 public class b2BusinessInfo extends JPanel {
@@ -19,8 +20,10 @@ public class b2BusinessInfo extends JPanel {
 	private ImageIcon frameIcon =new ImageIcon("picture/²Ù×÷Ãæ°å.png");	
 	private ImageIcon returnIcon=new ImageIcon("picture/·µ»Ø.png");
 	
-	private void init(b2topmanagerui b2ui,topmanagerJpanel tjpl,BussinessOrgVO bussinessOrgVO) {
+	private void init(b2topmanagerui b2ui,topmanagerJpanel tjpl,String ID) {
 		
+		BusinessController businessController = new BusinessController();
+		String[] temp = ID.split("-");
 		Font bFont = new Font("Ó×Ô²", Font.BOLD, 30);
 		Font sFont = new Font("Ó×Ô²", Font.BOLD, 20);
 		
@@ -30,7 +33,7 @@ public class b2BusinessInfo extends JPanel {
 		suoShu.setBounds(100, 70, 240, 50);
 		this.add(suoShu);
 		
-		suoShuC = new JLabel(bussinessOrgVO.getCodeNemberOfMiddle());
+		suoShuC = new JLabel(temp[0]);
 		suoShuC.setFont(bFont);
 		suoShuC.setForeground(Color.WHITE);
 		suoShuC.setBounds(350, 70, 200, 50);
@@ -42,7 +45,7 @@ public class b2BusinessInfo extends JPanel {
 		suoZai.setBounds(100, 130, 180, 50);
 		this.add(suoZai);
 		
-		suoZaiC = new JLabel(bussinessOrgVO.getCity());
+		suoZaiC = new JLabel(businessController.getInfo(ID));
 		suoZaiC.setFont(bFont);
 		suoZaiC.setForeground(Color.WHITE);
 		suoZaiC.setBounds(290, 130, 150, 50);
@@ -54,7 +57,7 @@ public class b2BusinessInfo extends JPanel {
 		bianHao.setBounds(100, 190, 200, 50);
 		this.add(bianHao);
 		
-		bianHaoC = new JLabel(bussinessOrgVO.getCodeNumber());
+		bianHaoC = new JLabel(temp[1]);
 		bianHaoC.setFont(bFont);
 		bianHaoC.setForeground(Color.WHITE);
 		bianHaoC.setBounds(310, 190, 180, 50);
@@ -72,7 +75,16 @@ public class b2BusinessInfo extends JPanel {
 		yeWuYuan.setBounds(330, 260, 180, 40);
 		this.add(yeWuYuan);
 		
-		kuaiDiYuanb = new JComboBox<>(bussinessOrgVO.getCourier().toArray());
+		kuaiDiYuanb = new JComboBox(businessController.getCourierList(ID));
+		kuaiDiYuanb.setFont(sFont);
+		kuaiDiYuanb.setForeground(Color.BLACK);
+		kuaiDiYuanb.setBounds(120, 310, 180, 40);
+		this.add(kuaiDiYuanb);
+		
+		yeWuYuanb = new JComboBox(businessController.getBussinessmanList(ID));
+		yeWuYuanb.setFont(sFont);
+		yeWuYuanb.setForeground(Color.BLACK);
+		
 		
 		
 		

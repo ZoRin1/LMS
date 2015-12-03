@@ -1,55 +1,56 @@
 package businesslogic.organizationbl;
 
+import businesslogicservice.storageblservice.usedSpaceBlSer;
 import vo.orgVO.BussinessOrgVO;
 
 public class BusinessController {
 	
 	BusinessBL bBL = new BusinessBL();
 	
-	public String[] getBussinessmanList() {
+	public String[] getBussinessmanList(String ID) {
 		// TODO 自动生成的方法存根
-		return bBL.getBussinessmanList(null);
+		return bBL.getBussinessmanList(ID);
 	}
 
 
-	public boolean addBussinessman(long ID) {
+	public boolean addBussinessman(String ID, long bID) {
 		// TODO 自动生成的方法存根
-		return bBL.addBussinessman(null, ID);
+		return bBL.addBussinessman(ID, bID);
 	}
 
 
-	public boolean removeBussinessman(long ID) {
+	public boolean removeBussinessman(String ID, long bID) {
 		// TODO 自动生成的方法存根
-		return bBL.removeBussinessman(null, ID);
+		return bBL.removeBussinessman(ID, bID);
 	}
 
 
-	public String[] getCourierList() {
+	public String[] getCourierList(String ID) {
 		// TODO 自动生成的方法存根
-		return bBL.getCourierList(null);
+		return bBL.getCourierList(ID);
 	}
 
 
-	public boolean addCourier(long ID) {
+	public boolean addCourier(String ID, long bID) {
 		// TODO 自动生成的方法存根
-		return addCourier(ID);
+		return bBL.addCourier(ID, bID);
 	}
 
 
-	public boolean removeCourier(long ID) {
+	public boolean removeCourier(String ID, long bID) {
 		// TODO 自动生成的方法存根
-		return bBL.removeCourier(null, ID);
+		return bBL.removeCourier(ID, bID);
 	}
 	
-	public boolean addBussinessHall(BussinessOrgVO vo) {
+	public boolean addBussinessHall(String ID, BussinessOrgVO vo) {
 		// TODO 自动生成的方法存根
-		return bBL.addBussinessHall(null, vo);
+		return bBL.addBussinessHall(ID, vo);
 	}
 
 
-	public boolean removeBussinessHall(String codeNumber) {
+	public boolean removeBussinessHall(String ID, String codeNumber) {
 		// TODO 自动生成的方法存根
-		return bBL.removeBussinessHall(null, codeNumber);
+		return bBL.removeBussinessHall(ID, codeNumber);
 	}
 
 
@@ -59,9 +60,9 @@ public class BusinessController {
 	}
 
 
-	public boolean changeCodeNumberOfMiddle(String codeNumberOfMiddle) {
+	public boolean changeCodeNumberOfMiddle(String ID, String codeNumberOfMiddle) {
 		// TODO 自动生成的方法存根
-		return bBL.changeCodeNumberOfMiddle(null, codeNumberOfMiddle);
+		return bBL.changeCodeNumberOfMiddle(ID, codeNumberOfMiddle);
 	}
 
 
@@ -71,15 +72,15 @@ public class BusinessController {
 	}
 
 
-	public boolean changeCity(String city) {
+	public boolean changeCity(String ID, String city) {
 		// TODO 自动生成的方法存根
-		return bBL.changeCity(null, city);
+		return bBL.changeCity(ID, city);
 	}
 
 
-	public boolean changeCodeNumber(String codeNumber) {
+	public boolean changeCodeNumber(String ID, String codeNumber) {
 		// TODO 自动生成的方法存根
-		return bBL.changeCodeNumber(null, codeNumber);
+		return bBL.changeCodeNumber(ID, codeNumber);
 	}
 
 

@@ -60,9 +60,9 @@ public interface MiddleOrgDataSer {
 	public String[] getBussinessHallList(String ID);
 	
 	
-	/**此方法已经无意义，不必考虑实现
-	 * 返回机构其他信息，即城市和编号
-	 * @return city+codeNumber
+	/**此
+	 * 返回机构所在城市
+	 * @return city
 	 */
 	
 	public String GetInfo();

@@ -268,7 +268,7 @@ public class MiddleOrgDataSerImpl extends UnicastRemoteObject implements MiddleO
 	}
 
 	@Override
-	public String GetInfo() throws RemoteException{
+	public String GetInfo(String ID) throws RemoteException{
 		// TODO 自动生成的方法存根
 		return null;
 	}

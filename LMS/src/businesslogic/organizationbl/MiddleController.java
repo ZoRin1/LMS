@@ -8,45 +8,45 @@ public class MiddleController {
 	
 	
 
-	public String[] getBussinessmanList() {
+	public String[] getBussinessmanList(String ID) {
 		// TODO 自动生成的方法存根
 		return mBL.getBussinessHallList(null);
 	}
 
 
-	public boolean addBussinessman(long ID) {
+	public boolean addBussinessman(String ID, long bID) {
 		// TODO 自动生成的方法存根
-		return mBL.addBussinessman(null, ID);
+		return mBL.addBussinessman(ID, bID);
 	}
 
 	
-	public boolean removeBussinessman(long ID) {
+	public boolean removeBussinessman(String ID, long bID) {
 		// TODO 自动生成的方法存根
-		return mBL.removeBussinessman(null, ID);
+		return mBL.removeBussinessman(ID, bID);
 	}
 
 	
-	public String[] getStorgerList() {
+	public String[] getStorgerList(String ID) {
 		// TODO 自动生成的方法存根
-		return mBL.getStorgerList(null);
+		return mBL.getStorgerList(ID);
 	}
 
 	
-	public boolean addStorger(long ID) {
+	public boolean addStorger(String ID, long bID) {
 		// TODO 自动生成的方法存根
-		return mBL.addStorger(null, ID);
+		return mBL.addStorger(ID, bID);
 	}
 
 
-	public boolean removeStorger(long ID) {
+	public boolean removeStorger(String ID, long bID) {
 		// TODO 自动生成的方法存根
-		return mBL.removeStorger(null, ID);
+		return mBL.removeStorger(ID, bID);
 	}
 
 	
-	public String[] getBussinessHallList() {
+	public String[] getBussinessHallList(String ID) {
 		// TODO 自动生成的方法存根
-		return mBL.getBussinessHallList(null);
+		return mBL.getBussinessHallList(ID);
 	}
 
 
@@ -56,15 +56,15 @@ public class MiddleController {
 	}
 
 
-	public boolean changeCity(String city) {
+	public boolean changeCity(String ID, String city) {
 		// TODO 自动生成的方法存根
-		return mBL.changeCity(null, city);
+		return mBL.changeCity(ID, city);
 	}
 
 
-	public boolean addMiddleOrg(MiddleOrgVO vo) {
+	public boolean addMiddleOrg(String ID, MiddleOrgVO vo) {
 		// TODO 自动生成的方法存根
-		return mBL.addMiddleOrg(null, vo);
+		return mBL.addMiddleOrg(ID, vo);
 	}
 
 

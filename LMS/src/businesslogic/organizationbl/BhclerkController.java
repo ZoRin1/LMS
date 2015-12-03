@@ -7,63 +7,63 @@ public class BhclerkController {
 	
 	BusinessBL bBL = new BusinessBL();
 	
-	public String[] getVehicleList() {
+	public String[] getVehicleList(String ID) {
 		// TODO 自动生成的方法存根
-		return bBL.getVehicleList(null);
+		return bBL.getVehicleList(ID);
 	}
 
 
-	public VehicleVO getVehicleInfo(String codeVehicle) {
+	public VehicleVO getVehicleInfo(String ID, String codeVehicle) {
 		// TODO 自动生成的方法存根
-		return bBL.getVehicleInfo(null, codeVehicle);
+		return bBL.getVehicleInfo(ID, codeVehicle);
 	}
 
 
-	public boolean addVehicle(VehicleVO vo) {
+	public boolean addVehicle(String ID, VehicleVO vo) {
 		// TODO 自动生成的方法存根
-		return bBL.addVehicle(null, vo);
+		return bBL.addVehicle(ID, vo);
 	}
 
 
-	public boolean removeVehicle(String codeVehicle) {
+	public boolean removeVehicle(String ID, String codeVehicle) {
 		// TODO 自动生成的方法存根
-		return bBL.removeVehicle(null, codeVehicle);
+		return bBL.removeVehicle(ID, codeVehicle);
 	}
 
 
-	public boolean changeVehicle(VehicleVO vo) {
+	public boolean changeVehicle(String ID, VehicleVO vo) {
 		// TODO 自动生成的方法存根
-		return bBL.changeVehicle(null, vo);
+		return bBL.changeVehicle(ID, vo);
 	}
 
 
-	public String[] getDriverList() {
+	public String[] getDriverList(String ID) {
 		// TODO 自动生成的方法存根
-		return bBL.getDriverList(null);
+		return bBL.getDriverList(ID);
 	}
 
 
-	public DriverVO getDriverInfo(String codeDriver) {
+	public DriverVO getDriverInfo(String ID, String codeDriver) {
 		// TODO 自动生成的方法存根
-		return bBL.getDriverInfo(null, codeDriver);
+		return bBL.getDriverInfo(ID, codeDriver);
 	}
 
 
-	public boolean addDriver(DriverVO vo) {
+	public boolean addDriver(String ID, DriverVO vo) {
 		// TODO 自动生成的方法存根
-		return bBL.addDriver(null, vo);
+		return bBL.addDriver(ID, vo);
 	}
 
 
-	public boolean removeDriver(String codeDriver) {
+	public boolean removeDriver(String ID, String codeDriver) {
 		// TODO 自动生成的方法存根
-		return bBL.removeDriver(null, codeDriver);
+		return bBL.removeDriver(ID, codeDriver);
 	}
 
 
-	public boolean changeDriver(DriverVO vo) {
+	public boolean changeDriver(String ID, DriverVO vo) {
 		// TODO 自动生成的方法存根
-		return bBL.changeDriver(null, vo);
+		return bBL.changeDriver(ID, vo);
 	}
 
 }
