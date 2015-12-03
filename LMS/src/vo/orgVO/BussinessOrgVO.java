@@ -2,6 +2,7 @@ package vo.orgVO;
 
 import java.util.ArrayList;
 
+import businesslogic.accountbl.AccountInfoController;
 import vo.accountVO.AccountNumberVO;
 
 /**
@@ -15,16 +16,16 @@ public class BussinessOrgVO {
 	private String city;//机构所在城市
 	private String codeNumber;//机构编号，3位
 	private String codeNemberOfMiddle;//所属中转中心编号；3位
-	private ArrayList<AccountNumberVO> assisant;//营业厅业务员账号列表
-	private ArrayList<AccountNumberVO> courier;//快递员账号列表
-	private ArrayList<VehicleVO> vehicle;//车辆信息列表
-	private ArrayList<DriverVO> driver;//司机信息列表
+	private ArrayList<String> assisant;//营业厅业务员账号列表
+	private ArrayList<String> courier;//快递员账号列表
+	private ArrayList<String> vehicle;//车辆信息列表
+	private ArrayList<String> driver;//司机信息列表
 	
 
 
 	public BussinessOrgVO(String Mcity,String city, String codeNumber, String codeNemberOfMiddle,
-			ArrayList<AccountNumberVO> assisant, ArrayList<AccountNumberVO> courier, ArrayList<VehicleVO> vehicle,
-			ArrayList<DriverVO> driver) {
+			ArrayList<String> assisant, ArrayList<String> courier, ArrayList<String> vehicle,
+			ArrayList<String> driver) {
 		super();
 		this.Mcity=Mcity;
 		this.city = city;
@@ -35,12 +36,12 @@ public class BussinessOrgVO {
 		this.vehicle = vehicle;
 		this.driver = driver;
 		
-		for(AccountNumberVO vo:assisant){
-			vo.setState(2+"-"+Mcity+"-"+city+"-营业厅"+"-"+Mcity+"-"+city);
-		}
-		for(AccountNumberVO vo:courier){
-			vo.setState(1+"-"+Mcity+"-"+city+"-营业厅"+"-"+Mcity+"-"+city);
-		}
+//		for(AccountNumberVO vo:assisant){
+//			vo.setState(2+"-"+Mcity+"-"+city+"-营业厅"+"-"+Mcity+"-"+city);
+//		}
+//		for(AccountNumberVO vo:courier){
+//			vo.setState(1+"-"+Mcity+"-"+city+"-营业厅"+"-"+Mcity+"-"+city);
+//		}
 	}
 
 	public String getCity() {
@@ -67,75 +68,80 @@ public class BussinessOrgVO {
 		this.codeNemberOfMiddle = codeNemberOfMiddle;
 	}
 
-	public ArrayList<AccountNumberVO> getAssisant() {
+	public ArrayList<String> getAssisant() {
 		return assisant;
 	}
 
-	public void setAssisant(ArrayList<AccountNumberVO> assisant) {
+	public void setAssisant(ArrayList<String> assisant) {
 		this.assisant = assisant;
 	}
 
-	public ArrayList<AccountNumberVO> getCourier() {
+	public ArrayList<String> getCourier() {
 		return courier;
 	}
 
-	public void setCourier(ArrayList<AccountNumberVO> courier) {
+	public void setCourier(ArrayList<String> courier) {
 		this.courier = courier;
 	}
 	
 	
-	public ArrayList<VehicleVO> getVehicle() {
+	public ArrayList<String> getVehicle() {
 		return vehicle;
 	}
 
-	public void setVehicle(ArrayList<VehicleVO> vehicle) {
+	public void setVehicle(ArrayList<String> vehicle) {
 		this.vehicle = vehicle;
 	}
 
-	public ArrayList<DriverVO> getDriver() {
+	public ArrayList<String> getDriver() {
 		return driver;
 	}
 
-	public void setDriver(ArrayList<DriverVO> driver) {
+	public void setDriver(ArrayList<String> driver) {
 		this.driver = driver;
 	}
 
-	public void addAssisant(AccountNumberVO vo){
-		this.assisant.add(vo);	
-		vo.setState(2+"-"+Mcity+"-"+city+"-营业厅"+"-"+Mcity+"-"+city);
-	}
-	
-	public void removeAssisant( AccountNumberVO vo){
-	    this.assisant.remove(vo);
-	    vo.setState("0");
-
-	}
-	
-	public void addCourier(AccountNumberVO vo){
-		this.courier.add(vo);	
-		vo.setState(2+"-"+Mcity+"-"+city+"-营业厅"+"-"+Mcity+"-"+city);
-	}
-	
-	public void removeCourier( AccountNumberVO vo){
-	    this.courier.remove(vo);
-	    vo.setState("0");
-
-	}
-	
-	public void addVehicle(VehicleVO vo){
-		this.vehicle.add(vo);
-	}
-	
-	public void removeVehicle(VehicleVO vo){
-		this.vehicle.remove(vo);
-	}
-
-	public void addDriver(DriverVO vo){
-		this.driver.add(vo);
-	}
-	
-	public void removeDriverVO(DriverVO vo){
-		this.driver.remove(vo);
-	}
+//	public void addAssisant(String vo){
+//		this.assisant.add(vo);	
+//		AccountInfoController accountInfoController = new AccountInfoController();
+//		accountInfoController.getInfo(Long.parseLong(vo)).setState(2+"-"+Mcity+"-"+city+"-营业厅"+"-"+Mcity+"-"+city);
+//	}
+//	
+//	public void removeAssisant( String vo){
+//	    this.assisant.remove(vo);
+//	    AccountInfoController accountInfoController = new AccountInfoController();
+//		accountInfoController.getInfo(Long.parseLong(vo)).setState("0");
+//
+//	}
+//	
+//	public void addCourier(String vo){
+//		this.courier.add(vo);
+//		AccountInfoController accountInfoController = new AccountInfoController();
+//		accountInfoController.getInfo(Long.parseLong(vo)).setState(1+"-"+Mcity+"-"+city+"-营业厅"+"-"+Mcity+"-"+city);
+//	}
+//	
+//	public void removeCourier( String vo){
+//	    this.courier.remove(vo);
+//	    AccountInfoController accountInfoController = new AccountInfoController();
+//		accountInfoController.getInfo(Long.parseLong(vo)).setState("0");
+//	   
+//
+//	}
+//	
+//	public void addVehicle(String vo){
+//		this.vehicle.add(vo);
+//	}
+//	
+//	public void removeVehicle(String vo){
+//		this.vehicle.remove(vo);
+//	}
+//
+//	public void addDriver(String vo){
+//		this.driver.add(vo);
+//	}
+//	
+//	public void removeDriverVO(String vo){
+//		this.driver.remove(vo);
+//	}
 	
 }
