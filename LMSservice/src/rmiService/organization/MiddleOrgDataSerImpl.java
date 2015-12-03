@@ -270,6 +270,23 @@ public class MiddleOrgDataSerImpl extends UnicastRemoteObject implements MiddleO
 	@Override
 	public String GetInfo(String ID) throws RemoteException{
 		// TODO 自动生成的方法存根
+		sql="select city from 中转中心信息 where codeNumber='"+ID+"'";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			resultSet.next();
+			String cityString= resultSet.getString(1);
+			connection.close();
+			return cityString;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
