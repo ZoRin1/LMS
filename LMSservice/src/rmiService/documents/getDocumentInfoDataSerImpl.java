@@ -130,6 +130,10 @@ public class getDocumentInfoDataSerImpl extends UnicastRemoteObject implements g
 		return null;
 	}
 
-
+	@Override
+	public InBillsPO getInDepotInfo(String doName, String InDepotNum) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
