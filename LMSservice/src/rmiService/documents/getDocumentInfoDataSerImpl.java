@@ -133,6 +133,23 @@ public class getDocumentInfoDataSerImpl extends UnicastRemoteObject implements g
 	@Override
 	public InBillsPO getInDepotInfo(String doName, String InDepotNum) {
 		// TODO Auto-generated method stub
+		sql="select * from Èë¿âµ¥ where InDepotNum ='"+InDepotNum+"'";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			resultSet.next();
+			InBillsPO inBillsPO= new InBillsPO(resultSet.getString(1),resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getInt(7), resultSet.getInt(8), resultSet.getInt(9), resultSet.getInt(10));
+			connection.close();
+			return inBillsPO;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
