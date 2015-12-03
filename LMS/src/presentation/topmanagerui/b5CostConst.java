@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 import businesslogic.transportationbl.TransportationController;
 import presentation.adminui.NumberFieldListener;
 
-public class CostConst extends JPanel {
+public class b5CostConst extends JPanel {
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
 	private JLabel daBiaoTi,qiChe,huoChe,feiJi,qiCheDanwei,huoCheDanWei,feiJiDanWei;
 	private JTextField qiCheF,huoCheF,feiJiF;
@@ -24,7 +24,7 @@ public class CostConst extends JPanel {
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	private ImageIcon yesIcon=new ImageIcon("picture/确定.png");
 	
-	public CostConst(b5topmanagerui b5ui,topmanagerJpanel tjpl){
+	public b5CostConst(b5topmanagerui b5ui,topmanagerJpanel tjpl){
 		init();
 		tjpl.add(this);
 		registListener(b5ui, tjpl, this);
@@ -113,7 +113,7 @@ public class CostConst extends JPanel {
 		
 	}
 		
-	private void registListener(final b5topmanagerui b5ui,final topmanagerJpanel tjpl,final CostConst costConst) {
+	private void registListener(final b5topmanagerui b5ui,final topmanagerJpanel tjpl,final b5CostConst costConst) {
 		
 		returnButton.addActionListener(new ActionListener() {
 

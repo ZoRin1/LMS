@@ -19,7 +19,7 @@ import businesslogic.transportationbl.TransportationController;
 import presentation.adminui.NumberFieldListener;
 import vo.transportationVO.RouteVO;
 
-public class DistanceConst extends JPanel {
+public class b5DistanceConst extends JPanel {
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
 	private JLabel daBiaoTi,qiDian,zhongDian,juLi;
 	private JTextField juLiF;
@@ -29,7 +29,7 @@ public class DistanceConst extends JPanel {
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	private ImageIcon yesIcon=new ImageIcon("picture/确定.png");
 	
-	public DistanceConst(b5topmanagerui b5ui,topmanagerJpanel tjpl){
+	public b5DistanceConst(b5topmanagerui b5ui,topmanagerJpanel tjpl){
 		init();
 		tjpl.add(this);
 		registListener(b5ui, tjpl, this);
@@ -100,7 +100,7 @@ public class DistanceConst extends JPanel {
 		this.setLayout(null);
 	}
 	
-	private void registListener(final b5topmanagerui b5ui,final topmanagerJpanel tjpl,final DistanceConst distanceConst) {
+	private void registListener(final b5topmanagerui b5ui,final topmanagerJpanel tjpl,final b5DistanceConst distanceConst) {
 		returnButton.addActionListener(new ActionListener() {
 
 			@Override

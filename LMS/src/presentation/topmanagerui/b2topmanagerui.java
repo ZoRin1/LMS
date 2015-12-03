@@ -99,6 +99,7 @@ public class b2topmanagerui extends JFrame{
 		b2.setBounds(30,230,200, 50);
 		b3.setBounds(30,330,200, 50);
 		b4.setBounds(30,430,200, 50);
+		b2.setVisible(false);
 		topmanagerJpanel.add(b1);
 		topmanagerJpanel.add(b2);
 		topmanagerJpanel.add(b3);
