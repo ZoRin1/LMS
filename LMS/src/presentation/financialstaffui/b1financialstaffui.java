@@ -9,11 +9,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import businesslogic.financebl.ProfitListModel.ProfitListBL;
+import businesslogic.financebl.ProfitModel.ProfitController;
+import vo.financeVO.ProfitVO;
 
 public class b1financialstaffui extends JFrame{
 	private financialstaffJpanel financialstaffJpanel;
@@ -21,9 +28,16 @@ public class b1financialstaffui extends JFrame{
 	JButton b1,b2;
 	private JButton tuichuButton;
 	private JButton zuixiaohuaButton;
+	
+	
+	private ProfitVO vo;
+	private ArrayList<ProfitVO> voList;
+	private ProfitController proController;
+	private ProfitListBL profitList;
 	public b1financialstaffui(String s,financialstaffui fsui) {
 		// TODO Auto-generated constructor stub
 		super(s);
+		getProfit();
 		init(fsui);
 		registListener(this,financialstaffJpanel);
 	}
@@ -89,7 +103,7 @@ public class b1financialstaffui extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new b1b2Jpanel1(b1financialstaffui, financialstaffJpanel);
+				new b1b2Jpanel1(b1financialstaffui, financialstaffJpanel,voList);
 				financialstaffJpanel.remove(operationJpanel);
 				b1.setEnabled(false);
 				b2.setEnabled(false);
@@ -140,8 +154,24 @@ public class b1financialstaffui extends JFrame{
 		this.setUndecorated(true);
 		this.setVisible(true);
 	}
-
+	
+	//得到成本收益集合的方法
+	public void getProfit(){
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		String date = df.format(new Date());
+		proController = new ProfitController();
+		profitList = new ProfitListBL();
+		vo = proController.returnPro(date);
+		ArrayList<ProfitVO> tempList = profitList.getProList();
+		voList.add(vo);
+		for(int i =0 ; i<tempList.size();i++){
+			voList.add(tempList.get(i));
+		}
+	}
+	//得到成本收益集合的方法
+	
 }
+
 class financialstaffb1OperationJpanel extends JPanel{
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
 	private JButton returnButton;

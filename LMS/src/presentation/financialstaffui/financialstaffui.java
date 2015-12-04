@@ -24,9 +24,13 @@ public class financialstaffui extends JFrame{
 	private JButton outjButton;
 	private financialstaffJpanel financialstaffJpanel;
 	financialstaffOperationJpanel operationJpanel;
-	 JButton b1,b2,b3,b4,b5;
-	 private JButton tuichuButton;
-		private JButton zuixiaohuaButton;
+	JButton b1,b2,b3,b4,b5;
+	private JButton tuichuButton;
+	private JButton zuixiaohuaButton;
+	
+	//这是暂时的ID和State
+	private String account;
+	private String state;
 	public financialstaffui(String s,String [] args) {
 		// TODO Auto-generated constructor stub
 		super(s);

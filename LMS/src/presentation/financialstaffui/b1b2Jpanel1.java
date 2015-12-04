@@ -4,11 +4,14 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import vo.financeVO.ProfitVO;
 
 public class b1b2Jpanel1 extends JPanel{
 	
@@ -17,10 +20,12 @@ public class b1b2Jpanel1 extends JPanel{
 	private ImageIcon returnIcon=new ImageIcon("picture/·µ»Ø.png");
 	private JLabel j1;
 	private b1b2Jpanel1JTable b1b2Jpanel1JTable;
+	private ArrayList<ProfitVO> profitList;
 	
-	public b1b2Jpanel1(b1financialstaffui b1financialstaffui,financialstaffJpanel financialstaffJpanel) {
+	public b1b2Jpanel1(b1financialstaffui b1financialstaffui,financialstaffJpanel financialstaffJpanel,ArrayList<ProfitVO> profitList) {
 		// TODO Auto-generated constructor stub
 		init();
+		this.profitList = profitList;
 		financialstaffJpanel.add(this);
 		registListener(b1financialstaffui,financialstaffJpanel,this);
 	}
@@ -30,7 +35,7 @@ public class b1b2Jpanel1 extends JPanel{
 		j1 = new JLabel(i1);
 		j1.setBounds(0, 0, 723, 571);
 		
-		b1b2Jpanel1JTable = new b1b2Jpanel1JTable(this);
+		b1b2Jpanel1JTable = new b1b2Jpanel1JTable(this,profitList);
 		
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662, 575,48,48);

@@ -1,5 +1,7 @@
 package presentation.financialstaffui;
 
+import java.util.ArrayList;
+
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -10,17 +12,21 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import vo.financeVO.ProfitVO;
+
 public class b1b2Jpanel1JTable {
 	
 	private JTable ProfitJtabel;
 	private b1b2Jpanel1 b1b2Jpanel1;
 	private JScrollPane scrollPane;
+	private ArrayList<ProfitVO> profitList;
 	
 	public JScrollPane getScrollPane() {
 		return scrollPane;
 	}
-	public b1b2Jpanel1JTable(b1b2Jpanel1 b1b2Jpanel1){
+	public b1b2Jpanel1JTable(b1b2Jpanel1 b1b2Jpanel1,ArrayList<ProfitVO> profitList){
 		this.b1b2Jpanel1 = b1b2Jpanel1;
+		this.profitList = profitList;
 		initTable();
 		init();
 	}
@@ -41,12 +47,22 @@ public class b1b2Jpanel1JTable {
 		//假设的数据
 		String[] inDepotName = new String[]{"总收入","总支出","生成时间","成本收益"};
 		
-		Object[][] inDepotValue = new Object[][]{{"楚留","2321","生成时间","成本收益"},
-				{"楚留奇","232134 KB","生成时间","成本收益"},
-			{"楚留奇","2324 KB","生成时间","成本收益"},
-					{"楚香传奇","2324 KB","生成时间","成本收益"},
-				{"楚奇","232134 KB","生成时间","成本收益"}
-					};
+//		Object[][] inDepotValue = new Object[][]{{"楚留","2321","生成时间","成本收益"},
+//				{"楚留奇","232134 KB","生成时间","成本收益"},
+//			{"楚留奇","2324 KB","生成时间","成本收益"},
+//					{"楚香传奇","2324 KB","生成时间","成本收益"},
+//				{"楚奇","232134 KB","生成时间","成本收益"}
+//					};
+		
+		Object[][] inDepotValue = new Object[4][profitList.size()];
+		for(int i = 0 ; i < inDepotValue[0].length;i++){
+				inDepotValue[i][0] = profitList.get(i).getTotalRevenue();
+				inDepotValue[i][1] = profitList.get(i).getTotalPay();
+				inDepotValue[i][2] = profitList.get(i).getGenerationDate();
+				double count = profitList.get(i).getTotalRevenue() - profitList.get(i).getTotalPay();
+				inDepotValue[i][3] =count;
+			
+		}
 		//假设的数据： 完善后要从数据库拿取数据来填写表格
 		
 		DefaultTableModel tableModel = new DefaultTableModel(inDepotValue,inDepotName);
