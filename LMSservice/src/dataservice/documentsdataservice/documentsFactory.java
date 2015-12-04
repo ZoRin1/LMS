@@ -22,7 +22,7 @@ public interface documentsFactory extends Remote{
 	
 	public NotApproved createNotApproved() throws RemoteException;
 	
-	public getWuliuInfoDataSer createGetWuliuDataSerInfo() throws RemoteException;
+	public getWuliuInfoDataSer createGetWuliuInfoDataSer() throws RemoteException;
 	
 	
 }

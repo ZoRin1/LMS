@@ -31,6 +31,7 @@ import dataservice.documentsdataservice.documentsFactory;
 import dataservice.documentsdataservice.getBufferedCodeDataSer;
 import dataservice.documentsdataservice.getBufferedInfoDataSer;
 import dataservice.documentsdataservice.getNotPassDocCode;
+import dataservice.documentsdataservice.getWuliuInfoDataSer;
 import dataservice.financedataservice.CoverDataSer;
 import dataservice.financedataservice.GetAccountDataSer;
 import dataservice.financedataservice.GetReceivablesBillsDataSer;
@@ -39,14 +40,12 @@ import dataservice.organizationdataservice.FinanceOrgDataSer;
 import dataservice.organizationdataservice.organizationFactory;
 
 public class mainLaunch {
-	public static void main(String[] args){
-		try {
+	public static void main(String[] args) throws MalformedURLException, RemoteException, NotBoundException{
+
+//		documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://127.0.0.1:6600/docFactory");
 //			documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://127.0.0.1:6600/docFactory");
-			documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://127.0.0.1:6600/docFactory");
-			GetDocCodeDataSer getDocCodeDataSer=documentsFactory.createGetDocCodeDataSer();
-			System.out.println(getDocCodeDataSer.getDocCode("收件单"));
-			
-			
+//			getWuliuInfoDataSer getWuliuInfoDataSer=documentsFactory.createGetWuliuInfoDataSer();
+//			System.out.println(getWuliuInfoDataSer.getWuliuInfo("11"));
 //			ArrayList<String> codeList=new ArrayList<String>();
 //			codeList.add("1212");
 //			codeList.add("1515");
@@ -114,16 +113,7 @@ public class mainLaunch {
 ////				System.out.print(account.getName()+"  "+account.getSums());
 ////				System.out.println();
 ////			}
-		} catch (MalformedURLException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		}
+
 		
 		
 	}

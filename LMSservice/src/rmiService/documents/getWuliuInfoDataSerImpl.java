@@ -48,7 +48,10 @@ public class getWuliuInfoDataSerImpl extends UnicastRemoteObject implements getW
 				arrayList.add(resultSet.getString(10));
 				connection.close();
 				return arrayList;
-			}	
+			}
+			else {
+				return null;
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -85,7 +85,7 @@ public class documentsFactoryImpl extends UnicastRemoteObject implements documen
 	}
 
 	@Override
-	public getWuliuInfoDataSer createGetWuliuDataSerInfo()
+	public getWuliuInfoDataSer createGetWuliuInfoDataSer()
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return new getWuliuInfoDataSerImpl();
