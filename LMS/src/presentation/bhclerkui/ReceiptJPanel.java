@@ -25,8 +25,6 @@ public class ReceiptJPanel extends JPanel{
 	private JLabel date1;
 	private JLabel account;
 	private JTextField Account;
-	private JLabel name;
-	private JTextField Name;
 	private JLabel TCode;
 	private JTextArea tcode;
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
@@ -49,7 +47,7 @@ public class ReceiptJPanel extends JPanel{
 		this.add(code);
 		
 		code1=new JLabel();
-		code1.setText(new createDocument().createDocument("收款单"));
+		code1.setText("");
 		code1.setForeground(Color.white);
 		code1.setFont(font);
 		code1.setBounds(155,30,131,27);
@@ -136,7 +134,21 @@ public class ReceiptJPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+				if(Account.getText().equals("")||tcode.getText().equals("")){
+					new notFinishDialog(ui,"输入有误",true);
+				}
+				else{
+					new finishDialog2(ui, "收款单创建完成", true,"收款单");
+					panel.remove(panel2);
+					panel.add(ui.operationJpanel);
+					ui.carinformationbButton.setEnabled(true);
+					ui.cashdocumentbButton.setEnabled(true);
+					ui.documentreplyButton.setEnabled(true);
+					ui.driverinformationbButton.setEnabled(true);
+					ui.loaddocumentbButton.setEnabled(true);
+					ui.acceptdocumentbButton.setEnabled(true);
+					panel.repaint();
+				}
 				
 			}
 		});

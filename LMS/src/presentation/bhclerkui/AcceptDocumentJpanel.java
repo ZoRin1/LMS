@@ -54,7 +54,7 @@ public class AcceptDocumentJpanel extends JPanel{
 		this.add(code);
 		
 		code1=new JLabel();
-		code1.setText(new createDocument().createDocument("营业厅装车单"));
+		code1.setText(" ");
 		code1.setForeground(Color.white);
 		code1.setFont(font);
 		code1.setBounds(155,30,131,27);
@@ -161,9 +161,15 @@ public class AcceptDocumentJpanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				panel.remove(panel2);
-				new DispatchJpanel(ui, panel, panel2);
-				panel.repaint();
+				if(depart.getText().equals("")||arrive.getText().equals("")||tcode.getText().equals("")||State.getText().equals("")){
+					new notFinishDialog(ui,"输入有误",true);
+				}
+				else{
+					new finishDialog2(ui, "接收单创建完成", true,"接收单");
+					panel.remove(panel2);
+					new DispatchJpanel(ui,panel,panel2);
+					panel.repaint();
+				}
 			}
 		});
 	}
@@ -202,7 +208,7 @@ class DispatchJpanel extends JPanel{
 		this.add(code);
 		
 		code1=new JLabel();
-		code1.setText(new createDocument().createDocument("派件单"));
+		code1.setText(" ");
 		code1.setForeground(Color.white);
 		code1.setFont(font);
 		code1.setBounds(155,30,131,27);
@@ -284,16 +290,21 @@ class DispatchJpanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new finishDialog(ui, "派件单创建完成", true);
-				panel.remove(dispatchJpanel);
-				panel.add(ui.operationJpanel);
-				ui.carinformationbButton.setEnabled(true);
-				ui.cashdocumentbButton.setEnabled(true);
-				ui.documentreplyButton.setEnabled(true);
-				ui.driverinformationbButton.setEnabled(true);
-				ui.loaddocumentbButton.setEnabled(true);
-				ui.acceptdocumentbButton.setEnabled(true);
-				panel.repaint();
+				if(tcode.getText().equals("")||Member.getText().equals("")){
+					new notFinishDialog(ui,"输入有误",true);
+				}
+				else{
+					new finishDialog2(ui, "派件单创建完成", true,"派件单");
+					panel.remove(dispatchJpanel);
+					panel.add(ui.operationJpanel);
+					ui.carinformationbButton.setEnabled(true);
+					ui.cashdocumentbButton.setEnabled(true);
+					ui.documentreplyButton.setEnabled(true);
+					ui.driverinformationbButton.setEnabled(true);
+					ui.loaddocumentbButton.setEnabled(true);
+					ui.acceptdocumentbButton.setEnabled(true);
+					panel.repaint();
+				}
 			}
 		});
 	}
@@ -303,19 +314,21 @@ class DispatchJpanel extends JPanel{
 			g.drawImage(frameIcon.getImage(),-7,-12,null);
 	 }
 }
-class finishDialog extends JDialog{
+class finishDialog2 extends JDialog{
 	private dialogJpanel jPanel;
 	private JLabel jLabel;
 	private JButton jButton;
-	public finishDialog(JFrame frame,String title,boolean modal) {
+	private String doName;
+	public finishDialog2(JFrame frame,String title,boolean modal,String doName) {
 		super(frame,title,modal);
+		this.doName=doName;
 		init();
 		registerListener();
 		this.setVisible(true);
 	}
 	private void init(){
 		ImageIcon yesIcon=new ImageIcon("picture/登录.png");
-		jLabel=new JLabel("派件单创建完成",jLabel.CENTER);
+		jLabel=new JLabel(doName+"创建完成",jLabel.CENTER);
 		jLabel.setForeground(Color.white);
 		jLabel.setFont(new Font("幼圆",Font.BOLD,27));
 		jPanel=new dialogJpanel();
@@ -340,17 +353,8 @@ class finishDialog extends JDialog{
 	private void registerListener(){
 		jButton.addActionListener(new ActionListener() {		
 			public void actionPerformed(ActionEvent e) {
-				finishDialog.this.dispose();
+				finishDialog2.this.dispose();
 			}
 		});
 	}
 }
-class dialogJpanel extends JPanel{
-	private ImageIcon dialogIcon=new ImageIcon("picture/背景.png");
-	public void paintComponent(Graphics g)  
-	{  
-	    super.paintComponent(g);    
-	    g.drawImage(dialogIcon.getImage(),0,0,null);
-      
-     }
-   }

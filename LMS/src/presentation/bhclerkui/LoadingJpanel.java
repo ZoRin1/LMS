@@ -27,9 +27,6 @@ import businesslogic.documentsbl.documentController;
 
 
 public class LoadingJpanel extends JPanel{
-//	LoadingPO po;
-//	String Code;
-//	String date;
 	
 	private JLabel code;
 	private JLabel code1;
@@ -67,8 +64,7 @@ public class LoadingJpanel extends JPanel{
 		this.add(code);
 		
 		code1=new JLabel();
-		
-		code1.setText(new documentController().getDocCode("营业厅装车单"));
+		code1.setText(" ");
 		code1.setForeground(Color.white);
 		code1.setFont(font);
 		code1.setBounds(155,30,131,27);
@@ -186,6 +182,7 @@ public class LoadingJpanel extends JPanel{
 				if(depart.getText().equals("")||arrive.getText().equals("")||jianzhuangyuan.getText().equals("")
 						||yayunyuan.getText().equals("")||Carcode.getText().equals("")||tcode.getText().equals("")){
 					new notFinishDialog(ui, "输入有误", true);
+					panel.repaint();
 				}
 				else{
 //					po=new LoadingPO(date, code, "营业厅装车单", account, departure, arrival, supervisor, supercargo, codeList, charge)
