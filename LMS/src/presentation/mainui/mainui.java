@@ -246,10 +246,10 @@ class mainFrame extends JFrame{
 					
 				}
 			});
-			checkButton.addActionListener(new ActionListener() {
-				ArrayList<String> wuliuInfoList=documentController.getWuliuInfo(codeJTextField.getText());
+			checkButton.addActionListener(new ActionListener() {			
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					ArrayList<String> wuliuInfoList=documentController.getWuliuInfo(codeJTextField.getText());
 					// TODO Auto-generated method stub
 					if (wuliuInfoList==null) {
 						new checkFailDialog(mf, "≤È—Ø ß∞‹", true);
