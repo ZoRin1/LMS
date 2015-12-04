@@ -178,6 +178,9 @@ public class TransportationDataSerImpl extends UnicastRemoteObject implements Tr
 			sql="create table "+city+"中转中心仓库 as select * from 仓库";
 			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.executeUpdate();
+			sql="create table "+city+"库存信息 like 库存信息";
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
 			connection.close();
 			return true;
 		} catch (ClassNotFoundException e) {
