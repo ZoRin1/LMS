@@ -208,6 +208,7 @@ public class LoadingJpanel extends JPanel{
 			super.paintComponent(g);    
 			g.drawImage(frameIcon.getImage(),-7,-12,null);
 	 }
+}
 	class notFinishDialog extends JDialog{
 		private dialogJpanel jPanel;
 		private JLabel jLabel;
@@ -320,4 +321,4 @@ public class LoadingJpanel extends JPanel{
 	      
 	     }
 	   }
-}
+	
