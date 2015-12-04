@@ -168,6 +168,17 @@ public class b2BusinessInfo extends JPanel {
 			}
 		});
 		
+		change.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				tjpl.remove(b2BusinessInfo);
+				new b2BusinessChange(b2ui, tjpl, ID);
+				tjpl.repaint();
+			}
+		});
+		
 	}
 	
 	public void paintComponent(Graphics g)  

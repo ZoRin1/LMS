@@ -2,25 +2,38 @@ package presentation.topmanagerui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import businesslogic.accountbl.AccountInfoController;
 import businesslogic.organizationbl.BusinessController;
 
 public class b2BusinessChange extends JPanel {
 	private JLabel suoShu,suoShuC,suoZai,bianHao,bianHaoC,kuaiDiYuan,yeWuYuan;
 	private JTextField suoZaiF;
-	private JComboBox kuaiDiYuanb,yeWuYuanb;
+	private JComboBox kuaiDiYuanb,yeWuYuanb,kongXianK,kongXianY;
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
 	private JButton returnButton;
 	private JButton yesButton;
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	private ImageIcon yesIcon=new ImageIcon("picture/确定.png");
+	
+	public b2BusinessChange(b2topmanagerui b2ui,topmanagerJpanel tjpl,String ID){
+		init(ID);
+		tjpl.add(this);
+		registListener(b2ui, tjpl, this, ID);
+	}
 	
 	private void init(String ID) {
 		BusinessController businessController = new BusinessController();
@@ -48,7 +61,7 @@ public class b2BusinessChange extends JPanel {
 		
 		suoZaiF = new JTextField(businessController.getInfo(ID));
 		suoZaiF.setFont(bFont);
-		suoZaiF.setForeground(Color.WHITE);
+		suoZaiF.setForeground(Color.BLACK);
 		suoZaiF.setBounds(290, 130, 150, 50);
 		this.add(suoZaiF);
 		
@@ -76,19 +89,40 @@ public class b2BusinessChange extends JPanel {
 		yeWuYuan.setBounds(330, 260, 180, 40);
 		this.add(yeWuYuan);
 		
+		String addCurier = "增加快递员";
 		kuaiDiYuanb = new JComboBox(businessController.getCourierList(ID));
 		kuaiDiYuanb.setFont(sFont);
 		kuaiDiYuanb.setForeground(Color.BLACK);
 		kuaiDiYuanb.setBounds(120, 310, 180, 40);
+		kuaiDiYuanb.addItem(addCurier);
+		kuaiDiYuanb.setSelectedIndex(-1);
 		this.add(kuaiDiYuanb);
 		
+		String addAssisant = "增加业务员";
 		yeWuYuanb = new JComboBox(businessController.getBussinessmanList(ID));
 		yeWuYuanb.setFont(sFont);
 		yeWuYuanb.setForeground(Color.BLACK);
 		yeWuYuanb.setBounds(330, 310, 180, 40);
+		yeWuYuanb.addItem(addAssisant);
+		yeWuYuanb.setSelectedIndex(-1);
 		this.add(yeWuYuanb);
 		
+		AccountInfoController accountInfoController = new AccountInfoController();
+		kongXianK = new JComboBox(accountInfoController.getAccountList());
+		kongXianK.setFont(sFont);
+		kongXianK.setForeground(Color.BLACK);
+		kongXianK.setBounds(120, 360, 180, 40);
+		kongXianK.setVisible(false);
+		kongXianK.setSelectedIndex(-1);
+		this.add(kongXianK);
 		
+		kongXianY = new JComboBox(accountInfoController.getAccountList());
+		kongXianY.setFont(sFont);
+		kongXianY.setForeground(Color.BLACK);
+		kongXianY.setBounds(330, 360, 180, 40);
+		kongXianY.setVisible(false);
+		kongXianY.setSelectedIndex(-1);
+		this.add(kongXianY);
 		
 		
 		//到时候再加图片
@@ -107,5 +141,131 @@ public class b2BusinessChange extends JPanel {
 		this.setOpaque(false);
 	}
 	
+	private void registListener(final b2topmanagerui b2ui,final topmanagerJpanel tjpl,final b2BusinessChange b2BusinessChange,final String ID) {
+		returnButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				tjpl.remove(b2BusinessChange);
+				new b2BusinessInfo(b2ui, tjpl, ID);
+				tjpl.repaint();
+			}
+		});
+		
+		yesButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JOptionPane.showMessageDialog(tjpl, "修改成功");
+				tjpl.remove(b2BusinessChange);
+				new b2BusinessInfo(b2ui, tjpl, ID);
+				tjpl.repaint();
+			}
+		});
+		
+//		kuaiDiYuanb.addMouseListener(new MouseAdapter() {
+//			 public void mouseClicked(MouseEvent e) {
+//				 if(e.getClickCount()==1){
+//					 int r = kuaiDiYuanb.getSelectedIndex();
+//					  String sel = (String)kuaiDiYuanb.getSelectedItem();
+//					  final BusinessController businessController = new BusinessController();
+//					  if (sel.equals("增加快递员")) {
+//						  kongXianK.setVisible(true);
+//						  Font sFont = new Font("幼圆", Font.BOLD, 20);
+//						  AccountInfoController accountInfoController = new AccountInfoController();
+//							kongXianK = new JComboBox(accountInfoController.getAccountList());
+//							kongXianK.setFont(sFont);
+//							kongXianK.setForeground(Color.BLACK);
+//							kongXianK.setBounds(120, 360, 180, 40);
+//							kongXianK.addMouseListener(new MouseAdapter() {
+//								 public void mouseClicked(MouseEvent e) {
+//								if(e.getClickCount()==2){
+//									String selA = (String)kongXianK.getSelectedItem();
+//									
+//									String[] temA = selA.split("-");
+//									boolean b = businessController.addCourier(ID, Long.parseLong(temA[0]));
+//									kuaiDiYuanb.addItem(selA);
+//									System.out.println("好了吗？");
+//								}
+//								 }
+//							});
+//							b2BusinessChange.add(kongXianY);
+//					}else {
+//						Object[] options = { "确定", "取消" };
+//						int result = JOptionPane.showOptionDialog(null, "删除账号", "删除账号", JOptionPane.YES_NO_OPTION,
+//								JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+//						if (result == 0) {
+//							String temd = (String)kuaiDiYuanb.getSelectedItem();
+//							String[] Temp = temd.split("-");
+//							businessController.removeCourier(ID, Long.parseLong(Temp[0]));
+//							System.out.println("好了吗？22222");
+//							kuaiDiYuanb.remove(r);
+//							
+//						}
+//					}
+//				 }
+//			 }
+//			 
+//		});
+		
+		kuaiDiYuanb.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				// TODO Auto-generated method stub
+				BusinessController businessController = new BusinessController();
+				int state = e.getStateChange();
+				if(state==ItemEvent.SELECTED){
+					if (!kuaiDiYuanb.getSelectedItem().equals("增加快递员")) {
+						Object[] options = { "确定", "取消" };
+						int result = JOptionPane.showOptionDialog(null, "删除账号", "删除账号", JOptionPane.YES_NO_OPTION,
+								JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+						if (result == 0) {
+							String temd = (String)kuaiDiYuanb.getSelectedItem();
+							String[] Temp = temd.split("-");
+							businessController.removeCourier(ID, Long.parseLong(Temp[0]));
+							kuaiDiYuanb = new JComboBox(businessController.getCourierList(ID));
+							tjpl.remove(b2BusinessChange);
+							new b2BusinessChange(b2ui, tjpl, ID);
+							tjpl.repaint();														
+						
+						}
+					}else {
+						kongXianK.setVisible(true);
+					}
+					
+				}
+				
+			}
+		});
+		
+		kongXianK.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				// TODO Auto-generated method stub
+				BusinessController businessController = new BusinessController();
+				int state = e.getStateChange();
+				if(state==ItemEvent.SELECTED){
+					String temp = (String) kongXianK.getSelectedItem();
+					String[] arr = temp.split("-");
+					businessController.addCourier(ID, Long.parseLong(arr[0]));
+					tjpl.remove(b2BusinessChange);
+					new b2BusinessChange(b2ui, tjpl, ID);
+					tjpl.repaint();
+					
+				}
+			}
+		});
+		
+		
+	}
+	public void paintComponent(Graphics g)  
+	{  
+	    super.paintComponent(g);    
+	    g.drawImage(frameIcon.getImage(),-7,-12,null);
+     }
 
 }
