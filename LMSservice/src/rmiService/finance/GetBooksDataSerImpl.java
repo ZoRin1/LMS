@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import po.financePO.BooksPO;
 import dataservice.financedataservice.GetBooksDataSer;
@@ -28,16 +29,20 @@ public class GetBooksDataSerImpl extends UnicastRemoteObject implements GetBooks
 	}
 
 	@Override
-	public BooksPO Books(String date)  throws RemoteException{
+	public ArrayList<BooksPO> Books()  throws RemoteException{
 		// TODO 自动生成的方法存根
-		sql="SELECT *  from 帐本 where year="+date;
+		sql="SELECT *  from 帐本";
+		ArrayList<BooksPO> BooksList = new ArrayList<BooksPO>();
 		BooksPO po = null;
 		try {
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			ResultSet resultSet=preparedStatement.executeQuery();
-			po = new BooksPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7));
+			while(resultSet.next()){
+				po = new BooksPO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8));
+				BooksList.add(po);
+			}
 			connection.close();
 			//有待改进
 		} catch (ClassNotFoundException e) {
@@ -47,7 +52,7 @@ public class GetBooksDataSerImpl extends UnicastRemoteObject implements GetBooks
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return po;
+		return BooksList;
 	}
 	
 }

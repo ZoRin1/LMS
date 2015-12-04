@@ -1,18 +1,22 @@
 package businesslogic.financebl.BooksModel;
 
-import vo.financeVO.BooksVO;
+import java.util.ArrayList;
+
+import po.financePO.BooksPO;
 
 public class BooksController {
 	
 	private GetBooksBL getBooks;
 	private NewBooksBL newBooks;
-	private BooksVO bookVO;
 	
-	public BooksVO getBook(String year){
-		return null;
+	public ArrayList<BooksPO> getBook(){
+		getBooks = new GetBooksBL();
+		ArrayList<BooksPO> poList = getBooks.getBooks();
+		return poList;
 	}
 	
-	public BooksVO newBook(){
-		return null;
+	public void newBook(String name){
+		newBooks = new NewBooksBL();
+		newBooks.newBooks(name);
 	}
 }

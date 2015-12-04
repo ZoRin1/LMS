@@ -2,6 +2,7 @@ package dataservice.financedataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import po.financePO.*;
 
@@ -13,5 +14,5 @@ public interface GetBooksDataSer extends Remote{
 	 * @author YangGuan
 	 *
 	 */
-	public BooksPO Books(String date) throws RemoteException;
+	public ArrayList<BooksPO> Books() throws RemoteException;
 }

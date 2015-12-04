@@ -1,5 +1,7 @@
 package dataservice.financedataservice;
 
+import java.util.ArrayList;
+
 import po.financePO.*;
 
 public interface GetBooksDataSer {
@@ -10,5 +12,5 @@ public interface GetBooksDataSer {
 	 * @author YangGuan
 	 *
 	 */
-	public BooksPO Books(String date);
+	public ArrayList<BooksPO> Books();
 }

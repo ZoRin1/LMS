@@ -18,6 +18,15 @@ import po.orgPO.VehiclePO;
 
 public class BooksPO  implements Serializable {
 	
+	private String name;
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	private String  bussinessHallCode; // 机构
 	private String  middleCode;
 	private String  financeCode;
@@ -26,7 +35,7 @@ public class BooksPO  implements Serializable {
 	private String AccountName; //账户
 	private String date;//日期
 	
-	public BooksPO(String bussinessHallCode, String middleCode,
+	public BooksPO(String name,String bussinessHallCode, String middleCode,
 			String financeCode, String iDCode, String vehicleCode,
 			String accountName,String date) {
 		super();
@@ -37,6 +46,7 @@ public class BooksPO  implements Serializable {
 		this.VehicleCode = vehicleCode;
 		this.AccountName = accountName;
 		this.date = date;
+		this.name = name;
 	}
 
 	public String getBussinessHallCode() {

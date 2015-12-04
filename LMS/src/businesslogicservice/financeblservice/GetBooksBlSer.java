@@ -1,5 +1,8 @@
 package businesslogicservice.financeblservice;
 
+import java.util.ArrayList;
+
+import po.financePO.BooksPO;
 import vo.financeVO.*;
 
 public interface GetBooksBlSer {
@@ -10,5 +13,5 @@ public interface GetBooksBlSer {
 	 * @author YangGuan
 	 *
 	 */
-	public BooksVO getBooks(String year);
+	public ArrayList<BooksPO> getBooks();
 }

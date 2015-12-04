@@ -31,7 +31,7 @@ public class AddBooksDataSerImpl extends UnicastRemoteObject implements AddBooks
 	}
 
 	@Override
-	public void addBooks() throws RemoteException {
+	public void addBooks(String name) throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
 			sql="select codeNumberOfMiddle,codeNumber from 营业厅信息";
@@ -75,7 +75,7 @@ public class AddBooksDataSerImpl extends UnicastRemoteObject implements AddBooks
 			Date now = new Date(); 
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 			String riqi = dateFormat.format( now );
-			sql="insert into 账本 (bussinessHallCode,financeCode,middleCode,IDCode,VehicleCode,AccountName,date) values ('"+bussinessHallCode+"','"+financeCode+"','"+middleCode+"','"+IDCode+"','"+VehicleCode+"','"+AccountName+"','"+riqi+"')";
+			sql="insert into 账本 (name,bussinessHallCode,financeCode,middleCode,IDCode,VehicleCode,AccountName,date) values ('" +name+"','"+bussinessHallCode+"','"+financeCode+"','"+middleCode+"','"+IDCode+"','"+VehicleCode+"','"+AccountName+"','"+riqi+"')";
 			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.executeUpdate();
 			connection.close();
