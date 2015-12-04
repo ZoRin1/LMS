@@ -18,6 +18,7 @@ public class documentJpanel extends JPanel{
 		registListener(courierui,courierJpanel,this);
 	}
 	private void init(){
+		new documentJtable(this);
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662, 575,48,48);
 		returnButton.setContentAreaFilled(false);

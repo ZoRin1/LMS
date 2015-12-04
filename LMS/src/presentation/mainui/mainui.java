@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import businesslogic.accountbl.AccountLoginController;
+import businesslogic.documentsbl.documentController;
 import presentation.adminui.adminui;
 import presentation.bhclerkui.bhclerkui;
 import presentation.courierui.courierui;
@@ -35,6 +38,8 @@ public class mainui  {
 	}
 }
 class mainFrame extends JFrame{
+	private AccountLoginController accountLoginController;
+	private documentController documentController;
 	private JTextField codeJTextField; 
 	private JTextField accountnumberJTextField;
 	private JPasswordField passwordField;
@@ -56,6 +61,8 @@ class mainFrame extends JFrame{
 			registerLister(this,args);
 		}
 		private void init() {
+			accountLoginController=new AccountLoginController();
+			documentController=new documentController();
 			ImageIcon titleIcon=new ImageIcon("picture/项目名.png");
 			ImageIcon numberIcon=new ImageIcon("picture/帐号.png");
 			ImageIcon logicIcon=new ImageIcon("picture/登录.png");
@@ -193,18 +200,64 @@ class mainFrame extends JFrame{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					new loginFailDialog(mf, "登陆失败", true);
+					long ID=Long.parseLong(accountnumberJTextField.getText());
+					String account=accountnumberJTextField.getText();
+					String state=accountLoginController.login(ID, String.valueOf(passwordField.getPassword()));
+					if (state==null) {
+						new loginFailDialog(mf, "登陆失败", true);
+					}
+					else {
+						String s[]=state.split("-");
+						switch (s[0]) {
+						case "1":
+//							new courierui("快递员界面",args,account);
+							mf.dispose();
+							break;
+						case "2":
+//							new bhclerkui("营业厅业务员界面",args,account,state);
+							mf.dispose();
+							break;
+						case "3":
+//							new icclerkui("中转中心业务员界面",args,account,state);
+							mf.dispose();
+							break;
+						case "4":
+//							new icwarehousemanui("中转中心仓库管理员界面",args,account,state);
+							mf.dispose();
+							break;
+						case "5":
+//							new financialstaffui("财务人员界面",args,account,state);
+							mf.dispose();
+							break;
+	
+						case "6":
+//							new topmanagerui("总经理界面",args,ID,state);
+							mf.dispose();
+							break;
+						case "7":
+//							new adminui("管理员界面",args,ID,state);
+							mf.dispose();
+							break;
+						default :
+							new loginFailDialog(mf, "登陆失败", true);
+							break;					
+						}
+					}
+					
 				}
 			});
 			checkButton.addActionListener(new ActionListener() {
-				
+				ArrayList<String> wuliuInfoList=documentController.getWuliuInfo(codeJTextField.getText());
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					 new checkFailDialog(mf, "查询失败", true);
-//					new senderui("物流信息查询",args);
-//					mf.dispose();
-					
+					if (wuliuInfoList==null) {
+						new checkFailDialog(mf, "查询失败", true);
+					}
+					else {
+						new senderui("物流信息查询",args,wuliuInfoList);
+						mf.dispose();
+					}									
 				}
 			});
 			aboutButton.addActionListener(new ActionListener() {
@@ -269,7 +322,7 @@ b3.addActionListener(new ActionListener() {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 
-		new courierui("快递员界面",args);
+		new courierui("快递员界面",args,accountnumberJTextField.getText());
 		mf.dispose();
 	}
 });

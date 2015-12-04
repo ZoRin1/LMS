@@ -26,9 +26,11 @@ public class courierui extends JFrame{
   		courierOperationJpanel operationJpanel;
   		private JButton tuichuButton;
   		private JButton zuixiaohuaButton;
-  		public courierui(String s,String[] args) {
+  		private String account;
+  		public courierui(String s,String[] args,String account) {
 	// TODO Auto-generated constructor stub
   		super(s);
+  		this.account=account;
   		this.args=args;
 		init();
 		registListener(this,courierJpanel);
@@ -162,7 +164,7 @@ public class courierui extends JFrame{
 				courierui.orderfinishButton.setEnabled(false);
 				courierui.orderfoundButton.setEnabled(false);
 				courierui.documentreplyButton.setEnabled(false);
-				new b1Jpanel1(courierui,courierJpanel);
+				new b1Jpanel1(courierui,courierJpanel,account);
 				courierJpanel.repaint();
 			}
 		});
@@ -175,7 +177,7 @@ public class courierui extends JFrame{
 				courierui.orderfinishButton.setEnabled(false);
 				courierui.orderfoundButton.setEnabled(false);
 				courierui.documentreplyButton.setEnabled(false);
-				new b2Jpanel1(courierui,courierJpanel);
+				new b2Jpanel1(courierui,courierJpanel,account);
 				courierJpanel.repaint();
 			}
 		});

@@ -8,14 +8,22 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.peer.LightweightPeer;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+import javax.swing.ComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.event.ListDataListener;
+
+import po.documentsPO.OrderPO;
+import businesslogic.documentsbl.documentController;
 
 public class b1Jpanel1 extends JPanel{
 	private JLabel jijianrenJLabel;
@@ -60,14 +68,16 @@ public class b1Jpanel1 extends JPanel{
 	private JTextField neijianpinmingField;
 	private JLabel dingdanxinxiJLabel;
 	private JLabel kuaidizhongleiJLabel;
-	private JTextField kuaidizhongleiField;
+	private JComboBox<String> kuaidizhongleiBox;
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
 	private JButton returnButton;
 	private JButton yesButton;
+	private String account;
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	private ImageIcon yesIcon=new ImageIcon("picture/确定.png");
-	public b1Jpanel1(courierui courierui,courierJpanel courierJpanel) {
+	public b1Jpanel1(courierui courierui,courierJpanel courierJpanel,String account) {
 		// TODO Auto-generated constructor stub
+		this.account=account;
 		init();
 		courierui.setTitle("快递员——寄件单创建 1");
 	 	courierJpanel.add(this);
@@ -222,9 +232,11 @@ public class b1Jpanel1 extends JPanel{
 		dingdanxinxiJLabel.setForeground(Color.white);
 		dingdanxinxiJLabel.setFont(font);
 		dingdanxinxiJLabel.setBounds(10, 495, 104, 27);
-		kuaidizhongleiField=new JTextField();
-		kuaidizhongleiField.setFont(font);
-		kuaidizhongleiField.setBounds(250, 495, 150, 30);
+		final String type[]={"经济快递","特快专递","普通快递"};
+		kuaidizhongleiBox=new JComboBox<String>(type);
+		kuaidizhongleiBox.setEditable(false);
+		kuaidizhongleiBox.setFont(font);
+		kuaidizhongleiBox.setBounds(250, 495, 150, 30);	
 		kuaidizhongleiJLabel=new JLabel("快递种类:");
 		kuaidizhongleiJLabel.setForeground(Color.white);
 		kuaidizhongleiJLabel.setFont(font);
@@ -270,7 +282,7 @@ public class b1Jpanel1 extends JPanel{
 		this.add(neijianpinmingField);
 		this.add(neijianpinmingJLabel);
 		this.add(dingdanxinxiJLabel);
-		this.add(kuaidizhongleiField);
+		this.add(kuaidizhongleiBox);
 		this.add(kuaidizhongleiJLabel);
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662, 575,48,48);
@@ -284,13 +296,68 @@ public class b1Jpanel1 extends JPanel{
 	 	this.setLayout(null);
 	 	this.setOpaque(false);
 	}
+	private boolean isFull(){
+		if (jijianrennameField.getText().equals("")) {
+			return false;
+		}
+		if (jijianrendianhuaField.getText().equals("")) {
+			return false;
+		}
+		if (jijianrendanweiField.getText().equals("")) {
+			return false;
+		}
+		if (jijianrenzhuzhiField.getText().equals("")) {
+			return false;
+		}
+		if (jijianrenshoujiField.getText().equals("")) {
+			return false;
+		}
+		if (shoujianrennameField.getText().equals("")) {
+			return false;
+		}
+		
+		if (shoujianrendianhuaField.getText().equals("")) {
+			return false;
+		}
+		if (shoujianrenshoujiField.getText().equals("")) {
+			return false;
+		}
+		
+		if (shoujianrendanweiField.getText().equals("")) {
+			return false;
+		}
+		if (shoujianrenzhuzhiField.getText().equals("")) {
+			return false;
+		}
+		if (jianshuField.getText().equals("")) {
+			return false;
+		}
+		if (zhongliangField.getText().equals("")) {
+			return false;
+		}
+		if (tijiField.getText().equals("")) {
+			return false;
+		}
+		if (chicun1Field.getText().equals("")) {
+			return false;
+		}
+		if (chicun2Field.getText().equals("")) {
+			return false;
+		}
+		if (chicun3Field.getText().equals("")) {
+			return false;
+		}
+		if (neijianpinmingField.getText().equals("")) {
+			return false;
+		}
+		return true;
+	}
 	private void registListener(final courierui courierui,final courierJpanel courierJpanel,final b1Jpanel1 b1Jpanel1){
 		returnButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				courierui.setTitle("快递员界面");
 				courierJpanel.remove(b1Jpanel1);
 				courierJpanel.add(courierui.operationJpanel);
 				courierui.orderfinishButton.setEnabled(true);
@@ -304,10 +371,15 @@ public class b1Jpanel1 extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				courierui.setTitle("快递员——寄件单创建 2");
-				courierJpanel.remove(b1Jpanel1);
-				new b1Jpanel2(courierui, courierJpanel, b1Jpanel1);
-				courierJpanel.repaint();
+				if (isFull()) {
+					courierJpanel.remove(b1Jpanel1);
+					double sizeList[]={Double.parseDouble(chicun1Field.getText()),Double.parseDouble(chicun2Field.getText()),Double.parseDouble(chicun3Field.getText())};
+					new b1Jpanel2(courierui, courierJpanel, b1Jpanel1,new OrderPO(null, "寄件单", account, null, jijianrennameField.getText(), jijianrenzhuzhiField.getText(), jijianrendanweiField.getText(), jijianrendianhuaField.getText(), jijianrenshoujiField.getText(), shoujianrennameField.getText(), shoujianrenzhuzhiField.getText(), shoujianrendanweiField.getText(), shoujianrendianhuaField.getText(), shoujianrenshoujiField.getText(), Integer.parseInt(jianshuField.getText()), Double.parseDouble(zhongliangField.getText()), Double.parseDouble(tijiField.getText()), neijianpinmingField.getText(), sizeList, 0,(String)kuaidizhongleiBox.getSelectedItem()));
+					courierJpanel.repaint();
+				}
+				else {
+					new failDialog(courierui, "失败", true);
+				}		
 			}
 		});
 	}
@@ -318,6 +390,7 @@ public class b1Jpanel1 extends JPanel{
  }
 }
 class b1Jpanel2 extends JPanel{
+	private documentController documentController;
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
 	private JButton returnButton;
 	private JButton yesButton;
@@ -334,16 +407,20 @@ class b1Jpanel2 extends JPanel{
 	private JLabel tianJLabel;
 	private JLabel shijibaojiaJLabel;
 	private JLabel yuan3;
+	private OrderPO orderPO;
 	private JTextField shijibaojianumber;
+	private String riqi;
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	private ImageIcon yesIcon=new ImageIcon("picture/确定.png");
-	public b1Jpanel2(courierui courierui,courierJpanel courierJpanel,b1Jpanel1 b1Jpanel1) {
+	public b1Jpanel2(courierui courierui,courierJpanel courierJpanel,b1Jpanel1 b1Jpanel1,OrderPO orderPO) {
 		// TODO Auto-generated constructor stub
+		this.orderPO=orderPO;
 		init();
 	 	courierJpanel.add(this);
 		registListener(courierui,courierJpanel,b1Jpanel1,this);
 	}
 	private void init(){
+		documentController=new documentController();
 		Font font=new Font("幼圆",Font.BOLD,20);
 		dingdantiaoxingmahaoJLabel=new JLabel("订单条形码号:");
 		dingdantiaoxingmahaoJLabel.setForeground(Color.white);
@@ -353,6 +430,7 @@ class b1Jpanel2 extends JPanel{
 		dingdannumberJLabel.setForeground(Color.white);
 		dingdannumberJLabel.setFont(font);
 		dingdannumberJLabel.setBounds(350, 150, 300, 30);
+		dingdannumberJLabel.setText(documentController.getDocCode("寄件单"));
 		cankaobaojiaJLabel=new JLabel("参考报价:");
 		cankaobaojiaJLabel.setForeground(Color.white);
 		cankaobaojiaJLabel.setFont(font);
@@ -406,6 +484,9 @@ class b1Jpanel2 extends JPanel{
 		yesButton=new JButton(yesIcon);
 		yesButton.setBounds(602, 575,48,48);
 		yesButton.setContentAreaFilled(false);
+		Date now = new Date(); 
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		riqi = dateFormat.format( now );
 		this.add(dingdannumberJLabel);
 		this.add(dingdantiaoxingmahaoJLabel);
 		this.add(cankaobaojiaJLabel);
@@ -426,13 +507,18 @@ class b1Jpanel2 extends JPanel{
 	 	this.setLayout(null);
 	 	this.setOpaque(false);
 	}
+	private boolean isFull(){
+		if (shijibaojianumber.getText().equals("")) {
+			return false;
+		}
+		return true;
+	}
 	private void registListener(final courierui courierui,final courierJpanel courierJpanel,final b1Jpanel1 b1Jpanel1,final b1Jpanel2 b1Jpanel2){
 		returnButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				courierui.setTitle("快递员——寄件单创建 1");
 				courierJpanel.remove(b1Jpanel2);
 				courierJpanel.add(b1Jpanel1);
 				courierJpanel.repaint();
@@ -443,14 +529,23 @@ class b1Jpanel2 extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new finishDialog(courierui, "寄件单创建完成", true);
-				courierui.setTitle("快递员界面");
-				courierJpanel.remove(b1Jpanel2);
-				courierJpanel.add(courierui.operationJpanel);
-				courierui.orderfinishButton.setEnabled(true);
-				courierui.orderfoundButton.setEnabled(true);
-				courierui.documentreplyButton.setEnabled(true);
-				courierJpanel.repaint();
+				if (isFull()) {
+					orderPO.setCode(dingdannumberJLabel.getText());
+					orderPO.setDate(riqi);
+					orderPO.setSumCost(Double.parseDouble(shijibaojianumber.getText()));
+					documentController.createBlock(orderPO);
+					new finishDialog(courierui, "寄件单创建完成", true);
+					courierJpanel.remove(b1Jpanel2);
+					courierJpanel.add(courierui.operationJpanel);
+					courierui.orderfinishButton.setEnabled(true);
+					courierui.orderfoundButton.setEnabled(true);
+					courierui.documentreplyButton.setEnabled(true);
+					courierJpanel.repaint();
+				}
+				else {
+					new failDialog(courierui, "失败", true);
+				}
+				
 			}
 		});
 	}
@@ -459,6 +554,48 @@ class b1Jpanel2 extends JPanel{
 		super.paintComponent(g);    
 		g.drawImage(frameIcon.getImage(),-7,-12,null);
  }
+}
+class failDialog extends JDialog{
+	private dialogJpanel jPanel;
+	private JLabel jLabel;
+	private JButton jButton;
+	public failDialog(JFrame frame,String title,boolean modal) {
+		super(frame,title,modal);
+		init();
+		registerListener();
+		this.setVisible(true);
+	}
+	private void init(){
+		ImageIcon yesIcon=new ImageIcon("picture/登录.png");
+		jLabel=new JLabel("填写不完整，请继续填写",jLabel.CENTER);
+		jLabel.setForeground(Color.white);
+		jLabel.setFont(new Font("幼圆",Font.BOLD,27));
+		jPanel=new dialogJpanel();
+		jButton=new JButton(yesIcon);
+		jButton.setContentAreaFilled(false);
+		jPanel.setLayout(null);
+		jButton.setBounds(218,190, 64, 64);
+		jLabel.setBounds(0, 0, 500, 200);
+		jPanel.add(jLabel);
+		jPanel.add(jButton);
+		this.add(jPanel);
+		this.setSize(500, 300);
+		Toolkit kitToolkit =Toolkit.getDefaultToolkit();
+		Dimension screenSize=kitToolkit.getScreenSize();
+		int screenWidth=screenSize.width;
+		int screenHeight=screenSize.height;
+		int dialogWidth=this.getWidth();
+		int dialogHeight=this.getHeight();
+		this.setLocation((screenWidth-dialogWidth)/2, (screenHeight-dialogHeight)/2);
+		this.setResizable(false);
+	}
+	private void registerListener(){
+		jButton.addActionListener(new ActionListener() {		
+			public void actionPerformed(ActionEvent e) {
+				failDialog.this.dispose();
+			}
+		});
+	}
 }
 class finishDialog extends JDialog{
 	private dialogJpanel jPanel;
