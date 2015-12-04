@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -31,10 +32,11 @@ public class documentReplyJTable {
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
 		scrollPane.setViewportView(Jtabel);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setColumnHeaderView(Jtabel.getTableHeader());
         
         scrollPane.getColumnHeader().setOpaque(false);
-		scrollPane.setBounds(0,32, 723, 540);
+		scrollPane.setBounds(0,32, 723,535);
         
 		panel.add(scrollPane);
 	}
@@ -47,7 +49,8 @@ public class documentReplyJTable {
 				{"楚留奇","232134 KB"},
 			{"楚留奇","2324 KB"},
 					{"楚香传奇","2324 KB"},
-				{"楚奇","232134 KB"}
+				{"楚奇","232134 KB"},{"luo","jqijdi"},{"iiqfoq","qfiw"},{"dqwdl","jdiqd"},{"udiq","jqjc"},{"poqe","dqdjp"},
+				{"jdqj","jcsj"},{"jdqj","jcsj"},{"jdqj","jcsj"},{"jdqj","jcsj"},{"jdqj","jcsj"},{"jdqj","jcsj"},{"jdqj","jcsj"}
 					};
 		//假设的数据： 完善后要从数据库拿取数据来填写表格
 		
@@ -67,9 +70,9 @@ public class documentReplyJTable {
 		Jtabel.setShowGrid(false);
 		TableColumn column = null;
 		column = Jtabel.getColumnModel().getColumn(0);
-		column.setPreferredWidth(361);
+		column.setPreferredWidth(360);
 		column = Jtabel.getColumnModel().getColumn(1);
-		column.setPreferredWidth(366);
+		column.setPreferredWidth(360);
 		
 		
 		Jtabel.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);

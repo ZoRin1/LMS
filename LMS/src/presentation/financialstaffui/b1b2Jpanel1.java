@@ -26,7 +26,7 @@ public class b1b2Jpanel1 extends JPanel{
 	}
 	private void init(){
 		Font font=new Font("幼圆",Font.BOLD,20);
-		ImageIcon i1 = new ImageIcon("picture/财务图片/成本收益表1框架.png");
+		ImageIcon i1 = new ImageIcon("picture/财务图片/成本收益表框架.png");
 		j1 = new JLabel(i1);
 		j1.setBounds(0, 0, 723, 571);
 		
