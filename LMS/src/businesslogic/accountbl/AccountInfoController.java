@@ -42,7 +42,7 @@ public class AccountInfoController {
 
 	public String[] getAccountList() {
 		// TODO 自动生成的方法存根
-		return getAccountList();
+		return aBL.getAccountList();
 	}
 
 

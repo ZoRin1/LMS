@@ -12,26 +12,22 @@ import vo.accountVO.AccountNumberVO;
 
 public class AccountBL implements AccountBLSer {
 	private AccountDataSer accountDataSer;
-	
-	public AccountBL() {
-	
-	try {
-		accountFactory accountFactory =(accountFactory)Naming.lookup("rmi://127.0.0.1:6600/accFactory");
-		this.accountDataSer = accountFactory.createAccountDataSer();
-	} catch (MalformedURLException e) {
-		// TODO 自动生成的 catch 块
-		e.printStackTrace();
-	} catch (RemoteException e) {
-		// TODO 自动生成的 catch 块
-		e.printStackTrace();
-	} catch (NotBoundException e) {
-		// TODO 自动生成的 catch 块
-		e.printStackTrace();
-	}
-}
 	@Override
 	public String login(long ID, String password) {
 		// TODO 自动生成的方法存根
+		try {
+			accountFactory accountFactory =(accountFactory)Naming.lookup("rmi://127.0.0.1:6600/accFactory");
+			this.accountDataSer = accountFactory.createAccountDataSer();
+		} catch (MalformedURLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 		return null;
 	}
 
