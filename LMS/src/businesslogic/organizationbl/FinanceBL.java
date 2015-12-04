@@ -6,8 +6,9 @@ public class FinanceBL implements FinanceOrgBLSer {
 
 	@Override
 	public String[] getFinancersList() {
+		String[] result = {"1000001-张飞","1000002-李四","1000003-王伟"};
 		// TODO 自动生成的方法存根
-		return null;
+		return result;
 	}
 
 	@Override

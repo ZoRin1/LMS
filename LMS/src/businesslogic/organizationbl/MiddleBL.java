@@ -7,8 +7,9 @@ public class MiddleBL implements MiddleOrgBLSer {
 
 	@Override
 	public String[] getBussinessmanList(String ID) {
+		String[] result = {"1000001-张飞","1000002-李四","1000003-王伟"};
 		// TODO 自动生成的方法存根
-		return null;
+		return result;
 	}
 
 	@Override
@@ -25,8 +26,9 @@ public class MiddleBL implements MiddleOrgBLSer {
 
 	@Override
 	public String[] getStorgerList(String ID) {
+		String[] result = {"1000001-张飞","1000002-李四","1000003-王伟"};
 		// TODO 自动生成的方法存根
-		return null;
+		return result;
 	}
 
 	@Override
@@ -43,14 +45,15 @@ public class MiddleBL implements MiddleOrgBLSer {
 
 	@Override
 	public String[] getBussinessHallList(String ID) {
+		String[] result = {"100-001-鼓楼营业厅","100-002-仙林营业厅"};
 		// TODO 自动生成的方法存根
-		return null;
+		return result;
 	}
 
 	@Override
 	public String GetInfo(String ID) {
 		// TODO 自动生成的方法存根
-		String result = "南京-001";
+		String result = "南京";
 		return result;
 	}
 
@@ -69,7 +72,7 @@ public class MiddleBL implements MiddleOrgBLSer {
 	@Override
 	public boolean removeMiddleOrg(String ID) {
 		// TODO 自动生成的方法存根
-		return false;
+		return true;
 	}
 
 }

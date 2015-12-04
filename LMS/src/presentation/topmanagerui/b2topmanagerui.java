@@ -100,6 +100,20 @@ public class b2topmanagerui extends JFrame{
 				topmanagerJpanel.repaint();
 			}
 		});
+		b3.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				topmanagerJpanel.remove(operationJpanel);
+				b2topmanagerui.b1.setEnabled(false);
+				b2topmanagerui.b2.setEnabled(false);
+				b2topmanagerui.b3.setEnabled(false);
+				b2topmanagerui.b4.setEnabled(false);
+				new b2FianaceInfo(b2topmanagerui, topmanagerJpanel);
+				topmanagerJpanel.repaint();
+			}
+		});
 	}
 	private void init(topmanagerui topmanagerui){
 		topmanagerJpanel=new topmanagerJpanel();

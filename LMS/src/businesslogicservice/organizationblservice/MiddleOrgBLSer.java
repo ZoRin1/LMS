@@ -63,9 +63,9 @@ public interface MiddleOrgBLSer {
 	
 	
 	/**
-	 * 返回机构其他信息，即城市和编号
+	 * 返回机构所在城市
 	 * @param ID 中转中心编号
-	 * @return city+codeNumber
+	 * @return city
 	 */
 	
 	public String GetInfo(String ID);

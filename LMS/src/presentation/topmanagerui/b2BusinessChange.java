@@ -165,50 +165,6 @@ public class b2BusinessChange extends JPanel {
 			}
 		});
 		
-//		kuaiDiYuanb.addMouseListener(new MouseAdapter() {
-//			 public void mouseClicked(MouseEvent e) {
-//				 if(e.getClickCount()==1){
-//					 int r = kuaiDiYuanb.getSelectedIndex();
-//					  String sel = (String)kuaiDiYuanb.getSelectedItem();
-//					  final BusinessController businessController = new BusinessController();
-//					  if (sel.equals("增加快递员")) {
-//						  kongXianK.setVisible(true);
-//						  Font sFont = new Font("幼圆", Font.BOLD, 20);
-//						  AccountInfoController accountInfoController = new AccountInfoController();
-//							kongXianK = new JComboBox(accountInfoController.getAccountList());
-//							kongXianK.setFont(sFont);
-//							kongXianK.setForeground(Color.BLACK);
-//							kongXianK.setBounds(120, 360, 180, 40);
-//							kongXianK.addMouseListener(new MouseAdapter() {
-//								 public void mouseClicked(MouseEvent e) {
-//								if(e.getClickCount()==2){
-//									String selA = (String)kongXianK.getSelectedItem();
-//									
-//									String[] temA = selA.split("-");
-//									boolean b = businessController.addCourier(ID, Long.parseLong(temA[0]));
-//									kuaiDiYuanb.addItem(selA);
-//									System.out.println("好了吗？");
-//								}
-//								 }
-//							});
-//							b2BusinessChange.add(kongXianY);
-//					}else {
-//						Object[] options = { "确定", "取消" };
-//						int result = JOptionPane.showOptionDialog(null, "删除账号", "删除账号", JOptionPane.YES_NO_OPTION,
-//								JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
-//						if (result == 0) {
-//							String temd = (String)kuaiDiYuanb.getSelectedItem();
-//							String[] Temp = temd.split("-");
-//							businessController.removeCourier(ID, Long.parseLong(Temp[0]));
-//							System.out.println("好了吗？22222");
-//							kuaiDiYuanb.remove(r);
-//							
-//						}
-//					}
-//				 }
-//			 }
-//			 
-//		});
 		
 		kuaiDiYuanb.addItemListener(new ItemListener() {
 			
@@ -220,13 +176,12 @@ public class b2BusinessChange extends JPanel {
 				if(state==ItemEvent.SELECTED){
 					if (!kuaiDiYuanb.getSelectedItem().equals("增加快递员")) {
 						Object[] options = { "确定", "取消" };
-						int result = JOptionPane.showOptionDialog(null, "删除账号", "删除账号", JOptionPane.YES_NO_OPTION,
+						int result = JOptionPane.showOptionDialog(null, "删除快递员", "删除该快递员", JOptionPane.YES_NO_OPTION,
 								JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
 						if (result == 0) {
 							String temd = (String)kuaiDiYuanb.getSelectedItem();
 							String[] Temp = temd.split("-");
 							businessController.removeCourier(ID, Long.parseLong(Temp[0]));
-							kuaiDiYuanb = new JComboBox(businessController.getCourierList(ID));
 							tjpl.remove(b2BusinessChange);
 							new b2BusinessChange(b2ui, tjpl, ID);
 							tjpl.repaint();														
@@ -257,6 +212,57 @@ public class b2BusinessChange extends JPanel {
 					tjpl.repaint();
 					
 				}
+			}
+		});
+		
+		yeWuYuanb.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				// TODO Auto-generated method stub
+				BusinessController businessController = new BusinessController();
+				int state = e.getStateChange();
+				if(state==ItemEvent.SELECTED){
+					if (!yeWuYuanb.getSelectedItem().equals("增加业务员")) {
+						Object[] options = { "确定", "取消" };
+						int result = JOptionPane.showOptionDialog(null, "删除业务员", "删除改业务员", JOptionPane.YES_NO_OPTION,
+								JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+						if (result == 0) {
+							String temd = (String)yeWuYuanb.getSelectedItem();
+							String[] Temp = temd.split("-");
+							businessController.removeBussinessman(ID, Long.parseLong(Temp[0]));
+							yeWuYuanb = new JComboBox(businessController.getBussinessmanList(ID));
+							tjpl.remove(b2BusinessChange);
+							new b2BusinessChange(b2ui, tjpl, ID);
+							tjpl.repaint();														
+						
+						}
+					}else {
+						kongXianY.setVisible(true);
+					}
+					
+				}
+				
+			}
+		});
+		
+		kongXianY.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				// TODO Auto-generated method stub
+				BusinessController businessController = new BusinessController();
+				int state = e.getStateChange();
+				if(state==ItemEvent.SELECTED){
+					String temp = (String) kongXianY.getSelectedItem();
+					String[] arr = temp.split("-");
+					businessController.addBussinessman(ID, Long.parseLong(arr[0]));
+					tjpl.remove(b2BusinessChange);
+					new b2BusinessChange(b2ui, tjpl, ID);
+					tjpl.repaint();
+					
+				}
+				
 			}
 		});
 		

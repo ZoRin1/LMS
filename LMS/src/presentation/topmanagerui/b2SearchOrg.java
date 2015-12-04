@@ -91,7 +91,7 @@ public class b2SearchOrg extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				Font font = new Font("Ó×Ô²", Font.BOLD, 30);
-				String input = orgF.getText();
+				final String input = orgF.getText();
 				if(org.equals("ÓªÒµÌü")){
 					BusinessController businessController = new BusinessController();
 					orgs = businessController.getInfo(input);			
@@ -130,11 +130,20 @@ public class b2SearchOrg extends JPanel {
 										new b2BusinessInfo(b2ui, tjpl, data[r][0]);
 										tjpl.repaint();
 									 }
+								}else {
+									if(!data[r][0].equals("")){
+										 tjpl.remove(b2SearchOrg);
+										 
+										b2ui.b1.setEnabled(false);
+										b2ui.b2.setEnabled(false);
+										b2ui.b3.setEnabled(false);
+										new b2MiddleInfo(b2ui, tjpl, input);
+										tjpl.repaint();
 								}
-								 System.out.println(r);
 							 }
+							 
 							 }
-					
+						 }
 					});
 				
 					final JScrollPane jsp = new JScrollPane(orgTable);

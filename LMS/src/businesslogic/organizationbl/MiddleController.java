@@ -10,7 +10,7 @@ public class MiddleController {
 
 	public String[] getBussinessmanList(String ID) {
 		// TODO 自动生成的方法存根
-		return mBL.getBussinessHallList(null);
+		return mBL.getBussinessmanList(ID);
 	}
 
 
