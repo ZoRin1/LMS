@@ -120,7 +120,6 @@ public class ReceiptJPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				ui.setTitle("快递员——收款单创建 ");
 				panel.remove(panel2);
 				panel.add(ui.operationJpanel);
 				ui.carinformationbButton.setEnabled(true);
@@ -137,6 +136,7 @@ public class ReceiptJPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				
 				
 			}
 		});

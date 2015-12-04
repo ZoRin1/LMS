@@ -21,16 +21,19 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import po.documentsPO.LoadingPO;
 import businesslogic.documentsbl.createDocument;
 import businesslogic.documentsbl.documentController;
 
 
 public class LoadingJpanel extends JPanel{
+//	LoadingPO po;
+//	String Code;
+//	String date;
+	
 	private JLabel code;
 	private JLabel code1;
 	private JLabel doName;
-//	private JLabel OrgCode;
-//	private JLabel orgcode;
 	private JLabel departure;
 	private JTextField depart;
 	private JLabel arrival;
@@ -64,7 +67,8 @@ public class LoadingJpanel extends JPanel{
 		this.add(code);
 		
 		code1=new JLabel();
-		code1.setText(new createDocument().createDocument("营业厅装车单"));
+		
+		code1.setText(new documentController().getDocCode("营业厅装车单"));
 		code1.setForeground(Color.white);
 		code1.setFont(font);
 		code1.setBounds(155,30,131,27);
@@ -176,20 +180,26 @@ public class LoadingJpanel extends JPanel{
 			}
 		});
 		yesButton.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new finishDialog(ui, "装车单单创建完成", true);
-				panel.remove(panel2);
-				panel.add(ui.operationJpanel);
-				ui.carinformationbButton.setEnabled(true);
-				ui.cashdocumentbButton.setEnabled(true);
-				ui.documentreplyButton.setEnabled(true);
-				ui.driverinformationbButton.setEnabled(true);
-				ui.loaddocumentbButton.setEnabled(true);
-				ui.acceptdocumentbButton.setEnabled(true);
-				panel.repaint();
+				if(depart.getText().equals("")||arrive.getText().equals("")||jianzhuangyuan.getText().equals("")
+						||yayunyuan.getText().equals("")||Carcode.getText().equals("")||tcode.getText().equals("")){
+					new notFinishDialog(ui, "输入有误", true);
+				}
+				else{
+//					po=new LoadingPO(date, code, "营业厅装车单", account, departure, arrival, supervisor, supercargo, codeList, charge)
+					new finishDialog(ui, "装车单单创建完成", true);
+					panel.remove(panel2);
+					panel.add(ui.operationJpanel);
+					ui.carinformationbButton.setEnabled(true);
+					ui.cashdocumentbButton.setEnabled(true);
+					ui.documentreplyButton.setEnabled(true);
+					ui.driverinformationbButton.setEnabled(true);
+					ui.loaddocumentbButton.setEnabled(true);
+					ui.acceptdocumentbButton.setEnabled(true);
+					panel.repaint();
+				}
 			}
 		});
 	}
@@ -198,6 +208,55 @@ public class LoadingJpanel extends JPanel{
 			super.paintComponent(g);    
 			g.drawImage(frameIcon.getImage(),-7,-12,null);
 	 }
+	class notFinishDialog extends JDialog{
+		private dialogJpanel jPanel;
+		private JLabel jLabel;
+		private JLabel jLabel1;
+		private JButton jButton;
+		public notFinishDialog(JFrame frame,String title,boolean modal) {
+			super(frame,title,modal);
+			init();
+			registerListener();
+			this.setVisible(true);
+		}
+		private void init(){
+			ImageIcon yesIcon=new ImageIcon("picture/登录.png");
+			jLabel=new JLabel("您的输入不完整，请检查补充",jLabel.CENTER);
+			jLabel.setForeground(Color.white);
+			jLabel.setFont(new Font("幼圆",Font.BOLD,27));
+			jLabel.setBounds(0, 0, 500, 200);
+			
+			DecimalFormat df = new DecimalFormat("0.00");
+			documentController co=new documentController();
+			String str=df.format(co.getShortCost());
+			
+			jButton=new JButton(yesIcon);
+			jButton.setContentAreaFilled(false);
+			jButton.setBounds(218,190, 64, 64);
+			
+			jPanel=new dialogJpanel();
+			jPanel.setLayout(null);
+			jPanel.add(jLabel);
+			jPanel.add(jButton);
+			this.add(jPanel);
+			this.setSize(500, 300);
+			Toolkit kitToolkit =Toolkit.getDefaultToolkit();
+			Dimension screenSize=kitToolkit.getScreenSize();
+			int screenWidth=screenSize.width;
+			int screenHeight=screenSize.height;
+			int dialogWidth=this.getWidth();
+			int dialogHeight=this.getHeight();
+			this.setLocation((screenWidth-dialogWidth)/2, (screenHeight-dialogHeight)/2);
+			this.setResizable(false);
+		}
+		private void registerListener(){
+			jButton.addActionListener(new ActionListener() {		
+				public void actionPerformed(ActionEvent e) {
+					notFinishDialog.this.dispose();
+				}
+			});
+		}
+	}
 	class finishDialog extends JDialog{
 		private dialogJpanel jPanel;
 		private JLabel jLabel;
@@ -219,7 +278,7 @@ public class LoadingJpanel extends JPanel{
 			DecimalFormat df = new DecimalFormat("0.00");
 			documentController co=new documentController();
 			String str=df.format(co.getShortCost());
-			jLabel1=new JLabel("运费："+str,jLabel.CENTER);
+			jLabel1=new JLabel("运费："+str+"元",jLabel.CENTER);
 			jLabel1.setForeground(Color.white);
 			jLabel1.setFont(new Font("幼圆",Font.BOLD,27));
 			jLabel1.setBounds(0, 60, 500, 200);
