@@ -32,7 +32,7 @@ public class documentReplyJTable {
         scrollPane.setColumnHeaderView(Jtabel.getTableHeader());
         
         scrollPane.getColumnHeader().setOpaque(false);
-		scrollPane.setBounds(0,32, 723, 540);
+		scrollPane.setBounds(0,32, 723, 535);
         
 		panel.add(scrollPane);
 	}
@@ -65,9 +65,9 @@ public class documentReplyJTable {
 		Jtabel.setShowGrid(false);
 		TableColumn column = null;
 		column = Jtabel.getColumnModel().getColumn(0);
-		column.setPreferredWidth(361);
+		column.setPreferredWidth(360);
 		column = Jtabel.getColumnModel().getColumn(1);
-		column.setPreferredWidth(366);
+		column.setPreferredWidth(360);
 		
 		
 		Jtabel.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
