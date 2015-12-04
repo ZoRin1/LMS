@@ -24,7 +24,7 @@ public class GetReceipt implements GetReceiptSer{
 		list1=new ArrayList<>();
 		ReceiptPO po;
 		try {
-			documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://114.212.42.143:6600/docFactory");
+			documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://127.0.0.1:6600/docFactory");
 			getCodeDataSer getCodeDataSer=documentsFactory.createGetCodeDataSer();
 			getDocumentInfoDataSer getDocumentInfoDataSer=documentsFactory.createGetDocumentInfoDataSer();
 			String startTime=date+" 0:0:0";

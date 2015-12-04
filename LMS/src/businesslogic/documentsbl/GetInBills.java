@@ -25,7 +25,7 @@ public class GetInBills implements GetInBillsSer{
 		list1=new ArrayList<>();
 		InBillsPO po;
 		try {
-			documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://114.212.42.143:6600/docFactory");
+			documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://127.0.0.1:6600/docFactory");
 			getCodeDataSer getCodeDataSer=documentsFactory.createGetCodeDataSer();
 			getDocumentInfoDataSer getDocumentInfoDataSer=documentsFactory.createGetDocumentInfoDataSer();
 			list=getCodeDataSer.getStoCode(account, "Èë¿âµ¥", start, end);

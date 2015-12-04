@@ -25,7 +25,7 @@ public class GetPayment implements GetPaymentSer{
 		list1=new ArrayList<>();
 		PaymentPO po;
 		try {
-			documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://114.212.42.143:6600/docFactory");
+			documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://127.0.0.1:6600/docFactory");
 			getCodeDataSer getCodeDataSer=documentsFactory.createGetCodeDataSer();
 			getDocumentInfoDataSer getDocumentInfoDataSer=documentsFactory.createGetDocumentInfoDataSer();
 			list=getCodeDataSer.getCode("¸¶¿îµ¥", null, end);

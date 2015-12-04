@@ -18,7 +18,7 @@ public class showBufferedList implements showBufferedListBlSer{
 		// TODO Auto-generated method stub
 		ArrayList<String> list=new ArrayList<>();
 		try {
-		documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://114.212.42.143:6600/docFactory");
+		documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://127.0.0.1:6600/docFactory");
 		getBufferedCodeDataSer getBufferedCodeDataSer=documentsFactory.createGetBudderedCodeDataSer();
 		list=getBufferedCodeDataSer.getCode();
 	} catch (MalformedURLException e) {

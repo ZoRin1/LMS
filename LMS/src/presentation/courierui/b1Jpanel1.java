@@ -79,7 +79,6 @@ public class b1Jpanel1 extends JPanel{
 		// TODO Auto-generated constructor stub
 		this.account=account;
 		init();
-		courierui.setTitle("快递员——寄件单创建 1");
 	 	courierJpanel.add(this);
 		registListener(courierui,courierJpanel,this);
 	}
@@ -431,6 +430,7 @@ class b1Jpanel2 extends JPanel{
 		dingdannumberJLabel.setFont(font);
 		dingdannumberJLabel.setBounds(350, 150, 300, 30);
 		dingdannumberJLabel.setText(documentController.getDocCode("寄件单"));
+		
 		cankaobaojiaJLabel=new JLabel("参考报价:");
 		cankaobaojiaJLabel.setForeground(Color.white);
 		cankaobaojiaJLabel.setFont(font);

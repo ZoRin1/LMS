@@ -24,7 +24,7 @@ public class UpdateSpace implements UpdateSpaceSer{
 	public UpdateSpace(String InDepotCode,String city) {
 		super();
 		try {
-			documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://114.212.42.143:6600/docFactory");
+			documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://127.0.0.1:6600/docFactory");
 			getDocumentInfoDataSer getDocumentInfoDataSer=documentsFactory.createGetDocumentInfoDataSer();
 			po=getDocumentInfoDataSer.getInDepotInfo("Èë¿âµ¥", InDepotCode);
 		} catch (MalformedURLException e) {
