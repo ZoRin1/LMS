@@ -9,11 +9,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import vo.financeVO.AccountVO;
+import businesslogic.financebl.AccountManageModel.AccountManageBL;
 
 public class b2financialstaffui extends JFrame{
 	 private financialstaffJpanel financialstaffJpanel;
@@ -25,9 +29,13 @@ public class b2financialstaffui extends JFrame{
 	 JButton b5;
 	 private JButton tuichuButton;
 		private JButton zuixiaohuaButton;
+		
+		private AccountManageBL account;
+		private ArrayList<AccountVO> accountInf;
 	public b2financialstaffui(String s,financialstaffui fsui) {
 		// TODO Auto-generated constructor stub
 		super(s);
+		getAccountVO();
 		init(fsui);
 		registListener(this,financialstaffJpanel);
 	}
@@ -82,13 +90,18 @@ public class b2financialstaffui extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new b2b1Jpanel1(b2financialstaffui, financialstaffJpanel);
+				new b2b1Jpanel1(b2financialstaffui, financialstaffJpanel,accountInf,b2,b3,b4,b5);
 				financialstaffJpanel.remove(operationJpanel);
-				b1.setEnabled(false);
+//				b1.setEnabled(false);
 				b2.setEnabled(false);
 				b3.setEnabled(false);
 				b4.setEnabled(false);
 				b5.setEnabled(false);
+				financialstaffJpanel.remove(b1);
+				financialstaffJpanel.add(b2);
+				financialstaffJpanel.add(b3);
+				financialstaffJpanel.add(b4);
+				financialstaffJpanel.add(b5);
 				financialstaffJpanel.repaint();
 			}
 		});
@@ -97,14 +110,15 @@ public class b2financialstaffui extends JFrame{
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// TODO Auto-generated method stub
-						new b2b2Jpanel1(b2financialstaffui, financialstaffJpanel);
-						financialstaffJpanel.remove(operationJpanel);
-						b1.setEnabled(false);
-						b2.setEnabled(false);
-						b3.setEnabled(false);
-						b4.setEnabled(false);
-						b5.setEnabled(false);
-						financialstaffJpanel.repaint();
+//						new b2b2Jpanel1(b2financialstaffui, financialstaffJpanel);
+//						financialstaffJpanel.remove(operationJpanel);
+		
+//						b2.setEnabled(false);
+//						b3.setEnabled(false);
+//						b4.setEnabled(false);
+//						b5.setEnabled(false);
+//						financialstaffJpanel.repaint();
+						System.out.println("外部的监听");
 					}
 				});
 		b3.addActionListener(new ActionListener() {
@@ -112,13 +126,13 @@ public class b2financialstaffui extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new b2b3Jpanel1(b2financialstaffui, financialstaffJpanel);
+//				new b2b3Jpanel1(b2financialstaffui, financialstaffJpanel);
 				financialstaffJpanel.remove(operationJpanel);
-				b1.setEnabled(false);
-				b2.setEnabled(false);
-				b3.setEnabled(false);
-				b4.setEnabled(false);
-				b5.setEnabled(false);
+
+//				b2.setEnabled(false);
+//				b3.setEnabled(false);
+//				b4.setEnabled(false);
+//				b5.setEnabled(false);
 				financialstaffJpanel.repaint();
 			}
 		});
@@ -127,13 +141,13 @@ public class b2financialstaffui extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new b2b4Jpanel1(b2financialstaffui, financialstaffJpanel);
+//				new b2b4Jpanel1(b2financialstaffui, financialstaffJpanel);
 				financialstaffJpanel.remove(operationJpanel);
-				b1.setEnabled(false);
-				b2.setEnabled(false);
-				b3.setEnabled(false);
-				b4.setEnabled(false);
-				b5.setEnabled(false);
+	
+//				b2.setEnabled(false);
+//				b3.setEnabled(false);
+//				b4.setEnabled(false);
+//				b5.setEnabled(false);
 				financialstaffJpanel.repaint();
 			}
 		});
@@ -142,17 +156,38 @@ public class b2financialstaffui extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new b2b5Jpanel1(b2financialstaffui, financialstaffJpanel);
+//				new b2b5Jpanel1(b2financialstaffui, financialstaffJpanel);
 				financialstaffJpanel.remove(operationJpanel);
-				b1.setEnabled(false);
-				b2.setEnabled(false);
-				b3.setEnabled(false);
-				b4.setEnabled(false);
-				b5.setEnabled(false);
+			
+//				b2.setEnabled(false);
+//				b3.setEnabled(false);
+//				b4.setEnabled(false);
+//				b5.setEnabled(false);
 				financialstaffJpanel.repaint();
 			}
 		});
 	}
+	
+	private void getAccountVO(){
+		accountInf = new ArrayList<AccountVO>();
+		AccountVO v1 = new AccountVO("张三", 100);
+		AccountVO v2 = new AccountVO("李四", 5252);
+		AccountVO v3 = new AccountVO("哈哈", 4272);
+		AccountVO v4 = new AccountVO("卧槽", 100);
+		AccountVO v5 = new AccountVO("尼玛", 100);
+		AccountVO v6 = new AccountVO("啦啦", 100);
+		AccountVO v7 = new AccountVO("矿泉水", 100);
+		accountInf.add(v1);
+		accountInf.add(v2);
+		accountInf.add(v3);
+		accountInf.add(v4);
+		accountInf.add(v5);
+		accountInf.add(v6);
+		accountInf.add(v7);
+//		account = new AccountManageBL();
+//		accountInf = account.getAccountInf();
+	}
+	
 	private void init(financialstaffui fsui){
 		financialstaffJpanel=new financialstaffJpanel();
 		operationJpanel=new financialstaffb2OperationJpanel(financialstaffJpanel,fsui,this);
@@ -188,10 +223,10 @@ public class b2financialstaffui extends JFrame{
 		b5.setContentAreaFilled(false);
 
 		financialstaffJpanel.add(b1);
-		financialstaffJpanel.add(b2);
-		financialstaffJpanel.add(b3);
-		financialstaffJpanel.add(b4);
-		financialstaffJpanel.add(b5);
+//		financialstaffJpanel.add(b2);
+//		financialstaffJpanel.add(b3);
+//		financialstaffJpanel.add(b4);
+//		financialstaffJpanel.add(b5);
 		financialstaffJpanel.add(tuichuButton);
 		financialstaffJpanel.add(zuixiaohuaButton);
 		financialstaffJpanel.setLayout(null);
