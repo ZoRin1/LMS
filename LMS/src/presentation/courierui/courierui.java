@@ -151,7 +151,7 @@ public class courierui extends JFrame{
 				courierui.orderfinishButton.setEnabled(false);
 				courierui.orderfoundButton.setEnabled(false);
 				courierui.documentreplyButton.setEnabled(false);
-				new documentJpanel(courierui,courierJpanel);
+				new documentJpanel(courierui,courierJpanel,account);
 				courierJpanel.repaint();
 			}
 		});
