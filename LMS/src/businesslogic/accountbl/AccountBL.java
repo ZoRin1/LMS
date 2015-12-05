@@ -14,6 +14,7 @@ public class AccountBL implements AccountBLSer {
 	private AccountDataSer accountDataSer;
 	@Override
 	public String login(long ID, String password) {
+		
 		// TODO 自动生成的方法存根
 		try {
 			accountFactory accountFactory =(accountFactory)Naming.lookup("rmi://127.0.0.1:6600/accFactory");
@@ -28,7 +29,7 @@ public class AccountBL implements AccountBLSer {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
-		return null;
+		return this.accountDataSer.campare(ID, password);
 	}
 
 	@Override
