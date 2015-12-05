@@ -7,18 +7,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import po.financePO.BooksPO;
+import businesslogic.financebl.BooksModel.BooksController;
+
 public class b5financialstaffui extends JFrame{
 	private financialstaffJpanel financialstaffJpanel;
 	financialstaffb5OperationJpanel operationJpanel;
-	 JButton b1,b2;
-	 private JButton tuichuButton;
-		private JButton zuixiaohuaButton;
+	JButton b1,b2;
+	private JButton tuichuButton;
+	private JButton zuixiaohuaButton;
+		
+	private BooksController BookController;
+	private ArrayList<BooksPO> bookList;
 	public b5financialstaffui(String s,financialstaffui fsui) {
 		// TODO Auto-generated constructor stub
 		super(s);
@@ -88,7 +95,24 @@ public class b5financialstaffui extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new b5b2Jpanel1(b5financialstaffui, financialstaffJpanel);
+				
+//				BookController =new BooksController();
+//				bookList = BookController.getBook();
+				BooksPO p1 = new BooksPO(null, null, null, null, null, null, "张三", "2015");
+				BooksPO p2 = new BooksPO(null, null, null, null, null, null, "李四", "2015");
+				BooksPO p3 = new BooksPO(null, null, null, null, null, null, "王五", "2015");
+				BooksPO p4 = new BooksPO(null, null, null, null, null, null, "冯六", "2015");
+				BooksPO p5 = new BooksPO(null, null, null, null, null, null, "周期", "2015");
+				BooksPO p6 = new BooksPO(null, null, null, null, null, null, "钱八", "2015");
+				bookList = new ArrayList<BooksPO>();
+				bookList.add(p1);
+				bookList.add(p2);
+				bookList.add(p3);
+				bookList.add(p4);
+				bookList.add(p5);
+				bookList.add(p6);
+				
+				new b5b2Jpanel1(b5financialstaffui, financialstaffJpanel,bookList);
 				financialstaffJpanel.remove(operationJpanel);
 				b1.setEnabled(false);
 				b2.setEnabled(false);
