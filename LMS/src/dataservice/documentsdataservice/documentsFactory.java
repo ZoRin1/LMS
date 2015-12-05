@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 
 public interface documentsFactory extends Remote{
 	
-public addDocummentInfoDataSer createaddDocummentInfoDataSer() throws RemoteException;
+	public addDocummentInfoDataSer createaddDocummentInfoDataSer() throws RemoteException;
 	
 	public deleteDataSer createDeleteDataSer() throws RemoteException;
 	

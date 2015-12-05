@@ -20,5 +20,5 @@ public interface getDocumentInfoDataSer extends Remote{
 	 * @author XiongKaiQi
 	 *
 	 */
-	public InBillsPO getInDepotInfo(String doName,String InDepotNum);
+	public InBillsPO getInDepotInfo(String doName,String InDepotNum)throws RemoteException;
 }
