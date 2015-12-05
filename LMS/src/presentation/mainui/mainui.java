@@ -6,6 +6,9 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -152,6 +155,17 @@ class mainFrame extends JFrame{
 			this.setVisible(true);
 		}
 		private void registerLister(final mainFrame mf,final String[] args) {
+			accountnumberJTextField.addKeyListener(new KeyAdapter() {
+				public void keyTyped(KeyEvent e) {
+					// TODO Auto-generated method stub
+					int keyChar = e.getKeyChar();
+					if (keyChar<=KeyEvent.VK_9&&keyChar>=KeyEvent.VK_0) {
+						
+					}else {
+						e.consume();
+					}
+				}
+			});
 			zuixiaohuaButton.addMouseListener(new MouseAdapter() {
 				ImageIcon zuixiaohuaIcon=new ImageIcon("picture/最小化.png");
 				ImageIcon zuixiaohuaIcon2=new ImageIcon("picture/最小化2.png");
@@ -200,50 +214,54 @@ class mainFrame extends JFrame{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					long ID=Long.parseLong(accountnumberJTextField.getText());
-					String account=accountnumberJTextField.getText();
-					String state=accountLoginController.login(ID, String.valueOf(passwordField.getPassword()));
-					if (state==null) {
+					if (accountnumberJTextField.getText().equals("")) {
 						new loginFailDialog(mf, "登陆失败", true);
 					}
 					else {
-						String s[]=state.split("-");
-						switch (s[0]) {
-						case "1":
-//							new courierui("快递员界面",args,account);
-							mf.dispose();
-							break;
-						case "2":
-//							new bhclerkui("营业厅业务员界面",args,account,state);
-							mf.dispose();
-							break;
-						case "3":
-//							new icclerkui("中转中心业务员界面",args,account,state);
-							mf.dispose();
-							break;
-						case "4":
-//							new icwarehousemanui("中转中心仓库管理员界面",args,account,state);
-							mf.dispose();
-							break;
-						case "5":
-//							new financialstaffui("财务人员界面",args,account,state);
-							mf.dispose();
-							break;
-	
-						case "6":
-//							new topmanagerui("总经理界面",args,ID,state);
-							mf.dispose();
-							break;
-						case "7":
-//							new adminui("管理员界面",args,ID,state);
-							mf.dispose();
-							break;
-						default :
+						long ID=Long.parseLong(accountnumberJTextField.getText());
+						String account=accountnumberJTextField.getText();
+						String state=accountLoginController.login(ID, String.valueOf(passwordField.getPassword()));
+						if (state==null) {
 							new loginFailDialog(mf, "登陆失败", true);
-							break;					
 						}
-					}
-					
+						else {
+							String s[]=state.split("-");
+							switch (s[0]) {
+							case "1":
+								new courierui("快递员界面",args,account);
+								mf.dispose();
+								break;
+							case "2":
+//								new bhclerkui("营业厅业务员界面",args,account,state);
+								mf.dispose();
+								break;
+							case "3":
+//								new icclerkui("中转中心业务员界面",args,account,state);
+								mf.dispose();
+								break;
+							case "4":
+//								new icwarehousemanui("中转中心仓库管理员界面",args,account,state);
+								mf.dispose();
+								break;
+							case "5":
+//								new financialstaffui("财务人员界面",args,account,state);
+								mf.dispose();
+								break;
+		
+							case "6":
+//								new topmanagerui("总经理界面",args,ID,state);
+								mf.dispose();
+								break;
+							case "7":
+//								new adminui("管理员界面",args,ID,state);
+								mf.dispose();
+								break;
+							default :
+								new loginFailDialog(mf, "登陆失败", true);
+								break;					
+							}
+						}
+					}			
 				}
 			});
 			checkButton.addActionListener(new ActionListener() {			
