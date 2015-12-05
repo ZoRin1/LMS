@@ -24,8 +24,8 @@ public class b1b2Jpanel1 extends JPanel{
 	
 	public b1b2Jpanel1(b1financialstaffui b1financialstaffui,financialstaffJpanel financialstaffJpanel,ArrayList<ProfitVO> profitList) {
 		// TODO Auto-generated constructor stub
-		init();
 		this.profitList = profitList;
+		init();
 		financialstaffJpanel.add(this);
 		registListener(b1financialstaffui,financialstaffJpanel,this);
 	}

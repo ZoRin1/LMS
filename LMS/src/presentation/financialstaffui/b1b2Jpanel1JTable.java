@@ -53,9 +53,9 @@ public class b1b2Jpanel1JTable {
 //					{"楚香传奇","2324 KB","生成时间","成本收益"},
 //				{"楚奇","232134 KB","生成时间","成本收益"}
 //					};
-		
-		Object[][] inDepotValue = new Object[4][profitList.size()];
-		for(int i = 0 ; i < inDepotValue[0].length;i++){
+		System.out.println(profitList.size());
+		Object[][] inDepotValue = new Object[profitList.size()][4];
+		for(int i = 0 ; i < profitList.size();i++){
 				inDepotValue[i][0] = profitList.get(i).getTotalRevenue();
 				inDepotValue[i][1] = profitList.get(i).getTotalPay();
 				inDepotValue[i][2] = profitList.get(i).getGenerationDate();
