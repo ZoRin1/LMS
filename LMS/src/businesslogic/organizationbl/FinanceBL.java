@@ -16,7 +16,7 @@ public class FinanceBL implements FinanceOrgBLSer {
 	public FinanceBL() {
 		// TODO Auto-generated constructor stub
 		try {
-			organizationFactory organizationFactory = (organizationFactory)Naming.lookup("rmi://127.0.0.1:6600/accFactory");
+			organizationFactory organizationFactory = (organizationFactory)Naming.lookup("rmi://127.0.0.1:6600/orgFactory");
 			this.financeOrgDataSer = organizationFactory.createFinanceOrgDataSer();
 		} catch (MalformedURLException e) {
 			// TODO 自动生成的 catch 块

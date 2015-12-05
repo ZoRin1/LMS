@@ -21,7 +21,7 @@ public class TransportationBL implements TransportationBLSer {
 	public TransportationBL() {
 		// TODO Auto-generated constructor stub
 		try {
-			TransportationFactory transportationFactory = (TransportationFactory)Naming.lookup("rmi://127.0.0.1:6600/accFactory");
+			TransportationFactory transportationFactory = (TransportationFactory)Naming.lookup("rmi://127.0.0.1:6600/traFactory");
 			this.transportationDataSer = transportationFactory.createTransportationDataSer();
 		} catch (MalformedURLException e) {
 			// TODO 自动生成的 catch 块

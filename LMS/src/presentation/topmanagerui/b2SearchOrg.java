@@ -88,7 +88,21 @@ public class b2SearchOrg extends JPanel {
 
 	private void registListener(final b2topmanagerui b2ui,final topmanagerJpanel tjpl,
 			final b2SearchOrg b2SearchOrg,final String org) {
-		
+		b4.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				tjpl.remove(b2SearchOrg);
+				if(org.equals("营业厅")){
+					new b2BusinessAdd(b2ui, tjpl, org);
+				}else {
+					new b2MiddleAdd(b2ui, tjpl, org);
+				}
+				
+				tjpl.repaint();
+			}
+		});
 		search.addActionListener(new ActionListener() {
 			
 			@Override
@@ -188,21 +202,7 @@ public class b2SearchOrg extends JPanel {
 			}
 		});
 		
-		b4.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				tjpl.remove(b2SearchOrg);
-				if(org.equals("营业厅")){
-					new b2BusinessAdd(b2ui, tjpl, org);
-				}else {
-					new b2MiddleAdd(b2ui, tjpl, org);
-				}
-				
-				tjpl.repaint();
-			}
-		});
 
 	}
 	public void paintComponent(Graphics g)  
