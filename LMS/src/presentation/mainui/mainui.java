@@ -64,8 +64,6 @@ class mainFrame extends JFrame{
 			registerLister(this,args);
 		}
 		private void init() {
-			accountLoginController=new AccountLoginController();
-			documentController=new documentController();
 			ImageIcon titleIcon=new ImageIcon("picture/ÏîÄ¿Ãû.png");
 			ImageIcon numberIcon=new ImageIcon("picture/ÕÊºÅ.png");
 			ImageIcon logicIcon=new ImageIcon("picture/µÇÂ¼.png");
@@ -214,6 +212,7 @@ class mainFrame extends JFrame{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
+					accountLoginController=new AccountLoginController();
 					if (accountnumberJTextField.getText().equals("")) {
 						new loginFailDialog(mf, "µÇÂ½Ê§°Ü", true);
 					}
@@ -267,6 +266,7 @@ class mainFrame extends JFrame{
 			checkButton.addActionListener(new ActionListener() {			
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					documentController=new documentController();
 					ArrayList<String> wuliuInfoList=documentController.getWuliuInfo(codeJTextField.getText());
 					// TODO Auto-generated method stub
 					if (wuliuInfoList==null) {
