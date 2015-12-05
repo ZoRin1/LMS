@@ -8,6 +8,9 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,16 +21,29 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
+
+import po.documentsPO.LoadingPO;
 import businesslogic.documentsbl.createDocument;
 import businesslogic.documentsbl.documentController;
 
 
 
 public class LoadingJpanel extends JPanel{
+	private String date;
+	private String code2;//装运单编号
+	private String account;//创建人账号
+	private String departure2;//出发地
+	private String arrival2;//目的地
+	private String supervisor;//监装员
+	private String supercargo;//押运员
+	private ArrayList<String> codeList;//所有托运单号
+	private String state;
+	private LoadingPO po;
+	
 	private JLabel code;
 	private JLabel code1;
 	private JLabel doName;
-	private JLabel OrgCode;
 	private JLabel departure;
 	private JTextField depart;
 	private JLabel arrival;
@@ -41,17 +57,17 @@ public class LoadingJpanel extends JPanel{
 	private JLabel TCode;
 	private JTextArea tcode;
 	//此处节省时间先不用列表显示
-	private JLabel charge;
-	private JTextField chargearea;
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
 	private JButton returnButton;
 	private JButton yesButton;
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	private ImageIcon yesIcon=new ImageIcon("picture/确定.png");
-	public LoadingJpanel(icclerkui ui,icclerkJpanel panel) {
+	public LoadingJpanel(icclerkui ui,icclerkJpanel panel,String account,String state) {
 		init();
 		panel.add(this);
 		registListener(ui,panel,this);
+		this.account=account;
+		this.state=state;
 	}
 	public void init(){
 		Font font=new Font("幼圆",Font.BOLD,24);
@@ -62,7 +78,8 @@ public class LoadingJpanel extends JPanel{
 		this.add(code);
 		
 		code1=new JLabel();
-		code1.setText("");
+		code2=new documentController().getDocCode("营业厅装车单");
+		code1.setText(code2);
 		code1.setForeground(Color.white);
 		code1.setFont(font);
 		code1.setBounds(155,30,131,27);
@@ -176,14 +193,32 @@ public class LoadingJpanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				Date now = new Date();
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				date = dateFormat.format( now );
 				if(depart.getText().equals("")||arrive.getText().equals("")||jianzhuangyuan.getText().equals("")
 						||yayunyuan.getText().equals("")||Carcode.getText().equals("")||tcode.getText().equals("")){
 					new notFinishDialog(ui, "输入有误", true);
 					panel.repaint();
 				}
 				else{
-//					po=new LoadingPO(date, code, "营业厅装车单", account, departure, arrival, supervisor, supercargo, codeList, charge)
-					new finishDialog(ui, "装车单创建完成", true);
+					departure2=depart.getText();
+					arrival2=arrive.getText();
+					supervisor=jianzhuangyuan.getText();
+					supercargo=yayunyuan.getText();
+					String[] list=tcode.getText().split("，");//此处或许应该加以参数把英文逗号转为中文逗号或要求员工必须使用中文输入法
+					int size=list.length;
+					codeList=new ArrayList<>();
+					for(int i=0;i<size;i++){
+						codeList.add(list[i]);
+					}
+					DecimalFormat df = new DecimalFormat("0.00");
+					documentController co=new documentController();
+					String str=df.format(co.getShortCost());
+					double charge=Double.parseDouble(str);
+					po=new LoadingPO(date, code2, "营业厅装车单", account, departure2, arrival2, supervisor, supercargo, codeList, charge);
+					new documentController().createBlock(po);
+					new finishDialog(ui, "装车单创建完成", true , str);
 					panel.remove(panel2);
 					panel.add(ui.operationJpanel);
 					ui.b1.setEnabled(true);
@@ -208,10 +243,12 @@ class finishDialog extends JDialog{
 	private JLabel jLabel;
 	private JLabel jLabel1;
 	private JButton jButton;
-	public finishDialog(JFrame frame,String title,boolean modal) {
+	private String charge;
+	public finishDialog(JFrame frame,String title,boolean modal,String charge) {
 		super(frame,title,modal);
 		init();
 		registerListener();
+		this.charge=charge;
 		this.setVisible(true);
 	}
 	private void init(){

@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.ImageIcon;
@@ -15,14 +16,28 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import po.documentsPO.ReceiptPO;
 import businesslogic.documentsbl.createDocument;
+import businesslogic.documentsbl.documentController;
 
 public class ReceiptJPanel extends JPanel{
+	private String code2;//收款单编号
+	private String date2;//收款日期
+	private String account2;//创建人账号
+	private String OrgCode;//营业厅编号
+	private double fund;//收款金额
+	private String name2;//快递员姓名
+	private ArrayList<String> TCode2;//所有订单条形码号
+	private String state;
+	private ReceiptPO po;
+	
 	private JLabel code;
 	private JLabel code1;
 	private JLabel doName;
 	private JLabel date;
 	private JLabel date1;
+	private JLabel Name;
+	private JTextField name;
 	private JLabel account;
 	private JTextField Account;
 	private JLabel TCode;
@@ -32,9 +47,10 @@ public class ReceiptJPanel extends JPanel{
 	private JButton yesButton;
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	private ImageIcon yesIcon=new ImageIcon("picture/确定.png");
-	public ReceiptJPanel(bhclerkui ui,bhclerkJpanel bhclerkJpanel) {
+	public ReceiptJPanel(bhclerkui ui,bhclerkJpanel bhclerkJpanel,String account,String state) {
 		init();
-		ui.setTitle("营业厅业务员-收款单创建");
+		this.account2=account;
+		this.state=state;
 		bhclerkJpanel.add(this);
 		registListener(ui,bhclerkJpanel,this);
 	}
@@ -47,7 +63,8 @@ public class ReceiptJPanel extends JPanel{
 		this.add(code);
 		
 		code1=new JLabel();
-		code1.setText("");
+		code2=new documentController().getDocCode("收款单");
+		code1.setText(code2);
 		code1.setForeground(Color.white);
 		code1.setFont(font);
 		code1.setBounds(155,30,131,27);
@@ -66,33 +83,44 @@ public class ReceiptJPanel extends JPanel{
 		this.add(date);
 		
 		Date now = new Date();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-		String riqi = dateFormat.format( now );
-		date1=new JLabel(riqi);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		date2= dateFormat.format( now );
+		date1=new JLabel(date2);
 		date1.setForeground(Color.white);
 		date1.setFont(font);
 		date1.setBounds(155,97,250,27);
 		this.add(date1);
 		
+		Name=new JLabel("收款快递员姓名:");
+		Name.setForeground(Color.white);
+		Name.setFont(font);
+		Name.setBounds(30,164,200,27);
+		this.add(Name);
+		
+		name=new JTextField();
+		name.setBounds(230,164,125,27);
+		name.setFont(font);
+		this.add(name);
+		
 		account=new JLabel("收款金额：");
 		account.setForeground(Color.white);
 		account.setFont(font);
-		account.setBounds(30,164,125,27);
+		account.setBounds(30,231,125,27);
 		this.add(account);
 		
 		Account=new JTextField();
-		Account.setBounds(155,164,125,27);
+		Account.setBounds(155,231,125,27);
 		Account.setFont(font);
 		this.add(Account);
 		
 		TCode=new JLabel("订单条形码号：");
 		TCode.setForeground(Color.white);
 		TCode.setFont(font);
-		TCode.setBounds(30,231,175,27);
+		TCode.setBounds(30,298,175,27);
 		this.add(TCode);
 		
 		tcode=new JTextArea();
-		tcode.setBounds(205,231,143,108);
+		tcode.setBounds(205,298,143,108);
 		tcode.setLineWrap(true);
 		tcode.setFont(font);
 		this.add(tcode);
@@ -138,6 +166,18 @@ public class ReceiptJPanel extends JPanel{
 					new notFinishDialog(ui,"输入有误",true);
 				}
 				else{
+					String[] list=state.split("-");
+					OrgCode=list[3]+"-"+list[4];
+					fund=Double.parseDouble(account.getText());
+					name2=name.getText();
+					String[] list2=tcode.getText().split("，");//此处或许应该加以参数把英文逗号转为中文逗号或要求员工必须使用中文输入法
+					int size=list2.length;
+					TCode2=new ArrayList<>();
+					for(int i=0;i<size;i++){
+						TCode2.add(list[i]);
+					}
+					po=new ReceiptPO(code2, "收款单", date2, account2, OrgCode, fund, name2, TCode2);
+					new documentController().createBlock(po);
 					new finishDialog2(ui, "收款单创建完成", true,"收款单");
 					panel.remove(panel2);
 					panel.add(ui.operationJpanel);

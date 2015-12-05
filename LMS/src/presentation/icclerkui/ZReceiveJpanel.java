@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.ImageIcon;
@@ -22,11 +23,24 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
+
+import po.documentsPO.ZReceivePO;
 import businesslogic.documentsbl.createDocument;
 import businesslogic.documentsbl.documentController;
 
 
 public class ZReceiveJpanel extends JPanel{
+	private String code2;//中转单编号
+	private String date2;
+	private String account;//创建人账号
+	private String zCode;//中转中心编号
+	private ArrayList<String> codeList;//所有订单条形码号
+	private String departure2;
+	private String state2;
+	private String arrival2;
+	private ZReceivePO po;
+	
 	private JLabel code;
 	private JLabel code1;
 	private JLabel doName;
@@ -44,8 +58,10 @@ public class ZReceiveJpanel extends JPanel{
 	private JButton yesButton;
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	private ImageIcon yesIcon=new ImageIcon("picture/确定.png");
-	public ZReceiveJpanel(icclerkui ui,icclerkJpanel panel) {
+	public ZReceiveJpanel(icclerkui ui,icclerkJpanel panel,String account,String state) {
 		init();
+		this.account=account;
+		state2=state;
 		ui.setTitle("中转中心业务员-中转接收单创建");
 		panel.add(this);
 		registListener(ui,panel,this);
@@ -59,7 +75,8 @@ public class ZReceiveJpanel extends JPanel{
 		this.add(code);
 		
 		code1=new JLabel();
-		code1.setText("");
+		code2=new documentController().getDocCode("中转中心接收单");
+		code1.setText(code2);
 		code1.setForeground(Color.white);
 		code1.setFont(font);
 		code1.setBounds(155,30,131,27);
@@ -79,8 +96,8 @@ public class ZReceiveJpanel extends JPanel{
 		
 		Date now = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-		String riqi = dateFormat.format( now );
-		date1=new JLabel(riqi);
+		date2 = dateFormat.format( now );
+		date1=new JLabel(date2);
 		date1.setForeground(Color.white);
 		date1.setFont(font);
 		date1.setBounds(155,97,250,27);
@@ -163,6 +180,18 @@ public class ZReceiveJpanel extends JPanel{
 					new notFinishDialog(ui,"输入有误",true);
 				}
 				else{
+					String[] list=state2.split("-");
+					zCode=list[3];
+					arrival2=list[2];
+					departure2=depart.getText();
+					String[] list2=tcode.getText().split("，");//此处或许应该加以参数把英文逗号转为中文逗号或要求员工必须使用中文输入法
+					int size=list2.length;
+					codeList=new ArrayList<>();
+					for(int i=0;i<size;i++){
+						codeList.add(list[i]);
+					}
+					po=new ZReceivePO(code2, "中转中心转运单", date2, account, zCode, codeList, departure2, arrival2);
+					new documentController().createBlock(po);
 					new finishDialog2(ui, "中转接收单创建完成", true,"中转接收单");
 					panel.remove(panel2);
 					panel.add(ui.operationJpanel);

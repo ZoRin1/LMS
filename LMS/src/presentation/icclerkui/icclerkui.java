@@ -23,8 +23,13 @@ public class icclerkui extends JFrame{
 	private icclerkJpanel icclerkJpanel;
 	icclerkOperationJpanel operationJpanel;
 	JButton b1,b2,b3,b4,b5,b6;
-	 private JButton tuichuButton;
-		private JButton zuixiaohuaButton;
+	private JButton tuichuButton;
+	private JButton zuixiaohuaButton;
+		
+	//设置两个暂时的账号和状态
+	private String account="90909090909";
+	private String state="3-南京-南京中转中心-001";
+	
 	public icclerkui(String s,String [] args) {
 		// TODO Auto-generated constructor stub
 		super(s);
@@ -165,7 +170,7 @@ public class icclerkui extends JFrame{
 				b4.setEnabled(false);
 				b5.setEnabled(false);
 				b6.setEnabled(false);
-				new ZReceiveJpanel(icclerkui, icclerkJpanel);
+				new ZReceiveJpanel(icclerkui, icclerkJpanel,account,state);
 				icclerkJpanel.repaint();
 			}
 		});
@@ -180,7 +185,7 @@ public class icclerkui extends JFrame{
 				b4.setEnabled(false);
 				b5.setEnabled(false);
 				b6.setEnabled(false);
-				new LoadingJpanel(icclerkui, icclerkJpanel);
+				new LoadingJpanel(icclerkui, icclerkJpanel,account,state);
 				icclerkJpanel.repaint();
 			}
 		});
@@ -195,7 +200,7 @@ public class icclerkui extends JFrame{
 				b4.setEnabled(false);
 				b5.setEnabled(false);
 				b6.setEnabled(false);
-				new ZloadingJpanel(icclerkui, icclerkJpanel, "普通快递");
+				new ZloadingJpanel(icclerkui, icclerkJpanel, "普通快递",account,state);
 				icclerkJpanel.repaint();
 			}
 		});
@@ -210,7 +215,7 @@ public class icclerkui extends JFrame{
 				b4.setEnabled(false);
 				b5.setEnabled(false);
 				b6.setEnabled(false);
-				new ZloadingJpanel(icclerkui, icclerkJpanel, "特快专递");
+				new ZloadingJpanel(icclerkui, icclerkJpanel, "特快专递",account,state);
 				icclerkJpanel.repaint();
 			}
 		});
@@ -225,7 +230,7 @@ public class icclerkui extends JFrame{
 				b4.setEnabled(false);
 				b5.setEnabled(false);
 				b6.setEnabled(false);
-				new ZloadingJpanel(icclerkui, icclerkJpanel, "经济快递");
+				new ZloadingJpanel(icclerkui, icclerkJpanel, "经济快递",account,state);
 				icclerkJpanel.repaint();
 			}
 		});

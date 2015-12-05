@@ -29,6 +29,11 @@ public class bhclerkui extends JFrame{
 	private JButton zuixiaohuaButton;
 	bhclerkOperationJpanel operationJpanel;
 	private bhclerkJpanel bhclerkJpanel;
+	
+	//设置两个暂时的账号和状态
+		private String account="90909090909";
+		private String state="3-南京-仙林营业厅-001-001";
+		
 	public bhclerkui(String s,String[] args) {
 		super(s);
 		this.args=args;
@@ -176,7 +181,7 @@ public class bhclerkui extends JFrame{
 				bhclerkui.driverinformationbButton.setEnabled(false);
 				bhclerkui.loaddocumentbButton.setEnabled(false);
 				bhclerkui.acceptdocumentbButton.setEnabled(false);
-				new LoadingJpanel(bhclerkui,bhclerkJpanel);
+				new LoadingJpanel(bhclerkui,bhclerkJpanel,account,state);
 				bhclerkJpanel.repaint();
 			}
 		});
@@ -192,7 +197,7 @@ public class bhclerkui extends JFrame{
 				bhclerkui.driverinformationbButton.setEnabled(false);
 				bhclerkui.loaddocumentbButton.setEnabled(false);
 				bhclerkui.acceptdocumentbButton.setEnabled(false);
-				new AcceptDocumentJpanel(bhclerkui,bhclerkJpanel);
+				new AcceptDocumentJpanel(bhclerkui,bhclerkJpanel,account,state);
 				bhclerkJpanel.repaint();
 			}
 		});
@@ -208,7 +213,7 @@ public class bhclerkui extends JFrame{
 				bhclerkui.driverinformationbButton.setEnabled(false);
 				bhclerkui.loaddocumentbButton.setEnabled(false);
 				bhclerkui.acceptdocumentbButton.setEnabled(false);
-				new ReceiptJPanel(bhclerkui,bhclerkJpanel);
+				new ReceiptJPanel(bhclerkui,bhclerkJpanel,account,state);
 				bhclerkJpanel.repaint();
 			}
 		});

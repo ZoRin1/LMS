@@ -18,9 +18,25 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
+
+import po.documentsPO.YDispatchPO;
+import po.documentsPO.YReceivePO;
 import businesslogic.documentsbl.createDocument;
+import businesslogic.documentsbl.documentController;
 
 public class AcceptDocumentJpanel extends JPanel{
+	private String date2;//接收日期
+	private String code2;//接收单编号
+	private String doName2;//单据名
+	private String code3;//订单条形码号
+	private String account;//创建人账号
+	private String state1;
+	private String departure2;//出发地
+	private String arrival2;//本营业厅
+	private String state2;//货物状态
+	private YReceivePO po;
+	
 	private JLabel code;
 	private JLabel code1;
 	private JLabel doName;
@@ -39,9 +55,11 @@ public class AcceptDocumentJpanel extends JPanel{
 	private JButton yesButton;
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	private ImageIcon yesIcon=new ImageIcon("picture/确定.png");
-	public AcceptDocumentJpanel(bhclerkui ui,bhclerkJpanel bhclerkJpanel) {
+	public AcceptDocumentJpanel(bhclerkui ui,bhclerkJpanel bhclerkJpanel,String account,String state) {
 		init();
 		ui.setTitle("营业厅业务员-接收单创建");
+		this.account=account;
+		state1=state;
 		bhclerkJpanel.add(this);
 		registListener(ui,bhclerkJpanel,this);
 	}
@@ -54,7 +72,8 @@ public class AcceptDocumentJpanel extends JPanel{
 		this.add(code);
 		
 		code1=new JLabel();
-		code1.setText(" ");
+		code2=new documentController().getDocCode("营业厅接收单");
+		code1.setText(code2);
 		code1.setForeground(Color.white);
 		code1.setFont(font);
 		code1.setBounds(155,30,131,27);
@@ -74,8 +93,8 @@ public class AcceptDocumentJpanel extends JPanel{
 		
 		Date now = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-		String riqi = dateFormat.format( now );
-		date1=new JLabel(riqi);
+		date2 = dateFormat.format( now );
+		date1=new JLabel(date2);
 		date1.setForeground(Color.white);
 		date1.setFont(font);
 		date1.setBounds(155,97,250,27);
@@ -165,9 +184,15 @@ public class AcceptDocumentJpanel extends JPanel{
 					new notFinishDialog(ui,"输入有误",true);
 				}
 				else{
+					code3=tcode.getText();
+					departure2=depart.getText();
+					arrival2=arrive.getText();
+					state2=State.getText();
+					po=new YReceivePO(date2, code2, "营业厅接收单", code3, account, departure2, arrival2, state2);
+					new documentController().createBlock(po);
 					new finishDialog2(ui, "接收单创建完成", true,"接收单");
 					panel.remove(panel2);
-					new DispatchJpanel(ui,panel,panel2);
+					new DispatchJpanel(ui,panel,panel2,account,state1);
 					panel.repaint();
 				}
 			}
@@ -180,6 +205,13 @@ public class AcceptDocumentJpanel extends JPanel{
 	 }
 }
 class DispatchJpanel extends JPanel{
+	private String date2;//派件日期
+	private String code2;//派件单编号
+	private String code3;//对应订单编号
+	private String account;//创建人账号
+	private String name2;//派件快递员姓名
+	private YDispatchPO po;
+	
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
 	private JLabel code;
 	private JLabel code1;
@@ -194,7 +226,7 @@ class DispatchJpanel extends JPanel{
 	private JButton yesButton;
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	private ImageIcon yesIcon=new ImageIcon("picture/确定.png");
-	public DispatchJpanel(bhclerkui ui,bhclerkJpanel panel,AcceptDocumentJpanel panel2){
+	public DispatchJpanel(bhclerkui ui,bhclerkJpanel panel,AcceptDocumentJpanel panel2,String account,String state){
 		init();
 		panel.add(this);
 		registListener(ui,panel,panel2,this);
@@ -208,7 +240,8 @@ class DispatchJpanel extends JPanel{
 		this.add(code);
 		
 		code1=new JLabel();
-		code1.setText(" ");
+		code2=new documentController().getDocCode("接收单");
+		code1.setText(code2);
 		code1.setForeground(Color.white);
 		code1.setFont(font);
 		code1.setBounds(155,30,131,27);
@@ -228,8 +261,8 @@ class DispatchJpanel extends JPanel{
 		
 		Date now = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-		String riqi = dateFormat.format( now );
-		date1=new JLabel(riqi);
+		date2 = dateFormat.format( now );
+		date1=new JLabel(date2);
 		date1.setForeground(Color.white);
 		date1.setFont(font);
 		date1.setBounds(155,97,250,27);
@@ -294,6 +327,10 @@ class DispatchJpanel extends JPanel{
 					new notFinishDialog(ui,"输入有误",true);
 				}
 				else{
+					code3=tcode.getText();
+					name2=Member.getText();
+					po=new YDispatchPO(date2, code2, "派件单", code3, account, name2);
+					new documentController().createBlock(po);
 					new finishDialog2(ui, "派件单创建完成", true,"派件单");
 					panel.remove(dispatchJpanel);
 					panel.add(ui.operationJpanel);
