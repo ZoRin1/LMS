@@ -1,5 +1,7 @@
 package presentation.courierui;
 
+import java.util.ArrayList;
+
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -10,17 +12,20 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import businesslogic.documentsbl.documentController;
+
 
 public class documentJtable {
-	
+	private documentController documentController;
 	private JTable billsJtabel;
 	private documentJpanel documentJpanel;
 	private JScrollPane scrollPane;
-	
+	private String account;
 	public JScrollPane getScrollPane() {
 		return scrollPane;
 	}
-	public documentJtable(documentJpanel documentJpanel){
+	public documentJtable(documentJpanel documentJpanel,String account){
+		this.account=account;
 		this.documentJpanel = documentJpanel;
 		initTable();
 		init();
@@ -39,16 +44,21 @@ public class documentJtable {
 	}
 	
 	private void initTable(){
-		//假设的数据
 		String[] inDepotName = new String[]{" "," "};
-		
-		Object[][] inDepotValue = new Object[][]{{"楚留","2321"},
-				{"楚留奇","232134 KB"},
-			{"楚留奇","2324 KB"},
-					{"楚香传奇","2324 KB"},
-				{"楚奇","232134 KB"}
-					};
-		//假设的数据： 完善后要从数据库拿取数据来填写表格
+		documentController=new documentController();
+		ArrayList<String>codeNameList= documentController.showOwnList(account);
+		Object[][] inDepotValue;
+		if (codeNameList.size()==0) {
+			inDepotValue=new Object[0][0];
+		}
+		else {
+			 inDepotValue = new Object[codeNameList.size()][2];
+			for (int i = 0; i < codeNameList.size(); i++) {
+				String[] string=codeNameList.get(i).split(",");
+				inDepotValue[i][0]=string[0];
+				inDepotValue[i][1]=string[1];
+			}
+		}
 		
 		DefaultTableModel tableModel = new DefaultTableModel(inDepotValue,inDepotName);
 		

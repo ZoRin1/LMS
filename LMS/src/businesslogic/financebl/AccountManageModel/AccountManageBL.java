@@ -13,6 +13,7 @@ public class AccountManageBL {
 	private addAccountBL addAccount;
 	private CoverAccountBL coverAccount;
 	
+	
 	public ArrayList<AccountVO> getAccountInf() {
 		return accountInf;
 	}
@@ -57,5 +58,7 @@ public class AccountManageBL {
 		coverAccount = new CoverAccountBL(po);
 		return coverAccount.CoverAccount();
 	}
+	
+	
 	
 }

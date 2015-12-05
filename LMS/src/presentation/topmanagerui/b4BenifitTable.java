@@ -1,4 +1,4 @@
-package presentation.financialstaffui;
+package presentation.topmanagerui;
 
 import java.util.ArrayList;
 
@@ -14,33 +14,21 @@ import javax.swing.table.TableColumn;
 
 import vo.financeVO.ProfitVO;
 
-public class b1b2Jpanel1JTable {
-	
+
+public class b4BenifitTable {
 	private JTable ProfitJtabel;
-	private b1b2Jpanel1 b1b2Jpanel1;
 	private JScrollPane scrollPane;
 	private ArrayList<ProfitVO> profitList;
-	
-	public JScrollPane getScrollPane() {
-		return scrollPane;
-	}
-	public b1b2Jpanel1JTable(b1b2Jpanel1 b1b2Jpanel1,ArrayList<ProfitVO> profitList){
-		this.b1b2Jpanel1 = b1b2Jpanel1;
+
+	public b4BenifitTable(b4topmanagerui b4ui,topmanagerJpanel tjpl,ArrayList<ProfitVO> profitList) {
+		// TODO Auto-generated constructor stub
 		this.profitList = profitList;
 		initTable();
-		init();
+		init(tjpl);
+		
 	}
-	private void init(){
-        scrollPane = new JScrollPane(ProfitJtabel); 
-		scrollPane.getViewport().setOpaque(false);
-		scrollPane.setOpaque(false);
-		scrollPane.setViewportView(ProfitJtabel);
-        scrollPane.setColumnHeaderView(ProfitJtabel.getTableHeader());
-        
-        scrollPane.getColumnHeader().setOpaque(false);
-		scrollPane.setBounds(0,32, 730, 540);
-        
-		b1b2Jpanel1.add(scrollPane);
+	public JScrollPane getScrollPane() {
+		return scrollPane;
 	}
 	
 	private void initTable(){
@@ -109,5 +97,17 @@ public class b1b2Jpanel1JTable {
 			((JLabel) headerRenderer).setOpaque(false); 
 		}
 	}
-	
+
+	private void init(topmanagerJpanel tjpl){
+        scrollPane = new JScrollPane(ProfitJtabel); 
+		scrollPane.getViewport().setOpaque(false);
+		scrollPane.setOpaque(false);
+		scrollPane.setViewportView(ProfitJtabel);
+        scrollPane.setColumnHeaderView(ProfitJtabel.getTableHeader());
+        
+        scrollPane.getColumnHeader().setOpaque(false);
+		scrollPane.setBounds(0,32, 730, 540);
+        
+		tjpl.add(scrollPane);
+	}
 }

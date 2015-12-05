@@ -9,12 +9,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class documentJpanel extends JPanel{
+	private String account;
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
 	private JButton returnButton;
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	private JLabel jLabel;
-	public documentJpanel(courierui courierui,courierJpanel courierJpanel) {
+	public documentJpanel(courierui courierui,courierJpanel courierJpanel,String account) {
 		// TODO Auto-generated constructor stub
+		this.account=account;
 		init();
 	 	courierJpanel.add(this);
 		registListener(courierui,courierJpanel,this);
@@ -23,7 +25,7 @@ public class documentJpanel extends JPanel{
 		ImageIcon i1 = new ImageIcon("picture/财务图片/单据反馈框架.png");
 		jLabel = new JLabel(i1);
 		jLabel.setBounds(0, 0, 723, 566);
-		jLabel.add(new documentJtable(this).getScrollPane());
+		jLabel.add(new documentJtable(this,account).getScrollPane());
 		
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662, 575,48,48);

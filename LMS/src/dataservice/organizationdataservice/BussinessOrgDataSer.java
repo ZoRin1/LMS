@@ -152,7 +152,7 @@ public interface BussinessOrgDataSer {
 	 * @param codeNumber 营业厅编号 3位
 	 * @return 操作是否成功的信息
 	 */
-	public boolean removeBussinessHall(String ID, String codeNumber)throws RemoteException;
+	public boolean removeBussinessHall(String ID, String codeNumber);
 	
 	/**不实现
 	 */
@@ -161,22 +161,22 @@ public interface BussinessOrgDataSer {
 	/**
 	 * 不实现
 	 */
-	public boolean changeCodeNumberOfMiddle(String ID, String codeNumberOfMiddle)throws RemoteException;
+	public boolean changeCodeNumberOfMiddle(String ID, String codeNumberOfMiddle);
 	
 	/**
 	 * 返回机构所在地区
 	 * @return city
 	 */
-	public String getInfo(String ID)throws RemoteException;
+	public String getInfo(String ID);
 	
 	/**
 	 * 不实现
 	 */
-	 public boolean changeCity(String ID, String city)throws RemoteException;
+	 public boolean changeCity(String ID, String city);
 	 
 	 /**
 	  * 不实现
 	  */
-	 public boolean changeCodeNumber(String ID, String codeNumber)throws RemoteException;
+	 public boolean changeCodeNumber(String ID, String codeNumber);
 	
 }

@@ -41,7 +41,7 @@ public class b2b3Jpanel1 extends JPanel{
 				// TODO Auto-generated method stub
 				financialstaffJpanel.remove(b2b3Jpanel1);
 				financialstaffJpanel.add(b2financialstaffui.operationJpanel);
-				b2financialstaffui.b1.setEnabled(true);
+
 				b2financialstaffui.b2.setEnabled(true);
 				b2financialstaffui.b3.setEnabled(true);
 				b2financialstaffui.b4.setEnabled(true);
