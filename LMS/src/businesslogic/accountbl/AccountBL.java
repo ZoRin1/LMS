@@ -8,14 +8,14 @@ import java.rmi.RemoteException;
 import businesslogicservice.accountblservice.AccountBLSer;
 import dataservice.accountdataservice.AccountDataSer;
 import dataservice.accountdataservice.accountFactory;
+import po.accountPO.AccountInfoPO;
 import vo.accountVO.AccountNumberVO;
 
 public class AccountBL implements AccountBLSer {
 	private AccountDataSer accountDataSer;
-	@Override
-	public String login(long ID, String password) {
-		
-		// TODO 自动生成的方法存根
+	
+	
+	public AccountBL(){
 		try {
 			accountFactory accountFactory =(accountFactory)Naming.lookup("rmi://127.0.0.1:6600/accFactory");
 			this.accountDataSer = accountFactory.createAccountDataSer();
@@ -29,25 +29,34 @@ public class AccountBL implements AccountBLSer {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
+	}
+	
+	@Override
+	public String login(long ID, String password) {
+		
+		// TODO 自动生成的方法存根
+		
 		return this.accountDataSer.campare(ID, password);
 	}
 
 	@Override
 	public boolean addAccount(long ID, AccountNumberVO vo) {
 		// TODO 自动生成的方法存根
-		return false;
+		return this.accountDataSer.insert(ID, new AccountInfoPO(vo.getName(), vo.getID(), vo.getPassword(), 
+				vo.getState(), vo.getPhone(), vo.getsID(), vo.getDate()));
 	}
 
 	@Override
 	public boolean changeInfo(long ID, AccountNumberVO vo) {
 		// TODO 自动生成的方法存根
-		return false;
+		return this.accountDataSer.update(ID, new AccountInfoPO(vo.getName(), vo.getID(), vo.getPassword(), 
+				vo.getState(), vo.getPhone(), vo.getsID(), vo.getDate()));
 	}
 
 	@Override
 	public boolean deleteAccount(long ID) {
 		// TODO 自动生成的方法存根
-		return false;
+		return this.accountDataSer.delete(ID);
 	}
 
 	@Override
@@ -59,20 +68,21 @@ public class AccountBL implements AccountBLSer {
 	@Override
 	public String[] getAccountList(String name) {
 		// TODO 自动生成的方法存根
-		return null;
+		return this.accountDataSer.find(name);
 	}
 
 	@Override
 	public AccountNumberVO getInfo(long ID) {
 		// TODO 自动生成的方法存根
-		return null;
+		AccountInfoPO po = this.accountDataSer.find(ID);
+		return new AccountNumberVO(po.getName(), po.getID(), po.getPassword(), po.getState(), po.getPhone(), po.getsID(), po.getDate());
 	}
 
 	@Override
 	public String[] getAccountList() {
 		// TODO 自动生成的方法存根
-		String[] result = {"1000005-刘洋","1000009-王菲","1000012-苏珊"};
-		return result;
+//		String[] result = {"1000005-刘洋","1000009-王菲","1000012-苏珊"};
+		return this.accountDataSer.find();
 	}
 
 }

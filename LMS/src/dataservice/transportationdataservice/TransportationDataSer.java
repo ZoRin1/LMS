@@ -86,7 +86,7 @@ public interface TransportationDataSer {
 	 *@return double[] 对应员工的三个工资策略数值的数组  分别是 按月  计次  提成
 	 *
 	 */
-	public double[] getSalary(int employee) throws RemoteException;
+	public double[] getSalary(int employee);
 	
 	/*
 	 * 修改工资策略
@@ -103,6 +103,6 @@ public interface TransportationDataSer {
 	 * 
 	 */
 	
-	public boolean changeSalary(int employee,double [] salary) throws RemoteException;
+	public boolean changeSalary(int employee,double [] salary);
 	
 }
