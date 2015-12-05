@@ -30,5 +30,5 @@ public interface getCodeDataSer extends Remote{
 	 * @author XiongKaiQi
 	 *
 	 */
-	public ArrayList<String> getReceiptCode(String selling,String doName,String startTime,String endTime);
+	public ArrayList<String> getReceiptCode(String selling,String doName,String startTime,String endTime)throws RemoteException;
 }

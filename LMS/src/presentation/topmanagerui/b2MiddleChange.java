@@ -81,41 +81,54 @@ private JLabel city,bianHao,bianHaoI,yeWuYuan,changKuGuanLiYuan;
 		changKuGuanLiYuan.setBounds(310, 220, 180, 40);
 		this.add(changKuGuanLiYuan);
 		
-		String y = "增加业务员";
-		yeWuYuanB = new JComboBox(middleController.getBussinessmanList(ID));
-		yeWuYuanB.addItem(y);
+		
+		if (middleController.getBussinessmanList(ID) != null) {
+			String y = "增加业务员";
+			yeWuYuanB = new JComboBox(middleController.getBussinessmanList(ID));
+			yeWuYuanB.addItem(y);
+		}else{
+			String[] a = {"增加业务员"};
+			yeWuYuanB = new JComboBox(a);
+		}		
 		yeWuYuanB.setFont(sFont);
 		yeWuYuanB.setForeground(Color.BLACK);
 		yeWuYuanB.setBounds(100, 270, 180, 40);
 		yeWuYuanB.setSelectedIndex(-1);
 		this.add(yeWuYuanB);
 		
-		kongXianY = new JComboBox(accountInfoController.getAccountList());
-		kongXianY.setFont(sFont);
-		kongXianY.setForeground(Color.BLACK);
-		kongXianY.setBounds(100, 320, 180, 40);
-		kongXianY.setSelectedIndex(-1);
-		kongXianY.setVisible(false);
-		this.add(kongXianY);
-		
-		String c ="增加仓库管理员";
-		changKuGuanLiYuanB = new JComboBox(middleController.getStorgerList(ID));
-		changKuGuanLiYuanB.addItem(c);
+		if (accountInfoController.getAccountList() != null) {
+			kongXianY = new JComboBox(accountInfoController.getAccountList());
+			kongXianY.setFont(sFont);
+			kongXianY.setForeground(Color.BLACK);
+			kongXianY.setBounds(100, 320, 180, 40);
+			kongXianY.setSelectedIndex(-1);
+			kongXianY.setVisible(false);
+			this.add(kongXianY);
+		}
+
+		if (middleController.getStorgerList(ID) != null) {
+			String c ="增加仓库管理员";
+			changKuGuanLiYuanB = new JComboBox(middleController.getStorgerList(ID));
+			changKuGuanLiYuanB.addItem(c);
+		}else {
+			String[] a = {"增加仓库管理员"};
+			changKuGuanLiYuanB = new JComboBox(a);
+		}		
 		changKuGuanLiYuanB.setFont(sFont);
 		changKuGuanLiYuanB.setForeground(Color.BLACK);
 		changKuGuanLiYuanB.setBounds(310, 270, 180, 40);
 		changKuGuanLiYuanB.setSelectedIndex(-1);
 		this.add(changKuGuanLiYuanB);
 		
-		kongXianC = new JComboBox(accountInfoController.getAccountList());
-		kongXianC.setFont(sFont);
-		kongXianC.setForeground(Color.BLACK);
-		kongXianC.setBounds(310, 320, 180, 40);
-		kongXianC.setSelectedIndex(-1);
-		kongXianC.setVisible(false);
-		this.add(kongXianC);
-		
-		
+		if (accountInfoController.getAccountList() != null) {
+			kongXianC = new JComboBox(accountInfoController.getAccountList());
+			kongXianC.setFont(sFont);
+			kongXianC.setForeground(Color.BLACK);
+			kongXianC.setBounds(310, 320, 180, 40);
+			kongXianC.setSelectedIndex(-1);
+			kongXianC.setVisible(false);
+			this.add(kongXianC);
+		}
 		
 		//到时候再加图片
 		returnButton = new JButton(returnIcon);
@@ -135,6 +148,8 @@ private JLabel city,bianHao,bianHaoI,yeWuYuan,changKuGuanLiYuan;
 	}
 	
 	private void registListener(final b2topmanagerui b2ui, final topmanagerJpanel tjpl,final b2MiddleChange b2MiddleChange, final String ID) {
+		final MiddleController middleController = new MiddleController();
+		final AccountInfoController accountInfoController = new AccountInfoController();
 		
 		returnButton.addActionListener(new ActionListener() {
 
@@ -164,7 +179,7 @@ private JLabel city,bianHao,bianHaoI,yeWuYuan,changKuGuanLiYuan;
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				// TODO Auto-generated method stub
-				MiddleController middleController = new MiddleController();
+
 				int state = e.getStateChange();
 				if (state == ItemEvent.SELECTED) {
 					if (!yeWuYuanB.getSelectedItem().equals("增加业务员")) {
@@ -178,10 +193,11 @@ private JLabel city,bianHao,bianHaoI,yeWuYuan,changKuGuanLiYuan;
 							tjpl.remove(b2MiddleChange);
 							new b2MiddleChange(b2ui, tjpl, ID);
 							tjpl.repaint();
-
 						}
 					} else {
-						kongXianY.setVisible(true);
+						if (accountInfoController.getAccountList() != null) {
+							kongXianY.setVisible(true);
+						}
 					}
 
 				}
@@ -189,24 +205,27 @@ private JLabel city,bianHao,bianHaoI,yeWuYuan,changKuGuanLiYuan;
 			}
 		});
 
-		kongXianY.addItemListener(new ItemListener() {
+		if (accountInfoController.getAccountList() != null) {
+			kongXianY.addItemListener(new ItemListener() {
 
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				// TODO Auto-generated method stub
-				MiddleController middleController = new MiddleController();
-				int state = e.getStateChange();
-				if (state == ItemEvent.SELECTED) {
-					String temp = (String) kongXianY.getSelectedItem();
-					String[] arr = temp.split("-");
-					middleController.addBussinessman(ID, Long.parseLong(arr[0]));
-					tjpl.remove(b2MiddleChange);
-					new b2MiddleChange(b2ui, tjpl, ID);
-					tjpl.repaint();
+				@Override
+				public void itemStateChanged(ItemEvent e) {
+					// TODO Auto-generated method stub
+					
+					int state = e.getStateChange();
+					if (state == ItemEvent.SELECTED) {
+						String temp = (String) kongXianY.getSelectedItem();
+						String[] arr = temp.split("-");
+						middleController.addBussinessman(ID, Long.parseLong(arr[0]));
+						tjpl.remove(b2MiddleChange);
+						new b2MiddleChange(b2ui, tjpl, ID);
+						tjpl.repaint();
 
+					}
 				}
-			}
-		});
+			});
+		}
+		
 
 		changKuGuanLiYuanB.addItemListener(new ItemListener() {
 
@@ -230,7 +249,10 @@ private JLabel city,bianHao,bianHaoI,yeWuYuan,changKuGuanLiYuan;
 
 						}
 					} else {
-						kongXianC.setVisible(true);
+						if (accountInfoController.getAccountList() != null) {
+							kongXianC.setVisible(true);
+						}
+						
 					}
 
 				}
@@ -238,25 +260,28 @@ private JLabel city,bianHao,bianHaoI,yeWuYuan,changKuGuanLiYuan;
 			}
 		});
 
-		kongXianC.addItemListener(new ItemListener() {
+		if (accountInfoController.getAccountList() != null) {
+			kongXianC.addItemListener(new ItemListener() {
 
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				// TODO Auto-generated method stub
-				MiddleController middleController = new MiddleController();
-				int state = e.getStateChange();
-				if (state == ItemEvent.SELECTED) {
-					String temp = (String) kongXianC.getSelectedItem();
-					String[] arr = temp.split("-");
-					middleController.addStorger(ID, Long.parseLong(arr[0]));
-					tjpl.remove(b2MiddleChange);
-					new b2MiddleChange(b2ui, tjpl, ID);
-					tjpl.repaint();
+				@Override
+				public void itemStateChanged(ItemEvent e) {
+					// TODO Auto-generated method stub
+					MiddleController middleController = new MiddleController();
+					int state = e.getStateChange();
+					if (state == ItemEvent.SELECTED) {
+						String temp = (String) kongXianC.getSelectedItem();
+						String[] arr = temp.split("-");
+						middleController.addStorger(ID, Long.parseLong(arr[0]));
+						tjpl.remove(b2MiddleChange);
+						new b2MiddleChange(b2ui, tjpl, ID);
+						tjpl.repaint();
+
+					}
 
 				}
-
-			}
-		});
+			});
+		}
+		
 		
 	}
 	

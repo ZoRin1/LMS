@@ -23,7 +23,7 @@ import businesslogic.documentsbl.documentController;
 
 public class b2Jpanel1 extends JPanel{
 	private JLabel dingdantiaoxingmahaoJLabel;
-	private JTextField dingdantiaoxingmahaoField;
+	 JTextField dingdantiaoxingmahaoField;
 	private JButton serchButton;
 	private JLabel dingdantiaoxingmaJLabel;
 	private JLabel dingdantiaoxingmanumJLabel;
@@ -123,6 +123,10 @@ public class b2Jpanel1 extends JPanel{
 				if (isCodeTrue()) {
 					dingdantiaoxingmanumJLabel.setText(dingdantiaoxingmahaoField.getText());
 				}
+				else {
+					dingdantiaoxingmanumJLabel.setText("");
+					new tiaoxingmafailDialog(courierui, "´íÎó", true);
+				}
 			}
 		});
 	}
@@ -136,7 +140,7 @@ class b2Jpanel2 extends JPanel{
 	private ImageIcon frameIcon =new ImageIcon("picture/²Ù×÷Ãæ°å.png");
 	private String code;
 	private JLabel dingdantiaoxingmahaoJLabel;
-	private JLabel dingdantiaoxingmahaonumJLabel;
+	 JLabel dingdantiaoxingmahaonumJLabel;
 	private JLabel shoujiandanbianhaoJLabel;
 	private JLabel shoujiandanbianhaonumJLabel;
 	private JLabel shoujianrenJLabel;
@@ -196,7 +200,7 @@ class b2Jpanel2 extends JPanel{
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String riqi = dateFormat.format( now );
 		riqiJLabel.setText(riqi);
-		riqiJLabel.setBounds(280, 400, 150, 30);
+		riqiJLabel.setBounds(280, 400, 250, 30);
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662, 575,48,48);
 		returnButton.setContentAreaFilled(false);
@@ -229,6 +233,8 @@ class b2Jpanel2 extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				b2Jpanel1.dingdantiaoxingmahaoField.setText("");
+				b2Jpanel1.repaint();
 				courierJpanel.remove(b2Jpanel2);
 				courierJpanel.add(b2Jpanel1);
 				courierJpanel.repaint();

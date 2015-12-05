@@ -20,7 +20,6 @@ public class b2topmanagerui extends JFrame{
 	private topmanagerJpanel topmanagerJpanel;
 	topmanagerb2OperationJpanel operationJpanel;
 	JButton b1,b2,b3;
-	JButton b4;
 	private JButton tuichuButton;
 	private JButton zuixiaohuaButton;
 	public b2topmanagerui(String s,topmanagerui tmui) {
@@ -84,6 +83,8 @@ public class b2topmanagerui extends JFrame{
 				b2topmanagerui.b3.setEnabled(false);
 				new b2SearchOrg(b2topmanagerui, topmanagerJpanel, "营业厅");
 				topmanagerJpanel.repaint();
+				
+				
 			}
 		});
 		
@@ -92,6 +93,7 @@ public class b2topmanagerui extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+
 				topmanagerJpanel.remove(operationJpanel);
 				b2topmanagerui.b1.setEnabled(false);
 				b2topmanagerui.b2.setEnabled(false);
@@ -109,11 +111,12 @@ public class b2topmanagerui extends JFrame{
 				b2topmanagerui.b1.setEnabled(false);
 				b2topmanagerui.b2.setEnabled(false);
 				b2topmanagerui.b3.setEnabled(false);
-				b2topmanagerui.b4.setEnabled(false);
 				new b2FianaceInfo(b2topmanagerui, topmanagerJpanel);
 				topmanagerJpanel.repaint();
 			}
 		});
+		
+		
 	}
 	private void init(topmanagerui topmanagerui){
 		topmanagerJpanel=new topmanagerJpanel();
@@ -121,7 +124,7 @@ public class b2topmanagerui extends JFrame{
 		ImageIcon b1Icon=new ImageIcon("picture/营业厅.png");
 		ImageIcon b2Icon=new ImageIcon("picture/中转中心.png");
 		ImageIcon b3Icon=new ImageIcon("picture/财务部.png");
-		ImageIcon b4Icon=new ImageIcon("picture/新建.png");
+		
 		ImageIcon tuichuIcon=new ImageIcon("picture/退出.png");
 		ImageIcon zuixiaohuaIcon=new ImageIcon("picture/最小化.png");
 		zuixiaohuaButton=new JButton(zuixiaohuaIcon);
@@ -135,20 +138,19 @@ public class b2topmanagerui extends JFrame{
 		b1=new JButton(b1Icon);
 		b2=new JButton(b2Icon);
 		b3=new JButton(b3Icon);
-		b4=new JButton(b4Icon);
+		
 		b1.setContentAreaFilled(false);
 		b2.setContentAreaFilled(false);
 		b3.setContentAreaFilled(false);
-		b4.setContentAreaFilled(false);
+		
 		b1.setBounds(30, 130,200, 50);
 		b2.setBounds(30,230,200, 50);
 		b3.setBounds(30,330,200, 50);
-		b4.setBounds(30,430,200, 50);
-		b4.setEnabled(false);
+		
 		topmanagerJpanel.add(b1);
 		topmanagerJpanel.add(b2);
 		topmanagerJpanel.add(b3);
-		topmanagerJpanel.add(b4);
+
 		topmanagerJpanel.add(tuichuButton);
 		topmanagerJpanel.add(zuixiaohuaButton);
 		topmanagerJpanel.setLayout(null);
@@ -184,7 +186,7 @@ class topmanagerb2OperationJpanel extends JPanel{
 		JLabel welcome1 = new JLabel("请选择机构种类");
 		welcome1.setFont(font);
 		welcome1.setForeground(Color.WHITE);
-		welcome1.setBounds(180, 250, 4000, 100);
+		welcome1.setBounds(180, 200, 400, 100);
 		this.add(welcome1);
 		
 		ImageIcon returnIcon=new ImageIcon("picture/返回.png");

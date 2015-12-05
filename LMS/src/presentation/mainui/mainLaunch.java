@@ -30,6 +30,7 @@ import dataservice.documentsdataservice.deleteDataSer;
 import dataservice.documentsdataservice.documentsFactory;
 import dataservice.documentsdataservice.getBufferedCodeDataSer;
 import dataservice.documentsdataservice.getBufferedInfoDataSer;
+import dataservice.documentsdataservice.getCodeDataSer;
 import dataservice.documentsdataservice.getNotPassDocCode;
 import dataservice.documentsdataservice.getWuliuInfoDataSer;
 import dataservice.financedataservice.CoverDataSer;
@@ -41,7 +42,8 @@ import dataservice.organizationdataservice.organizationFactory;
 
 public class mainLaunch {
 	public static void main(String[] args) throws MalformedURLException, RemoteException, NotBoundException{
-
+		documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://127.0.0.1:6600/docFactory");
+		getCodeDataSer getCodeDataSer=documentsFactory.createGetCodeDataSer();
 //		documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://127.0.0.1:6600/docFactory");
 //			documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://127.0.0.1:6600/docFactory");
 //			getWuliuInfoDataSer getWuliuInfoDataSer=documentsFactory.createGetWuliuInfoDataSer();
