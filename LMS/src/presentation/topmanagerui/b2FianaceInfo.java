@@ -51,11 +51,15 @@ public class b2FianaceInfo extends JPanel {
 		caiWuRenYuan.setForeground(Color.WHITE);
 		caiWuRenYuan.setBounds(240, 200, 180, 40);
 		this.add(caiWuRenYuan);		
-		caiWuRenYuanB = new JComboBox(financeController.getFinancersList());
-		caiWuRenYuanB.setFont(sFont);
-		caiWuRenYuanB.setForeground(Color.BLACK);
-		caiWuRenYuanB.setBounds(240, 250, 180, 40);
-		this.add(caiWuRenYuanB);
+		
+		if (financeController.getFinancersList() != null) {
+			caiWuRenYuanB = new JComboBox(financeController.getFinancersList());
+			caiWuRenYuanB.setFont(sFont);
+			caiWuRenYuanB.setForeground(Color.BLACK);
+			caiWuRenYuanB.setBounds(240, 250, 180, 40);
+			this.add(caiWuRenYuanB);
+		}
+		
 		
 		change = new JButton("ÐÞ¸Ä");
 		change.setForeground(Color.BLACK);
@@ -88,7 +92,6 @@ public class b2FianaceInfo extends JPanel {
 				b2ui.b1.setEnabled(true);
 				b2ui.b2.setEnabled(true);
 				b2ui.b3.setEnabled(true);
-				b2ui.b4.setEnabled(false);
 				tjpl.repaint();
 			}
 		});

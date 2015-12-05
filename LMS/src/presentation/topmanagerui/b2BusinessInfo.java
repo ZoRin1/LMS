@@ -85,17 +85,22 @@ public class b2BusinessInfo extends JPanel {
 		yeWuYuan.setBounds(330, 260, 180, 40);
 		this.add(yeWuYuan);
 		
-		kuaiDiYuanb = new JComboBox(businessController.getCourierList(ID));
-		kuaiDiYuanb.setFont(sFont);
-		kuaiDiYuanb.setForeground(Color.BLACK);
-		kuaiDiYuanb.setBounds(120, 310, 180, 40);
-		this.add(kuaiDiYuanb);
+		if (businessController.getCourierList(ID) != null) {
+			kuaiDiYuanb = new JComboBox(businessController.getCourierList(ID));
+			kuaiDiYuanb.setFont(sFont);
+			kuaiDiYuanb.setForeground(Color.BLACK);
+			kuaiDiYuanb.setBounds(120, 310, 180, 40);
+			this.add(kuaiDiYuanb);
+		}
 		
-		yeWuYuanb = new JComboBox(businessController.getBussinessmanList(ID));
-		yeWuYuanb.setFont(sFont);
-		yeWuYuanb.setForeground(Color.BLACK);
-		yeWuYuanb.setBounds(330, 310, 180, 40);
-		this.add(yeWuYuanb);
+		if (businessController.getBussinessmanList(ID) != null) {
+			yeWuYuanb = new JComboBox(businessController.getBussinessmanList(ID));
+			yeWuYuanb.setFont(sFont);
+			yeWuYuanb.setForeground(Color.BLACK);
+			yeWuYuanb.setBounds(330, 310, 180, 40);
+			this.add(yeWuYuanb);
+		}
+		
 		
 		
 		
@@ -138,7 +143,6 @@ public class b2BusinessInfo extends JPanel {
 				b2ui.b1.setEnabled(true);
 				b2ui.b2.setEnabled(true);
 				b2ui.b3.setEnabled(true);
-				b2ui.b4.setEnabled(false);
 				b2ui.repaint();
 
 			}
@@ -161,7 +165,6 @@ public class b2BusinessInfo extends JPanel {
 					b2ui.b1.setEnabled(true);
 					b2ui.b2.setEnabled(true);
 					b2ui.b3.setEnabled(true);
-					b2ui.b4.setEnabled(false);
 					tjpl.repaint();
 					}
 				}

@@ -79,23 +79,30 @@ public class b2MiddleInfo extends JPanel {
 		xiaXiaYingYeTing.setBounds(200, 320, 180, 40);
 		this.add(xiaXiaYingYeTing);
 		
-		yeWuYuanB = new JComboBox(middleController.getBussinessmanList(ID));
-		yeWuYuanB.setFont(sFont);
-		yeWuYuanB.setForeground(Color.BLACK);
-		yeWuYuanB.setBounds(100, 270, 180, 40);
-		this.add(yeWuYuanB);
+		if (middleController.getBussinessmanList(ID) != null) {
+			yeWuYuanB = new JComboBox(middleController.getBussinessmanList(ID));
+			yeWuYuanB.setFont(sFont);
+			yeWuYuanB.setForeground(Color.BLACK);
+			yeWuYuanB.setBounds(100, 270, 180, 40);
+			this.add(yeWuYuanB);
+		}
 		
-		changKuGuanLiYuanB = new JComboBox(middleController.getStorgerList(ID));
-		changKuGuanLiYuanB.setFont(sFont);
-		changKuGuanLiYuanB.setForeground(Color.BLACK);
-		changKuGuanLiYuanB.setBounds(310, 270, 180, 40);
-		this.add(changKuGuanLiYuanB);
+		if (middleController.getStorgerList(ID) != null) {
+			changKuGuanLiYuanB = new JComboBox(middleController.getStorgerList(ID));
+			changKuGuanLiYuanB.setFont(sFont);
+			changKuGuanLiYuanB.setForeground(Color.BLACK);
+			changKuGuanLiYuanB.setBounds(310, 270, 180, 40);
+			this.add(changKuGuanLiYuanB);
+		}
 		
-		xiaXiaYingYeTingB = new JComboBox(middleController.getBussinessHallList(ID));
-		xiaXiaYingYeTingB.setFont(sFont);
-		xiaXiaYingYeTingB.setForeground(Color.BLACK);
-		xiaXiaYingYeTingB.setBounds(200, 370, 220, 40);
-		this.add(xiaXiaYingYeTingB);
+		if (middleController.getBussinessHallList(ID) != null) {
+			xiaXiaYingYeTingB = new JComboBox(middleController.getBussinessHallList(ID));
+			xiaXiaYingYeTingB.setFont(sFont);
+			xiaXiaYingYeTingB.setForeground(Color.BLACK);
+			xiaXiaYingYeTingB.setBounds(200, 370, 220, 40);
+			this.add(xiaXiaYingYeTingB);
+		}
+		
 		
 		// 到时候再加图片
 		change = new JButton("修改");
@@ -135,7 +142,6 @@ public class b2MiddleInfo extends JPanel {
 				b2ui.b1.setEnabled(true);
 				b2ui.b2.setEnabled(true);
 				b2ui.b3.setEnabled(true);
-				b2ui.b4.setEnabled(false);
 				b2ui.repaint();
 
 			}
@@ -158,7 +164,6 @@ public class b2MiddleInfo extends JPanel {
 					b2ui.b1.setEnabled(true);
 					b2ui.b2.setEnabled(true);
 					b2ui.b3.setEnabled(true);
-					b2ui.b4.setEnabled(false);
 					tjpl.repaint();
 					}
 				}

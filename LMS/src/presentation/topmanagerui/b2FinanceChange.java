@@ -57,23 +57,30 @@ public class b2FinanceChange extends JPanel {
 		caiWuRenYuan.setBounds(240, 200, 180, 40);
 		this.add(caiWuRenYuan);	
 		
-		String k = "增加财务人员";
-		caiWuRenYuanB = new JComboBox(financeController.getFinancersList());
-		caiWuRenYuanB.addItem(k);
+		if (financeController.getFinancersList() != null) {
+			String k = "增加财务人员";
+			caiWuRenYuanB = new JComboBox(financeController.getFinancersList());
+			caiWuRenYuanB.addItem(k);
+		}else {
+			String[] a = {"增加财务人员"};
+			caiWuRenYuanB = new JComboBox(a);
+		}		
 		caiWuRenYuanB.setFont(sFont);
 		caiWuRenYuanB.setForeground(Color.BLACK);
 		caiWuRenYuanB.setBounds(240, 250, 180, 40);
 		caiWuRenYuanB.setSelectedIndex(-1);
 		this.add(caiWuRenYuanB);
 		
-		kongXian = new JComboBox(accountInfoController.getAccountList());
-		kongXian.setFont(sFont);
-		kongXian.setForeground(Color.BLACK);
-		kongXian.setBounds(240, 300, 180, 40);
-		kongXian.setSelectedIndex(-1);
-		kongXian.setVisible(false);
-		this.add(kongXian);
-		
+		if (accountInfoController.getAccountList() != null) {
+			kongXian = new JComboBox(accountInfoController.getAccountList());
+			kongXian.setFont(sFont);
+			kongXian.setForeground(Color.BLACK);
+			kongXian.setBounds(240, 300, 180, 40);
+			kongXian.setSelectedIndex(-1);
+			kongXian.setVisible(false);
+			this.add(kongXian);
+		}
+				
 		yesButton = new JButton("保存");
 		yesButton.setForeground(Color.BLACK);
 		yesButton.setContentAreaFilled(true);
@@ -93,6 +100,8 @@ public class b2FinanceChange extends JPanel {
 	}
 	
 	private void registListener(final b2topmanagerui b2ui,final topmanagerJpanel tjpl,final b2FinanceChange b2FinanceChange) {
+		
+		final AccountInfoController accountInfoController = new AccountInfoController();
 		
 		returnButton.addActionListener(new ActionListener() {
 
@@ -139,33 +148,38 @@ public class b2FinanceChange extends JPanel {
 
 						}
 					} else {
-						kongXian.setVisible(true);
+						
+						if (accountInfoController.getAccountList() != null) {
+							kongXian.setVisible(true);
+						}						
 					}
 
 				}
 
 			}
 		});
-		
-		kongXian.addItemListener(new ItemListener() {
+		if (accountInfoController.getAccountList() != null) {
+			kongXian.addItemListener(new ItemListener() {
 
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				// TODO Auto-generated method stub
-				FinanceController financeController = new FinanceController();
-				int state = e.getStateChange();
-				if (state == ItemEvent.SELECTED) {
-					String temp = (String) kongXian.getSelectedItem();
-					String[] arr = temp.split("-");
-					financeController.addFinancer(Long.parseLong(arr[0]));
-					tjpl.remove(b2FinanceChange);
-					new b2FinanceChange(b2ui, tjpl);
-					tjpl.repaint();
+				@Override
+				public void itemStateChanged(ItemEvent e) {
+					// TODO Auto-generated method stub
+					FinanceController financeController = new FinanceController();
+					int state = e.getStateChange();
+					if (state == ItemEvent.SELECTED) {
+						String temp = (String) kongXian.getSelectedItem();
+						String[] arr = temp.split("-");
+						financeController.addFinancer(Long.parseLong(arr[0]));
+						tjpl.remove(b2FinanceChange);
+						new b2FinanceChange(b2ui, tjpl);
+						tjpl.repaint();
+
+					}
 
 				}
-
-			}
-		});
+			});
+		}
+		
 		
 		
 		

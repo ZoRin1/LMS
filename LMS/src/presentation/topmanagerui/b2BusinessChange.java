@@ -89,40 +89,56 @@ public class b2BusinessChange extends JPanel {
 		yeWuYuan.setBounds(330, 260, 180, 40);
 		this.add(yeWuYuan);
 		
-		String addCurier = "增加快递员";
-		kuaiDiYuanb = new JComboBox(businessController.getCourierList(ID));
+		if (businessController.getCourierList(ID) != null) {
+			String addCurier = "增加快递员";
+			kuaiDiYuanb = new JComboBox(businessController.getCourierList(ID));
+			kuaiDiYuanb.addItem(addCurier);
+		}else {
+			String[] a = {"增加快递员"};
+			kuaiDiYuanb = new JComboBox(a);
+		}
 		kuaiDiYuanb.setFont(sFont);
 		kuaiDiYuanb.setForeground(Color.BLACK);
-		kuaiDiYuanb.setBounds(120, 310, 180, 40);
-		kuaiDiYuanb.addItem(addCurier);
+		kuaiDiYuanb.setBounds(120, 310, 180, 40);		
 		kuaiDiYuanb.setSelectedIndex(-1);
 		this.add(kuaiDiYuanb);
 		
-		String addAssisant = "增加业务员";
-		yeWuYuanb = new JComboBox(businessController.getBussinessmanList(ID));
+		if (businessController.getBussinessmanList(ID) != null) {
+			String addAssisant = "增加业务员";
+			yeWuYuanb = new JComboBox(businessController.getBussinessmanList(ID));
+			yeWuYuanb.addItem(addAssisant);
+		}else {
+			String [] a = {"增加业务员"};
+			yeWuYuanb = new JComboBox(a);
+		}		
 		yeWuYuanb.setFont(sFont);
 		yeWuYuanb.setForeground(Color.BLACK);
-		yeWuYuanb.setBounds(330, 310, 180, 40);
-		yeWuYuanb.addItem(addAssisant);
+		yeWuYuanb.setBounds(330, 310, 180, 40);		
 		yeWuYuanb.setSelectedIndex(-1);
 		this.add(yeWuYuanb);
 		
 		AccountInfoController accountInfoController = new AccountInfoController();
-		kongXianK = new JComboBox(accountInfoController.getAccountList());
-		kongXianK.setFont(sFont);
-		kongXianK.setForeground(Color.BLACK);
-		kongXianK.setBounds(120, 360, 180, 40);
-		kongXianK.setVisible(false);
-		kongXianK.setSelectedIndex(-1);
-		this.add(kongXianK);
 		
-		kongXianY = new JComboBox(accountInfoController.getAccountList());
-		kongXianY.setFont(sFont);
-		kongXianY.setForeground(Color.BLACK);
-		kongXianY.setBounds(330, 360, 180, 40);
-		kongXianY.setVisible(false);
-		kongXianY.setSelectedIndex(-1);
-		this.add(kongXianY);
+		if (accountInfoController.getAccountList() != null) {
+			kongXianK = new JComboBox(accountInfoController.getAccountList());
+			kongXianK.setFont(sFont);
+			kongXianK.setForeground(Color.BLACK);
+			kongXianK.setBounds(120, 360, 180, 40);
+			kongXianK.setVisible(false);
+			kongXianK.setSelectedIndex(-1);
+			this.add(kongXianK);
+		}
+		
+		if (accountInfoController.getAccountList() != null) {
+			kongXianY = new JComboBox(accountInfoController.getAccountList());
+			kongXianY.setFont(sFont);
+			kongXianY.setForeground(Color.BLACK);
+			kongXianY.setBounds(330, 360, 180, 40);
+			kongXianY.setVisible(false);
+			kongXianY.setSelectedIndex(-1);
+			this.add(kongXianY);
+		}
+		
 		
 		
 		//到时候再加图片
@@ -142,6 +158,9 @@ public class b2BusinessChange extends JPanel {
 	}
 	
 	private void registListener(final b2topmanagerui b2ui,final topmanagerJpanel tjpl,final b2BusinessChange b2BusinessChange,final String ID) {
+		
+		final BusinessController businessController = new BusinessController();
+		final AccountInfoController accountInfoController = new AccountInfoController();
 		returnButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -171,7 +190,6 @@ public class b2BusinessChange extends JPanel {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				// TODO Auto-generated method stub
-				BusinessController businessController = new BusinessController();
 				int state = e.getStateChange();
 				if(state==ItemEvent.SELECTED){
 					if (!kuaiDiYuanb.getSelectedItem().equals("增加快递员")) {
@@ -188,7 +206,10 @@ public class b2BusinessChange extends JPanel {
 						
 						}
 					}else {
-						kongXianK.setVisible(true);
+						if (accountInfoController.getAccountList() != null) {
+							kongXianK.setVisible(true);
+						}
+						
 					}
 					
 				}
@@ -196,24 +217,27 @@ public class b2BusinessChange extends JPanel {
 			}
 		});
 		
-		kongXianK.addItemListener(new ItemListener() {
-			
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				// TODO Auto-generated method stub
-				BusinessController businessController = new BusinessController();
-				int state = e.getStateChange();
-				if(state==ItemEvent.SELECTED){
-					String temp = (String) kongXianK.getSelectedItem();
-					String[] arr = temp.split("-");
-					businessController.addCourier(ID, Long.parseLong(arr[0]));
-					tjpl.remove(b2BusinessChange);
-					new b2BusinessChange(b2ui, tjpl, ID);
-					tjpl.repaint();
-					
+		if (accountInfoController.getAccountList() != null) {
+			kongXianK.addItemListener(new ItemListener() {
+				
+				@Override
+				public void itemStateChanged(ItemEvent e) {
+					// TODO Auto-generated method stub
+					BusinessController businessController = new BusinessController();
+					int state = e.getStateChange();
+					if(state==ItemEvent.SELECTED){
+						String temp = (String) kongXianK.getSelectedItem();
+						String[] arr = temp.split("-");
+						businessController.addCourier(ID, Long.parseLong(arr[0]));
+						tjpl.remove(b2BusinessChange);
+						new b2BusinessChange(b2ui, tjpl, ID);
+						tjpl.repaint();
+						
+					}
 				}
-			}
-		});
+			});
+		}
+		
 		
 		yeWuYuanb.addItemListener(new ItemListener() {
 			
@@ -238,7 +262,10 @@ public class b2BusinessChange extends JPanel {
 						
 						}
 					}else {
-						kongXianY.setVisible(true);
+						if (accountInfoController.getAccountList() != null) {
+							kongXianY.setVisible(true);
+						}
+						
 					}
 					
 				}
@@ -246,25 +273,28 @@ public class b2BusinessChange extends JPanel {
 			}
 		});
 		
-		kongXianY.addItemListener(new ItemListener() {
-			
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				// TODO Auto-generated method stub
-				BusinessController businessController = new BusinessController();
-				int state = e.getStateChange();
-				if(state==ItemEvent.SELECTED){
-					String temp = (String) kongXianY.getSelectedItem();
-					String[] arr = temp.split("-");
-					businessController.addBussinessman(ID, Long.parseLong(arr[0]));
-					tjpl.remove(b2BusinessChange);
-					new b2BusinessChange(b2ui, tjpl, ID);
-					tjpl.repaint();
+		if (accountInfoController.getAccountList() != null) {
+			kongXianY.addItemListener(new ItemListener() {
+				
+				@Override
+				public void itemStateChanged(ItemEvent e) {
+					// TODO Auto-generated method stub
+					BusinessController businessController = new BusinessController();
+					int state = e.getStateChange();
+					if(state==ItemEvent.SELECTED){
+						String temp = (String) kongXianY.getSelectedItem();
+						String[] arr = temp.split("-");
+						businessController.addBussinessman(ID, Long.parseLong(arr[0]));
+						tjpl.remove(b2BusinessChange);
+						new b2BusinessChange(b2ui, tjpl, ID);
+						tjpl.repaint();
+						
+					}
 					
 				}
-				
-			}
-		});
+			});
+		}
+		
 		
 		
 	}
