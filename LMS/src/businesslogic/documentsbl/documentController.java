@@ -1,7 +1,6 @@
 package businesslogic.documentsbl;
 
 import java.util.ArrayList;
-
 import po.documentsPO.DocumentPO;
 import po.documentsPO.InBillsPO;
 import po.documentsPO.PaymentPO;
@@ -25,6 +24,7 @@ public class documentController {
 		DocumentsList list=new DocumentsList(departure,arrival,trans,weight);
 		return list.getCost();
 	}
+	
 	//装车单计算运费
 	public double getShortCost(){
 		DocumentsLineItem item=new DocumentsLineItem(1);

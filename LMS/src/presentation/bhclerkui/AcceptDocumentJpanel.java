@@ -92,7 +92,7 @@ public class AcceptDocumentJpanel extends JPanel{
 		this.add(date);
 		
 		Date now = new Date();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		date2 = dateFormat.format( now );
 		date1=new JLabel(date2);
 		date1.setForeground(Color.white);
@@ -240,7 +240,7 @@ class DispatchJpanel extends JPanel{
 		this.add(code);
 		
 		code1=new JLabel();
-		code2=new documentController().getDocCode("接收单");
+		code2=new documentController().getDocCode("派件单");
 		code1.setText(code2);
 		code1.setForeground(Color.white);
 		code1.setFont(font);
@@ -260,7 +260,7 @@ class DispatchJpanel extends JPanel{
 		this.add(date);
 		
 		Date now = new Date();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		date2 = dateFormat.format( now );
 		date1=new JLabel(date2);
 		date1.setForeground(Color.white);

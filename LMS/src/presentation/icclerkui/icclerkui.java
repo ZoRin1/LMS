@@ -27,7 +27,7 @@ public class icclerkui extends JFrame{
 	private JButton zuixiaohuaButton;
 		
 	//设置两个暂时的账号和状态
-	private String account="90909090909";
+	private String account="111";
 	private String state="3-南京-南京中转中心-001";
 	
 	public icclerkui(String s,String [] args) {
@@ -239,7 +239,7 @@ public class icclerkui extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new documentreplyui("中转中心业务员——单据反馈",icclerkui);
+				new documentreplyui("中转中心业务员——单据反馈",icclerkui,account);
 				icclerkui.setVisible(false);
 			}
 		});

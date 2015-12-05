@@ -1,5 +1,9 @@
 package presentation.icclerkui;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -10,16 +14,27 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import businesslogic.documentsbl.documentController;
+import po.documentsPO.DocumentPO;
+import po.documentsPO.LoadingPO;
+import po.documentsPO.ReceiptPO;
+import po.documentsPO.YDispatchPO;
+import po.documentsPO.YReceivePO;
+import po.documentsPO.ZLoadingPO;
+import po.documentsPO.ZReceivePO;
+import presentation.icclerkui.icclerkdocumentreplyOperationJpanel;
 
 public class documentReplyJTable {
 	private JTable Jtabel;
 	private icclerkdocumentreplyOperationJpanel panel;
 	private JScrollPane scrollPane;
-	
+	private String account;
+	private DocumentPO po;
 	public JScrollPane getScrollPane() {
 		return scrollPane;
 	}
-	public documentReplyJTable(icclerkdocumentreplyOperationJpanel jpanel){
+	public documentReplyJTable(icclerkdocumentreplyOperationJpanel jpanel,String account){
+		this.account=account;
 		this.panel = jpanel;
 		initTable();
 		init();
@@ -41,13 +56,14 @@ public class documentReplyJTable {
 		//假设的数据
 		String[] inDepotName = new String[]{" "," "};
 		
-		Object[][] inDepotValue = new Object[][]{{"楚留","2321"},
-				{"楚留奇","232134 KB"},
-			{"楚留奇","2324 KB"},
-					{"楚香传奇","2324 KB"},
-				{"楚奇","232134 KB"}
-					};
-		//假设的数据： 完善后要从数据库拿取数据来填写表格
+		ArrayList<String> list=new documentController().showOwnList(account);
+		int length=list.size();
+		String [][] inDepotValue=new String[length][2];
+		for(int i=0;i<length;i++){
+			String str[]=list.get(i).split(",");
+			inDepotValue[i][0]=str[0];
+			inDepotValue[i][1]=str[1];
+		}
 		
 		DefaultTableModel tableModel = new DefaultTableModel(inDepotValue,inDepotName);
 		
@@ -60,6 +76,28 @@ public class documentReplyJTable {
 		Jtabel.getTableHeader().setReorderingAllowed(false); //设置列不可重排
 		Jtabel.getTableHeader().setResizingAllowed(false);//设置列不可拖动
 		
+		Jtabel.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+				if(e.getClickCount()==2){
+					int row = Jtabel.getSelectedRow();
+					String value = Jtabel.getValueAt(row, 0).toString().trim();
+					String value2= Jtabel.getValueAt(row, 1).toString().trim();
+					po=new documentController().getBufferedInfo(value, value2);
+					System.out.println("m");
+					if(value2.equals("营业厅装车单")){
+						LoadingPO po1=(LoadingPO)po;
+					}
+					else if(value2.equals("中转中心接收单")){
+						ZReceivePO po1=(ZReceivePO)po;
+					}
+					else{
+						ZLoadingPO po1=(ZLoadingPO)po;
+					}
+					//监听的具体实现
+				}
+			}
+		});
 		
 		Jtabel.setRowHeight(32);
 		Jtabel.setShowGrid(false);

@@ -31,7 +31,7 @@ public class bhclerkui extends JFrame{
 	private bhclerkJpanel bhclerkJpanel;
 	
 	//设置两个暂时的账号和状态
-		private String account="90909090909";
+		private String account="111";
 		private String state="3-南京-仙林营业厅-001-001";
 		
 	public bhclerkui(String s,String[] args) {
@@ -166,7 +166,7 @@ public class bhclerkui extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new documentreplyui("营业厅业务员——单据反馈", bhclerkui);
+				new documentreplyui("营业厅业务员——单据反馈", bhclerkui,account);
 				bhclerkui.setVisible(false);
 			}
 		});

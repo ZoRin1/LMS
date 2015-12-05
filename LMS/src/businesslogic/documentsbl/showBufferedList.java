@@ -37,11 +37,13 @@ public class showBufferedList implements showBufferedListBlSer{
 	@Override
 	public ArrayList<String> showOwnList(String account) {
 		// TODO Auto-generated method stub
+		System.out.println("aaaa");
 		ArrayList<String> list=new ArrayList<>();
 		try {
 		documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://114.212.42.143:6600/docFactory");
 		getNotPassDocCode getNotPassDocCode=documentsFactory.createGetNotPassDocCode();
 		list=getNotPassDocCode.getNotPassDocCode(account);
+		return list;
 	} catch (MalformedURLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
