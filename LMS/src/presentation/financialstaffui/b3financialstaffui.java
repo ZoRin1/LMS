@@ -20,9 +20,11 @@ public class b3financialstaffui extends JFrame{
 	JButton b2;
 	private JButton tuichuButton;
 	private JButton zuixiaohuaButton;
-	public b3financialstaffui(String s,financialstaffui fsui) {
+	private String account;
+	public b3financialstaffui(String s,financialstaffui fsui,String account) {
 		// TODO Auto-generated constructor stub
 		super(s);
+		this.account=account;
 		init(fsui);
 		registListener(this,financialstaffJpanel);
 	}
@@ -77,7 +79,7 @@ public class b3financialstaffui extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new b3b1Jpanel1(b3financialstaffui, financialstaffJpanel);
+				new b3b1Jpanel1(b3financialstaffui, financialstaffJpanel,account);
 				financialstaffJpanel.remove(operationJpanel);
 				b1.setEnabled(false);
 				b2.setEnabled(false);

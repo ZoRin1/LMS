@@ -26,7 +26,7 @@ public class b2Jpanel1 extends JPanel{
 	 JTextField dingdantiaoxingmahaoField;
 	private JButton serchButton;
 	private JLabel dingdantiaoxingmaJLabel;
-	private JLabel dingdantiaoxingmanumJLabel;
+	 JLabel dingdantiaoxingmanumJLabel;
 	private ImageIcon serchIcon=new ImageIcon("picture/ËÑË÷.png");
 	private ImageIcon frameIcon =new ImageIcon("picture/²Ù×÷Ãæ°å.png");
 	private JButton returnButton;
@@ -234,6 +234,7 @@ class b2Jpanel2 extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				b2Jpanel1.dingdantiaoxingmahaoField.setText("");
+				b2Jpanel1.dingdantiaoxingmanumJLabel.setText("");
 				b2Jpanel1.repaint();
 				courierJpanel.remove(b2Jpanel2);
 				courierJpanel.add(b2Jpanel1);

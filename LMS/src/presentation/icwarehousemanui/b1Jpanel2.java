@@ -7,6 +7,8 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,24 +18,37 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import po.documentsPO.OutbillsPO;
+import businesslogic.documentsbl.documentController;
+import businesslogic.storagebl.OutDepot.OutDepotBL;
+
 
 public class b1Jpanel2 extends JPanel{
 	
 	
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
 	private JButton returnButton;
-	private JLabel j1,j2,j3,j4,j5,j6,j7,j8;
-	private JTextField t1,t2,t3,t4,t5,t6,t7;
+	private b1Jpanel1 b1Jpanel1;
+	private JLabel j1,j2,j3,j4,j5,j6,j7,j8,t1,t2,t5,t6;
+	private JTextField t3,t4,t7;
 	private JButton yesButton;
-	
-	public b1Jpanel2(b1icwarehousemanui ui,icwarehousemanJpanel icwarehousemanJpanel) {
+	private String code;
+	private String account;
+	private String state;
+	private documentController documentController;
+
+	public b1Jpanel2(b1icwarehousemanui ui,icwarehousemanJpanel icwarehousemanJpanel,b1Jpanel1 b1Jpanel1,String code,String account,String state) {
 		// TODO Auto-generated constructor stub
+		this.code=code;
+		this.account=account;
+		this.state=state;
 		init();
 		icwarehousemanJpanel.add(this);
-		registListener(ui,icwarehousemanJpanel,this);
+		registListener(ui,icwarehousemanJpanel,b1Jpanel1,this);
 	}
 	
 	private void init(){
+		documentController=new documentController();
 		ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 		ImageIcon i1 = new ImageIcon("picture/库存图片/出库单.png");
 		ImageIcon i2 = new ImageIcon("picture/库存图片/出库单编号.png");
@@ -60,25 +75,23 @@ public class b1Jpanel2 extends JPanel{
 		j3.setBounds(22, 269, 105, 27);
 		j4.setBounds(22, 360, 81, 27);
 		j5.setBounds(22, 446, 105, 27);
-		j6.setBounds(385, 162, 81, 27);
-		j7.setBounds(385, 269, 105, 27);
-		j8.setBounds(385, 360, 105, 27);
+		j6.setBounds(368, 162, 81, 27);
+		j7.setBounds(368, 269, 105, 27);
+		j8.setBounds(368, 360, 105, 27);
 		
-		t1 = new JTextField();
-		t2 = new JTextField();
+		t1 = new JLabel(documentController.getDocCode("出库单"));
+		t2 = new JLabel(code);
 		t3 = new JTextField();
 		t4 = new JTextField();
-		t5 = new JTextField();
-		t6 = new JTextField();
+		t5 = new JLabel("出库单");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		t6 = new JLabel(dateFormat.format(new Date()));
 		t7 = new JTextField();
 		
-		t1.setForeground(Color.black);
-		t2.setForeground(Color.black);
-		t3.setForeground(Color.black);
-		t4.setForeground(Color.black);
-		t5.setForeground(Color.black);
-		t6.setForeground(Color.black);
-		t7.setForeground(Color.black);
+		t1.setForeground(Color.white);
+		t2.setForeground(Color.white);
+		t5.setForeground(Color.white);
+		t6.setForeground(Color.white);
 		
 		t1.setFont(new Font("幼圆",Font.BOLD,24));
 		t2.setFont(new Font("幼圆",Font.BOLD,24));
@@ -92,9 +105,9 @@ public class b1Jpanel2 extends JPanel{
 		t2.setBounds(160, 269, 200, 27);
 		t3.setBounds(160, 360, 200, 27);
 		t4.setBounds(160, 446, 200, 27);
-		t5.setBounds(483, 162, 200, 27);
-		t6.setBounds(483, 269, 181, 27);
-		t7.setBounds(483, 360, 181, 27);
+		t5.setBounds(478, 162, 200, 27);
+		t6.setBounds(478, 269, 250, 27);
+		t7.setBounds(478, 360, 181, 27);
 		
 		yesButton=new JButton(yesIcon);
 		yesButton.setBounds(602, 575,48,48);
@@ -125,16 +138,29 @@ public class b1Jpanel2 extends JPanel{
 		this.setBounds(260, 60, 730,650);
 		this.setLayout(null);
 	}
-	
-	private void registListener(final b1icwarehousemanui ui,final icwarehousemanJpanel icwarehousemanJpanel,final b1Jpanel2 b1jpanel2){
+	private boolean isFull(){
+		if (t3.getText().equals("")) {
+			return false;
+		}
+		if (t4.getText().equals("")) {
+			return false;
+		}
+		if (t7.getText().equals("")) {
+			return false;
+		}
+		return true;
+	}
+	private void registListener(final b1icwarehousemanui ui,final icwarehousemanJpanel icwarehousemanJpanel,final b1Jpanel1 b1Jpanel1,final b1Jpanel2 b1jpanel2){
 		returnButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				b1Jpanel1.t1.setText("");
+				b1Jpanel1.dingdantiaoxingmanumJLabel.setText("");
+				b1Jpanel1.repaint();
 				icwarehousemanJpanel.remove(b1jpanel2);
-				icwarehousemanJpanel.add(ui.getOperationJpanel());
+				icwarehousemanJpanel.add(b1Jpanel1);
 				ui.getB1().setEnabled(true);
-				ui.getB2().setEnabled(true);
 				icwarehousemanJpanel.repaint();
 			}
 		});
@@ -143,24 +169,19 @@ public class b1Jpanel2 extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
-				
-				//得到JTextfield里面的内容再调用接口
-				System.out.println(t1.getText().toString());
-				System.out.println(t2.getText().toString());
-				System.out.println(t3.getText().toString());
-				System.out.println(t4.getText().toString());
-				System.out.println(t5.getText().toString());
-				System.out.println(t6.getText().toString());
-				System.out.println(t7.getText().toString());
-				//得到JTextfield里面的内容再调用接口
-				
-				
-				outfinishDialog out = new outfinishDialog(ui, "出库单创建完成", true);
-				icwarehousemanJpanel.remove(b1jpanel2);
-				icwarehousemanJpanel.add(ui.getOperationJpanel());
-				ui.getB1().setEnabled(true);
-				ui.getB2().setEnabled(true);
-				icwarehousemanJpanel.repaint();
+				if (isFull()) {
+					documentController.createBlock(new OutbillsPO(t1.getText(), "出库单", code, t6.getText(), account, t3.getText(), t4.getText(), t7.getText()));
+					String stateList[]=state.split("-");
+					documentController.updateDrive(code, stateList[1]); 
+					outfinishDialog out = new outfinishDialog(ui, "出库单创建完成", true);
+					icwarehousemanJpanel.remove(b1jpanel2);
+					icwarehousemanJpanel.add(ui.getOperationJpanel());
+					ui.getB1().setEnabled(true);
+					icwarehousemanJpanel.repaint();
+				}
+				else {
+					new failDialog(ui, "失败", true);
+				}
 			}
 		});
 	}
@@ -209,6 +230,48 @@ public class b1Jpanel2 extends JPanel{
 			jButton.addActionListener(new ActionListener() {		
 				public void actionPerformed(ActionEvent e) {
 					outfinishDialog.this.dispose();
+				}
+			});
+		}
+	}
+	class failDialog extends JDialog{
+		private dialogJpanel jPanel;
+		private JLabel jLabel;
+		private JButton jButton;
+		public failDialog(JFrame frame,String title,boolean modal) {
+			super(frame,title,modal);
+			init();
+			registerListener();
+			this.setVisible(true);
+		}
+		private void init(){
+			ImageIcon yesIcon=new ImageIcon("picture/登录.png");
+			jLabel=new JLabel("填写不完整，请继续填写",jLabel.CENTER);
+			jLabel.setForeground(Color.white);
+			jLabel.setFont(new Font("幼圆",Font.BOLD,27));
+			jPanel=new dialogJpanel();
+			jButton=new JButton(yesIcon);
+			jButton.setContentAreaFilled(false);
+			jPanel.setLayout(null);
+			jButton.setBounds(218,190, 64, 64);
+			jLabel.setBounds(0, 0, 500, 200);
+			jPanel.add(jLabel);
+			jPanel.add(jButton);
+			this.add(jPanel);
+			this.setSize(500, 300);
+			Toolkit kitToolkit =Toolkit.getDefaultToolkit();
+			Dimension screenSize=kitToolkit.getScreenSize();
+			int screenWidth=screenSize.width;
+			int screenHeight=screenSize.height;
+			int dialogWidth=this.getWidth();
+			int dialogHeight=this.getHeight();
+			this.setLocation((screenWidth-dialogWidth)/2, (screenHeight-dialogHeight)/2);
+			this.setResizable(false);
+		}
+		private void registerListener(){
+			jButton.addActionListener(new ActionListener() {		
+				public void actionPerformed(ActionEvent e) {
+					failDialog.this.dispose();
 				}
 			});
 		}
