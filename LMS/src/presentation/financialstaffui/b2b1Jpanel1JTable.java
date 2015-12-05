@@ -76,9 +76,6 @@ public class b2b1Jpanel1JTable {
 			inDepotValue[i][0] = accountInf.get(i).getName();
 			inDepotValue[i][1] = accountInf.get(i).getSums();
 		}
-//	    vData = new Vector(inDepotValue);
-//		inDepotValue[0][0] = accountInf.get(0).getName();
-//		inDepotValue[1][0] = accountInf.get(0).getName();
 		//假设的数据： 完善后要从数据库拿取数据来填写表格
 		
 		tableModel = new DefaultTableModel(inDepotValue,inDepotName);
