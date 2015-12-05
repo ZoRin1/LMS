@@ -18,8 +18,8 @@ import javax.swing.JPanel;
 
 public class b4topmanagerui extends JFrame{
 		private topmanagerJpanel topmanagerJpanel;
-		private topmanagerb4OperationJpanel operationJpanel;
-		private JButton b1,b2;
+		topmanagerb4OperationJpanel operationJpanel;
+		JButton b1,b2;
 		private JButton tuichuButton;
 		private JButton zuixiaohuaButton;
 		public b4topmanagerui(String s,topmanagerui tmui) {
@@ -70,6 +70,19 @@ public class b4topmanagerui extends JFrame{
 				public void mouseEntered(MouseEvent e) {
 					// TODO Auto-generated method stub
 					tuichuButton.setIcon(tuichuIcon2);
+				}
+			});
+			
+			b2.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					topmanagerJpanel.remove(b4topmanagerui.operationJpanel);
+					b1.setEnabled(false);
+					b2.setEnabled(false);
+					new b4Benifit(b4topmanagerui, topmanagerJpanel);
+					topmanagerJpanel.repaint();
 				}
 			});
 		}
