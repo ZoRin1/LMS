@@ -21,7 +21,7 @@ import presentation.mainui.mainui;
 public class topmanagerui extends JFrame{
 	private String[] args;
 	private JButton outjButton;
-	private topmanagerJpanel topmanagerJpanel;
+	 topmanagerJpanel topmanagerJpanel;
 	private topmanagerOperationJpanel operationJpanel;
 	private JButton b1,b2,b3,b4,b5;
 	private JButton tuichuButton;

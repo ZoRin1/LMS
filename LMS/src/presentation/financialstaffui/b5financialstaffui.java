@@ -98,12 +98,12 @@ public class b5financialstaffui extends JFrame{
 				
 //				BookController =new BooksController();
 //				bookList = BookController.getBook();
-				BooksPO p1 = new BooksPO(null, null, null, null, null, null, "张三", "2015");
-				BooksPO p2 = new BooksPO(null, null, null, null, null, null, "李四", "2015");
-				BooksPO p3 = new BooksPO(null, null, null, null, null, null, "王五", "2015");
-				BooksPO p4 = new BooksPO(null, null, null, null, null, null, "冯六", "2015");
-				BooksPO p5 = new BooksPO(null, null, null, null, null, null, "周期", "2015");
-				BooksPO p6 = new BooksPO(null, null, null, null, null, null, "钱八", "2015");
+				BooksPO p1 = new BooksPO("132123,12123,123132","sdsad,456456,dasda","sdasd,55445,4554","sadsad,sadasdas,sdada","a,a,a","q,a,s,d,f", "张三", "2015");
+				BooksPO p2 = new BooksPO("132123,12123,123132","sdsad,456456,dasda","sdasd,55445,4554","sadsad,sadasdas,sdada","a,a,a","q,a,s,d,f",  "李四", "2015");
+				BooksPO p3 = new BooksPO("132123,12123,123132","sdsad,456456,dasda","sdasd,55445,4554","sadsad,sadasdas,sdada","a,a,a","q,a,s,d,f",  "王五", "2015");
+				BooksPO p4 = new BooksPO("132123,12123,123132","sdsad,456456,dasda","sdasd,55445,4554","sadsad,sadasdas,sdada","a,a,a","q,a,s,d,f",  "冯六", "2015");
+				BooksPO p5 = new BooksPO("132123,12123,123132","sdsad,456456,dasda","sdasd,55445,4554","sadsad,sadasdas,sdada","a,a,a","q,a,s,d,f",  "周期", "2015");
+				BooksPO p6 = new BooksPO("132123,12123,123132","sdsad,456456,dasda","sdasd,55445,4554","sadsad,sadasdas,sdada","a,a,a","q,a,s,d,f",  "钱八", "2015");
 				bookList = new ArrayList<BooksPO>();
 				bookList.add(p1);
 				bookList.add(p2);

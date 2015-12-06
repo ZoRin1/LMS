@@ -29,8 +29,8 @@ public class BooksPO  implements Serializable {
 	}
 
 	private String  bussinessHallCode; // 机构
-	private String  middleCode;
-	private String  financeCode;
+	private String  middleCode;  //中转中心编号
+	private String  financeCode; //营业厅编号
 	private String  IDCode; //人员
 	private String  VehicleCode; // 车辆
 	private String AccountName; //账户

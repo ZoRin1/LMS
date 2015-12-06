@@ -24,6 +24,7 @@ public class b4Benifit extends JPanel {
 	
 	public b4Benifit(b4topmanagerui b4ui,topmanagerJpanel tjpl) {
 		// TODO Auto-generated constructor stub
+		getProfit();
 		init(b4ui, tjpl);
 		tjpl.add(this);
 		registListener(b4ui, tjpl, this);
