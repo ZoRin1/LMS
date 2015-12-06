@@ -80,11 +80,10 @@ public class documentreplyui extends JFrame{
 	private void init(icclerkui icclerkui){
 		icclerkJpanel=new icclerkJpanel();
 		operationJpanel=new icclerkdocumentreplyOperationJpanel(icclerkJpanel,icclerkui,this,account);
-//		ImageIcon b1Icon=new ImageIcon("picture/接收单反馈.png");
-//		ImageIcon b2Icon=new ImageIcon("picture/装车单反馈.png");
-//		ImageIcon b3Icon=new ImageIcon("picture/装运单反馈.png");
+		
 		ImageIcon tuichuIcon=new ImageIcon("picture/退出.png");
 		ImageIcon zuixiaohuaIcon=new ImageIcon("picture/最小化.png");
+		
 		zuixiaohuaButton=new JButton(zuixiaohuaIcon);
 		zuixiaohuaButton.setBounds(904, 0, 50, 50);
 		zuixiaohuaButton.setContentAreaFilled(false);
@@ -93,18 +92,7 @@ public class documentreplyui extends JFrame{
 		tuichuButton.setBounds(974, 0, 50, 50);
 		tuichuButton.setContentAreaFilled(false);
 		tuichuButton.setBorderPainted(false);
-//		b1=new JButton(b1Icon);
-//		b2=new JButton(b2Icon);
-//		b3=new JButton(b3Icon);
-//		b1.setBounds(30, 180,200, 50);
-//		b2.setBounds(30, 280,200, 50);
-//		b3.setBounds(30, 380, 200, 50);
-//		b1.setContentAreaFilled(false);
-//		b2.setContentAreaFilled(false);
-//		b3.setContentAreaFilled(false);
-//		icclerkJpanel.add(b1);
-//		icclerkJpanel.add(b2);
-//		icclerkJpanel.add(b3);	
+		
 		icclerkJpanel.add(tuichuButton);
 		icclerkJpanel.add(zuixiaohuaButton);
 		icclerkJpanel.setLayout(null);

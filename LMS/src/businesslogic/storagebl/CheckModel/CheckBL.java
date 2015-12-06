@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.documentsPO.InBillsPO;
+import po.documentsPO.OutbillsPO;
 import dataservice.documentsdataservice.documentsFactory;
 import dataservice.documentsdataservice.getCodeDataSer;
 import dataservice.documentsdataservice.getDocumentInfoDataSer;

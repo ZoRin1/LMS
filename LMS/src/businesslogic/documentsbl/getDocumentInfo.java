@@ -20,7 +20,7 @@ public class getDocumentInfo implements getDocumentInfoBlSer{
 		// TODO Auto-generated method stub
 		DocumentPO po=new DocumentPO();
 		try {
-		documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://127.0.0.1:6600/docFactory");
+		documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://114.212.42.143:6600/docFactory");
 		getDocumentInfoDataSer getDocumentInfoDataSer =documentsFactory.createGetDocumentInfoDataSer();
 		po=getDocumentInfoDataSer.getDocumentInfo(code, doName);
 	} catch (MalformedURLException e) {

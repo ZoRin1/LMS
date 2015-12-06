@@ -239,19 +239,21 @@ public class AddAccount extends JPanel {
 							null, dianHuaF.getText(), shenFenZhengHaoMaF.getText(), 
 							date);
 					AccountInfoController accountInfoController = new AccountInfoController();
-					boolean bExist = (accountInfoController.getInfo(Long.parseLong(zhangHaoNo.getText())) != null);
+					boolean bExist = (accountInfoController.getInfo(Long.parseLong("001")) != null);
 					if (bExist) {
 						JOptionPane.showMessageDialog(null, "账号已存在，请重新输入");
 					}
 					boolean result = accountInfoController.addAccount(Long.parseLong(zhangHaoNo.getText()), accountNumberVO);
 					if (result) {
-						JOptionPane.showMessageDialog(aui, "修改成功");
+						JOptionPane.showMessageDialog(aui, "创建成功");
 						apl.remove(aat);
 						apl.add(aui.operationJpanel);
 						aui.accountField.setEditable(true);
 						aui.searchButton.setEnabled(true);
 						aui.addaccountButton.setEnabled(true);
 						aui.repaint();
+					}else {
+						JOptionPane.showMessageDialog(aui, "创建失败，请重试");
 					}
 										
 					

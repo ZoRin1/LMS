@@ -218,7 +218,7 @@ public class adminui extends JFrame{
 					AccountInfoController accountInfoController = new AccountInfoController();
 					String[] result = accountInfoController.getAccount(ID);
 //					String[]temp = {"1002356-Ñî»ª°²"};
-					if (result.length != 0) {
+					if (result != null) {
 						apl.remove(aui.operationJpanel);
 						aui.searchButton.setEnabled(false);
 						aui.addaccountButton.setEnabled(false);

@@ -217,7 +217,12 @@ public class b2SearchOrg extends JPanel {
 						tjpl.repaint();
 					}
 				}else {
-					JOptionPane.showMessageDialog(null, "请输入营业厅编号，形如“001-001”");
+					if (org.equals("营业厅")) {
+						JOptionPane.showMessageDialog(null, "请输入营业厅编号，形如“001-001”");
+					}else {
+						JOptionPane.showMessageDialog(null, "请输入中转中心编号，形如“001”");
+					}
+					
 				}
 				}
 				

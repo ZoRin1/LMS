@@ -51,7 +51,7 @@ public class b5CostConst extends JPanel {
 		qiCheF = new JTextField(String.valueOf(transportationController.getCost(1)));
 		qiCheF.setFont(small);
 		qiCheF.setBounds(240, 240, 150, 43);
-		qiCheF.addKeyListener(new NumberFieldListener());
+		qiCheF.addKeyListener(new KeyListenerOfDouble());
 		this.add(qiCheF);
 		
 		qiCheDanwei = new JLabel("元/(千克*100公里)");
@@ -69,7 +69,7 @@ public class b5CostConst extends JPanel {
 		huoCheF = new JTextField(String.valueOf(transportationController.getCost(2)));
 		huoCheF.setFont(small);
 		huoCheF.setBounds(240, 310, 150, 43);
-		huoCheF.addKeyListener(new NumberFieldListener());
+		huoCheF.addKeyListener(new KeyListenerOfDouble());
 		this.add(huoCheF);
 		
 		huoCheDanWei = new JLabel("元/(千克*100公里)");
@@ -87,7 +87,7 @@ public class b5CostConst extends JPanel {
 		feiJiF = new JTextField(String.valueOf(transportationController.getCost(3)));
 		feiJiF.setFont(small);
 		feiJiF.setBounds(240, 380, 150, 43);
-		feiJiF.addKeyListener(new NumberFieldListener());
+		feiJiF.addKeyListener(new KeyListenerOfDouble());
 		this.add(feiJiF);
 		
 		feiJiDanWei = new JLabel("元/(千克*100公里)");
@@ -134,22 +134,42 @@ public class b5CostConst extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				tjpl.remove(costConst);
-				tjpl.add(b5ui.operationJpanel);
 				
-				//暂时不用，正常使用时启用
-
-//				TransportationController transportationController = new TransportationController();
-//				transportationController.changeCost(1, Double.parseDouble(qiCheF.getText()));
-//				transportationController.changeCost(2, Double.parseDouble(huoCheF.getText()));
-//				transportationController.changeCost(3, Double.parseDouble(feiJiF.getText()));
-			
-				JOptionPane.showMessageDialog(b5ui, "修改成功！");
-				b5ui.b1.setEnabled(true);
-				b5ui.b2.setEnabled(true);
-
-				tjpl.repaint();
+				
+				boolean b1 = DataCheck.isDouble(qiCheF.getText());
+				boolean b2 = DataCheck.isDouble(huoCheF.getText());
+				boolean b3 = DataCheck.isDouble(feiJiF.getText());
+				if (!b1) {
+					JOptionPane.showMessageDialog(b5ui, "请输入正确的汽车成本常量数值，形如1.20");
+				}
+				if (!b2) {
+					JOptionPane.showMessageDialog(b5ui, "请输入正确的火车成本常量数值，形如1.20");
+				}
+				if (!b3) {
+					JOptionPane.showMessageDialog(b5ui, "请输入正确的飞机成本常量数值，形如1.20");
+				}
+				
+				if (b1 && b2 && b3) {
+					TransportationController transportationController = new TransportationController();
+								
+					boolean r1 = transportationController.changeCost(1, Double.parseDouble(qiCheF.getText()));
+					boolean r2 = transportationController.changeCost(2, Double.parseDouble(huoCheF.getText()));
+					boolean r3 = transportationController.changeCost(3, Double.parseDouble(feiJiF.getText()));
+					
+					if (r1 && r2 && r3) {
+						JOptionPane.showMessageDialog(b5ui, "修改成功！");
+						tjpl.remove(costConst);
+						tjpl.add(b5ui.operationJpanel);						
+						b5ui.b1.setEnabled(true);
+						b5ui.b2.setEnabled(true);
+						tjpl.repaint();
+					}else {
+						JOptionPane.showMessageDialog(b5ui, "修改失败，请重试");
+					}
+					
+					
+				}
+				
 			}
 		});
 		

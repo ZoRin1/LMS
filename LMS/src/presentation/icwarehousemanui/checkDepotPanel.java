@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -12,18 +13,19 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import vo.storageVO.SimpleInDepotInfVO;
+
 public class checkDepotPanel extends JPanel{
 	
-	
+	private ArrayList<SimpleInDepotInfVO> simpleInf;
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
 	private JButton returnButton;
 	private JLabel j1;
 	private inDepotCheckJTable inDepotCheckJTable;
-	private JButton outDepot;
-	private checkDepotPanel1 check1;
 //	private JTable inDepotTable;
 	
-	public checkDepotPanel(icwarehousemanui icwarehousemanui,icwarehousemanJpanel icwarehousemanJpanel){
+	public checkDepotPanel(icwarehousemanui icwarehousemanui,icwarehousemanJpanel icwarehousemanJpanel,ArrayList<SimpleInDepotInfVO> simpleInf){
+		this.simpleInf=simpleInf;
 		init();
 		icwarehousemanJpanel.add(this);
 		registListener(icwarehousemanui,icwarehousemanJpanel,this);
@@ -34,14 +36,11 @@ public class checkDepotPanel extends JPanel{
 		ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 		ImageIcon kuangjia = new ImageIcon("picture/库存图片/库存信息框.png");
 		returnButton=new JButton(returnIcon);
-		outDepot = new JButton();
-		outDepot.setBounds(61, 17, 34, 17);
-		outDepot.setContentAreaFilled(false);
-		outDepot.setBorderPainted(false);
+
 		j1 = new JLabel(kuangjia);
 		j1.setBounds(0, 0, 720, 570);
 		
-		inDepotCheckJTable = new inDepotCheckJTable(this);//还要加一个单据的参数  这样才能显示！！！！
+		inDepotCheckJTable = new inDepotCheckJTable(this,simpleInf);
 		
 //		initTable();
 //		JScrollPane scrollPane = new JScrollPane(inDepotTable); 
@@ -59,7 +58,6 @@ public class checkDepotPanel extends JPanel{
 		this.add(j1);
 		this.add(returnButton);
 		j1.add(inDepotCheckJTable.getScrollPane());
-		j1.add(outDepot);
 		this.setOpaque(false);
 		this.setBounds(260, 60, 730,650);
 		this.setLayout(null);
@@ -77,17 +75,6 @@ public class checkDepotPanel extends JPanel{
 				ui.getB5().setEnabled(true);
 				ui.getB6().setEnabled(true);
 				icwarehousemanJpanel.add(ui.getOperationJpanel());
-				icwarehousemanJpanel.repaint();
-			}
-		});
-		outDepot.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO 自动生成的方法存根
-				icwarehousemanJpanel.remove(checkDepotPanel);
-				check1 = new checkDepotPanel1(ui, icwarehousemanJpanel);
-				icwarehousemanJpanel.add(check1);
 				icwarehousemanJpanel.repaint();
 			}
 		});

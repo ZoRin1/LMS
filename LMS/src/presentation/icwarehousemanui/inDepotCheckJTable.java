@@ -3,6 +3,7 @@ package presentation.icwarehousemanui;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -18,16 +19,19 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import vo.storageVO.SimpleInDepotInfVO;
+
 public class inDepotCheckJTable {
 	private JTable inDepotTable;
 	private checkDepotPanel checkDepotPanel;
 	private JScrollPane scrollPane;
-	
+	private ArrayList<SimpleInDepotInfVO> simpleInf;
 	public JScrollPane getScrollPane() {
 		return scrollPane;
 	}
-	public inDepotCheckJTable(checkDepotPanel checkDepotPanel){
+	public inDepotCheckJTable(checkDepotPanel checkDepotPanel,ArrayList<SimpleInDepotInfVO> simpleInf){
 		this.checkDepotPanel = checkDepotPanel;
+		this.simpleInf=simpleInf;
 		initTable();
 		init();
 	}
@@ -45,32 +49,16 @@ public class inDepotCheckJTable {
 	}
 	
 	private void initTable(){
-		//假设的数据
+
 		String[] inDepotName = new String[]{" "," "," "," "," "};
-		
-		Object[][] inDepotValue = new Object[][]{{"楚留","2321","fyk","2012-07-28 19:36:21","545"},
-				{"楚留奇","232134 KB","fykhlp","2012-07-28 19:36:21","455"},
-			{"楚留奇","2324 KB","fhlp","2012-07-28 19:36:21","454545"},
-					{"楚香传奇","2324 KB","fykhlp","2012-07-28 19:36:21","455"},
-				{"楚奇","232134 KB","fykhlp","2012-07-28 19:36:21","455"},
-				{"楚奇","232134 KB","fykhlp","2012-07-28 19:36:21","455"},
-				{"楚奇","232134 KB","fykhlp","2012-07-28 19:36:21","455"},
-				{"楚奇","232134 KB","fykhlp","2012-07-28 19:36:21","455"},
-				{"楚奇","232134 KB","fykhlp","2012-07-28 19:36:21","455"},
-				{"楚奇","232134 KB","fykhlp","2012-07-28 19:36:21","455"},
-				{"楚奇","232134 KB","fykhlp","2012-07-28 19:36:21","455"},
-				{"楚奇","232134 KB","fykhlp","2012-07-28 19:36:21","455"},
-				{"楚奇","232134 KB","fykhlp","2012-07-28 19:36:21","455"},
-				{"楚奇","232134 KB","fykhlp","2012-07-28 19:36:21","455"},
-				{"楚奇","232134 KB","fykhlp","2012-07-28 19:36:21","455"},
-				{"楚奇","232134 KB","fykhlp","2012-07-28 19:36:21","455"},
-				{"楚奇","232134 KB","fykhlp","2012-07-28 19:36:21","455"},
-				{"楚奇","232134 KB","fykhlp","2012-07-28 19:36:21","455"},
-				{"楚奇","232134 KB","fykhlp","2012-07-28 19:36:21","455"},
-				{"楚奇","232134 KB","fykhlp","2012-07-28 19:36:21","455"},
-				{"楚奇","232134 KB","fykhlp","2012-07-28 19:36:21","455"},
-					};
-		//假设的数据： 完善后要从数据库拿取数据来填写表格
+		Object[][] 	inDepotValue = new Object[simpleInf.size()][5];
+			for (int i = 0; i < simpleInf.size(); i++) {
+				inDepotValue[i][0]=simpleInf.get(i).getInDepotNum();
+				inDepotValue[i][1]=simpleInf.get(i).getAreaNum();
+				inDepotValue[i][2]=simpleInf.get(i).getRowNum();
+				inDepotValue[i][3]=simpleInf.get(i).getShelvesNum();
+				inDepotValue[i][4]=simpleInf.get(i).getSositionNum();
+			}	
 		
 //		TableModel tableModel = new TableModel(inDepotValue,inDepotName);
 		DefaultTableModel tableModel = new DefaultTableModel(inDepotValue,inDepotName);
@@ -83,20 +71,6 @@ public class inDepotCheckJTable {
 		inDepotTable.getTableHeader().setReorderingAllowed(false); //设置列不可重排
 		inDepotTable.getTableHeader().setResizingAllowed(false); //设置列不可拖动
 		
-		//对双击的监听
-		inDepotTable.addMouseListener(new MouseAdapter() {
-			
-			public void mouseClicked(MouseEvent e) {
-				if(e.getClickCount()==2){
-					int row = inDepotTable.getSelectedRow();
-					String value = inDepotTable.getValueAt(row, 0).toString().trim();
-					System.out.println(value);
-					
-					//下面实现对出入库单的调用！！！！
-					//还要实现一个出入库单的dialog 来显示调用的出入库单
-				}
-			}
-		});
 		inDepotTable.setRowHeight(32);
 		inDepotTable.setShowGrid(false);
 		TableColumn column = null;

@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import businesslogic.organizationbl.MiddleController;
+import businesslogic.transportationbl.CityController;
 import businesslogic.transportationbl.TransportationController;
 import presentation.financialstaffui.financialstaffui;
 import vo.orgVO.BussinessOrgVO;
@@ -115,11 +116,18 @@ public class b2MiddleAdd extends JPanel {
 								bianHao = String.valueOf(n + 1);
 							}
 							MiddleOrgVO vo = new MiddleOrgVO(mCity, bianHao, null, null, null);
-							middleController.addMiddleOrg(bianHao, vo);
-							JOptionPane.showMessageDialog(tjpl, "创建成功,机构编号为" + bianHao);
-							tjpl.remove(b2MiddleAdd);
-							new b2SearchOrg(b2ui, tjpl, org);
-							tjpl.repaint();
+							boolean r1 = middleController.addMiddleOrg(bianHao, vo);
+							CityController cityController = new CityController();
+							boolean r2 = cityController.addCity(mCity);
+							if (r1 && r2) {
+								JOptionPane.showMessageDialog(tjpl, "创建成功,机构编号为" + bianHao);
+								tjpl.remove(b2MiddleAdd);
+								new b2SearchOrg(b2ui, tjpl, org);
+								tjpl.repaint();
+							}else {
+								JOptionPane.showMessageDialog(tjpl, "创建失败,请重试");
+							}
+							
 						}else {
 							JOptionPane.showMessageDialog(null, "该城市已存在，请重新输入");
 						}
