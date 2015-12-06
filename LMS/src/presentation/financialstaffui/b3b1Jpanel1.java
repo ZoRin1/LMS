@@ -25,6 +25,7 @@ import javax.swing.ListSelectionModel;
 
 import po.documentsPO.PaymentPO;
 import businesslogic.documentsbl.documentController;
+import businesslogic.financebl.AccountManageModel.AccountManageBL;
 import businesslogic.financebl.AccountManageModel.changeTheAccount;
 
 public class b3b1Jpanel1 extends JPanel{
@@ -40,7 +41,7 @@ public class b3b1Jpanel1 extends JPanel{
 	
 	
 	
-	private changeTheAccount changeAccount;
+	private AccountManageBL accountManage;
 	
 	
 	
@@ -225,8 +226,8 @@ public class b3b1Jpanel1 extends JPanel{
 					
 					
 					//这里要加上改变账户余额的功能！！！
-					changeAccount = new changeTheAccount();
-					changeAccount.subPay(zhanghaoField.getText(), Double.parseDouble(jineField.getText()));
+					accountManage = new AccountManageBL();
+					accountManage.ChangePay(zhanghaoField.getText(), Double.parseDouble(jineField.getText()));
 					//这里要加上改变账户余额的功能！！
 					
 					

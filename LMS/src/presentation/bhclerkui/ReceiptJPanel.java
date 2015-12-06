@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import po.documentsPO.ReceiptPO;
 import businesslogic.documentsbl.createDocument;
 import businesslogic.documentsbl.documentController;
+import businesslogic.financebl.AccountManageModel.AccountManageBL;
 
 public class ReceiptJPanel extends JPanel{
 	private String code2;//收款单编号
@@ -47,6 +48,8 @@ public class ReceiptJPanel extends JPanel{
 	private JButton yesButton;
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	private ImageIcon yesIcon=new ImageIcon("picture/确定.png");
+	
+	private AccountManageBL accountManage;
 	public ReceiptJPanel(bhclerkui ui,bhclerkJpanel bhclerkJpanel,String account,String state) {
 		init();
 		this.account2=account;
@@ -177,6 +180,12 @@ public class ReceiptJPanel extends JPanel{
 						TCode2.add(list[i]);
 					}
 					po=new ReceiptPO(code2, "收款单", date2, account2, OrgCode, fund, name2, TCode2);
+					
+					//此处增加相应账户的余额
+					accountManage = new AccountManageBL();
+					accountManage.ChangeEarn(account2, fund);
+					//此处增加相应账户的余额
+					
 					new documentController().createBlock(po);
 					new finishDialog2(ui, "收款单创建完成", true,"收款单");
 					panel.remove(panel2);
