@@ -15,6 +15,7 @@ public class AccountManageBL {
 	
 	
 	public ArrayList<AccountVO> getAccountInf() {
+		CheckManage();
 		return accountInf;
 	}
 

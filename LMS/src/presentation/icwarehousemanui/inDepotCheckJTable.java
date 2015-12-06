@@ -67,7 +67,7 @@ public class inDepotCheckJTable {
 				return false;
 			}
 		};
-		
+		inDepotTable.setFont(new Font("幼圆",Font.BOLD,20));
 		inDepotTable.getTableHeader().setReorderingAllowed(false); //设置列不可重排
 		inDepotTable.getTableHeader().setResizingAllowed(false); //设置列不可拖动
 		

@@ -32,7 +32,6 @@ public class GetAccountDataSerImpl extends UnicastRemoteObject implements GetAcc
 	@Override
 	public ArrayList<AccountPO> getAccount() throws RemoteException {
 		// TODO 自动生成的方法存根
-		System.out.println("Get Account Start");
 		sql="SELECT * from 账户表";
 		ArrayList<AccountPO> po = new ArrayList<AccountPO>();
 		try {
@@ -45,6 +44,7 @@ public class GetAccountDataSerImpl extends UnicastRemoteObject implements GetAcc
 				po.add(acc);
 			}
 			connection.close();
+			return po;
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -52,7 +52,7 @@ public class GetAccountDataSerImpl extends UnicastRemoteObject implements GetAcc
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return po;
+		return null;
 	}
 
 }

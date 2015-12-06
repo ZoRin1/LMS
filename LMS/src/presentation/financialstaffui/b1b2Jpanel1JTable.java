@@ -1,5 +1,6 @@
 package presentation.financialstaffui;
 
+import java.awt.Font;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
@@ -44,16 +45,9 @@ public class b1b2Jpanel1JTable {
 	}
 	
 	private void initTable(){
-		//假设的数据
+
 		String[] inDepotName = new String[]{"总收入","总支出","生成时间","成本收益"};
-		
-//		Object[][] inDepotValue = new Object[][]{{"楚留","2321","生成时间","成本收益"},
-//				{"楚留奇","232134 KB","生成时间","成本收益"},
-//			{"楚留奇","2324 KB","生成时间","成本收益"},
-//					{"楚香传奇","2324 KB","生成时间","成本收益"},
-//				{"楚奇","232134 KB","生成时间","成本收益"}
-//					};
-		System.out.println(profitList.size());
+
 		Object[][] inDepotValue = new Object[profitList.size()][4];
 		for(int i = 0 ; i < profitList.size();i++){
 				inDepotValue[i][0] = profitList.get(i).getTotalRevenue();
@@ -63,7 +57,7 @@ public class b1b2Jpanel1JTable {
 				inDepotValue[i][3] =count;
 			
 		}
-		//假设的数据： 完善后要从数据库拿取数据来填写表格
+	
 		
 		DefaultTableModel tableModel = new DefaultTableModel(inDepotValue,inDepotName);
 		
@@ -72,7 +66,7 @@ public class b1b2Jpanel1JTable {
 				return false;
 			}
 		};
-		
+		ProfitJtabel.setFont(new Font("幼圆", Font.BOLD, 16));
 		ProfitJtabel.getTableHeader().setReorderingAllowed(false); //设置列不可重排
 		ProfitJtabel.getTableHeader().setResizingAllowed(false);//设置列不可拖动
 		

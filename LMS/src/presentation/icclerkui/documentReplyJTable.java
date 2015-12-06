@@ -121,7 +121,7 @@ public class documentReplyJTable {
 		column = Jtabel.getColumnModel().getColumn(1);
 		column.setPreferredWidth(360);
 		
-		
+		Jtabel.setFont(new Font("свт╡",Font.BOLD,20));
 		Jtabel.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		Jtabel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); 
 		

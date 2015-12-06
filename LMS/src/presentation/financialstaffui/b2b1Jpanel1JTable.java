@@ -20,6 +20,7 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import businesslogic.financebl.AccountManageModel.AccountManageBL;
 import presentation.icwarehousemanui.checkDepotPanel;
 import vo.financeVO.AccountVO;
 
@@ -68,10 +69,7 @@ public class b2b1Jpanel1JTable {
 	private void initTable(){
 		//假设的数据
 		String[] inDepotName = new String[]{"帐户名称","账户余额"};
-		
-		System.out.println(accountInf.size());
 		Object[][] inDepotValue = new Object[accountInf.size()][2];
-		System.out.println(inDepotValue[0].length);
 		for(int i = 0 ; i <accountInf.size();i++){
 			inDepotValue[i][0] = accountInf.get(i).getName();
 			inDepotValue[i][1] = accountInf.get(i).getSums();
@@ -85,7 +83,7 @@ public class b2b1Jpanel1JTable {
 				return false;
 			}
 		};
-		
+		accountJtabel.setFont(new Font("幼圆", Font.BOLD, 20));
 		accountJtabel.getTableHeader().setReorderingAllowed(false); //设置列不可重排
 		accountJtabel.getTableHeader().setResizingAllowed(false);//设置列不可拖动
 		
@@ -143,9 +141,11 @@ public class b2b1Jpanel1JTable {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
-				System.out.println("哈哈");
      			accountInf.remove(row);
      			tableModel.removeRow(row);
+     			b2.setEnabled(false);
+				b3.setEnabled(false);
+				b5.setEnabled(false);
 			}
 		});
 		b3.addActionListener(new ActionListener() {
@@ -182,6 +182,7 @@ public class b2b1Jpanel1JTable {
 				accountInf.get(row).setSums(Double.parseDouble(theSums));
 			}
 		});
+		
 	}
 	private class xiugaiDialog{
 		JDialog xiugai;
@@ -221,6 +222,9 @@ public class b2b1Jpanel1JTable {
 						return;
 					}
 					theName = inputName.getText();
+					b2.setEnabled(false);
+					b3.setEnabled(false);
+					b5.setEnabled(false);
 					xiugai.dispose();
 				}
 			});
@@ -301,6 +305,9 @@ public class b2b1Jpanel1JTable {
 					}
 					theName = inputName.getText();
 					theSums = inputSums.getText();
+					b2.setEnabled(false);
+					b3.setEnabled(false);
+					b5.setEnabled(false);
 					xinzeng.dispose();
 				}
 			});
@@ -315,6 +322,7 @@ public class b2b1Jpanel1JTable {
 			dialogPanel.add(inputName);
 			dialogPanel.add(inputSums);
 			dialogPanel.add(jButton);
+			
 			xinzeng.setVisible(true);
 		}
 	}
@@ -383,6 +391,9 @@ public class b2b1Jpanel1JTable {
 					}
 					theName = inputName.getText();
 					theSums = inputSums.getText();
+					b2.setEnabled(false);
+					b3.setEnabled(false);
+					b5.setEnabled(false);
 					chushihua.dispose();
 				}
 			});
