@@ -17,7 +17,7 @@ public class Examined implements ExaminedBlSer{
 		// TODO Auto-generated method stub
 		boolean a=false;
 		try {
-		documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://127.0.0.1:6600/docFactory");
+		documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://114.212.42.143:6600/docFactory");
 		if(Examined==true){
 			deleteDataSer deleteDataSer=documentsFactory.createDeleteDataSer();
 			a=deleteDataSer.delete(code, doName);

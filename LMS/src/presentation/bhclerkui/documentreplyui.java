@@ -78,10 +78,6 @@ public class documentreplyui extends JFrame{
 private void init(bhclerkui bhclerkui){
 	bhclerkJpanel=new bhclerkJpanel();
 	operationJpanel=new bhclerkdocumentreplyOperationJpanel(bhclerkJpanel,bhclerkui,this,account);
-//	ImageIcon b1Icon=new ImageIcon("picture/装车单反馈.png");
-//	ImageIcon b2Icon=new ImageIcon("picture/收款单反馈.png");
-//	ImageIcon b3Icon=new ImageIcon("picture/接收单反馈.png");
-//	ImageIcon b4Icon=new ImageIcon("picture/派件单反馈.png");
 	ImageIcon tuichuIcon=new ImageIcon("picture/退出.png");
 	ImageIcon zuixiaohuaIcon=new ImageIcon("picture/最小化.png");
 	zuixiaohuaButton=new JButton(zuixiaohuaIcon);
@@ -92,23 +88,7 @@ private void init(bhclerkui bhclerkui){
 	tuichuButton.setBounds(974, 0, 50, 50);
 	tuichuButton.setContentAreaFilled(false);
 	tuichuButton.setBorderPainted(false);
-//	b1=new JButton(b1Icon);
-//	b2=new JButton(b2Icon);
-//	b3=new JButton(b3Icon);
-//	b4=new JButton(b4Icon);
-//	b1.setBounds(30, 180,200, 50);
-//	b2.setBounds(30, 280,200, 50);
-//	b3.setBounds(30, 380, 200, 50);
-//	b4.setBounds(30, 480,200,50);
-//	b1.setContentAreaFilled(false);
-//	b2.setContentAreaFilled(false);
-//	b3.setContentAreaFilled(false);
-//	b4.setContentAreaFilled(false);
-
-//	bhclerkJpanel.add(b1);
-//	bhclerkJpanel.add(b2);
-//	bhclerkJpanel.add(b3);
-//	bhclerkJpanel.add(b4);
+	
 	bhclerkJpanel.add(tuichuButton);
 	bhclerkJpanel.add(zuixiaohuaButton);
 	bhclerkJpanel.setLayout(null);
@@ -138,9 +118,11 @@ class bhclerkdocumentreplyOperationJpanel extends JPanel{
 	private JLabel j1;
 	private documentReplyJTable jtable;
 	private String account;
+	private documentreplyui ui;
 	public bhclerkdocumentreplyOperationJpanel(bhclerkJpanel bhclerkJpanel,bhclerkui bhclerkui,documentreplyui documentreplyui,String account) {
 		// TODO Auto-generated constructor stub
 		this.account=account;
+		ui=documentreplyui;
 		init();
 		registListener(bhclerkJpanel,bhclerkui, documentreplyui);
 		bhclerkJpanel.add(this);
@@ -155,7 +137,7 @@ class bhclerkdocumentreplyOperationJpanel extends JPanel{
 		ImageIcon i1 = new ImageIcon("picture/财务图片/单据反馈框架.png");
 		j1 = new JLabel(i1);
 		j1.setBounds(0, 0, 720, 566);
-		jtable=new documentReplyJTable(this,account);
+		jtable=new documentReplyJTable(ui,this,account);
 		
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662, 575,48,48);
