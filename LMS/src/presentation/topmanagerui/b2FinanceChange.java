@@ -102,12 +102,14 @@ public class b2FinanceChange extends JPanel {
 	private void registListener(final b2topmanagerui b2ui,final topmanagerJpanel tjpl,final b2FinanceChange b2FinanceChange) {
 		
 		final AccountInfoController accountInfoController = new AccountInfoController();
+		final FinanceController financeController = new FinanceController();
 		
 		returnButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				
 				tjpl.remove(b2FinanceChange);
 				new b2FianaceInfo(b2ui, tjpl);
 				tjpl.repaint();

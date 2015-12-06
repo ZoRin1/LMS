@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 
 import businesslogic.accountbl.AccountInfoController;
 import businesslogic.organizationbl.BusinessController;
+import presentation.adminui.NumberFieldListener;
 
 public class b2BusinessChange extends JPanel {
 	private JLabel suoShu,suoShuC,suoZai,bianHao,bianHaoC,kuaiDiYuan,yeWuYuan;
@@ -177,10 +178,22 @@ public class b2BusinessChange extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				JOptionPane.showMessageDialog(tjpl, "修改成功");
-				tjpl.remove(b2BusinessChange);
-				new b2BusinessInfo(b2ui, tjpl, ID);
-				tjpl.repaint();
+				String input = suoZaiF.getText();
+				if (!input.equals("")) {
+					boolean result = businessController.changeCity(ID, input);
+					if (result) {
+						JOptionPane.showMessageDialog(tjpl, "修改成功");
+						tjpl.remove(b2BusinessChange);
+						new b2BusinessInfo(b2ui, tjpl, ID);
+						tjpl.repaint();
+					}else {
+						JOptionPane.showMessageDialog(tjpl, "修改失败");
+					}
+					
+				}else{
+					JOptionPane.showMessageDialog(tjpl, "请输入营业厅所在地区");
+				}
+				
 			}
 		});
 		

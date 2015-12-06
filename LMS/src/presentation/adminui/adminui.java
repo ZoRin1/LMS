@@ -7,6 +7,8 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -15,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -59,7 +62,31 @@ public class adminui extends JFrame{
 				tuichuButton.setContentAreaFilled(false);
 				tuichuButton.setBorderPainted(false);
 				accountField=new JTextField();
-				accountField.addKeyListener(new NumberFieldListener());
+				accountField.addKeyListener(new KeyListener() {
+					
+					@Override
+					public void keyTyped(KeyEvent e) {
+						// TODO Auto-generated method stub
+						int keyChar=e.getKeyChar();
+						if ((keyChar>=KeyEvent.VK_0 && keyChar<=KeyEvent.VK_9 )) {
+
+						} else {
+						e.consume(); 
+						}
+					}
+					
+					@Override
+					public void keyReleased(KeyEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void keyPressed(KeyEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+				});
 				accountField.setOpaque(false);
 				accountField.setFont(new Font("幼圆",Font.BOLD,24));
 				accountField.setForeground(Color.white);
@@ -185,18 +212,28 @@ public class adminui extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				//暂时不用，正常使用时启用
-//				String Id = accountField.getText();
-//				long ID = Long.parseLong(Id);
-//				AccountInfoController accountInfoController = new AccountInfoController();
-//				String[] result = accountInfoController.getAccount(ID);
-				String[]temp = {"1002356-杨华安"};
-				apl.remove(aui.operationJpanel);
-				aui.searchButton.setEnabled(false);
-				aui.addaccountButton.setEnabled(false);
-				aui.accountField.setText("");
-				aui.accountField.setEditable(false);
-				new SearchAccount(aui, apl, temp);
-				aui.repaint();
+				String Id = accountField.getText();
+				if (!Id.equals("")) {
+					long ID = Long.parseLong(Id);
+					AccountInfoController accountInfoController = new AccountInfoController();
+					String[] result = accountInfoController.getAccount(ID);
+//					String[]temp = {"1002356-杨华安"};
+					if (result.length != 0) {
+						apl.remove(aui.operationJpanel);
+						aui.searchButton.setEnabled(false);
+						aui.addaccountButton.setEnabled(false);
+						aui.accountField.setText("");
+						aui.accountField.setEditable(false);
+						new SearchAccount(aui, apl, result);
+						aui.repaint();
+					}else{
+						JOptionPane.showMessageDialog(aui, "未找到账号，请重新输入");
+					}
+					
+				}else {
+					JOptionPane.showMessageDialog(aui, "请输入账号");
+				}
+				
 			}
 		});
 			}

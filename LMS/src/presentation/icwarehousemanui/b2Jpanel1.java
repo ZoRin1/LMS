@@ -193,19 +193,20 @@ public class b2Jpanel1 extends JPanel{
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				// TODO 自动生成的方法存根
-				if (t6.getText().equals("")) {
-					new failDialog(ui, "失败", true);
-				}
-				else {
-					getPosition=new getPosition();
-					String stateList[]=state.split("-");				
-					DepotVO vo=getPosition.getPOsition(stateList[1], Integer.parseInt(t6.getText()));
-					t7.setText(Integer.toString(vo.getPai()));
-					t8.setText(Integer.toString(vo.getJia()));
-					t9.setText(Integer.toString(vo.getWei()));
-					b2jpanel.repaint();
-				}
-		
+				if (t7.getText().equals("")) {
+					if (t6.getText().equals("")) {
+						new failDialog(ui, "失败", true);
+					}
+					else {
+						getPosition=new getPosition();
+						String stateList[]=state.split("-");				
+						DepotVO vo=getPosition.getPOsition(stateList[1], Integer.parseInt(t6.getText()));
+						t7.setText(Integer.toString(vo.getPai()));
+						t8.setText(Integer.toString(vo.getJia()));
+						t9.setText(Integer.toString(vo.getWei()));
+						b2jpanel.repaint();
+					}
+				}			
 			}
 			
 			@Override
@@ -296,4 +297,13 @@ class failDialog extends JDialog{
 			}
 		});
 	}
+	class dialogJpanel extends JPanel{
+		private ImageIcon dialogIcon=new ImageIcon("picture/背景.png");
+		public void paintComponent(Graphics g)  
+		{  
+		    super.paintComponent(g);    
+		    g.drawImage(dialogIcon.getImage(),0,0,null);
+	      
+	     }
+	   }
 }
