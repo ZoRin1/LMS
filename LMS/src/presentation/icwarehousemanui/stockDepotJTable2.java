@@ -1,5 +1,7 @@
 package presentation.icwarehousemanui;
 
+import java.util.ArrayList;
+
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -10,17 +12,21 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import vo.storageVO.InDepotInfVO;
+
 public class stockDepotJTable2 {
 	
 	private JTable stockDepotTable;
 	private stockDepotPanel2 stockDepotPanel2;
 	private JScrollPane scrollPane;
 	
+	private ArrayList<InDepotInfVO> VOList;
 	public JScrollPane getScrollPane() {
 		return scrollPane;
 	}
 	
-	public stockDepotJTable2(stockDepotPanel2 stockDepotPanel2){
+	public stockDepotJTable2(stockDepotPanel2 stockDepotPanel2,ArrayList<InDepotInfVO> VOList){
+		this.VOList = VOList;
 		this.stockDepotPanel2 = stockDepotPanel2;
 		initTable();
 		init();
@@ -43,12 +49,23 @@ public class stockDepotJTable2 {
 		//假设的数据
 		String[] inDepotName = new String[]{" "," "," "," "," "," "," "};
 		
-		Object[][] inDepotValue = new Object[][]{{"楚留","2321","fyk","2012-07-","545","dfdf","wew"},
-				{"楚留奇","232134 KB","fykhlp","2012","455","sfdf","dfsd"},
-			{"楚留奇","2324 KB","fhlp","2012-07-2","454545","fdsf","dsf"},
-					{"楚香传奇","2324 KB","fykhlp","2012-07","455","dsad","dsad"},
-				{"楚奇","232134 KB","fykhlp","2012-07","455","dsada","sadad"}
-					};
+//		Object[][] inDepotValue = new Object[][]{{"楚留","2321","fyk","2012-07-","545","dfdf","wew"},
+//				{"楚留奇","232134 KB","fykhlp","2012","455","sfdf","dfsd"},
+//			{"楚留奇","2324 KB","fhlp","2012-07-2","454545","fdsf","dsf"},
+//					{"楚香传奇","2324 KB","fykhlp","2012-07","455","dsad","dsad"},
+//				{"楚奇","232134 KB","fykhlp","2012-07","455","dsada","sadad"}
+//					};
+		
+		Object[][] inDepotValue = new Object[VOList.size()][7];
+		for(int i = 0 ; i < VOList.size() ; i++){
+			inDepotValue[i][0] = VOList.get(i).getInDepotNum();
+			inDepotValue[i][1] = VOList.get(i).getInDepotDate();
+			inDepotValue[i][2] = VOList.get(i).getDestination();
+			inDepotValue[i][3] = VOList.get(i).getAreaNum();
+			inDepotValue[i][4] = VOList.get(i).getRowNum();
+			inDepotValue[i][5] = VOList.get(i).getShelvesNum();
+			inDepotValue[i][6] = VOList.get(i).getSositionNum();
+		}
 		//假设的数据： 完善后要从数据库拿取数据来填写表格
 		
 		DefaultTableModel tableModel = new DefaultTableModel(inDepotValue,inDepotName);

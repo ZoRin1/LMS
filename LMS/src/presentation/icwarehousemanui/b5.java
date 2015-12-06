@@ -19,13 +19,14 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
+import businesslogic.storagebl.DriveModel.DriverBL;
 import businesslogic.storagebl.DriveModel.spaceBL;
 
 public class b5{
-	public b5(icwarehousemanui icwarehousemanui) {
+	public b5(icwarehousemanui icwarehousemanui,String account,String state) {
 		// TODO Auto-generated constructor stub
 		init();
-		new finishb5Dialog(icwarehousemanui, "库存分区调整完成", true);
+		new finishb5Dialog(icwarehousemanui, "库存分区调整完成", true,account,state);
 	}
 	//实现库存分区调整
 	private void init(){
@@ -40,11 +41,19 @@ class finishb5Dialog extends JDialog{
 	private JLabel j1,j2,j3,j4,j5,j6;
 	private JLabel j11,j12,j13,j21,j22,j23;
 	private JTextField t1,t2,t3;
-	private spaceBL spaceBL;
+	private spaceBL space;
+	private DriverBL drive;
 	private int[] used;
 	private int[] all;
-	public finishb5Dialog(JFrame frame,String title,boolean modal) {
+	
+	private String account;
+	private String state;
+	public finishb5Dialog(JFrame frame,String title,boolean modal,String account,String state) {
 		super(frame,title,modal);
+		this.account = account;
+		this.state = state;
+		usedSpace();
+		allSpace();
 		init();
 		registerListener();
 		this.setVisible(true);
@@ -82,32 +91,32 @@ class finishb5Dialog extends JDialog{
 		j6.setFont(new Font("幼圆",Font.BOLD,20));
 		j6.setBounds(20, 140, 120, 24);
 		
-		j11 = new JLabel("150");
+		j11 = new JLabel(String.valueOf(all[0]));
 		j11.setForeground(Color.white);
 		j11.setFont(new Font("幼圆",Font.BOLD,20));
 		j11.setBounds(160, 60, 40, 24);
 		
-		j12 = new JLabel("150");
+		j12 = new JLabel(String.valueOf(all[1]));
 		j12.setForeground(Color.white);
 		j12.setFont(new Font("幼圆",Font.BOLD,20));
 		j12.setBounds(260, 60, 40, 24);
 		
-		j13 = new JLabel("150");
+		j13 = new JLabel(String.valueOf(all[2]));
 		j13.setForeground(Color.white);
 		j13.setFont(new Font("幼圆",Font.BOLD,20));
 		j13.setBounds(360, 60, 40, 24);
 		
-		j21 = new JLabel("20");
+		j21 = new JLabel(String.valueOf(used[0]));
 		j21.setForeground(Color.white);
 		j21.setFont(new Font("幼圆",Font.BOLD,20));
 		j21.setBounds(160, 100, 40, 24);
 		
-		j22 = new JLabel("20");
+		j22 = new JLabel(String.valueOf(used[1]));
 		j22.setForeground(Color.white);
 		j22.setFont(new Font("幼圆",Font.BOLD,20));
 		j22.setBounds(260, 100, 40, 24);
 		
-		j23 = new JLabel("20");
+		j23 = new JLabel(String.valueOf(used[2]));
 		j23.setForeground(Color.white);
 		j23.setFont(new Font("幼圆",Font.BOLD,20));
 		j23.setBounds(360, 100, 40, 24);
@@ -199,13 +208,24 @@ class finishb5Dialog extends JDialog{
 	private void registerListener(){
 		jButton.addActionListener(new ActionListener() {		
 			public void actionPerformed(ActionEvent e) {
+				//这个下面还要添加  库存输入是否超出机动区大小！！！！
+				
+				//这个上面还要添加  库存输入是否超出机动区大小！！！！
+				String[] temp = state.split("-");
+				drive = new DriverBL();
+				drive.drive(Integer.parseInt(t1.getText()), Integer.parseInt(t2.getText()), Integer.parseInt(t3.getText()), temp[1]);
 				finishb5Dialog.this.dispose();
 			}
 		});
 	}
-	
-	private int[] usedSpace(){
-		return null;
+	private void usedSpace(){
+		space = new spaceBL();
+		String[] temp = state.split("-");
+		used = space.usedSpaceInf(temp[1]);
+	}
+	private void allSpace(){
+		String[] temp = state.split("-");
+		all = space.allSpaceInf(temp[1]);
 	}
 	
 	private class MyDocument extends PlainDocument{

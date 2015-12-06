@@ -11,6 +11,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,9 +21,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import businesslogic.storagebl.CheckModel.CheckController;
 import dataservice.accountdataservice.AccountDataSer;
 import dataservice.accountdataservice.accountFactory;
 import presentation.mainui.mainui;
+import vo.storageVO.InDepotInfVO;
 
 public class icwarehousemanui extends JFrame{
 	private String account="1515";
@@ -29,6 +34,8 @@ public class icwarehousemanui extends JFrame{
 	private String[] args;
 	private JButton outjButton;
 	private icwarehousemanJpanel icwarehousemanJpanel;
+	
+	
 	public icwarehousemanJpanel getIcwarehousemanJpanel() {
 		return icwarehousemanJpanel;
 	}
@@ -235,7 +242,20 @@ public class icwarehousemanui extends JFrame{
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO 自动生成的方法存根
 			System.out.println("库存盘点");
-			stock = new stockDepotPanel(icwarehousemanui,icwarehousemanJpanel);
+			
+//			SimpleDateFormat endDf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+//			SimpleDateFormat startdf = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+//			String startDate = startdf.format(new Date())+" 00:00:00";
+//			String endDate = endDf.format(new Date());
+//			System.out.println(startDate);
+//			System.out.println(endDate);
+//			
+//			
+//			checkController = new CheckController();
+//			InVOList = checkController.conInventory(account, startDate, endDate);
+			
+			
+			stock = new stockDepotPanel(icwarehousemanui,icwarehousemanJpanel,account,state);
 			icwarehousemanJpanel.remove(operationJpanel);
 			b1.setEnabled(false);
 			b2.setEnabled(false);
@@ -251,7 +271,7 @@ public class icwarehousemanui extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			new b5(icwarehousemanui);
+			new b5(icwarehousemanui,account,state);
 		}
 	});
 	b6.addActionListener(new ActionListener() {

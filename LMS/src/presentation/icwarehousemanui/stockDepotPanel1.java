@@ -1,10 +1,18 @@
 package presentation.icwarehousemanui;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.*;
+
+import vo.storageVO.InDepotInfVO;
+import businesslogic.storagebl.CheckModel.CheckController;
+import businesslogic.storagebl.DriveModel.spaceBL;
 
 public class stockDepotPanel1 extends JPanel{
 	
@@ -18,8 +26,20 @@ public class stockDepotPanel1 extends JPanel{
 //	private JTable inDepotTable;
 	private stockDepotPanel stock;
 	private stockDepotPanel2 stock2;
+	private JLabel inDepotCount,AllDepotCount;
 	
-	public stockDepotPanel1(icwarehousemanui icwarehousemanui,icwarehousemanJpanel icwarehousemanJpanel){
+	private String account;
+	private String state;
+	private CheckController checkController;
+	private ArrayList<InDepotInfVO> InVOList;
+	private ArrayList<InDepotInfVO> VOList;
+	private spaceBL usedSpace;
+	private int[] useSpace;
+	public stockDepotPanel1(icwarehousemanui icwarehousemanui,icwarehousemanJpanel icwarehousemanJpanel,String account,String state){
+		this.account = account;
+		this.state = state;
+//		check();
+//		getDepotCount();
 		init();
 		icwarehousemanJpanel.add(this);
 		registListener(icwarehousemanui,icwarehousemanJpanel,this);
@@ -42,16 +62,18 @@ public class stockDepotPanel1 extends JPanel{
 		j1.setBounds(0, 0, 720, 570);
 		
 		
-		stockTable1 = new stockDepotJTable1(this);
-//		initTable();
-//		JScrollPane scrollPane = new JScrollPane(inDepotTable); 
-//		scrollPane.getViewport().setOpaque(false);
-//		scrollPane.setOpaque(false);
-//		scrollPane.setViewportView(inDepotTable);
-//        scrollPane.setColumnHeaderView(inDepotTable.getTableHeader());
-//        
-//        scrollPane.getColumnHeader().setOpaque(false);
-//		scrollPane.setBounds(0, 57, 730, 475);
+		inDepotCount = new JLabel("103");
+//		inDepotCount = new JLabel(String.valueOf(VOList.size()));
+		inDepotCount.setFont(new Font("幼圆", Font.BOLD, 20));
+		inDepotCount.setBounds(572, 35, 80, 24);
+		
+		AllDepotCount = new JLabel("6594");
+//		AllDepotCount = new JLabel(String.valueOf(useSpace[1]));
+		AllDepotCount.setFont(new Font("幼圆", Font.BOLD, 20));
+		AllDepotCount.setBounds(612, 542, 80, 24);
+		
+		
+		stockTable1 = new stockDepotJTable1(this,VOList);
 		
 		returnButton.setBounds(662, 575,48,48);
 		returnButton.setContentAreaFilled(false);
@@ -61,6 +83,8 @@ public class stockDepotPanel1 extends JPanel{
 		j1.add(stockTable1.getScrollPane());
 		j1.add(qiyun);
 		j1.add(hangyun);
+		j1.add(inDepotCount);
+		j1.add(AllDepotCount);
 		this.setOpaque(false);
 		this.setBounds(260, 60, 730,650);
 		this.setLayout(null);
@@ -88,7 +112,7 @@ public class stockDepotPanel1 extends JPanel{
 				// TODO 自动生成的方法存根
 				System.out.println("hangyun");
 				icwarehousemanJpanel.remove(stockDepotPanel1);
-				stock = new stockDepotPanel(ui, icwarehousemanJpanel);
+				stock = new stockDepotPanel(ui, icwarehousemanJpanel,account,state);
 				icwarehousemanJpanel.add(stock);
 				icwarehousemanJpanel.repaint();
 			}
@@ -100,11 +124,36 @@ public class stockDepotPanel1 extends JPanel{
 				// TODO 自动生成的方法存根
 				System.out.println("qiyun");
 				icwarehousemanJpanel.remove(stockDepotPanel1);
-				stock2 = new stockDepotPanel2(ui, icwarehousemanJpanel);
+				stock2 = new stockDepotPanel2(ui, icwarehousemanJpanel,account,state);
 				icwarehousemanJpanel.add(stock2);
 				icwarehousemanJpanel.repaint();
 			}
 		});
+	}
+	
+	private void check(){
+		SimpleDateFormat endDf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		SimpleDateFormat startdf = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+		String startDate = startdf.format(new Date())+" 00:00:00";
+		String endDate = endDf.format(new Date());
+		System.out.println(startDate);
+		System.out.println(endDate);
+		
+		
+		checkController = new CheckController();
+		InVOList = checkController.conInventory(account, startDate, endDate);
+		VOList = new ArrayList<InDepotInfVO>();
+		for(int i = 0 ; i < InVOList.size();i++){
+			if(InVOList.get(i).getAreaNum()==2||InVOList.get(i).getAreaNum()==6){
+				VOList.add(InVOList.get(i));
+			}
+		}
+	}
+	
+	private void getDepotCount(){
+		usedSpace =new spaceBL();
+		String[] temp = state.split("-");
+		useSpace = usedSpace.usedSpaceInf(temp[1]);
 	}
 	
 	public void paintComponent(Graphics g)  
@@ -113,54 +162,4 @@ public class stockDepotPanel1 extends JPanel{
 	    g.drawImage(frameIcon.getImage(),-7,-12,null);
      }
 	
-//	private void initTable(){
-//		//假设的数据
-//		String[] inDepotName = new String[]{" "," "," "," "," "};
-//		
-//		Object[][] inDepotValue = new Object[][]{{"楚留","2321","fyk","2012-07-28 19:36:21","545"},
-//				{"楚留奇","232134 KB","fykhlp","2012-07-28 19:36:21","455"},
-//			{"楚留奇","2324 KB","fhlp","2012-07-28 19:36:21","454545"},
-//					{"楚香传奇","2324 KB","fykhlp","2012-07-28 19:36:21","455"},
-//				{"楚奇","232134 KB","fykhlp","2012-07-28 19:36:21","455"}
-//					};
-//		//假设的数据： 完善后要从数据库拿取数据来填写表格
-//		
-//		DefaultTableModel tableModel = new DefaultTableModel(inDepotValue,inDepotName);
-//		
-//		inDepotTable = new JTable(tableModel);
-//		inDepotTable.setRowHeight(32);
-//		inDepotTable.setShowGrid(false);
-//		TableColumn column = null;
-//		column = inDepotTable.getColumnModel().getColumn(0);
-//		column.setPreferredWidth(238);
-//		column = inDepotTable.getColumnModel().getColumn(1);
-//		column.setPreferredWidth(122);
-//		column = inDepotTable.getColumnModel().getColumn(2);
-//		column.setPreferredWidth(122);
-//		column = inDepotTable.getColumnModel().getColumn(3);
-//		column.setPreferredWidth(122);
-//		column = inDepotTable.getColumnModel().getColumn(4);
-//		column.setPreferredWidth(122);
-//		
-//		
-//		inDepotTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-//		inDepotTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); 
-//		
-//		inDepotTable.setOpaque(false); 
-//		DefaultTableCellRenderer render = new DefaultTableCellRenderer();   
-//		render.setOpaque(false);
-//		
-//		inDepotTable.setDefaultRenderer(Object.class,render);
-//		
-//		JTableHeader header = inDepotTable.getTableHeader();
-//		header.setOpaque(false);
-//		header.getTable().setOpaque(false);
-//		
-//		header.setDefaultRenderer(render); 
-//		TableCellRenderer headerRenderer = header.getDefaultRenderer();
-//		if (headerRenderer instanceof JLabel) {
-//			((JLabel) headerRenderer).setHorizontalAlignment(JLabel.CENTER);
-//			((JLabel) headerRenderer).setOpaque(false); 
-//		}
-//	}
 }
