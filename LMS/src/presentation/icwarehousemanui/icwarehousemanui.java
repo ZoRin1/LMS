@@ -23,6 +23,8 @@ import dataservice.accountdataservice.accountFactory;
 import presentation.mainui.mainui;
 
 public class icwarehousemanui extends JFrame{
+	private String account="1515";
+	private String state="";
 	private JLabel warnJLabel;
 	private String[] args;
 	private JButton outjButton;
@@ -200,7 +202,7 @@ public class icwarehousemanui extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new b1icwarehousemanui("中转中心仓库管理员——出库", icwarehousemanui);
+				new b1icwarehousemanui("中转中心仓库管理员——出库", icwarehousemanui,account,state);
 				icwarehousemanui.setVisible(false);
 			}
 		});
@@ -209,7 +211,7 @@ public class icwarehousemanui extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			new b2icwarehousemanui("中转中心仓库管理员——入库", icwarehousemanui);
+			new b2icwarehousemanui("中转中心仓库管理员——入库", icwarehousemanui,account,state);
 			icwarehousemanui.setVisible(false);
 		}
 	});

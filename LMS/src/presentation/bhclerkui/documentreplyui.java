@@ -22,9 +22,11 @@ public class documentreplyui extends JFrame{
 //	private JButton b1,b2,b3,b4;
 	private JButton tuichuButton;
 	private JButton zuixiaohuaButton;
-	public documentreplyui(String s,bhclerkui bhclerkui) {
+	private String account;
+	public documentreplyui(String s,bhclerkui bhclerkui,String account) {
 		// TODO Auto-generated constructor stub
 		super(s);
+		this.account=account;
 		init(bhclerkui);
 		registListener(this);
 	}
@@ -75,7 +77,7 @@ public class documentreplyui extends JFrame{
 }
 private void init(bhclerkui bhclerkui){
 	bhclerkJpanel=new bhclerkJpanel();
-	operationJpanel=new bhclerkdocumentreplyOperationJpanel(bhclerkJpanel,bhclerkui,this);
+	operationJpanel=new bhclerkdocumentreplyOperationJpanel(bhclerkJpanel,bhclerkui,this,account);
 //	ImageIcon b1Icon=new ImageIcon("picture/装车单反馈.png");
 //	ImageIcon b2Icon=new ImageIcon("picture/收款单反馈.png");
 //	ImageIcon b3Icon=new ImageIcon("picture/接收单反馈.png");
@@ -135,8 +137,10 @@ class bhclerkdocumentreplyOperationJpanel extends JPanel{
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 	private JLabel j1;
 	private documentReplyJTable jtable;
-	public bhclerkdocumentreplyOperationJpanel(bhclerkJpanel bhclerkJpanel,bhclerkui bhclerkui,documentreplyui documentreplyui) {
+	private String account;
+	public bhclerkdocumentreplyOperationJpanel(bhclerkJpanel bhclerkJpanel,bhclerkui bhclerkui,documentreplyui documentreplyui,String account) {
 		// TODO Auto-generated constructor stub
+		this.account=account;
 		init();
 		registListener(bhclerkJpanel,bhclerkui, documentreplyui);
 		bhclerkJpanel.add(this);
@@ -151,7 +155,7 @@ class bhclerkdocumentreplyOperationJpanel extends JPanel{
 		ImageIcon i1 = new ImageIcon("picture/财务图片/单据反馈框架.png");
 		j1 = new JLabel(i1);
 		j1.setBounds(0, 0, 720, 566);
-		jtable=new documentReplyJTable(this);
+		jtable=new documentReplyJTable(this,account);
 		
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662, 575,48,48);

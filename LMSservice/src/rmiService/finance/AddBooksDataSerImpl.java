@@ -49,8 +49,9 @@ public class AddBooksDataSerImpl extends UnicastRemoteObject implements AddBooks
 			preparedStatement=connection.prepareStatement(sql);
 			resultSet=preparedStatement.executeQuery();
 			String financeCode="";
-			resultSet.next();
-			financeCode=resultSet.getString(1);
+			if (resultSet.next()) {
+				financeCode=resultSet.getString(1);
+			}
 			sql="select ID from ’ ∫≈±Ì";
 			preparedStatement=connection.prepareStatement(sql);
 			resultSet=preparedStatement.executeQuery();

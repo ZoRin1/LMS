@@ -17,22 +17,23 @@ import javax.swing.JPanel;
 public class b1icwarehousemanui extends JFrame{
 	private icwarehousemanJpanel icwarehousemanJpanel;
 	private icwarehousemanb1OperationJpanel operationJpanel;
+	private String account;
+	private String state;
 	public icwarehousemanb1OperationJpanel getOperationJpanel() {
 		return operationJpanel;
 	}
 	public JButton getB1() {
 		return b1;
 	}
-	public JButton getB2() {
-		return b2;
-	}
-	private JButton b1,b2;
+	private JButton b1;
 	private JButton tuichuButton;
 	private JButton zuixiaohuaButton;
 	private b1Jpanel2 b1jpanel;
-	public b1icwarehousemanui(String s,icwarehousemanui icwarehousemanui) {
+	public b1icwarehousemanui(String s,icwarehousemanui icwarehousemanui,String account,String state) {
 		// TODO Auto-generated constructor stub
 		super(s);
+		this.account=account;
+		this.state=state;
 		init(icwarehousemanui);
 		registListener(this);
 	}
@@ -88,9 +89,7 @@ public class b1icwarehousemanui extends JFrame{
 				// TODO 自动生成的方法存根
 				icwarehousemanJpanel.remove(operationJpanel);
 				b1icwarehousemanui.b1.setEnabled(false);
-				b1icwarehousemanui.b2.setEnabled(false);
-//				new b1Jpanel2(b1icwarehousemanui,icwarehousemanJpanel);
-				new b1Jpanel1(b1icwarehousemanui,icwarehousemanJpanel);
+				new b1Jpanel1(b1icwarehousemanui,icwarehousemanJpanel,account,state);
 				icwarehousemanJpanel.repaint();
 			}
 		});
@@ -99,7 +98,6 @@ public class b1icwarehousemanui extends JFrame{
 		icwarehousemanJpanel=new icwarehousemanJpanel();
 		operationJpanel=new icwarehousemanb1OperationJpanel(icwarehousemanJpanel,icwarehousemanui,this);
 		ImageIcon b1Icon=new ImageIcon("picture/新建出库单.png");
-		ImageIcon b2Icon=new ImageIcon("picture/单据反馈.png");
 		ImageIcon tuichuIcon=new ImageIcon("picture/退出.png");
 		ImageIcon zuixiaohuaIcon=new ImageIcon("picture/最小化.png");
 		zuixiaohuaButton=new JButton(zuixiaohuaIcon);
@@ -111,14 +109,10 @@ public class b1icwarehousemanui extends JFrame{
 		tuichuButton.setContentAreaFilled(false);
 		tuichuButton.setBorderPainted(false);
 		b1=new JButton(b1Icon);
-		b2=new JButton(b2Icon);
 		b1.setBounds(30, 230,200, 50);
-		b2.setBounds(30, 430,200, 50);
 		b1.setContentAreaFilled(false);
-		b2.setContentAreaFilled(false);
 
 		icwarehousemanJpanel.add(b1);
-		icwarehousemanJpanel.add(b2);
 		icwarehousemanJpanel.add(tuichuButton);
 		icwarehousemanJpanel.add(zuixiaohuaButton);
 		icwarehousemanJpanel.setLayout(null);

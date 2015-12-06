@@ -182,7 +182,7 @@ public class financialstaffui extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new b3financialstaffui("财务人员——成本管理", financialstaffui);
+				new b3financialstaffui("财务人员——成本管理", financialstaffui,account);
 				financialstaffui.setVisible(false);
 			}
 		});

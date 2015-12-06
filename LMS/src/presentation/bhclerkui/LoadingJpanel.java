@@ -175,7 +175,6 @@ public class LoadingJpanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				ui.setTitle("营业厅业务员——装车单创建 1");
 				panel.remove(panel2);
 				panel.add(ui.operationJpanel);
 				ui.carinformationbButton.setEnabled(true);

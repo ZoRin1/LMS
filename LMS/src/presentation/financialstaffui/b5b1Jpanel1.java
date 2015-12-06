@@ -17,6 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import businesslogic.financebl.BooksModel.BooksController;
+
 public class b5b1Jpanel1 extends JPanel{
 	private JLabel newBooksNameJLabel;
 	private JTextField newBooksNameField;
@@ -25,6 +27,7 @@ public class b5b1Jpanel1 extends JPanel{
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
 	private JButton returnButton;
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
+	private BooksController booksController;
 	public b5b1Jpanel1(b5financialstaffui b5financialstaffui,financialstaffJpanel financialstaffJpanel) {
 		// TODO Auto-generated constructor stub
 		init();
@@ -72,12 +75,20 @@ public class b5b1Jpanel1 extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new finishzhangbenDialog(b5financialstaffui, "新建账本完成", true);
-				financialstaffJpanel.remove(b5b1Jpanel1);
-				financialstaffJpanel.add(b5financialstaffui.operationJpanel);
-				b5financialstaffui.b1.setEnabled(true);
-				b5financialstaffui.b2.setEnabled(true);
-				financialstaffJpanel.repaint();
+				if (newBooksNameField.getText().equals("")) {
+					new failBooksDialog(b5financialstaffui, "失败", true);
+				}
+				else {
+					booksController=new BooksController();
+					booksController.newBook(newBooksNameField.getText());
+					new finishzhangbenDialog(b5financialstaffui, "新建账本完成", true);
+					financialstaffJpanel.remove(b5b1Jpanel1);
+					financialstaffJpanel.add(b5financialstaffui.operationJpanel);
+					b5financialstaffui.b1.setEnabled(true);
+					b5financialstaffui.b2.setEnabled(true);
+					financialstaffJpanel.repaint();
+				}
+				
 			}
 		});
 	}
@@ -86,6 +97,48 @@ public class b5b1Jpanel1 extends JPanel{
 		super.paintComponent(g);    
 		g.drawImage(frameIcon.getImage(),-7,-12,null);
  }
+}
+class failBooksDialog extends JDialog{
+	private dialogJpanel jPanel;
+	private JLabel jLabel;
+	private JButton jButton;
+	public failBooksDialog(JFrame frame,String title,boolean modal) {
+		super(frame,title,modal);
+		init();
+		registerListener();
+		this.setVisible(true);
+	}
+	private void init(){
+		ImageIcon yesIcon=new ImageIcon("picture/登录.png");
+		jLabel=new JLabel("填写不完整，请继续填写",jLabel.CENTER);
+		jLabel.setForeground(Color.white);
+		jLabel.setFont(new Font("幼圆",Font.BOLD,27));
+		jPanel=new dialogJpanel();
+		jButton=new JButton(yesIcon);
+		jButton.setContentAreaFilled(false);
+		jPanel.setLayout(null);
+		jButton.setBounds(218,190, 64, 64);
+		jLabel.setBounds(0, 0, 500, 200);
+		jPanel.add(jLabel);
+		jPanel.add(jButton);
+		this.add(jPanel);
+		this.setSize(500, 300);
+		Toolkit kitToolkit =Toolkit.getDefaultToolkit();
+		Dimension screenSize=kitToolkit.getScreenSize();
+		int screenWidth=screenSize.width;
+		int screenHeight=screenSize.height;
+		int dialogWidth=this.getWidth();
+		int dialogHeight=this.getHeight();
+		this.setLocation((screenWidth-dialogWidth)/2, (screenHeight-dialogHeight)/2);
+		this.setResizable(false);
+	}
+	private void registerListener(){
+		jButton.addActionListener(new ActionListener() {		
+			public void actionPerformed(ActionEvent e) {
+				failBooksDialog.this.dispose();
+			}
+		});
+	}
 }
 class finishzhangbenDialog extends JDialog{
 	private dialogJpanel jPanel;

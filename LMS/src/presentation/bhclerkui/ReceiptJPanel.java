@@ -168,7 +168,7 @@ public class ReceiptJPanel extends JPanel{
 				else{
 					String[] list=state.split("-");
 					OrgCode=list[3]+"-"+list[4];
-					fund=Double.parseDouble(account.getText());
+					fund=Double.parseDouble(Account.getText());
 					name2=name.getText();
 					String[] list2=tcode.getText().split("，");//此处或许应该加以参数把英文逗号转为中文逗号或要求员工必须使用中文输入法
 					int size=list2.length;

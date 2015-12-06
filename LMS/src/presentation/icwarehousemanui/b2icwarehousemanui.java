@@ -18,25 +18,26 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class b2icwarehousemanui  extends JFrame{
+	private String account;
+	private String state;
 	private icwarehousemanJpanel icwarehousemanJpanel;
 	private icwarehousemanb2OperationJpanel operationJpanel;
 	public icwarehousemanb2OperationJpanel getOperationJpanel() {
 		return operationJpanel;
 	}
-	private JButton b1,b2;
+	private JButton b1;
 	public JButton getB1() {
 		return b1;
-	}
-	public JButton getB2() {
-		return b2;
 	}
 	private JButton tuichuButton;
 	private JButton zuixiaohuaButton;
 	private b2Jpanel1 b2Jpanel;
 	private icwarehousemanui icwarehousemanui;
-	public b2icwarehousemanui(String s,icwarehousemanui icwarehousemanui) {
+	public b2icwarehousemanui(String s,icwarehousemanui icwarehousemanui,String account,String state) {
 		// TODO Auto-generated constructor stub
 		super(s);
+		this.account=account;
+		this.state=state;
 		this.icwarehousemanui = icwarehousemanui;
 		init(icwarehousemanui);	
 		registListener(this,icwarehousemanJpanel);
@@ -93,8 +94,7 @@ public class b2icwarehousemanui  extends JFrame{
 				// TODO 自动生成的方法存根
 				icwarehousemanJpanel.remove(operationJpanel);
 				b2icwarehousemanui.b1.setEnabled(false);
-				b2icwarehousemanui.b2.setEnabled(false);
-				new b2Jpanel1(b2icwarehousemanui,icwarehousemanJpanel);
+				new b2Jpanel1(b2icwarehousemanui,icwarehousemanJpanel,account,state);
 				icwarehousemanJpanel.repaint();
 			}
 		});
@@ -104,7 +104,6 @@ public class b2icwarehousemanui  extends JFrame{
 		icwarehousemanJpanel=new icwarehousemanJpanel();
 		operationJpanel=new icwarehousemanb2OperationJpanel(icwarehousemanJpanel,icwarehousemanui,this);
 		ImageIcon b1Icon=new ImageIcon("picture/新建入库单.png");
-		ImageIcon b2Icon=new ImageIcon("picture/单据反馈.png");
 		ImageIcon tuichuIcon=new ImageIcon("picture/退出.png");
 		ImageIcon zuixiaohuaIcon=new ImageIcon("picture/最小化.png");
 		zuixiaohuaButton=new JButton(zuixiaohuaIcon);
@@ -116,13 +115,9 @@ public class b2icwarehousemanui  extends JFrame{
 		tuichuButton.setContentAreaFilled(false);
 		tuichuButton.setBorderPainted(false);
 		b1=new JButton(b1Icon);
-		b2=new JButton(b2Icon);
 		b1.setBounds(30, 230,200, 50);
-		b2.setBounds(30, 430,200, 50);
 		b1.setContentAreaFilled(false);
-		b2.setContentAreaFilled(false);
 		icwarehousemanJpanel.add(b1);
-		icwarehousemanJpanel.add(b2);
 		icwarehousemanJpanel.add(operationJpanel);
 		icwarehousemanJpanel.add(tuichuButton);
 		icwarehousemanJpanel.add(zuixiaohuaButton);

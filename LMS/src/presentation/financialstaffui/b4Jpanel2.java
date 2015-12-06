@@ -4,21 +4,26 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
+
+import po.documentsPO.ReceiptPO;
 
 public class b4Jpanel2 extends JPanel{
 	
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
 	private JButton returnButton;
 	private ImageIcon returnIcon=new ImageIcon("picture/返回.png");
-	private JLabel j1;
+	private JLabel j1,j2;
 	private JTextField t1;
 	private JButton b1,b2;
 	private b4Jpanel2JTable b4Jpanel2JTable;
 	
-	public b4Jpanel2(financialstaffui financialstaffui,financialstaffJpanel financialstaffJpanel) {
+	private ArrayList<ReceiptPO> receiptList;
+	public b4Jpanel2(financialstaffui financialstaffui,financialstaffJpanel financialstaffJpanel,ArrayList<ReceiptPO> receiptList) {
 		// TODO Auto-generated constructor stub
+		this.receiptList = receiptList;
 		init();
 		financialstaffJpanel.add(this);
 		registListener(financialstaffui,financialstaffJpanel,this);
@@ -28,6 +33,15 @@ public class b4Jpanel2 extends JPanel{
 		ImageIcon i1 = new ImageIcon("picture/财务图片/收款单列表信息.png");
 		j1 = new JLabel(i1);
 		j1.setBounds(0, 0, 723, 545);
+		
+		double AllEarn = 0;
+		for(int i = 0 ; i < receiptList.size();i++){
+			AllEarn += receiptList.get(i).getFund();
+		}
+		j2 = new JLabel(String.valueOf(AllEarn));
+		j2.setFont(new Font("幼圆",Font.BOLD,40));
+		j2.setBounds(443, 465, 260, 46);
+		
 		t1 = new JTextField();
 		t1.setBounds(502, 5, 200, 27);
 		t1.setBorder(BorderFactory.createEmptyBorder());
@@ -40,7 +54,7 @@ public class b4Jpanel2 extends JPanel{
 		b2.setContentAreaFilled(false);
 		b2.setBorderPainted(false);
 		
-		b4Jpanel2JTable = new b4Jpanel2JTable(this);
+		b4Jpanel2JTable = new b4Jpanel2JTable(this,receiptList);
 
 		returnButton=new JButton(returnIcon);
 		returnButton.setBounds(662, 575,48,48);
@@ -49,6 +63,7 @@ public class b4Jpanel2 extends JPanel{
 	 	this.setBounds(260, 60, 730,650);
 
 	 	this.add(j1);
+	 	j1.add(j2);
 	 	j1.add(t1);
 	 	j1.add(b1);
 	 	j1.add(b2);
@@ -80,8 +95,9 @@ public class b4Jpanel2 extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO 自动生成的方法存根
+				// TODO 自动生成的方法存
 				System.out.println("搜索");
+				//这个搜索是没有必要的！！！！！
 			}
 		});
 		b2.addActionListener(new ActionListener() {
@@ -89,7 +105,15 @@ public class b4Jpanel2 extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
-				System.out.println("合计");
+//				double AllEarn = 0;
+//				for(int i = 0 ; i < receiptList.size();i++){
+//					AllEarn += receiptList.get(i).getFund();
+//				}
+//				j2 = new JLabel(String.valueOf(AllEarn));
+//				j2.setFont(new Font("幼圆",Font.BOLD,40));
+//				j2.setBounds(443, 470, 260, 46);
+//				b4Jpanel2.add(j2);
+//				System.out.println("合计="+AllEarn);
 			}
 		});
 	}

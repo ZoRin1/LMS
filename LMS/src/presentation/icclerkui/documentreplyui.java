@@ -24,9 +24,11 @@ public class documentreplyui extends JFrame{
 //	private JButton b1,b2,b3;
 	private JButton tuichuButton;
 	private JButton zuixiaohuaButton;
-	public documentreplyui(String s,icclerkui icclerkui) {
+	private String account;
+	public documentreplyui(String s,icclerkui icclerkui,String account) {
 		// TODO Auto-generated constructor stub
 		super(s);
+		this.account=account;
 		init(icclerkui);
 		registListener(this);
 	}
@@ -77,7 +79,7 @@ public class documentreplyui extends JFrame{
 	}
 	private void init(icclerkui icclerkui){
 		icclerkJpanel=new icclerkJpanel();
-		operationJpanel=new icclerkdocumentreplyOperationJpanel(icclerkJpanel,icclerkui,this);
+		operationJpanel=new icclerkdocumentreplyOperationJpanel(icclerkJpanel,icclerkui,this,account);
 //		ImageIcon b1Icon=new ImageIcon("picture/接收单反馈.png");
 //		ImageIcon b2Icon=new ImageIcon("picture/装车单反馈.png");
 //		ImageIcon b3Icon=new ImageIcon("picture/装运单反馈.png");
@@ -128,8 +130,10 @@ class icclerkdocumentreplyOperationJpanel extends JPanel{
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
 	private JLabel j1;
 	private documentReplyJTable jtable;
-	public icclerkdocumentreplyOperationJpanel(icclerkJpanel icclerkJpanel,icclerkui icclerkui,documentreplyui documentreplyui) {
+	public String account;
+	public icclerkdocumentreplyOperationJpanel(icclerkJpanel icclerkJpanel,icclerkui icclerkui,documentreplyui documentreplyui,String account) {
 		// TODO Auto-generated constructor stub
+		this.account=account;
 		init();
 		icclerkJpanel.add(this);
 		registListener(icclerkui, documentreplyui);
@@ -139,7 +143,7 @@ class icclerkdocumentreplyOperationJpanel extends JPanel{
 		ImageIcon i1 = new ImageIcon("picture/财务图片/单据反馈框架.png");
 		j1 = new JLabel(i1);
 		j1.setBounds(0, 0, 720, 566);
-		jtable=new documentReplyJTable(this);
+		jtable=new documentReplyJTable(this,account);
 		
 		ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 		returnButton=new JButton(returnIcon);

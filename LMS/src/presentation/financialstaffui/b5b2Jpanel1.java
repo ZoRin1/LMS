@@ -5,11 +5,15 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import po.financePO.BooksPO;
+import businesslogic.financebl.BooksModel.BooksController;
 
 public class b5b2Jpanel1 extends JPanel{
 	
@@ -19,8 +23,10 @@ public class b5b2Jpanel1 extends JPanel{
 	private JLabel j1;
 	private b5b2Jpanel1JTable b5b2Jpanel1JTable;
 	
-	public b5b2Jpanel1(b5financialstaffui b5financialstaffui,financialstaffJpanel financialstaffJpanel) {
+	private ArrayList<BooksPO> bookList;
+	public b5b2Jpanel1(b5financialstaffui b5financialstaffui,financialstaffJpanel financialstaffJpanel,ArrayList<BooksPO> bookList) {
 		// TODO Auto-generated constructor stub
+		this.bookList = bookList;
 		init();
 		financialstaffJpanel.add(this);
 		registListener(b5financialstaffui,financialstaffJpanel,this);
@@ -35,7 +41,7 @@ public class b5b2Jpanel1 extends JPanel{
 		returnButton.setBounds(662, 575,48,48);
 		returnButton.setContentAreaFilled(false);
 		
-		b5b2Jpanel1JTable = new b5b2Jpanel1JTable(this);//还要传账本的参数进去！！！！才能自动显示出来
+		b5b2Jpanel1JTable = new b5b2Jpanel1JTable(this,bookList);//还要传账本的参数进去！！！！才能自动显示出来
 
 	 	this.setBounds(260, 60, 730,650);
 
