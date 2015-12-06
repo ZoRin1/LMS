@@ -95,7 +95,7 @@ public class b2financialstaffui extends JFrame{
 //				b1.setEnabled(false);
 				b2.setEnabled(false);
 				b3.setEnabled(false);
-				b4.setEnabled(false);
+
 				b5.setEnabled(false);
 				financialstaffJpanel.remove(b1);
 				financialstaffJpanel.add(b2);
@@ -105,87 +105,28 @@ public class b2financialstaffui extends JFrame{
 				financialstaffJpanel.repaint();
 			}
 		});
-		b2.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						// TODO Auto-generated method stub
-//						new b2b2Jpanel1(b2financialstaffui, financialstaffJpanel);
-//						financialstaffJpanel.remove(operationJpanel);
-		
-//						b2.setEnabled(false);
-//						b3.setEnabled(false);
-//						b4.setEnabled(false);
-//						b5.setEnabled(false);
-//						financialstaffJpanel.repaint();
-						System.out.println("外部的监听");
-					}
-				});
-		b3.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-//				new b2b3Jpanel1(b2financialstaffui, financialstaffJpanel);
-				financialstaffJpanel.remove(operationJpanel);
 
-//				b2.setEnabled(false);
-//				b3.setEnabled(false);
-//				b4.setEnabled(false);
-//				b5.setEnabled(false);
-				financialstaffJpanel.repaint();
-			}
-		});
-		b4.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-//				new b2b4Jpanel1(b2financialstaffui, financialstaffJpanel);
-				financialstaffJpanel.remove(operationJpanel);
-	
-//				b2.setEnabled(false);
-//				b3.setEnabled(false);
-//				b4.setEnabled(false);
-//				b5.setEnabled(false);
-				financialstaffJpanel.repaint();
-			}
-		});
-		b5.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-//				new b2b5Jpanel1(b2financialstaffui, financialstaffJpanel);
-				financialstaffJpanel.remove(operationJpanel);
-			
-//				b2.setEnabled(false);
-//				b3.setEnabled(false);
-//				b4.setEnabled(false);
-//				b5.setEnabled(false);
-				financialstaffJpanel.repaint();
-			}
-		});
 	}
 	
 	private void getAccountVO(){
-		accountInf = new ArrayList<AccountVO>();
-		AccountVO v1 = new AccountVO("张三", 100);
-		AccountVO v2 = new AccountVO("李四", 5252);
-		AccountVO v3 = new AccountVO("哈哈", 4272);
-		AccountVO v4 = new AccountVO("卧槽", 100);
-		AccountVO v5 = new AccountVO("尼玛", 100);
-		AccountVO v6 = new AccountVO("啦啦", 100);
-		AccountVO v7 = new AccountVO("矿泉水", 100);
-		accountInf.add(v1);
-		accountInf.add(v2);
-		accountInf.add(v3);
-		accountInf.add(v4);
-		accountInf.add(v5);
-		accountInf.add(v6);
-		accountInf.add(v7);
-//		account = new AccountManageBL();
-//		accountInf = account.getAccountInf();
+//		accountInf = new ArrayList<AccountVO>();
+//		AccountVO v1 = new AccountVO("张三", 100);
+//		AccountVO v2 = new AccountVO("李四", 5252);
+//		AccountVO v3 = new AccountVO("哈哈", 4272);
+//		AccountVO v4 = new AccountVO("卧槽", 100);
+//		AccountVO v5 = new AccountVO("尼玛", 100);
+//		AccountVO v6 = new AccountVO("啦啦", 100);
+//		AccountVO v7 = new AccountVO("矿泉水", 100);
+//		accountInf.add(v1);
+//		accountInf.add(v2);
+//		accountInf.add(v3);
+//		accountInf.add(v4);
+//		accountInf.add(v5);
+//		accountInf.add(v6);
+//		accountInf.add(v7);
+		account = new AccountManageBL();
+		accountInf=new ArrayList<>();
+		accountInf = account.getAccountInf();
 	}
 	
 	private void init(financialstaffui fsui){

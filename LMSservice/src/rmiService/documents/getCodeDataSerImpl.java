@@ -33,23 +33,23 @@ public class getCodeDataSerImpl extends UnicastRemoteObject implements getCodeDa
 		// TODO 自动生成的方法存根
 		//此处仅针对收款单，付款单
 		ArrayList<String> arrayList=new ArrayList<String>();
-		if (startTime.equals(null)) {
+		if (startTime==null) {
 			switch (doName) {
 			case "收款单":
-				sql="select code,doName from 收款单 where InDepotDate < '"+endTime+"'";
+				sql="select code,doName from 收款单 where date < '"+endTime+"'";
 				break;
 			case "付款单":
-				sql="select code,doName from 付款单 where InDepotDate < '"+endTime+"'";
+				sql="select code,doName from 付款单 where date < '"+endTime+"'";
 				break;
 			}		
 		}
 		else {
 			switch (doName) {
 			case "收款单":
-				sql="select code,doName from 收款单 where InDepotDate >'"+startTime+"' and InDepotDate < '"+endTime+"'";
+				sql="select code,doName from 收款单 where date >'"+startTime+"' and date < '"+endTime+"'";
 				break;
 			case "付款单":
-				sql="select code,doName from 付款单 where InDepotDate > '"+startTime+"' and InDepotDate < '"+endTime+"'";
+				sql="select code,doName from 付款单 where date > '"+startTime+"' and date < '"+endTime+"'";
 				break;
 			}		
 		}		
@@ -79,7 +79,7 @@ public class getCodeDataSerImpl extends UnicastRemoteObject implements getCodeDa
 		// TODO Auto-generated method stub
 		//此处仅针对入库单
 		ArrayList<String> arrayList=new ArrayList<String>();
-		if (startTime.equals(null)) {
+		if (startTime==null) {
 			sql="select code,doName from 入库单 where InDepotDate < '"+endTime+"' and account='"+account+"'";
 		}
 		else {

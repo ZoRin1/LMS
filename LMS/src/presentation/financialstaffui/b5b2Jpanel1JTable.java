@@ -98,7 +98,7 @@ public class b5b2Jpanel1JTable {
 				}
 			}
 		});
-		
+		booksJtabel.setFont(new Font("幼圆", Font.BOLD, 20));
 		booksJtabel.getTableHeader().setReorderingAllowed(false); //设置列不可重排
 		booksJtabel.getTableHeader().setResizingAllowed(false);//设置列不可拖动
 		

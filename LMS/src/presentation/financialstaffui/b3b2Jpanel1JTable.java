@@ -1,5 +1,7 @@
 package presentation.financialstaffui;
 
+import java.awt.Font;
+
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -56,7 +58,7 @@ public class b3b2Jpanel1JTable {
 				return false;
 			}
 		};
-		
+		billsJtabel.setFont(new Font("幼圆", Font.BOLD, 20));
 		billsJtabel.getTableHeader().setReorderingAllowed(false); //设置列不可重排
 		billsJtabel.getTableHeader().setResizingAllowed(false);//设置列不可拖动
 		
