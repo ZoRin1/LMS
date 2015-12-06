@@ -131,5 +131,4 @@ public class getCodeDataSerImpl extends UnicastRemoteObject implements getCodeDa
 		return null;
 	}
 
-
 }

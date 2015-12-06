@@ -248,11 +248,11 @@ class mainFrame extends JFrame{
 								break;
 		
 							case "6":
-//								new topmanagerui("总经理界面",args,ID,state);
+								new topmanagerui("总经理界面",args);
 								mf.dispose();
 								break;
 							case "7":
-//								new adminui("管理员界面",args,ID,state);
+								new adminui("管理员界面",args);
 								mf.dispose();
 								break;
 							default :
