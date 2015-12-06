@@ -1,5 +1,6 @@
 package presentation.courierui;
 
+import java.awt.Font;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
@@ -36,7 +37,7 @@ public class documentJtable {
 		scrollPane.setOpaque(false);
 		scrollPane.setViewportView(billsJtabel);
         scrollPane.setColumnHeaderView(billsJtabel.getTableHeader());
-        
+        scrollPane.setFont(new Font("свт╡", Font.BOLD, 20));
         scrollPane.getColumnHeader().setOpaque(false);
 		scrollPane.setBounds(0,32, 730, 540);
         

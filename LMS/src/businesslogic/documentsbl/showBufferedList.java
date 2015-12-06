@@ -18,7 +18,7 @@ public class showBufferedList implements showBufferedListBlSer{
 		// TODO Auto-generated method stub
 		ArrayList<String> list=new ArrayList<>();
 		try {
-		documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://114.212.42.143:6600/docFactory");
+		documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://127.0.0.1:6600/docFactory");
 		getBufferedCodeDataSer getBufferedCodeDataSer=documentsFactory.createGetBudderedCodeDataSer();
 		list=getBufferedCodeDataSer.getCode();
 	} catch (MalformedURLException e) {
@@ -37,10 +37,9 @@ public class showBufferedList implements showBufferedListBlSer{
 	@Override
 	public ArrayList<String> showOwnList(String account) {
 		// TODO Auto-generated method stub
-		System.out.println("aaaa");
 		ArrayList<String> list=new ArrayList<>();
 		try {
-		documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://114.212.42.143:6600/docFactory");
+		documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://127.0.0.1:6600/docFactory");
 		getNotPassDocCode getNotPassDocCode=documentsFactory.createGetNotPassDocCode();
 		list=getNotPassDocCode.getNotPassDocCode(account);
 		return list;

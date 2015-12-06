@@ -18,9 +18,10 @@ public class getBufferedInfo implements getBufferedInfoBlSer{
 		// TODO Auto-generated method stub
 		DocumentPO po=new DocumentPO();
 		try {
-		documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://114.212.42.143:6600/docFactory");
+		documentsFactory documentsFactory=(documentsFactory)Naming.lookup("rmi://127.0.0.1:6600/docFactory");
 		getBufferedInfoDataSer getBufferedInfoDataSer=documentsFactory.createGetBufferedInfoDataSer();
 		po=getBufferedInfoDataSer.getBufferedInfo(code, doName);
+		return po;
 	} catch (MalformedURLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -31,7 +32,7 @@ public class getBufferedInfo implements getBufferedInfoBlSer{
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-		return po;
+		return null;
 	}
 	
 
