@@ -167,10 +167,21 @@ private JLabel city,bianHao,bianHaoI,yeWuYuan,changKuGuanLiYuan;
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				JOptionPane.showMessageDialog(tjpl, "修改成功");
-				tjpl.remove(b2MiddleChange);
-				new b2MiddleInfo(b2ui, tjpl, ID);
-				tjpl.repaint();
+				String input = cityI.getText();
+				if (!input.equals("")) {
+					boolean result = middleController.changeCity(ID, input);
+					if (result) {
+						JOptionPane.showMessageDialog(tjpl, "修改成功");
+						tjpl.remove(b2MiddleChange);
+						new b2MiddleInfo(b2ui, tjpl, ID);
+						tjpl.repaint();
+					}else {
+						JOptionPane.showMessageDialog(tjpl, "修改失败");
+					}
+				}else {
+					JOptionPane.showMessageDialog(tjpl, "请输入中转中心所在城市");
+				}
+				
 			}
 		});
 

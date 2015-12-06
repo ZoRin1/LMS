@@ -117,6 +117,8 @@ public class b2BusinessAdd extends JPanel {
 						}else {
 							bianHao = String.valueOf(n + 1);
 						}
+					}else {
+						bianHao = "001";
 					}
 					String mCity = middleController.GetInfo(zhong);
 					BussinessOrgVO vo = new BussinessOrgVO(mCity, di, bianHao, zhong, null, null, null, null);

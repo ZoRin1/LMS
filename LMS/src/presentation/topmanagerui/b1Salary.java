@@ -43,7 +43,7 @@ public class b1Salary extends JPanel {
 		Font big = new Font("幼圆", Font.BOLD, 40);
 		Font small = new Font("幼圆", Font.BOLD, 32);
 		
-		tiShi = new JLabel("请选择工资策略并输入数值");
+		tiShi = new JLabel("请输入工资策略数值");
 		tiShi.setForeground(Color.WHITE);
 		tiShi.setFont(big);
 		tiShi.setBounds(50, 112, 550, 45);
@@ -58,7 +58,7 @@ public class b1Salary extends JPanel {
 		anYueF = new JTextField(String.valueOf(salary[0]));
 		anYueF.setFont(small);
 		anYueF.setBounds(280, 240, 150, 43);
-		anYueF.addKeyListener(new NumberFieldListener());
+		anYueF.addKeyListener(new KeyListenerOfDouble());
 		this.add(anYueF);
 		
 		yuanMeiYue = new JLabel("元/月");
@@ -76,7 +76,7 @@ public class b1Salary extends JPanel {
 		jiCiF = new JTextField(String.valueOf(salary[1]));
 		jiCiF.setFont(small);
 		jiCiF.setBounds(280, 310, 150, 43);
-		jiCiF.addKeyListener(new NumberFieldListener());
+		jiCiF.addKeyListener(new KeyListenerOfDouble());
 		this.add(jiCiF);
 		
 		yuanMeiCi = new JLabel("元/次");
@@ -94,7 +94,7 @@ public class b1Salary extends JPanel {
 		tiChengF = new JTextField(String.valueOf(salary[2]));
 		tiChengF.setFont(small);
 		tiChengF.setBounds(280, 380, 150, 43);
-		tiChengF.addKeyListener(new NumberFieldListener());
+		tiChengF.addKeyListener(new KeyListenerOfDouble());
 		this.add(tiChengF);
 		
 		baiFenHao = new JLabel("%");
@@ -123,6 +123,8 @@ public class b1Salary extends JPanel {
 	 	
 		
 	}
+	
+	
 
 	
 	private void registListener(final topmanagerJpanel tjpl,final b1topmanagerui b1ui,final b1Salary salary) {
@@ -152,18 +154,34 @@ public class b1Salary extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				b1ui.setTitle("总经理--工资管理");
-				tjpl.remove(salary);
-				tjpl.add(b1ui.operationJpanel);
+				boolean bAnYue = DataCheck.isDouble(anYueF.getText());
+				boolean bJiCi = DataCheck.isDouble(jiCiF.getText());
+				boolean bTIiCheng = DataCheck.isDouble(tiChengF.getText());
 				
-				JOptionPane.showMessageDialog(b1ui, "修改成功！");
-				b1ui.b1.setEnabled(true);
-				b1ui.b2.setEnabled(true);
-				b1ui.b3.setEnabled(true);
-				b1ui.b4.setEnabled(true);
-				b1ui.b5.setEnabled(true);
-				b1ui.b6.setEnabled(true);
-				tjpl.repaint();
+				if (!bAnYue) {
+					JOptionPane.showMessageDialog(null, "请输入正确的按月工资策略数值");
+				}
+				if (!bJiCi) {
+					JOptionPane.showMessageDialog(null, "请输入正确的计次工资策略数值");
+				}
+				if (bTIiCheng) {
+					JOptionPane.showMessageDialog(null, "请输入正确的提成工资策略数值");
+				}
+				if (bAnYue && bJiCi && bTIiCheng) {
+					b1ui.setTitle("总经理--工资管理");
+					tjpl.remove(salary);
+					tjpl.add(b1ui.operationJpanel);
+					
+					JOptionPane.showMessageDialog(b1ui, "修改成功！");
+					b1ui.b1.setEnabled(true);
+					b1ui.b2.setEnabled(true);
+					b1ui.b3.setEnabled(true);
+					b1ui.b4.setEnabled(true);
+					b1ui.b5.setEnabled(true);
+					b1ui.b6.setEnabled(true);
+					tjpl.repaint();
+				}
+				
 			}
 		});
 	}

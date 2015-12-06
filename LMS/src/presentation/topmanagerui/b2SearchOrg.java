@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -13,6 +15,7 @@ import java.awt.image.ColorConvertOp;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -60,7 +63,6 @@ public class b2SearchOrg extends JPanel {
 		orgF.setFont(font);
 		orgF.setForeground(Color.BLACK);
 		orgF.setBounds(150, 160, 200, 50);
-//		orgF.addKeyListener(new NumberFieldListener());
 		this.add(orgF);
 		
 		search = new JButton("搜索");
@@ -88,6 +90,36 @@ public class b2SearchOrg extends JPanel {
 
 	private void registListener(final b2topmanagerui b2ui,final topmanagerJpanel tjpl,
 			final b2SearchOrg b2SearchOrg,final String org) {
+		
+		if (org.equals("营业厅")) {
+			orgF.addKeyListener(new KeyListener() {
+				
+				@Override
+				public void keyTyped(KeyEvent e) {
+					// TODO Auto-generated method stub
+					int keyChar=e.getKeyChar();
+					if ((keyChar>=KeyEvent.VK_0 && keyChar<=KeyEvent.VK_9 )||keyChar == KeyEvent.VK_SUBTRACT) {
+
+					} else {
+					e.consume(); 
+					}
+				}
+				
+				@Override
+				public void keyReleased(KeyEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void keyPressed(KeyEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+		}else{
+			orgF.addKeyListener(new NumberFieldListener());
+		}
 		b4.addActionListener(new ActionListener() {
 
 			@Override
@@ -110,10 +142,15 @@ public class b2SearchOrg extends JPanel {
 				// TODO Auto-generated method stub
 				Font font = new Font("幼圆", Font.BOLD, 30);
 				final String input = orgF.getText();
-				if (input != null) {
+				if (!input.equals("")) {
 					if(org.equals("营业厅")){
-						BusinessController businessController = new BusinessController();
-						orgs = businessController.getInfo(input);			
+						if (DataCheck.isBusinessCOde(input)) {
+							BusinessController businessController = new BusinessController();
+							orgs = businessController.getInfo(input);	
+						}else{
+							JOptionPane.showMessageDialog(null, "请输入正确的营业厅编号，形如“001-001”");
+						}
+								
 					}else{
 						MiddleController middleController = new MiddleController();
 						orgs = middleController.GetInfo(input);
@@ -140,18 +177,18 @@ public class b2SearchOrg extends JPanel {
 									 
 									 int r = orgTable.getSelectedRow();
 									 if (org.equals("营业厅")) {
-										 if(data[r][0] != null){
-											 tjpl.remove(b2SearchOrg);
-											 
-											b2ui.b1.setEnabled(false);
-											b2ui.b2.setEnabled(false);
-											b2ui.b3.setEnabled(false);
-											
-											new b2BusinessInfo(b2ui, tjpl, data[r][0]);
-											tjpl.repaint();
-										 }
+										
+										tjpl.remove(b2SearchOrg);
+
+										b2ui.b1.setEnabled(false);
+										b2ui.b2.setEnabled(false);
+										b2ui.b3.setEnabled(false);
+
+										new b2BusinessInfo(b2ui, tjpl, data[r][0]);
+										tjpl.repaint();
+										 
 									}else {
-										if(!data[r][0].equals("")){
+									
 											 tjpl.remove(b2SearchOrg);
 											 
 											b2ui.b1.setEnabled(false);
@@ -159,7 +196,7 @@ public class b2SearchOrg extends JPanel {
 											b2ui.b3.setEnabled(false);
 											new b2MiddleInfo(b2ui, tjpl, input);
 											tjpl.repaint();
-									}
+									
 								 }
 								 
 								 }
@@ -174,10 +211,13 @@ public class b2SearchOrg extends JPanel {
 					
 						
 					}else{
+						JOptionPane.showMessageDialog(null, "未找到，请输入营业厅编号");
 						tjpl.remove(b2SearchOrg);
 						new b2SearchOrg(b2ui, tjpl, org);
 						tjpl.repaint();
 					}
+				}else {
+					JOptionPane.showMessageDialog(null, "请输入营业厅编号，形如“001-001”");
 				}
 				}
 				

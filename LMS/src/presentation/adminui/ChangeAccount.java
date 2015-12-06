@@ -7,6 +7,8 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.AppletInitializer;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -84,6 +86,7 @@ private void init(AccountNumberVO accountNumberVO){
 		miMaF = new JTextField(accountNumberVO.getPassword());
 		miMaF.setFont(font);
 		miMaF.setBounds(180, 220, 150, 40);
+		miMaF.addKeyListener(new NumberFieldListener());
 		this.add(miMaF);
 		
 		miMaTishi = new JLabel("(6个字母)");
@@ -212,10 +215,10 @@ private void init(AccountNumberVO accountNumberVO){
 					AccountNumberVO accountNumberVO = new AccountNumberVO(xinMingF.getText(), 
 							Long.parseLong(zhangHaoNo.getText()), miMaF.getText(),
 							null, dianHuaF.getText(), shenFenZhengHaoMaF.getText(), 
-							"注册日期，得到当前时间的字符串表示");
+							null);
 					AccountInfoController accountInfoController = new AccountInfoController();
 					boolean result = accountInfoController.changeInfo(Long.parseLong(zhangHaoNo.getText()), accountNumberVO);
-					if (bMiMa && bXinMing && bDianHua && bShenFenZhengHao) {
+					if (result) {
 						JOptionPane.showMessageDialog(aui, "修改成功");
 						apl.remove(changeAccount);
 						apl.add(aui.operationJpanel);

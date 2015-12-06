@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,7 +21,8 @@ import vo.accountVO.AccountNumberVO;
 public class AddAccount extends JPanel {
 	private JLabel daBiaoTi;
 	private JLabel zhangHao;
-	private JLabel zhangHaoNo;
+	private JTextField zhangHaoNo;
+	private JLabel zhangHaoTiShi;
 	private JLabel miMa;
 	private JTextField miMaF;
 	JLabel miMaTishi;
@@ -67,11 +70,17 @@ public class AddAccount extends JPanel {
 		zhangHao.setBounds(100, 150, 64, 40);
 		this.add(zhangHao);
 		
-		zhangHaoNo = new JLabel("111111");
-		zhangHaoNo.setForeground(Color.WHITE);
+		zhangHaoNo = new JTextField();
 		zhangHaoNo.setFont(font);
 		zhangHaoNo.setBounds(180, 150, 150, 40);
+		zhangHaoNo.addKeyListener(new NumberFieldListener());
 		this.add(zhangHaoNo);
+		
+		zhangHaoTiShi = new JLabel("1开头的7位数字");
+		zhangHaoTiShi.setFont(font);
+		zhangHaoTiShi.setForeground(Color.WHITE);
+		zhangHaoTiShi.setBounds(340, 150, 240, 40);
+		this.add(zhangHaoTiShi);
 		
 		
 		miMa = new JLabel("密码：");
@@ -185,16 +194,27 @@ public class AddAccount extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				aat.zhangHaoTiShi.setForeground(Color.WHITE);
 				aat.miMaTishi.setForeground(Color.WHITE);
 				aat.xinMingTiShi.setForeground(Color.WHITE);
 				aat.dianHuaTiShi.setForeground(Color.WHITE);
 				aat.shenFenZhengHaoMaTiShi.setForeground(Color.WHITE);
+				
+				boolean bZhangHao = false;
+				String zh = zhangHao.getText();
+				char[] temp = zh.toCharArray();
+				if (zh.length() == 11 && temp[0] != '1') {
+					bZhangHao = true;
+				}
 				
 				boolean bMiMa = (miMaF.getText().length() == 6);
 				boolean bXinMing = (xinMingF.getText().length()>=2 && xinMingF.getText().length()<=10);
 				boolean bDianHua = (dianHuaF.getText().length() == 11);
 				boolean bShenFenZhengHao = (shenFenZhengHaoMaF.getText().length() == 18);
 				
+				if (!bZhangHao) {
+					aat.zhangHaoTiShi.setForeground(Color.RED);
+				}
 				if(!bMiMa){
 					aat.miMaTishi.setForeground(Color.RED);
 				}
@@ -208,16 +228,23 @@ public class AddAccount extends JPanel {
 					aat.shenFenZhengHaoMaTiShi.setForeground(Color.RED);
 				}
 				
+				
 				//暂时不用
 				//正常使用时启用
 				if(bMiMa && bXinMing && bDianHua && bShenFenZhengHao){
+					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+					String date = df.format(new Date());
 					AccountNumberVO accountNumberVO = new AccountNumberVO(xinMingF.getText(), 
 							Long.parseLong(zhangHaoNo.getText()), miMaF.getText(),
 							null, dianHuaF.getText(), shenFenZhengHaoMaF.getText(), 
-							"注册日期，得到当前时间的字符串表示");
+							date);
 					AccountInfoController accountInfoController = new AccountInfoController();
+					boolean bExist = (accountInfoController.getInfo(Long.parseLong(zhangHaoNo.getText())) != null);
+					if (bExist) {
+						JOptionPane.showMessageDialog(null, "账号已存在，请重新输入");
+					}
 					boolean result = accountInfoController.addAccount(Long.parseLong(zhangHaoNo.getText()), accountNumberVO);
-					if (bMiMa && bXinMing && bDianHua && bShenFenZhengHao) {
+					if (result) {
 						JOptionPane.showMessageDialog(aui, "修改成功");
 						apl.remove(aat);
 						apl.add(aui.operationJpanel);
