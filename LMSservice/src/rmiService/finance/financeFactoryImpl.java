@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 import dataservice.financedataservice.AddBooksDataSer;
+import dataservice.financedataservice.ChangeAccountDataSer;
 import dataservice.financedataservice.CoverDataSer;
 import dataservice.financedataservice.GetAccountDataSer;
 import dataservice.financedataservice.GetAllPayDataSer;
@@ -81,6 +82,13 @@ public class financeFactoryImpl extends UnicastRemoteObject implements financeFa
 	public StorageProDataSer createStorageProDataSer() throws RemoteException {
 		// TODO 自动生成的方法存根
 		return new StorageProDataSerImpl();
+	}
+
+	@Override
+	public ChangeAccountDataSer createChangeAccountDateSer()
+			throws RemoteException {
+		// TODO 自动生成的方法存根
+		return new ChangeAccountDataSerImpl();
 	}
 	
 }

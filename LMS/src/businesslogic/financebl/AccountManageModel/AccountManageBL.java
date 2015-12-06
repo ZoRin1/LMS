@@ -12,6 +12,7 @@ public class AccountManageBL {
 	private CheckAccountBL checkAccount;
 	private addAccountBL addAccount;
 	private CoverAccountBL coverAccount;
+	private changeTheAccount changeAccount;
 	
 	
 	public ArrayList<AccountVO> getAccountInf() {
@@ -23,6 +24,7 @@ public class AccountManageBL {
 		super();
 		checkAccount = new CheckAccountBL();
 		addAccount = new addAccountBL();
+		changeAccount = new changeTheAccount();
 	}
 	
     //账户信息
@@ -60,6 +62,13 @@ public class AccountManageBL {
 		return coverAccount.CoverAccount();
 	}
 	
-	
+	//增加账户余额
+	public void ChangeEarn(String accountName,double earn){
+		changeAccount.addEarn(accountName, earn);
+	}
+	//减少账户余额
+	public void ChangePay(String accountName,double pay){
+		changeAccount.subPay(accountName, pay);
+	}
 	
 }

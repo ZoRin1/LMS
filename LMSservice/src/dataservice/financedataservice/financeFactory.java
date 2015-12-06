@@ -21,4 +21,6 @@ public interface financeFactory extends Remote{
 	public StorageBooksDataSer createStorageBooksDataSer() throws RemoteException;
 	
 	public StorageProDataSer createStorageProDataSer() throws RemoteException;
+	
+	public ChangeAccountDataSer createChangeAccountDateSer() throws RemoteException;
 }

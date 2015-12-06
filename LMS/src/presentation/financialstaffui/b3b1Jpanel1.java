@@ -25,6 +25,7 @@ import javax.swing.ListSelectionModel;
 
 import po.documentsPO.PaymentPO;
 import businesslogic.documentsbl.documentController;
+import businesslogic.financebl.AccountManageModel.changeTheAccount;
 
 public class b3b1Jpanel1 extends JPanel{
 	private JLabel bianhaoJLabel,bianhaonumberJLabel,riqiJLabel,riqi,danjumingJLabel,danjuming,jineJLabel,tiaomuJLabel,zhanghaoJLabel,beizhuJLabel,fukuanrenxingmingJLabel;
@@ -36,6 +37,13 @@ public class b3b1Jpanel1 extends JPanel{
 	private ImageIcon yesIcon=new ImageIcon("picture/确定.png");
 	private documentController documentController;
 	private String account;
+	
+	
+	
+	private changeTheAccount changeAccount;
+	
+	
+	
 	public b3b1Jpanel1(b3financialstaffui b3financialstaffui,financialstaffJpanel financialstaffJpanel,String account) {
 		// TODO Auto-generated constructor stub
 		this.account=account;
@@ -214,6 +222,14 @@ public class b3b1Jpanel1 extends JPanel{
 				if (isFull()) {
 					//修改账户余额暂缺					
 					documentController.createBlock(new PaymentPO(bianhaonumberJLabel.getText(), "付款单", riqi.getText(), account, Double.parseDouble(jineField.getText()), fukuanrenxingmingField.getText(), zhanghaoField.getText(), tiaomuJList.getSelectedValue(), beizhuJList.getSelectedValue()));
+					
+					
+					//这里要加上改变账户余额的功能！！！
+					changeAccount = new changeTheAccount();
+					changeAccount.subPay(zhanghaoField.getText(), Double.parseDouble(jineField.getText()));
+					//这里要加上改变账户余额的功能！！
+					
+					
 					new finishfukuandanDialog(b3financialstaffui, "新建付款单完成", true);
 					financialstaffJpanel.remove(b3b1Jpanel1);
 					financialstaffJpanel.add(b3financialstaffui.operationJpanel);
