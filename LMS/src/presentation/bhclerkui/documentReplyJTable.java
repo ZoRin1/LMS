@@ -83,6 +83,7 @@ public class documentReplyJTable {
 				return false;
 			}
 		};
+		Jtabel.setFont(new Font("幼圆", Font.BOLD, 20));
 		
 		Jtabel.getTableHeader().setReorderingAllowed(false); //设置列不可重排
 		Jtabel.getTableHeader().setResizingAllowed(false);//设置列不可拖动
@@ -197,9 +198,13 @@ class LoadingDialog extends JDialog{
 		Jtabel.setShowGrid(false);
 		TableColumn column = null;
 		column = Jtabel.getColumnModel().getColumn(0);
-		column.setPreferredWidth(360);
+		column.setPreferredWidth(180);
+		
 		column = Jtabel.getColumnModel().getColumn(1);
-		column.setPreferredWidth(360);
+		column.setPreferredWidth(200);
+		Jtabel.setFont(new Font("幼圆", Font.BOLD, 20));
+		Jtabel.setForeground(Color.white);
+		Jtabel.setOpaque(false); 
 		
 		Jtabel.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		Jtabel.setEnabled(false);
@@ -294,13 +299,15 @@ class JieshouDialog extends JDialog{
 		Jtabel.setShowGrid(false);
 		TableColumn column = null;
 		column = Jtabel.getColumnModel().getColumn(0);
-		column.setPreferredWidth(360);
-		column = Jtabel.getColumnModel().getColumn(1);
-		column.setPreferredWidth(360);
+		column.setPreferredWidth(180);
 		
+		column = Jtabel.getColumnModel().getColumn(1);
+		column.setPreferredWidth(200);
+		Jtabel.setFont(new Font("幼圆", Font.BOLD, 20));
+		Jtabel.setForeground(Color.white);
+		Jtabel.setOpaque(false); 
 		Jtabel.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); 
 		
-		Jtabel.setOpaque(false); 
 		DefaultTableCellRenderer render = new DefaultTableCellRenderer();   
 		render.setOpaque(false);
 		
@@ -390,9 +397,13 @@ class YDispatchDialog extends JDialog{
 		Jtabel.setShowGrid(false);
 		TableColumn column = null;
 		column = Jtabel.getColumnModel().getColumn(0);
-		column.setPreferredWidth(360);
+		column.setPreferredWidth(180);
+		
 		column = Jtabel.getColumnModel().getColumn(1);
-		column.setPreferredWidth(360);
+		column.setPreferredWidth(200);
+		Jtabel.setFont(new Font("幼圆", Font.BOLD, 20));
+		Jtabel.setForeground(Color.white);
+		Jtabel.setOpaque(false); 
 		
 		Jtabel.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); 
 		
@@ -495,9 +506,13 @@ class ReceiptDialog extends JDialog{
 		Jtabel.setShowGrid(false);
 		TableColumn column = null;
 		column = Jtabel.getColumnModel().getColumn(0);
-		column.setPreferredWidth(360);
+		column.setPreferredWidth(180);
+		
 		column = Jtabel.getColumnModel().getColumn(1);
-		column.setPreferredWidth(360);
+		column.setPreferredWidth(200);
+		Jtabel.setFont(new Font("幼圆", Font.BOLD, 20));
+		Jtabel.setForeground(Color.white);
+		Jtabel.setOpaque(false); 
 		
 		Jtabel.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); 
 		

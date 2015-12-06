@@ -1,5 +1,6 @@
 package presentation.bhclerkui;
 
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -63,7 +64,7 @@ public class DriverInfoJpanelJTable {
 				return false;
 			}
 		};
-		
+		driverInfTable.setFont(new Font("幼圆", Font.BOLD, 20));
 		driverInfTable.getTableHeader().setReorderingAllowed(false); //设置列不可重排
 		driverInfTable.getTableHeader().setResizingAllowed(false); //设置列不可拖动
 		
