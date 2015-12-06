@@ -6,8 +6,8 @@ public class DataCheck {
 		boolean result = false;
 		if (!number.equals("")) {
 			if (number.contains(".")) {
-				String[] temp = number.split(".");
-				if (temp.length == 2) {
+				String[] temp = number.split("\\.");
+				if (temp.length == 2) {					
 					if ( !temp[0].equals("") && !temp[1].equals("")) {
 						result = true;
 					}

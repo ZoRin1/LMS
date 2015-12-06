@@ -164,7 +164,7 @@ public class b1Salary extends JPanel {
 				if (!bJiCi) {
 					JOptionPane.showMessageDialog(null, "请输入正确的计次工资策略数值");
 				}
-				if (bTIiCheng) {
+				if (!bTIiCheng) {
 					JOptionPane.showMessageDialog(null, "请输入正确的提成工资策略数值");
 				}
 				if (bAnYue && bJiCi && bTIiCheng) {
