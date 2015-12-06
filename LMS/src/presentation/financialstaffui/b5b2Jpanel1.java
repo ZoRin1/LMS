@@ -24,8 +24,10 @@ public class b5b2Jpanel1 extends JPanel{
 	private b5b2Jpanel1JTable b5b2Jpanel1JTable;
 	
 	private ArrayList<BooksPO> bookList;
+	private b5financialstaffui b5financialstaffui;
 	public b5b2Jpanel1(b5financialstaffui b5financialstaffui,financialstaffJpanel financialstaffJpanel,ArrayList<BooksPO> bookList) {
 		// TODO Auto-generated constructor stub
+		this.b5financialstaffui = b5financialstaffui;
 		this.bookList = bookList;
 		init();
 		financialstaffJpanel.add(this);
@@ -41,7 +43,7 @@ public class b5b2Jpanel1 extends JPanel{
 		returnButton.setBounds(662, 575,48,48);
 		returnButton.setContentAreaFilled(false);
 		
-		b5b2Jpanel1JTable = new b5b2Jpanel1JTable(this,bookList);//还要传账本的参数进去！！！！才能自动显示出来
+		b5b2Jpanel1JTable = new b5b2Jpanel1JTable(b5financialstaffui,this,bookList);//还要传账本的参数进去！！！！才能自动显示出来
 
 	 	this.setBounds(260, 60, 730,650);
 
