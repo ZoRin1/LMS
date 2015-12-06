@@ -119,8 +119,10 @@ class icclerkdocumentreplyOperationJpanel extends JPanel{
 	private JLabel j1;
 	private documentReplyJTable jtable;
 	public String account;
+	private documentreplyui ui;
 	public icclerkdocumentreplyOperationJpanel(icclerkJpanel icclerkJpanel,icclerkui icclerkui,documentreplyui documentreplyui,String account) {
 		// TODO Auto-generated constructor stub
+		ui=documentreplyui;
 		this.account=account;
 		init();
 		icclerkJpanel.add(this);
@@ -131,7 +133,7 @@ class icclerkdocumentreplyOperationJpanel extends JPanel{
 		ImageIcon i1 = new ImageIcon("picture/财务图片/单据反馈框架.png");
 		j1 = new JLabel(i1);
 		j1.setBounds(0, 0, 720, 566);
-		jtable=new documentReplyJTable(this,account);
+		jtable=new documentReplyJTable(ui, this,account);
 		
 		ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 		returnButton=new JButton(returnIcon);
