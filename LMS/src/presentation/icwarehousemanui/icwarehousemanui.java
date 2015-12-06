@@ -24,11 +24,11 @@ import presentation.mainui.mainui;
 
 public class icwarehousemanui extends JFrame{
 	private String account="1515";
-	private String state="";
+	private String state="4-南京-中转中心-001";
 	private JLabel warnJLabel;
 	private String[] args;
 	private JButton outjButton;
-	private icwarehousemanJpanel icwarehousemanJpanel;
+	 icwarehousemanJpanel icwarehousemanJpanel;
 	public icwarehousemanJpanel getIcwarehousemanJpanel() {
 		return icwarehousemanJpanel;
 	}

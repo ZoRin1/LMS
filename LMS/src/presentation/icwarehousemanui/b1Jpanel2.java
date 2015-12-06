@@ -276,4 +276,13 @@ public class b1Jpanel2 extends JPanel{
 			});
 		}
 	}
+	class dialogJpanel extends JPanel{
+		private ImageIcon dialogIcon=new ImageIcon("picture/±³¾°.png");
+		public void paintComponent(Graphics g)  
+		{  
+		    super.paintComponent(g);    
+		    g.drawImage(dialogIcon.getImage(),0,0,null);
+	      
+	     }
+	   }
 }

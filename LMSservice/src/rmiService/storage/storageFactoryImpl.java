@@ -28,49 +28,49 @@ public class storageFactoryImpl extends UnicastRemoteObject implements storageFa
 	public Check_inventoryDataSer createCheck_inventoryDataSer()
 			throws RemoteException {
 		// TODO 自动生成的方法存根
-		return null;
+		return new Check_inventoryDataSerImpl();
 	}
 
 	@Override
 	public GetCountDataSer createGetCountDataSer() throws RemoteException {
 		// TODO 自动生成的方法存根
-		return null;
+		return new GetCountDataSerImpl();
 	}
 
 	@Override
 	public GetDepotDataSer createGetDepotDataSer() throws RemoteException {
 		// TODO 自动生成的方法存根
-		return null;
+		return new GetDepotDataSerImpl();
 	}
 
 	@Override
 	public InDepotDataSer createInDepotDataSer() throws RemoteException {
 		// TODO 自动生成的方法存根
-		return null;
+		return new InDepotDataSerImpl();
 	}
 
 	@Override
 	public ReturnSpaceDataSer createReturnSpaceDataSer() throws RemoteException {
 		// TODO 自动生成的方法存根
-		return null;
+		return new ReturnSpaceDataSerImpl();
 	}
 
 	@Override
 	public UpdateSpaceDataSer createUpdateSpaceDataSer() throws RemoteException {
 		// TODO 自动生成的方法存根
-		return null;
+		return new UpdateSpaceDataSerImpl();
 	}
 
 	@Override
 	public UsedSpaceDataSer createUsedSpaceDataSer() throws RemoteException {
 		// TODO 自动生成的方法存根
-		return null;
+		return new UsedSpaceDataSerImpl();
 	}
 
 	@Override
 	public OutDepotDataSer createOutDepotDataSer() throws RemoteException {
 		// TODO 自动生成的方法存根
-		return null;
+		return new OutDepotDataSerImpl();
 	}
 
 }

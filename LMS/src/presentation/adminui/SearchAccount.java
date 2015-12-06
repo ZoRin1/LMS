@@ -15,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
+import businesslogic.accountbl.AccountInfoController;
 import vo.accountVO.AccountNumberVO;
 
 public class SearchAccount extends JPanel {
@@ -66,13 +67,14 @@ public class SearchAccount extends JPanel {
 					
 					//真正使用时去掉
 		        	//暂时不用
-//					int r = accountTable.getSelectedRow();
-//					long ID = Long.parseLong(data[r][0]);
-//					AccountInfoController accountInfoController = new AccountInfoController();
-//					AccountNumberVO accountNumberVO = accountInfoController.getInfo(ID);   
+					int r = accountTable.getSelectedRow();
+					long ID = Long.parseLong(data[r][0]);
+					AccountInfoController accountInfoController = new AccountInfoController();
+					AccountNumberVO accountNumberVO = accountInfoController.getInfo(ID);   
 										
-					AccountNumberVO accountNumberVO1 = new AccountNumberVO("杨华安", 1000000, "admin1", null, "13270807992", "522123199505051039", "2015-11-26");					
-					new AccountInfo(aui,apl, accountNumberVO1);
+//					AccountNumberVO accountNumberVO1 = new AccountNumberVO("杨华安", 1000000, "admin1", 
+//							null, "13270807992", "522123199505051039", "2015-11-26");					
+					new AccountInfo(aui,apl, accountNumberVO);
 					aui.repaint();
 			 }
 		}

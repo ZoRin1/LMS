@@ -17,7 +17,7 @@ public class AccountBL implements AccountBLSer {
 	
 	public AccountBL(){
 		try {
-			accountFactory accountFactory =(accountFactory)Naming.lookup("rmi://127.0.0.1:6600/accFactory");
+			accountFactory accountFactory =(accountFactory)Naming.lookup("rmi://114.212.42.143:6600/accFactory");
 			this.accountDataSer = accountFactory.createAccountDataSer();
 		} catch (MalformedURLException e) {
 			// TODO 自动生成的 catch 块
@@ -75,7 +75,12 @@ public class AccountBL implements AccountBLSer {
 	public AccountNumberVO getInfo(long ID) {
 		// TODO 自动生成的方法存根
 		AccountInfoPO po = this.accountDataSer.find(ID);
-		return new AccountNumberVO(po.getName(), po.getID(), po.getPassword(), po.getState(), po.getPhone(), po.getsID(), po.getDate());
+		if (po !=  null) {
+			return new AccountNumberVO(po.getName(), po.getID(), po.getPassword(), po.getState(), po.getPhone(), po.getsID(), po.getDate());
+		}else {
+			return null;
+		}
+		
 	}
 
 	@Override

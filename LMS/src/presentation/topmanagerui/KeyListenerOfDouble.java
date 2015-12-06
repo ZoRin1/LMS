@@ -1,9 +1,9 @@
-package presentation.adminui;
+package presentation.topmanagerui;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class NumberFieldListener implements KeyListener {
+public class KeyListenerOfDouble implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -21,12 +21,11 @@ public class NumberFieldListener implements KeyListener {
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		int keyChar=e.getKeyChar();
-		if ((keyChar>=KeyEvent.VK_0 && keyChar<=KeyEvent.VK_9 )) {
+		if ((keyChar>=KeyEvent.VK_0 && keyChar<=KeyEvent.VK_9 )||keyChar == KeyEvent.VK_PERIOD) {
 
 		} else {
 		e.consume(); 
 		}
-
 	}
 
 }

@@ -35,7 +35,7 @@ public class checkDepotDialog {
 	icwarehousemanJpanel icwarehousemanJpanel;
 	icwarehousemanOperationJpanel operationJpanel;
 	CheckController checkController;
-	
+	private String account;
 	public checkDepotDialog(final icwarehousemanui ui){
 		final String labels[] = {"00","01","02","03","04","05","06","07","08","09",
 				"10","11","12","13","14","15","16","17","18","19","20","21","22",
@@ -44,7 +44,7 @@ public class checkDepotDialog {
 				"10","11","12","13","14","15","16","17","18","19","20","21","22",
 				"23","24","25","26","27","28","29","30","31","32","33","34","35",
 				"36","37","38","39","40","41","42","43","44","45","46","47","48","49","50",
-				"51","52","53","54","55","56","57","58","59","60"};
+				"51","52","53","54","55","56","57","58","59"};
 		DateChooser date1 =  DateChooser.getInstance("yyyy-MM-dd");
 		DateChooser date2 =  DateChooser.getInstance("yyyy-MM-dd");
 //		timeChooser date = new timeChooser(this);
@@ -80,15 +80,9 @@ public class checkDepotDialog {
 			public void itemStateChanged(ItemEvent itemEvent) {
 				// TODO 自动生成的方法存根
 		          int state = itemEvent.getStateChange();   
-//		          System.out.println((state == ItemEvent.SELECTED) ? "Selected" : "Deselected");  
 		          if(state == itemEvent.SELECTED){
-			          System.out.println("Item: " + itemEvent.getItem());  
 			          shi_1 = itemEvent.getItem().toString();
-			          System.out.println(shi_1+"哈哈"); 
 		          }
-//		          System.out.println("Item: " + itemEvent.getItem());   
-//		          ItemSelectable is = itemEvent.getItemSelectable();   
-//		          System.out.println(", Selected: " + is); 
 			}
 		});
 	      
@@ -105,9 +99,7 @@ public class checkDepotDialog {
 				// TODO 自动生成的方法存根
 		          int state = itemEvent.getStateChange();   
 		          if(state == itemEvent.SELECTED){
-			          System.out.println("Item: " + itemEvent.getItem());  
 			          fen_1 = itemEvent.getItem().toString();
-			          System.out.println(fen_1+"哈哈"); 
 		          }
 			}
 		});
@@ -125,9 +117,7 @@ public class checkDepotDialog {
 				// TODO 自动生成的方法存根
 		          int state = itemEvent.getStateChange();  
 		          if(state == itemEvent.SELECTED){
-			          System.out.println("Item: " + itemEvent.getItem()); 
 				      miao_1 = itemEvent.getItem().toString();
-			          System.out.println(miao_1+"哈哈"); 
 		          }
 			}
 		});
@@ -145,9 +135,7 @@ public class checkDepotDialog {
 				// TODO 自动生成的方法存根
 		          int state = itemEvent.getStateChange();   
 		          if(state == itemEvent.SELECTED){
-			          System.out.println("Item: " + itemEvent.getItem());  
 			          shi_2 = itemEvent.getItem().toString();
-			          System.out.println(shi_2+"哈哈"); 
 		          }
 			}
 		});
@@ -165,9 +153,7 @@ public class checkDepotDialog {
 				// TODO 自动生成的方法存根
 		          int state = itemEvent.getStateChange();   
 		          if(state == itemEvent.SELECTED){
-			          System.out.println("Item: " + itemEvent.getItem());  
 			          fen_2 = itemEvent.getItem().toString();
-			          System.out.println(fen_2+"哈哈"); 
 		          }
 			}
 		});
@@ -185,13 +171,11 @@ public class checkDepotDialog {
 				// TODO 自动生成的方法存根
 		          int state = itemEvent.getStateChange();   
 		          if(state == itemEvent.SELECTED){
-			          System.out.println("Item: " + itemEvent.getItem());  
 			          if(itemEvent.getItem()==null){
 			        	  miao_2 = "00";
 			          }else{
 				          miao_2 = itemEvent.getItem().toString();
 			          }
-			          System.out.println(miao_2+"哈哈"); 
 		          }
 			}
 		});
@@ -246,26 +230,13 @@ public class checkDepotDialog {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
 				//时间段前后的判断
-				if(Integer.parseInt(shi_1)>Integer.parseInt(shi_2)){
-					try {
-						throw new timeException();
-					} catch (timeException e) {
-						// TODO 自动生成的 catch 块
-						//这个地方要弹出对话框
-						System.out.println("时间段输入错误");
-					}
-				}else if(Integer.parseInt(shi_1)==Integer.parseInt(shi_2)){
-					if(Integer.parseInt(fen_1)<Integer.parseInt(fen_2)||Integer.parseInt(fen_1)==Integer.parseInt(fen_2)){
-						try {
-							throw new timeException();
-						} catch (timeException e) {
-							// TODO 自动生成的 catch 块
-							//这个地方要弹出对话框
-							System.out.println("时间段输入错误");
-						}
-					}
-				}
 				//时间段前后的判断
+				if(shi_1==null){
+					shi_1="00";
+				}
+				if(shi_2==null){
+					shi_2="00";
+				}
 				if(miao_1==null){
 					miao_1 = "00";
 				}
@@ -278,26 +249,66 @@ public class checkDepotDialog {
 				if(fen_2==null){
 					fen_2 = "00";
 				}
-				String now ="";
-				Date date = new Date();
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");   
-				now = sdf.format(date);
+				if(Integer.parseInt(shi_1)>Integer.parseInt(shi_2)){
+					try {
+						throw new timeException();
+					} catch (timeException e) {
+						// TODO 自动生成的 catch 块
+						//这个地方要弹出对话框
+						System.out.println("时间段输入错误");
+					}
+				}else if(Integer.parseInt(shi_1)==Integer.parseInt(shi_2)){
+					if(Integer.parseInt(fen_1)>Integer.parseInt(fen_2)||(Integer.parseInt(fen_1)==Integer.parseInt(fen_2)&&Integer.parseInt(miao_1)>=Integer.parseInt(miao_2))){
+						try {
+							throw new timeException();
+						} catch (timeException e) {
+							// TODO 自动生成的 catch 块
+							//这个地方要弹出对话框
+							System.out.println("时间段输入错误");
+						}
+					}
+					else {
+						String now ="";
+						Date date = new Date();
+						SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");   
+						now = sdf.format(date);
+						
+						String starttime = now+" "+shi_1+":"+fen_1+":"+miao_1;
+						String endtime = now+" "+shi_2+":"+fen_2+":"+miao_2;
+						
+						
+						//这中间要加对单据的调用
+						checkController = new CheckController();
+						ArrayList<SimpleInDepotInfVO> simpleInf = checkController.conCheck(account, starttime, endtime);
+						//这中间要加对单据的调用
+						
+						checkDepot.dispose();
+						icwarehousemanJpanel.remove(operationJpanel);
+						new checkDepotPanel(ui,icwarehousemanJpanel,simpleInf);//checkDepotPanel的构造函数还要加上单据的参数才能显示
+						icwarehousemanJpanel.repaint();
+					}
+				}
+				else {
+					String now ="";
+					Date date = new Date();
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");   
+					now = sdf.format(date);
+					
+					String starttime = now+" "+shi_1+":"+fen_1+":"+miao_1;
+					String endtime = now+" "+shi_2+":"+fen_2+":"+miao_2;
+					
+					
+					//这中间要加对单据的调用
+					checkController = new CheckController();
+					ArrayList<SimpleInDepotInfVO> simpleInf = checkController.conCheck(account, starttime, endtime);
+					//这中间要加对单据的调用
+					
+					checkDepot.dispose();
+					icwarehousemanJpanel.remove(operationJpanel);
+					new checkDepotPanel(ui,icwarehousemanJpanel,simpleInf);//checkDepotPanel的构造函数还要加上单据的参数才能显示
+					icwarehousemanJpanel.repaint();
+				}
 				
-				String starttime = now+" "+shi_1+":"+fen_1+":"+miao_1;
-				System.out.println(starttime);
-				String endtime = now+" "+shi_2+":"+fen_2+":"+miao_2;
-				System.out.println(endtime);
-				
-				
-				//这中间要加对单据的调用
-				checkController = new CheckController();
-				//ArrayList<SimpleInDepotInfVO> simpleInf = checkController.conCheck(account, starttime, endtime);
-				//这中间要加对单据的调用
-				
-				checkDepot.dispose();
-				icwarehousemanJpanel.remove(operationJpanel);
-				new checkDepotPanel(ui,icwarehousemanJpanel);//checkDepotPanel的构造函数还要加上单据的参数才能显示
-				icwarehousemanJpanel.repaint();
 			}
 		});
 		

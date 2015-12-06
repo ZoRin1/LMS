@@ -30,13 +30,13 @@ public class GetDepotDataSerImpl extends UnicastRemoteObject implements GetDepot
 	@Override
 	public DepotPO getDepot(String city, int AreaNum)  throws RemoteException{
 		// TODO 自动生成的方法存根
-		DepotPO po=null;
-		sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from "+city+"中转中心仓库"+" where isFull=0 and AreaNum="+AreaNum;//这里有一点问题  这个方法要有分区的参数传进来
+		sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from "+city+"中转中心仓库"+" where isFull=0 and AreaNum="+AreaNum;
 		try {
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			ResultSet resultSet=preparedStatement.executeQuery();
+			DepotPO po=null;
 			if(resultSet.next()){
 				po = new DepotPO(resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getInt(4));	
 			}
@@ -50,6 +50,7 @@ public class GetDepotDataSerImpl extends UnicastRemoteObject implements GetDepot
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
 			connection.close();
+			return po;
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -57,6 +58,6 @@ public class GetDepotDataSerImpl extends UnicastRemoteObject implements GetDepot
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return po;
+		return null;
 	}
 }

@@ -22,7 +22,7 @@ public class BusinessBL implements BussinessOrgBLSer {
  public BusinessBL() {
 		// TODO Auto-generated constructor stub				
 		try {
-			organizationFactory organizationFactory = (organizationFactory)Naming.lookup("rmi://127.0.0.1:6600/orgFactory");
+			organizationFactory organizationFactory = (organizationFactory)Naming.lookup("rmi://114.212.42.143:6600/orgFactory");
 			this.bussinessOrgDataSer = organizationFactory.createBussinessOrgDataSer();
 		} catch (MalformedURLException e) {
 			// TODO 自动生成的 catch 块
