@@ -18,7 +18,11 @@ public class DriverInfoJpanel extends JPanel{
 	private ImageIcon yesIcon=new ImageIcon("picture/È·¶¨.png");
 	private JLabel kuangjia;
 	private DriverInfoJpanelJTable DriverInfoJpanelJTable;
-	public DriverInfoJpanel(bhclerkui ui,bhclerkJpanel bhclerkJpanel) {
+	private String account;
+	private bhclerkui ui;
+	public DriverInfoJpanel(bhclerkui ui,bhclerkJpanel bhclerkJpanel,String account) {
+		this.ui=ui;
+		this.account=account;
 		init();
 		bhclerkJpanel.add(this);
 		registListener(ui,bhclerkJpanel,this);
@@ -31,7 +35,7 @@ public class DriverInfoJpanel extends JPanel{
 		returnButton.setBounds(662,575,48,48);
 		returnButton.setContentAreaFilled(false);
 		
-		DriverInfoJpanelJTable = new DriverInfoJpanelJTable(this);
+		DriverInfoJpanelJTable = new DriverInfoJpanelJTable(ui,this,account);
 		
 		kuangjia = new JLabel(i1);
 		kuangjia.setBounds(0, 0, 723, 571);

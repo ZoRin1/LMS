@@ -18,7 +18,11 @@ public class CarInfoJpanel extends JPanel{
 	private ImageIcon yesIcon=new ImageIcon("picture/È·¶¨.png");
 	private JLabel CarLabel;
 	private CarInfoJpanelJTable CarInfoJpanelJTable;
-	public CarInfoJpanel(bhclerkui ui,bhclerkJpanel bhclerkJpanel) {
+	private bhclerkui ui;
+	private String account;
+	public CarInfoJpanel(bhclerkui ui,bhclerkJpanel bhclerkJpanel,String account) {
+		this.account=account;
+		this.ui=ui;
 		init();
 		bhclerkJpanel.add(this);
 		registListener(ui,bhclerkJpanel,this);
@@ -30,7 +34,7 @@ public class CarInfoJpanel extends JPanel{
 		returnButton.setBounds(662,575,48,48);
 		returnButton.setContentAreaFilled(false);
 		
-		CarInfoJpanelJTable = new CarInfoJpanelJTable(this);
+		CarInfoJpanelJTable = new CarInfoJpanelJTable(ui,this,account);
 		
 		CarLabel = new JLabel(i1);
 		CarLabel.setBounds(0, 0, 723, 571);
