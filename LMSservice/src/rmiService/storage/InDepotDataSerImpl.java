@@ -51,4 +51,28 @@ public class InDepotDataSerImpl extends UnicastRemoteObject implements InDepotDa
 		}
 	}
 
+	@Override
+	public void inDepotExcel(String inDepotCode, String inDepotDate,
+			DepotPO depo, String city) throws RemoteException {
+		// TODO 自动生成的方法存根
+		int qu =depo.getQu();
+		int pai = depo.getPai();
+		int jia = depo.getJia();
+		int wei = depo.getWei();
+		sql="insert into "+city+"库存信息 (AreaNum,RowNum,ShelvesNum,SositionNum,code,date) values ('" +qu+"','"+pai+"','"+jia+"','"+wei+"','"+inDepotCode+"','"+inDepotDate+"')";
+		try {
+			Class.forName(DRIVER);
+			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			preparedStatement.close();
+			connection.close();
+		} catch (ClassNotFoundException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+	}
 }

@@ -34,11 +34,14 @@ public class OutDepotDataSerImpl extends UnicastRemoteObject implements OutDepot
 		int pai = depo.getPai();
 		int jia = depo.getJia();
 		int wei = depo.getWei();
-		String sql = "UPDATE "+city+"中转中心仓库"+" set isFull=0"+" where AreaNum="+qu+" and RowNum="+pai+" and ShelvesNum="+jia+" and SositionNum="+wei;
+		sql = "UPDATE "+city+"中转中心仓库"+" set isFull=0"+" where AreaNum="+qu+" and RowNum="+pai+" and ShelvesNum="+jia+" and SositionNum="+wei;
 		try {
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			sql = "DELETE from "+city+"库存信息 where AreaNum="+qu+" and RowNum="+pai+" and ShelvesNum="+jia+" and SositionNum="+wei;
+			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
 			connection.close();

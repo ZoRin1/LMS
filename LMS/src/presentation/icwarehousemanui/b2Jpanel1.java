@@ -19,8 +19,10 @@ import java.util.Date;
 import javax.swing.*;
 
 import po.documentsPO.InBillsPO;
+import po.storagePO.DepotPO;
 import vo.storageVO.DepotVO;
 import businesslogic.documentsbl.documentController;
+import businesslogic.storagebl.InDepotModel.InDepotBL;
 import businesslogic.storagebl.InDepotModel.getPosition;
 
 public class b2Jpanel1 extends JPanel{
@@ -34,6 +36,8 @@ public class b2Jpanel1 extends JPanel{
 	private String state;
 	private getPosition getPosition;
 	private ImageIcon yesIcon=new ImageIcon("picture/确定.png");
+	
+	private InDepotBL inDepot;
 	public b2Jpanel1(b2icwarehousemanui ui,icwarehousemanJpanel icwarehousemanJpanel,String account,String state) {
 		// TODO Auto-generated constructor stub
 		this.account=account;
@@ -44,6 +48,7 @@ public class b2Jpanel1 extends JPanel{
 	}
 	private void init(){
 		documentController=new documentController();
+		inDepot = new InDepotBL();
 		ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 		ImageIcon i1 = new ImageIcon("picture/库存图片/入库单.png");
 		ImageIcon i2 = new ImageIcon("picture/库存图片/入库单编号.png");
@@ -239,6 +244,15 @@ public class b2Jpanel1 extends JPanel{
 				// TODO Auto-generated method stub
 				if (isFull()) {
 					documentController.createBlock(new InBillsPO(t1.getText(), "入库单", t3.getText(), t4.getText(), account, t5.getText(), Integer.parseInt(t6.getText()),  Integer.parseInt(t7.getText()),  Integer.parseInt(t8.getText()),  Integer.parseInt(t9.getText())));
+					
+					
+                    //库存信息表的添加！！！！
+					DepotPO po = new DepotPO(Integer.parseInt(t6.getText()),  Integer.parseInt(t7.getText()),  Integer.parseInt(t8.getText()),  Integer.parseInt(t9.getText()));
+					String[] temp = state.split("-");
+					inDepot.inDepotExcel(t1.getText(), t4.getText(), po, temp[1]);
+					//库存信息表的添加！！！！
+					
+					
 					icwarehousemanJpanel.remove(b2jpanel);
 					icwarehousemanJpanel.add(ui.getOperationJpanel());
 					ui.getB1().setEnabled(true);
