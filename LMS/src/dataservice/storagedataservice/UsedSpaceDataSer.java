@@ -16,4 +16,12 @@ public interface UsedSpaceDataSer {
 	 *
 	 */
 	public int[] getAllSpace(String city);
+	
+	/**
+	 * 得到库存机动分区空间大小
+	 * 进入分区调整界面后
+	 * @author YangGuan
+	 *
+	 */
+	public int getJiDongSpace(String city);
 }

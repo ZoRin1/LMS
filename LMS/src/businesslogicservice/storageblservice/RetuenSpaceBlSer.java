@@ -7,7 +7,8 @@ public interface RetuenSpaceBlSer {
 	/**
 	 * 将空间返还给机动区
 	 * @author YangGuan
+	 * @param city TODO
 	 *
 	 */
-	public ResultMessage  returnSpace();
+	public void  returnSpace(String city);
 }

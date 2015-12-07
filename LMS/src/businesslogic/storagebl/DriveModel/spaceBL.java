@@ -43,6 +43,13 @@ public class spaceBL implements usedSpaceBlSer{
 		int[] allSpace = used.getAllSpace(city);
 		return allSpace;
 	}
+
+	@Override
+	public int getJiDongSpace(String city) {
+		// TODO 自动生成的方法存根
+		int JiDongSpace = used.getJiDongSpace(city);
+		return JiDongSpace;
+	}
 	
 	
 

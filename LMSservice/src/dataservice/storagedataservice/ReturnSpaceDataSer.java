@@ -11,5 +11,5 @@ public interface ReturnSpaceDataSer extends Remote{
 	 * @author YangGuan
 	 *
 	 */
-	public void reSpace(int space,String city) throws RemoteException;
+	public void reSpace(String city) throws RemoteException;
 }

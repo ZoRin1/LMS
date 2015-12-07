@@ -19,4 +19,13 @@ public interface usedSpaceBlSer {
 	 */
 	public int[] allSpaceInf(String city);
 	
+	
+	
+	/**
+	 * 提供分区调整中机动库区已用空间大小。
+	 * @author YangGuan
+	 * @param city TODO
+	 *
+	 */
+	public int getJiDongSpace(String city);
 }

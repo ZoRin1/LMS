@@ -26,7 +26,7 @@ public class ReturnSpaceDataSerImpl extends UnicastRemoteObject implements Retur
 	}
 
 	@Override
-	public void reSpace(int space,String city)  throws RemoteException{
+	public void reSpace(String city)  throws RemoteException{
 		// TODO 自动生成的方法存根
 		String sql = "UPDATE "+city+"中转中心仓库"+" set AreaNum=4"+" where AreaNum=5";
 		try {

@@ -279,7 +279,7 @@ public class icwarehousemanui extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			new b6(icwarehousemanui);
+			new b6(icwarehousemanui,account,state);
 		}
 	});
 	}
