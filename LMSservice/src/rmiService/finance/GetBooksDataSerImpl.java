@@ -31,7 +31,7 @@ public class GetBooksDataSerImpl extends UnicastRemoteObject implements GetBooks
 	@Override
 	public ArrayList<BooksPO> Books()  throws RemoteException{
 		// TODO 自动生成的方法存根
-		sql="SELECT *  from 帐本";
+		sql="SELECT *  from 账本";
 		ArrayList<BooksPO> BooksList = new ArrayList<BooksPO>();
 		BooksPO po = null;
 		try {

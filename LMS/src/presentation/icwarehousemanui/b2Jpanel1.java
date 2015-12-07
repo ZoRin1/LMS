@@ -258,15 +258,15 @@ public class b2Jpanel1 extends JPanel{
 					//库存报警功能的添加！！！！
 					int[] used = depot110.usedSpaceInf(temp[1]);
 					int[] all = depot110.allSpaceInf(temp[1]);
-					if(((double)used[0]/(double)all[0])>=0.8){
+					if(((double)used[0]/(double)all[0])>=0){
 						System.out.println("航运区库存快满了");
 						//这里要改变库存报警的图片
 					}
-					if(((double)used[1]/(double)all[1])>=0.8){
+					if(((double)used[1]/(double)all[1])>=0){
 						System.out.println("铁运区库存快满了");
 						//这里要改变库存报警的图片
 					}
-					if(((double)used[2]/(double)all[2])>=0.8){
+					if(((double)used[2]/(double)all[2])>=0){
 						System.out.println("汽运区库存快满了");
 						//这里要改变库存报警的图片
 					}

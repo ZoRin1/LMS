@@ -33,7 +33,7 @@ public class ChangeAccountDataSerImpl extends UnicastRemoteObject implements Cha
 		// TODO 自动生成的方法存根
 		double addEarn=0;
 //		sql="UPDATE 账户表"+" set AreaNum=5"+" where AreaNum=4 and SositionNum<="+shipping;
-		sql="SELECT * from 账户表 where Name="+accountName;
+		sql="SELECT * from 账户表 where Name='"+accountName+"'";
 		try {
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
@@ -44,7 +44,7 @@ public class ChangeAccountDataSerImpl extends UnicastRemoteObject implements Cha
 				addEarn = Double.parseDouble(temp)+earn;
 			}
 			
-			sql = "UPDATE 账户表"+" set sums="+addEarn+" where name="+accountName;
+			sql = "UPDATE 账户表"+" set sums='"+addEarn+"' where name='"+accountName+"'";
 			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.executeUpdate();
 			
@@ -62,7 +62,7 @@ public class ChangeAccountDataSerImpl extends UnicastRemoteObject implements Cha
 	public void changePay(String accountName, double earn) throws RemoteException{
 		// TODO 自动生成的方法存根
 		double subPay=0;
-		sql="SELECT * from 账户表 where Name="+accountName;
+		sql="SELECT * from 账户表 where Name='"+accountName+"'";
 		try {
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
@@ -73,7 +73,7 @@ public class ChangeAccountDataSerImpl extends UnicastRemoteObject implements Cha
 				subPay = Double.parseDouble(temp)-earn;
 			}
 			
-			sql = "UPDATE 账户表"+" set sums="+subPay+" where name="+accountName;
+			sql = "UPDATE 账户表"+" set sums="+subPay+" where name='"+accountName+"'";
 			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.executeUpdate();
 			

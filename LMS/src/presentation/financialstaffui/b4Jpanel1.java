@@ -107,23 +107,23 @@ public class b4Jpanel1 extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-//				docController = new documentController();
-//				String now = date.getStrDate()+" 23:59:59";
-//				String selling = bussinessHallCodeField.getText();
-//				receiptList = docController.getReceipts(selling, now);
+				docController = new documentController();
+				String now = date.getStrDate();
+				String selling = bussinessHallCodeField.getText();
+				receiptList = docController.getReceipts(selling, now);
 				
 				//本地测试的假数据
-				ArrayList<String> TCode = new ArrayList<String>();
-				TCode.add("123156456");
-				TCode.add("12356");
-				TCode.add("123");
-				TCode.add("1256456");
-				TCode.add("1231566");
-				TCode.add("12356");
-				TCode.add("1236");
-				receiptList =new  ArrayList<ReceiptPO>();
-				ReceiptPO p1= new ReceiptPO("11233", "sdsad", "dasdas", "dadasd", "545646", 465, "545", TCode);
-				receiptList.add(p1);
+//				ArrayList<String> TCode = new ArrayList<String>();
+//				TCode.add("123156456");
+//				TCode.add("12356");
+//				TCode.add("123");
+//				TCode.add("1256456");
+//				TCode.add("1231566");
+//				TCode.add("12356");
+//				TCode.add("1236");
+//				receiptList =new  ArrayList<ReceiptPO>();
+//				ReceiptPO p1= new ReceiptPO("11233", "sdsad", "dasdas", "dadasd", "545646", 465, "545", TCode);
+//				receiptList.add(p1);
 				//本地测试的假数据
 				
 				b4Jpanel2 = new b4Jpanel2(financialstaffui, financialstaffJpanel,receiptList);

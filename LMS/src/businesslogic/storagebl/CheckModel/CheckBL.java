@@ -30,7 +30,7 @@ public class CheckBL implements check_inventoryBlSer{
 			ArrayList<SimpleInDepotInfVO> stoList=new ArrayList<>();
 			for (int i = 0; i < Sto.size(); i++) {
 				String [] string=Sto.get(i).split(",");
-				InBillsPO inBillsPO=(InBillsPO)getDocumentInfoDataSer.getDocumentInfo(string[1], string[2]);
+				InBillsPO inBillsPO=(InBillsPO)getDocumentInfoDataSer.getDocumentInfo(string[0], string[1]);
 				stoList.add(new SimpleInDepotInfVO(inBillsPO.getInDepotNum(), inBillsPO.getAreaNum(), inBillsPO.getRowNum(), inBillsPO.getShelvesNum(), inBillsPO.getSositionNum()));
 			}
 			return stoList;
@@ -58,7 +58,7 @@ public class CheckBL implements check_inventoryBlSer{
 			ArrayList<InDepotInfVO> stoList=new ArrayList<>();
 			for (int i = 0; i < Sto.size(); i++) {
 				String [] string=Sto.get(i).split(",");
-				InBillsPO inBillsPO=(InBillsPO)getDocumentInfoDataSer.getDocumentInfo(string[1], string[2]);
+				InBillsPO inBillsPO=(InBillsPO)getDocumentInfoDataSer.getDocumentInfo(string[0], string[1]);
 				stoList.add(new InDepotInfVO(inBillsPO.getInDepotNum(), inBillsPO.getInDepotDate(), inBillsPO.getDestination(), inBillsPO.getAreaNum(), inBillsPO.getRowNum(), inBillsPO.getShelvesNum(), inBillsPO.getSositionNum()));	
 			}
 			return stoList;

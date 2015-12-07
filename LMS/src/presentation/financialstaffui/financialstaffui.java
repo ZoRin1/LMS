@@ -22,7 +22,7 @@ import presentation.mainui.mainui;
 public class financialstaffui extends JFrame{
 	private String[] args;
 	private JButton outjButton;
-	private financialstaffJpanel financialstaffJpanel;
+	financialstaffJpanel financialstaffJpanel;
 	financialstaffOperationJpanel operationJpanel;
 	JButton b1,b2,b3,b4,b5;
 	private JButton tuichuButton;

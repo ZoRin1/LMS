@@ -16,7 +16,7 @@ public class GetReceipt implements GetReceiptSer{
 	private ArrayList<String> list;
 	private ArrayList<ReceiptPO> list1;
 	private int size=0;
-	private String str,str1,str2;
+	private String str;
 	@Override
 	public ArrayList<ReceiptPO> getReceipts(String selling, String date) {
 		// TODO Auto-generated method stub
@@ -31,11 +31,9 @@ public class GetReceipt implements GetReceiptSer{
 			String endTime=date+" 23:59:59";
 			list=getCodeDataSer.getReceiptCode(selling, "收款单", startTime, endTime);
 			size=list.size();
-			for(int i=0;i<size;i++){
-				str=list.get(i);
-				str1=str.substring(0, 10);
-				str2=str.substring(11);
-				po=(ReceiptPO) getDocumentInfoDataSer.getDocumentInfo(str1, str2);
+			for(int i=0;i<size;i++){			
+				String string[]=list.get(i).split(",");
+				po=(ReceiptPO) getDocumentInfoDataSer.getDocumentInfo(string[0], string[1]);
 				list1.add(po);
 			}
 		} catch (MalformedURLException e) {
@@ -63,10 +61,8 @@ public class GetReceipt implements GetReceiptSer{
 			list=getCodeDataSer.getCode("收款单", null, end);
 			size=list.size();
 			for(int i=0;i<size;i++){
-				str=list.get(i);
-				str1=str.substring(0, 10);
-				str2=str.substring(11);
-				po=(ReceiptPO) getDocumentInfoDataSer.getDocumentInfo(str1, str2);
+				String string[]=list.get(i).split(",");
+				po=(ReceiptPO) getDocumentInfoDataSer.getDocumentInfo(string[0], string[1]);
 				list1.add(po);
 			}
 		} catch (MalformedURLException e) {
@@ -95,10 +91,8 @@ public class GetReceipt implements GetReceiptSer{
 			list=getCodeDataSer.getCode("收款单", start, end);
 			size=list.size();
 			for(int i=0;i<size;i++){
-				str=list.get(i);
-				str1=str.substring(0, 10);
-				str2=str.substring(11);
-				po=(ReceiptPO) getDocumentInfoDataSer.getDocumentInfo(str1, str2);
+				String string[]=list.get(i).split(",");
+				po=(ReceiptPO) getDocumentInfoDataSer.getDocumentInfo(string[0], string[1]);
 				list1.add(po);
 			}
 		} catch (MalformedURLException e) {

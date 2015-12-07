@@ -85,10 +85,8 @@ public class b5b2Jpanel1JTable {
 			public void mouseClicked(MouseEvent e) {
 				// TODO 自动生成的方法存根
 				if(e.getClickCount()==2){
-					System.out.println("哈哈");
 					int row = booksJtabel.getSelectedRow();
 					String value = booksJtabel.getValueAt(row, 0).toString().trim();
-					System.out.println(value);
 					BooksPO po = bookList.get(row);
 					
 					new booksDialog(b5financialstaffui,po);

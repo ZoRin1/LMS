@@ -29,7 +29,7 @@ import vo.storageVO.InDepotInfVO;
 
 public class icwarehousemanui extends JFrame{
 	private String account="1515";
-	private String state="";
+	private String state="4-南京-中转中心-001";
 	private JLabel warnJLabel;
 	private String[] args;
 	private JButton outjButton;
@@ -233,7 +233,7 @@ public class icwarehousemanui extends JFrame{
 			b4.setEnabled(false);
 			b5.setEnabled(false);
 			b6.setEnabled(false);
-			check = new checkDepotDialog(icwarehousemanui);
+			check = new checkDepotDialog(icwarehousemanui,account);
 		}
 	});
 	b4.addActionListener(new ActionListener() {

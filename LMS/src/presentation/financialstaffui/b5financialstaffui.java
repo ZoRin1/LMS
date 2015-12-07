@@ -96,21 +96,21 @@ public class b5financialstaffui extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
-//				BookController =new BooksController();
-//				bookList = BookController.getBook();
-				BooksPO p1 = new BooksPO("132123,12123,123132","sdsad,456456,dasda","sdasd,55445,4554","sadsad,sadasdas,sdada","a,a,a","q,a,s,d,f", "张三", "2015");
-				BooksPO p2 = new BooksPO("132123,12123,123132","sdsad,456456,dasda","sdasd,55445,4554","sadsad,sadasdas,sdada","a,a,a","q,a,s,d,f",  "李四", "2015");
-				BooksPO p3 = new BooksPO("132123,12123,123132","sdsad,456456,dasda","sdasd,55445,4554","sadsad,sadasdas,sdada","a,a,a","q,a,s,d,f",  "王五", "2015");
-				BooksPO p4 = new BooksPO("132123,12123,123132","sdsad,456456,dasda","sdasd,55445,4554","sadsad,sadasdas,sdada","a,a,a","q,a,s,d,f",  "冯六", "2015");
-				BooksPO p5 = new BooksPO("132123,12123,123132","sdsad,456456,dasda","sdasd,55445,4554","sadsad,sadasdas,sdada","a,a,a","q,a,s,d,f",  "周期", "2015");
-				BooksPO p6 = new BooksPO("132123,12123,123132","sdsad,456456,dasda","sdasd,55445,4554","sadsad,sadasdas,sdada","a,a,a","q,a,s,d,f",  "钱八", "2015");
-				bookList = new ArrayList<BooksPO>();
-				bookList.add(p1);
-				bookList.add(p2);
-				bookList.add(p3);
-				bookList.add(p4);
-				bookList.add(p5);
-				bookList.add(p6);
+				BookController =new BooksController();
+				bookList = BookController.getBook();
+//				BooksPO p1 = new BooksPO("132123,12123,123132","sdsad,456456,dasda","sdasd,55445,4554","sadsad,sadasdas,sdada","a,a,a","q,a,s,d,f", "张三", "2015");
+//				BooksPO p2 = new BooksPO("132123,12123,123132","sdsad,456456,dasda","sdasd,55445,4554","sadsad,sadasdas,sdada","a,a,a","q,a,s,d,f",  "李四", "2015");
+//				BooksPO p3 = new BooksPO("132123,12123,123132","sdsad,456456,dasda","sdasd,55445,4554","sadsad,sadasdas,sdada","a,a,a","q,a,s,d,f",  "王五", "2015");
+//				BooksPO p4 = new BooksPO("132123,12123,123132","sdsad,456456,dasda","sdasd,55445,4554","sadsad,sadasdas,sdada","a,a,a","q,a,s,d,f",  "冯六", "2015");
+//				BooksPO p5 = new BooksPO("132123,12123,123132","sdsad,456456,dasda","sdasd,55445,4554","sadsad,sadasdas,sdada","a,a,a","q,a,s,d,f",  "周期", "2015");
+//				BooksPO p6 = new BooksPO("132123,12123,123132","sdsad,456456,dasda","sdasd,55445,4554","sadsad,sadasdas,sdada","a,a,a","q,a,s,d,f",  "钱八", "2015");
+//				bookList = new ArrayList<BooksPO>();
+//				bookList.add(p1);
+//				bookList.add(p2);
+//				bookList.add(p3);
+//				bookList.add(p4);
+//				bookList.add(p5);
+//				bookList.add(p6);
 				
 				new b5b2Jpanel1(b5financialstaffui, financialstaffJpanel,bookList);
 				financialstaffJpanel.remove(operationJpanel);

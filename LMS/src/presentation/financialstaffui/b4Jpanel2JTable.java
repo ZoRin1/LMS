@@ -117,7 +117,7 @@ public class b4Jpanel2JTable {
 			}
 			billsJtabel.setComboCell(i, 5, new MyComboBoxEditor(values));
 		}
-		billsJtabel.setFont(new Font("幼圆", Font.BOLD, 20));
+		billsJtabel.setFont(new Font("幼圆", Font.BOLD, 14));
 		billsJtabel.getTableHeader().setReorderingAllowed(false); //设置列不可重排
 		billsJtabel.getTableHeader().setResizingAllowed(false);//设置列不可拖动
 		
