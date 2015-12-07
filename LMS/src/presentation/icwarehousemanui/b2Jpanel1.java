@@ -22,11 +22,15 @@ import po.documentsPO.InBillsPO;
 import po.storagePO.DepotPO;
 import vo.storageVO.DepotVO;
 import businesslogic.documentsbl.documentController;
+import businesslogic.storagebl.DriveModel.spaceBL;
 import businesslogic.storagebl.InDepotModel.InDepotBL;
 import businesslogic.storagebl.InDepotModel.getPosition;
 
 public class b2Jpanel1 extends JPanel{
 	private documentController documentController;
+	private InDepotBL inDepot;
+	private spaceBL depot110;
+	
 	private ImageIcon frameIcon =new ImageIcon("picture/操作面板.png");
 	private JButton returnButton;
 	private JLabel t1,t2,t4,j1,j2,j3,j4,j5,j6,j7,j8,j9,j10,j11,t7,t8,t9;
@@ -36,8 +40,6 @@ public class b2Jpanel1 extends JPanel{
 	private String state;
 	private getPosition getPosition;
 	private ImageIcon yesIcon=new ImageIcon("picture/确定.png");
-	
-	private InDepotBL inDepot;
 	public b2Jpanel1(b2icwarehousemanui ui,icwarehousemanJpanel icwarehousemanJpanel,String account,String state) {
 		// TODO Auto-generated constructor stub
 		this.account=account;
@@ -49,6 +51,7 @@ public class b2Jpanel1 extends JPanel{
 	private void init(){
 		documentController=new documentController();
 		inDepot = new InDepotBL();
+		depot110 = new spaceBL();
 		ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 		ImageIcon i1 = new ImageIcon("picture/库存图片/入库单.png");
 		ImageIcon i2 = new ImageIcon("picture/库存图片/入库单编号.png");
@@ -184,7 +187,7 @@ public class b2Jpanel1 extends JPanel{
 			@Override
 			public void keyTyped(KeyEvent e) {
 				// TODO Auto-generated method stub
-				if (e.getKeyChar()=='1'||e.getKeyChar()=='2'||e.getKeyChar()=='3') {
+				if (e.getKeyChar()=='1'||e.getKeyChar()=='2'||e.getKeyChar()=='3'||e.getKeyChar()=='5'||e.getKeyChar()=='6'||e.getKeyChar()=='7') {
 					if (t6.getText().length()==1) {
 						e.consume();
 					}
@@ -252,6 +255,22 @@ public class b2Jpanel1 extends JPanel{
 					inDepot.inDepotExcel(t1.getText(), t4.getText(), po, temp[1]);
 					//库存信息表的添加！！！！
 					
+					//库存报警功能的添加！！！！
+					int[] used = depot110.usedSpaceInf(temp[1]);
+					int[] all = depot110.allSpaceInf(temp[1]);
+					if(((double)used[0]/(double)all[0])>=0.8){
+						System.out.println("航运区库存快满了");
+						//这里要改变库存报警的图片
+					}
+					if(((double)used[1]/(double)all[1])>=0.8){
+						System.out.println("铁运区库存快满了");
+						//这里要改变库存报警的图片
+					}
+					if(((double)used[2]/(double)all[2])>=0.8){
+						System.out.println("汽运区库存快满了");
+						//这里要改变库存报警的图片
+					}
+					//库存报警功能的添加！！！！
 					
 					icwarehousemanJpanel.remove(b2jpanel);
 					icwarehousemanJpanel.add(ui.getOperationJpanel());

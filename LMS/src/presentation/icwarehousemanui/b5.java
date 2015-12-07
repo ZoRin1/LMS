@@ -52,6 +52,7 @@ class finishb5Dialog extends JDialog{
 		super(frame,title,modal);
 		this.account = account;
 		this.state = state;
+		space = new spaceBL();
 		usedSpace();
 		allSpace();
 		init();
@@ -208,18 +209,36 @@ class finishb5Dialog extends JDialog{
 	private void registerListener(){
 		jButton.addActionListener(new ActionListener() {		
 			public void actionPerformed(ActionEvent e) {
+				
 				//这个下面还要添加  库存输入是否超出机动区大小！！！！
 				
 				//这个上面还要添加  库存输入是否超出机动区大小！！！！
 				String[] temp = state.split("-");
 				drive = new DriverBL();
 				drive.drive(Integer.parseInt(t1.getText()), Integer.parseInt(t2.getText()), Integer.parseInt(t3.getText()), temp[1]);
+				
+				//这里要添加库存报警的功能！！！！
+				used = space.usedSpaceInf(temp[1]);
+				all = space.allSpaceInf(temp[1]);
+				if(((double)used[0]/(double)all[0])<0.8){
+					System.out.println("航运区库存空余");
+					//这里要改变库存报警的图片
+				}
+				if(((double)used[1]/(double)all[1])<0.8){
+					System.out.println("铁运区库存空余");
+					//这里要改变库存报警的图片
+				}
+				if(((double)used[2]/(double)all[2])<0.8){
+					System.out.println("汽运区库存空余");
+					//这里要改变库存报警的图片
+				}
+				//这里要添加库存报警的功能！！！！
+				
 				finishb5Dialog.this.dispose();
 			}
 		});
 	}
 	private void usedSpace(){
-		space = new spaceBL();
 		String[] temp = state.split("-");
 		used = space.usedSpaceInf(temp[1]);
 	}

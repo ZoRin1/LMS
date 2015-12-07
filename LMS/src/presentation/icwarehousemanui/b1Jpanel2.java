@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 
 import po.documentsPO.OutbillsPO;
 import businesslogic.documentsbl.documentController;
+import businesslogic.storagebl.DriveModel.spaceBL;
 import businesslogic.storagebl.OutDepot.OutDepotBL;
 
 
@@ -35,7 +36,9 @@ public class b1Jpanel2 extends JPanel{
 	private String code;
 	private String account;
 	private String state;
+	
 	private documentController documentController;
+	private spaceBL depot110;
 
 	public b1Jpanel2(b1icwarehousemanui ui,icwarehousemanJpanel icwarehousemanJpanel,b1Jpanel1 b1Jpanel1,String code,String account,String state) {
 		// TODO Auto-generated constructor stub
@@ -49,6 +52,7 @@ public class b1Jpanel2 extends JPanel{
 	
 	private void init(){
 		documentController=new documentController();
+		depot110 = new spaceBL();
 		ImageIcon returnIcon=new ImageIcon("picture/返回.png");
 		ImageIcon i1 = new ImageIcon("picture/库存图片/出库单.png");
 		ImageIcon i2 = new ImageIcon("picture/库存图片/出库单编号.png");
@@ -174,6 +178,24 @@ public class b1Jpanel2 extends JPanel{
 					String stateList[]=state.split("-");
 					documentController.updateDrive(code, stateList[1]); 
 					outfinishDialog out = new outfinishDialog(ui, "出库单创建完成", true);
+					
+					//这里要添加库存报警的功能！！！！
+					int[] used = depot110.usedSpaceInf(stateList[1]);
+					int[] all = depot110.allSpaceInf(stateList[1]);
+					if(((double)used[0]/(double)all[0])<0.8){
+						System.out.println("航运区库存空余");
+						//这里要改变库存报警的图片
+					}
+					if(((double)used[1]/(double)all[1])<0.8){
+						System.out.println("铁运区库存空余");
+						//这里要改变库存报警的图片
+					}
+					if(((double)used[2]/(double)all[2])<0.8){
+						System.out.println("汽运区库存空余");
+						//这里要改变库存报警的图片
+					}
+					//这里要添加库存报警的功能！！！！
+					
 					icwarehousemanJpanel.remove(b1jpanel2);
 					icwarehousemanJpanel.add(ui.getOperationJpanel());
 					ui.getB1().setEnabled(true);

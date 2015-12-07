@@ -30,7 +30,7 @@ public class UsedSpaceDataSerImpl extends UnicastRemoteObject implements UsedSpa
 	public int[] getUsedSpace(String city)  throws RemoteException{
 		// TODO 自动生成的方法存根
 		int space[] = new int[3];
-		sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+"where isFull=0 and AreaNum=1";
+		sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+"where isFull=0 and AreaNum=1 or AreaNum=5";
 		try {
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
@@ -38,12 +38,12 @@ public class UsedSpaceDataSerImpl extends UnicastRemoteObject implements UsedSpa
 			ResultSet resultSet=preparedStatement.executeQuery();
 			resultSet.last();
 			space[0] = resultSet.getRow();
-			sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+"where isFull=0 and AreaNum=2";
+			sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+"where isFull=0 and AreaNum=2 or AreaNum=6";
 			preparedStatement=connection.prepareStatement(sql);
 			resultSet=preparedStatement.executeQuery();
 			resultSet.last();
 			space[1] = resultSet.getRow();
-			sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+"where isFull=0 and AreaNum=3";
+			sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+"where isFull=0 and AreaNum=3 or AreaNum=7";
 			preparedStatement=connection.prepareStatement(sql);
 			resultSet=preparedStatement.executeQuery();
 			resultSet.last();
@@ -63,7 +63,7 @@ public class UsedSpaceDataSerImpl extends UnicastRemoteObject implements UsedSpa
 	public int[] getAllSpace(String city)  throws RemoteException{
 		// TODO 自动生成的方法存根
 		int space[] = new int[3];
-		sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+" where AreaNum=1";
+		sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+" where AreaNum=1 or AreaNum=5";
 		try {
 			Class.forName(DRIVER);
 			Connection connection=DriverManager.getConnection(URL, USER, PASSWORD);
@@ -71,12 +71,12 @@ public class UsedSpaceDataSerImpl extends UnicastRemoteObject implements UsedSpa
 			ResultSet resultSet=preparedStatement.executeQuery();
 			resultSet.last();
 			space[0] = resultSet.getRow();
-			sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+" where AreaNum=2";
+			sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+" where AreaNum=2 or AreaNum=6";
 			preparedStatement=connection.prepareStatement(sql);
 			resultSet=preparedStatement.executeQuery();
 			resultSet.last();
 			space[1] = resultSet.getRow();
-			sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+" where AreaNum=3";
+			sql="SELECT AreaNum,RowNum,ShelvesNum,SositionNum from"+city+"中转中心仓库"+" where AreaNum=3 or AreaNum=7";
 			preparedStatement=connection.prepareStatement(sql);
 			resultSet=preparedStatement.executeQuery();
 			resultSet.last();
