@@ -243,14 +243,14 @@ public class icwarehousemanui extends JFrame{
 			// TODO 自动生成的方法存根
 			System.out.println("库存盘点");
 			
-//			SimpleDateFormat endDf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-//			SimpleDateFormat startdf = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
-//			String startDate = startdf.format(new Date())+" 00:00:00";
-//			String endDate = endDf.format(new Date());
-//			System.out.println(startDate);
-//			System.out.println(endDate);
-//			
-//			
+			SimpleDateFormat endDf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+			SimpleDateFormat startdf = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+			String startDate = startdf.format(new Date())+" 00:00:00";
+			String endDate = endDf.format(new Date());
+			System.out.println(startDate);
+			System.out.println(endDate);
+			
+			
 //			checkController = new CheckController();
 //			InVOList = checkController.conInventory(account, startDate, endDate);
 			

@@ -38,8 +38,8 @@ public class stockDepotPanel2 extends JPanel{
 	public stockDepotPanel2(icwarehousemanui icwarehousemanui,icwarehousemanJpanel icwarehousemanJpanel,String account,String state){
 		this.account = account;
 		this.state = state;
-//		check();
-//		getDepotCount();
+		check();
+		getDepotCount();
 		init();
 		icwarehousemanJpanel.add(this);
 		registListener(icwarehousemanui,icwarehousemanJpanel,this);
@@ -60,13 +60,13 @@ public class stockDepotPanel2 extends JPanel{
 		hangyun.setBorderPainted(false);
 		j1 = new JLabel(kuangjia);
 		j1.setBounds(0, 0, 720, 570);
-		inDepotCount = new JLabel("103");
-//		inDepotCount = new JLabel(String.valueOf(VOList.size()));
+//		inDepotCount = new JLabel("103");
+		inDepotCount = new JLabel(String.valueOf(VOList.size()));
 		inDepotCount.setFont(new Font("свт╡", Font.BOLD, 20));
 		inDepotCount.setBounds(572, 35, 80, 24);
 		
-		AllDepotCount = new JLabel("6594");
-//		AllDepotCount = new JLabel(String.valueOf(useSpace[2]));
+//		AllDepotCount = new JLabel("6594");
+		AllDepotCount = new JLabel(String.valueOf(useSpace[2]));
 		AllDepotCount.setFont(new Font("свт╡", Font.BOLD, 20));
 		AllDepotCount.setBounds(612, 542, 80, 24);
 		
